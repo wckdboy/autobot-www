@@ -36,7 +36,8 @@ const repo = isProduct ? meta.repo : 'https://github.com/wckdboy';
       <div class="footer__col">
         <h2 class="footer__col-h">Project</h2>
         <a href={repo} rel="noopener">Source code ↗</a>
-        {isProduct && <a href={`${repo}/blob/main/ROADMAP.md`} rel="noopener">Roadmap ↗</a>}
+        {meta.key === 'autobot' && <a href={`${repo}/blob/main/ROADMAP.md`} rel="noopener">Roadmap ↗</a>}
+        {meta.key === 'invincible' && <a href={`${repo}#readme`} rel="noopener">README ↗</a>}
         {isProduct && <a href={`${repo}/security`} rel="noopener">Security ↗</a>}
         {isProduct && <a href={`${repo}/blob/main/LICENSE`} rel="noopener">License ↗</a>}
       </div>
