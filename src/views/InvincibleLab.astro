@@ -1,0 +1,81 @@
+---
+import Lab from '../layouts/Lab.astro';
+import { releases, install } from '../data/site';
+import { NAV } from '../data/nav';
+import { fmtDate, v } from '../lib/format';
+
+const latest = releases.invincible.latest;
+const n = NAV.invincible;
+const status = [
+  ['Gateway', 'Open models through llama.cpp behind OpenAI- and Anthropic-compatible APIs. Every request goes through the routing rules (51 conformance vectors).'],
+  ['Privacy', 'Personal data is redacted before anything leaves the node. Every request gets a signed receipt; every receipt lands in a hash-chained audit log.'],
+  ['Pairing', 'Phones and laptops pair over Noise. Implemented; not yet independently reviewed.'],
+  ['Cloud', 'Optional. A provider is added with one command, its key kept on the node, and the router asks before a turn leaves.'],
+  ['Agent', 'The Autobot agent runs on the node: coding in the terminal, tools and approvals, a team, schedules, webhooks, Telegram and Discord.'],
+  ['Releases', 'Static Linux and macOS binaries, reproducible, with build attestations, signed with a pinned key. The independent security review is still to come.'],
+];
+const tiers = [
+  ['This phone', 'NPU, GPU or CPU of the device in your hand', 'Autobot'],
+  ['My node', 'your desktop, GPU box or VPS', 'Invincible'],
+  ['Our region', 'pooled nodes of people you trust', 'Invincible, later'],
+  ['Cloud', 'frontier and hosted providers', 'their APIs, when you allow it'],
+];
+---
+<Lab path="/" current="overview" nav={[...n.nav]} footerNote={n.footer} description="Invincible is a self-hosted AI node: open models on hardware you own, frontier models only when you allow it, and a signed receipt for every call.">
+  <p class="label">Linux + macOS · v{v(latest.tag)} · MIT</p>
+  <h1>Invincible</h1>
+  <p class="lede">The node you own. A self-hosted AI gateway for a desktop, a GPU box or a VPS: open models on your hardware, frontier models only when you allow it, and a signed receipt for every call.</p>
+
+  <pre><code>curl -fsSL https://invincible.sh/install.sh | sh</code></pre>
+  <p class="meta">Installs <code>invincible</code> and <code>autobot</code> in <code>~/.local/bin</code>, checks the release signature and the build attestation, and sets up the node. <a href="/install/">What it does</a> · install.sh SHA-256 <code>{install.sha256.slice(0, 16)}…</code></p>
+
+  <div class="actions">
+    <a class="button button--primary" href="/install/">Install guide</a>
+    <a class="text-link" href={latest.url} rel="noopener">Release notes ↗</a>
+    <a class="text-link" href={n.repo} rel="noopener">Source ↗</a>
+  </div>
+
+  <dl class="facts">
+    <div><dt>Latest release</dt><dd>v{v(latest.tag)} · {fmtDate(latest.published)}</dd></div>
+    <div><dt>License</dt><dd>MIT</dd></div>
+    <div><dt>Platforms</dt><dd>Linux x64 and arm64, macOS arm64</dd></div>
+    <div><dt>Default network</dt><dd>Local models only</dd></div>
+    <div><dt>Telemetry</dt><dd>None</dd></div>
+    <div><dt>APIs</dt><dd>OpenAI and Anthropic compatible</dd></div>
+  </dl>
+
+  <section id="code">
+    <h2>Code with Autobot</h2>
+    <p>The agent that comes with the node works in your project, next to Claude Code or opencode, with every model call receipted and in the audit log.</p>
+    <pre><code>cd ~/src/my-project
+autobot code --model anthropic --approvals edits   # the first time: asks for the key
+autobot                                            # after that, in any git repository</code></pre>
+  </section>
+
+  <section id="status">
+    <h2>Status</h2>
+    <p>Early, and used daily. What is built, and what is not yet:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Part</th><th>State</th></tr></thead>
+        <tbody>{status.map(([part, state]) => (<tr><td><strong>{part}</strong></td><td>{state}</td></tr>))}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="tiers">
+    <h2>Four places intelligence can run</h2>
+    <p>One interface. If a tier disappears, things get slower, but nothing breaks.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tier</th><th>Runs on</th><th>Built by</th></tr></thead>
+        <tbody>{tiers.map(([t, on, by]) => (<tr><td><strong>{t}</strong></td><td>{on}</td><td>{by}</td></tr>))}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="trust">
+    <h2>Checkable, not trusted</h2>
+    <p>Releases are reproducible and signed with a pinned SSH key; the installer checks the signature and GitHub's build attestation before it runs anything. Each answer carries a receipt the node signed, saying where it ran and what left the machine. <a href="/verify/">How to check a release yourself</a>.</p>
+  </section>
+</Lab>

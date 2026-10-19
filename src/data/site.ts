@@ -1,7 +1,7 @@
 import releaseData from './releases.json';
 import installData from './install.json';
 
-export type SiteKey = 'autobot' | 'invincible' | 'sovware';
+export type SiteKey = 'autobot' | 'invincible' | 'sovware' | 'wckd' | 'omnie' | 'nightfall';
 
 export interface NavItem {
   label: string;
@@ -95,6 +95,21 @@ const configs: Record<SiteKey, SiteMeta> = {
     license: 'Apache-2.0 / MIT',
     tagline: 'Software that answers to its owner.',
     og: '/og/sovware.png',
+  },
+  wckd: {
+    key: 'wckd', name: 'WCKD', wordmark: 'wckd', domain: 'wckd.ai', origin: 'https://wckd.ai',
+    title: 'WCKD — one lab, one system', description: 'The WCKD lab and its brand kit: Sovware, Autobot, Invincible, Omnie and Nightfall, each a lowercase letter in pixels and one color.',
+    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy', license: 'Apache-2.0 / MIT', tagline: 'One lab, one system.', og: '/og/sovware.png',
+  },
+  omnie: {
+    key: 'omnie', name: 'Omnie', wordmark: 'omnie', domain: 'omnie.sh', origin: 'https://omnie.sh',
+    title: 'Omnie — every model, agent and tool in one thread', description: 'Omnie puts every model, agent and tool behind one composer on iPhone, Mac and Vision Pro.',
+    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/Omnie', license: 'see the repository', tagline: 'Every model in one thread.', og: '/og/sovware.png',
+  },
+  nightfall: {
+    key: 'nightfall', name: 'Nightfall', wordmark: 'nightfall', domain: 'nightfall.sh', origin: 'https://nightfall.sh',
+    title: 'Nightfall — AI-native parametric CAD', description: 'Open-source, AI-native parametric CAD for macOS: exact NURBS geometry, full history, every part a program.',
+    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/nightfall', license: 'see the repository', tagline: 'Every part is a program.', og: '/og/sovware.png',
   },
 };
 

@@ -2,16 +2,24 @@
 import Lab from '../layouts/Lab.astro';
 import { releases } from '../data/site';
 import { fmtBytes, fmtDate, releaseNotes, v } from '../lib/format';
+import { NAV } from '../data/nav';
 
-const all = releases.autobot.releases.filter((r) => !r.prerelease);
-const latest = releases.autobot.latest;
+interface Props { product?: 'autobot' | 'invincible' }
+const { product = 'autobot' } = Astro.props;
+const repo = releases[product];
+const n = NAV[product];
+const all = repo.releases.filter((r) => !r.prerelease);
+const latest = repo.latest;
 const apk = latest.assets.find((a) => /release\.apk$/.test(a.name));
 const sums = latest.assets.find((a) => a.name === 'SHA256SUMS.txt');
 
 const label = (name: string) => {
   if (/release\.apk$/.test(name)) return 'APK';
   if (/debug\.apk$/.test(name)) return 'debug APK';
+  if (/SHA256SUMS\.sig$/.test(name)) return 'signature';
   if (/SHA256SUMS/.test(name)) return 'SHA-256';
+  const m = name.match(/^invincible-(.+)\.tar\.gz$/);
+  if (m) return m[1];
   if (/mapping/.test(name)) return 'mapping';
   return name;
 };
@@ -19,16 +27,19 @@ const label = (name: string) => {
 <Lab
   path="/releases/"
   current="releases"
+  nav={[...n.nav]}
+  footerNote={n.footer}
   title="Releases"
-  description="Every public Autobot release, with files, checksums and full notes. Data is baked at build time from GitHub."
+  description={`Every public ${product === 'autobot' ? 'Autobot' : 'Invincible'} release, with files, checksums and full notes. Data is baked at build time from GitHub.`}
 >
-  <p class="label">Autobot · release archive</p>
+  <p class="label">{product === 'autobot' ? 'Autobot' : 'Invincible'} · release archive</p>
   <h1>Releases</h1>
-  <p class="lede">Every public release, with its files and full notes. Versions move together on Android and iOS.</p>
+  <p class="lede">{product === 'autobot' ? 'Every public release, with its files and full notes. Versions move together on Android and iOS.' : 'Every public release: static binaries for Linux and macOS, SHA256SUMS signed with the pinned release key, and the full notes.'}</p>
   <p class="meta">Latest v{v(latest.tag)} · {fmtDate(latest.published)} · {all.length} public releases · data {fmtDate(releases.generatedAt)}</p>
 
   <div class="actions">
-    <a class="button button--primary" href={apk?.url} download>Download {v(latest.tag)}</a>
+    {apk && <a class="button button--primary" href={apk.url} download>Download {v(latest.tag)}</a>}
+    {product === 'invincible' && <a class="button button--primary" href="/install/">Install v{v(latest.tag)}</a>}
     {sums && <a class="text-link" href={sums.url} rel="noopener">SHA256SUMS.txt ↗</a>}
     <a class="text-link" href="/verify/">Verify a download</a>
   </div>

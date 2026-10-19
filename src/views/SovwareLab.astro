@@ -1,0 +1,58 @@
+---
+import Lab from '../layouts/Lab.astro';
+import { releases } from '../data/site';
+import { kit, symbolSvg } from '../data/kit';
+import { fmtDate, v } from '../lib/format';
+
+const a = releases.autobot.latest;
+const i = releases.invincible.latest;
+const products = ['autobot', 'invincible', 'omnie', 'nightfall'].map((k) => ({ key: k, ...kit.brands[k] }));
+const state: Record<string, string> = {
+  autobot: `v${v(a.tag)} · ${fmtDate(a.published)} · Android and iOS`,
+  invincible: `v${v(i.tag)} · ${fmtDate(i.published)} · Linux and macOS`,
+  omnie: 'iPhone, Mac and Vision Pro · in development',
+  nightfall: 'macOS · visual development preview',
+};
+const principles = [
+  ['Owned means owned', 'Your keys, your weights, your logs, your machine. A product that needs a landlord is not a product we ship.'],
+  ['Local is the default', 'Leaving hardware you own is always a choice, visible and reversible. The network is a tool, not the architecture.'],
+  ['No phoning home', 'No telemetry, no update checks you did not ask for, no accounts. The record is local and checkable.'],
+  ['Frontier-optional', 'Every feature has a path that works without a third party. Frontier models make things faster, not possible.'],
+  ['Open, signed, measured', 'Source available. Reproducible builds. Signed releases. Claims that can be checked, and the numbers to check them against.'],
+];
+---
+<Lab path="/" current="" description="Sovware is sovereign hardware and software: private intelligence on the phone and on the machine you own. Made by WCKD.">
+  <p class="label">Sovware · made by WCKD</p>
+  <h1>Sovereign hardware and software</h1>
+  <p class="lede">Computing that answers to its owner: models that run on the phone and on the machine you own, networks you choose, and a record you can check.</p>
+
+  <section>
+    <h2>The products</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Product</th><th>What it is</th><th>State</th></tr></thead>
+        <tbody>
+          {products.map((p) => (
+            <tr>
+              <td><span style={`color:${p.onPaper};display:block`} set:html={symbolSvg(p, 18, p.name)} /></td>
+              <td><strong><a href={`https://${p.domain}`} rel="noopener">{p.name}</a></strong></td>
+              <td>{p.role}</td>
+              <td class="small">{state[p.key]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>How we build</h2>
+    <p>These are design constraints, not marketing lines. They decide what we ship and what we refuse to.</p>
+    <ul class="list-plain">{principles.map(([t, body]) => (<li><b>{t}.</b> {body}</li>))}</ul>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Email <code>boy@wckd.cc</code> · <a href="https://github.com/wckdboy" rel="noopener">github.com/wckdboy</a> · the lab: <a href="https://wckd.ai" rel="noopener">wckd.ai</a></p>
+  </section>
+</Lab>

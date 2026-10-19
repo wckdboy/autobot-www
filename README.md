@@ -1,32 +1,32 @@
-# Sovware lab — public sites
+# WCKD — public sites
 
-The public sites for **Autobot**, **Invincible** and **Sovware**.
+The public sites for the WCKD lab and its brands, from one Astro codebase on one brand kit.
 
-**Current state:** Autobot is the first site on the new lab system and is awaiting review.
-Invincible and Sovware are still on the previous design until Autobot is confirmed. Do not mix
-the two systems on one page.
-
-| Domain | Project | State |
+| Domain | Brand | State |
 | --- | --- | --- |
-| [autobot.sh](https://autobot.sh) | Autobot | New lab system — review |
-| [invincible.sh](https://invincible.sh) | Invincible | Previous design |
-| [sovware.io](https://sovware.io) | Sovware | Previous design |
-| wckd.ai | Redirect | 301 → sovware.io |
+| [autobot.sh](https://autobot.sh) | Autobot | WCKD kit v2 |
+| [invincible.sh](https://invincible.sh) | Invincible | WCKD kit v2 |
+| [sovware.io](https://sovware.io) | Sovware | previous design; its `/brand/` is on the kit |
+| wckd.ai | WCKD | builds the master kit (`pnpm build:wckd`); live domain still redirects to sovware.io |
+| omnie.sh, nightfall.sh | Omnie, Nightfall | build their brand kit as the home page; not deployed yet |
 
-Brand guide: **[autobot.sh/brand](https://autobot.sh/brand/)** · short notes in [BRAND.md](BRAND.md).
+Brand kit: [BRAND.md](BRAND.md), source [`brand/kit.json`](brand/kit.json), assets drawn by
+`pnpm brand`, and every site's own version at `/brand/`.
 
 ## The system
 
-Plain is the point. Static HTML, one stylesheet, no client JavaScript, no third-party requests.
+Plain is the point. Static HTML, one stylesheet (`public/lab.css`), no client JavaScript, no
+third-party requests.
 
-- **Type:** Inter for body and interfaces; EB Garamond for page titles and section headings;
-  system monospace for code.
-- **Surface:** paper `#FBFAF7`, ink `#151513`, muted `#5D5A53`, rules `#DCD8CF`.
-- **One accent per project:** Autobot oxide `#B23A2A`, Invincible deep blue `#22506E`,
-  Sovware forest `#2F4A3A`. The accent appears in the wordmark square, selection, focus and
-  link hover. Nothing else.
+- **Brands:** one lowercase pixel letter and one color each: Autobot lilac `a`, Invincible
+  orange `i`, Omnie phthalo `o`, Nightfall rose `n`; WCKD `w` and Sovware `s` are neutral.
+- **Type:** Inter for reading and interfaces; JetBrains Mono for machine text, labels and the
+  wordmarks.
+- **Surface:** page `#FBFAF7`, ink `#141413`, muted `#5D5A53`, rules `#DCD8CF`; dark when the
+  system asks for it.
+- **The accent** marks the symbol, the primary action, selection, focus and link hover.
 - **Layout:** one column, 1040 px page, 68-character measure, 1 px rules, no cards, shadows,
-  gradients, decorative numbers or illustrations.
+  gradients or illustration.
 - **Voice:** write like a maintainer. State the limit as plainly as the feature.
 
 The full rules and component specimens are in the [brand guide](https://autobot.sh/brand/).

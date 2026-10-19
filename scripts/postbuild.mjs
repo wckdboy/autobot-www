@@ -13,45 +13,10 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const KEY = process.env.SITE_KEY || 'autobot';
 const DIST = resolve(ROOT, 'dist', KEY);
 
-const dots = (key) => {
-  const out = [];
-  if (key === 'invincible') {
-    for (let y = 0; y < 26; y++) {
-      for (let x = 0; x < 26; x++) {
-        const cx = 22 + x * 6.3;
-        const cy = 22 + y * 6.3;
-        const edge = 90 - Math.abs(cx - 90) * 1.15;
-        if (cy > edge - 6 && cy < 158) {
-          const t = (cy - 20) / 140;
-          out.push(`<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${(1.4 + t * 2.1).toFixed(2)}" opacity="${(0.55 + t * 0.45).toFixed(2)}"/>`);
-        }
-      }
-    }
-  } else if (key === 'sovware') {
-    for (let y = 0; y < 5; y++) {
-      for (let x = 0; x < 5; x++) {
-        const inner = x === 2 && y === 2;
-        out.push(`<circle cx="${33 + x * 27}" cy="${33 + y * 27}" r="${inner ? 9 : 5 - Math.max(Math.abs(x - 2), Math.abs(y - 2)) * 0.7}" opacity="${inner ? 1 : 0.78}"/>`);
-      }
-    }
-  } else {
-    for (let y = 0; y < 26; y++) {
-      for (let x = 0; x < 26; x++) {
-        const t = (25 - x + y) / 50;
-        out.push(`<circle cx="${(23 + x * 6.3).toFixed(1)}" cy="${(23 + y * 6.3).toFixed(1)}" r="${(0.9 + t * 3).toFixed(2)}"/>`);
-      }
-    }
-  }
-  return out.join('');
-};
-
-const bg = KEY === 'autobot' ? '#E8401C' : '#141414';
-const fg = KEY === 'autobot' ? '#F4EEE6' : '#E8401C';
-const iconSvg = KEY === 'autobot'
-  ? '<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><rect width="180" height="180" fill="#fbfaf7"/><rect x="50" y="50" width="80" height="80" fill="#b23a2a"/></svg>'
-  : `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><rect width="180" height="180" rx="36" fill="${bg}"/><g fill="${fg}">${dots(KEY)}</g>${
-  KEY === 'invincible' ? '<circle cx="90" cy="26" r="9" fill="#F4EEE6"/>' : ''
-}</svg>`;
+// The touch icon is the brand's app icon from the kit (public/brand/<key>/icon.svg, brand/gen.py).
+const kitIcon = await readFile(resolve(ROOT, 'public', 'brand', KEY in { wckd: 1, sovware: 1, autobot: 1, invincible: 1, omnie: 1, nightfall: 1 } ? KEY : 'autobot', 'icon.svg'), 'utf8');
+const iconSvg = kitIcon.replace(/width="1024" height="1024"/, 'width="180" height="180"');
+const ogSvg = await readFile(resolve(ROOT, 'public', 'brand', KEY in { wckd: 1, sovware: 1, autobot: 1, invincible: 1, omnie: 1, nightfall: 1 } ? KEY : 'autobot', 'og.svg'));
 
 try {
   await access(resolve(DIST, 'index.html'), constants.R_OK);
@@ -80,6 +45,8 @@ console.log('→ apple-touch-icon.png (180×180)');
 
 // A tiny 32px PNG for clients that dislike SVG favicons.
 await sharp(Buffer.from(iconSvg)).resize(32, 32).png({ compressionLevel: 9 }).toFile(resolve(DIST, 'favicon-32.png'));
+await sharp(ogSvg).png({ compressionLevel: 9 }).toFile(resolve(DIST, 'og.png'));
+console.log('→ og.png (1200×630)');
 console.log('→ favicon-32.png');
 
 // The Autobot site is on the new lab stylesheet. Strip the old Astro/riso

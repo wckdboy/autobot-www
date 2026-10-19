@@ -1,0 +1,42 @@
+---
+import Lab from '../layouts/Lab.astro';
+import { releases, install } from '../data/site';
+import { NAV } from '../data/nav';
+import { v } from '../lib/format';
+
+const n = NAV.invincible;
+const latest = releases.invincible.latest;
+const tag = latest.tag;
+const keyLine = 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo';
+---
+<Lab path="/verify/" current="verify" title="Verify" nav={[...n.nav]} footerNote={n.footer} description="Check an Invincible release yourself: the signed SHA256SUMS, the file hashes and the build attestation.">
+  <p class="label">Invincible · verify</p>
+  <h1>Verify a release</h1>
+  <p class="lede">The installer does this for you. These are the same checks, by hand, for v{v(tag)}.</p>
+
+  <section>
+    <h2>1. The signature on SHA256SUMS</h2>
+    <p>Every release's SHA256SUMS is signed with one SSH key, pinned in install.sh and here:</p>
+    <pre><code>printf '%s\n' '{keyLine}' > allowed_signers
+curl -fsSLO https://github.com/wckdboy/invincible/releases/download/{tag}/SHA256SUMS
+curl -fsSLO https://github.com/wckdboy/invincible/releases/download/{tag}/SHA256SUMS.sig
+ssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig &lt; SHA256SUMS</code></pre>
+  </section>
+
+  <section>
+    <h2>2. The file against SHA256SUMS</h2>
+    <pre><code>curl -fsSLO https://github.com/wckdboy/invincible/releases/download/{tag}/invincible-macos-arm64.tar.gz
+shasum -a 256 -c SHA256SUMS --ignore-missing</code></pre>
+  </section>
+
+  <section>
+    <h2>3. Who built it</h2>
+    <p>Each archive carries a GitHub build attestation from the release workflow:</p>
+    <pre><code>gh attestation verify invincible-macos-arm64.tar.gz --repo wckdboy/invincible</code></pre>
+  </section>
+
+  <section>
+    <h2>The installer itself</h2>
+    <p>This site serves an exact copy of <a href={install.source} rel="noopener">install.sh</a>; its SHA-256 is <code>{install.sha256}</code>. Read it before you pipe it to a shell.</p>
+  </section>
+</Lab>

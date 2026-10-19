@@ -1,66 +1,68 @@
-# Sovware lab — brand notes
+# WCKD brand kit
 
-This is the short version. The full style guide is a live page:
-[autobot.sh/brand](https://autobot.sh/brand/) · source: `public/brand/index.html`.
+One lab, one system. WCKD is the lab; each brand is **one lowercase letter in pixels and one
+color**. Everything else is shared: neutrals, type, layout, voice, the terminal grammar.
 
-## What the lab is
+The source of truth is [`brand/kit.json`](brand/kit.json). `python brand/gen.py` (fonttools and
+brotli) draws every file into `public/brand/<brand>/`: the symbol on paper and on ink, the
+wordmark on paper and on ink, a 1024 px app icon and a favicon. Every site serves its own
+version of the kit at `/brand/`; wckd.ai's home is the master kit.
 
-Sovware is an independent software lab. It builds free, open-source software for private
-computing. The work is public, releases are signed, and claims are checkable.
+## The family
 
-Projects:
+| Brand | Domain | Role | Symbol | On ink | Mark on paper | Text on paper |
+| --- | --- | --- | --- | --- | --- | --- |
+| WCKD | wckd.ai | The lab | `w` | `#EFEAE2` | `#141413` | `#141413` |
+| Sovware | sovware.io | Sovereign hardware and software | `s` | `#EFEAE2` | `#141413` | `#141413` |
+| Autobot | autobot.sh | Private AI on your phone and your machine | `a` | `#A99BF5` lilac | `#5444BA` | `#5444BA` |
+| Invincible | invincible.sh | The node you own | `i` | `#F0882E` orange | `#C2651A` | `#9E4C0C` |
+| Omnie | omnie.sh | Every model, agent and tool in one thread | `o` | `#3BC6A0` phthalo | `#0E6B55` | `#0E6B55` |
+| Nightfall | nightfall.sh | AI-native parametric CAD | `n` | `#EE7AA8` rose | `#D0507F` | `#A8325F` |
 
-| Project | Role | Accent |
-| --- | --- | --- |
-| Autobot | Private AI on Android and iOS | `#B23A2A` oxide |
-| Invincible | A self-hosted AI node | `#22506E` deep blue |
-| Sovware | The lab and studio site | `#2F4A3A` forest |
+The lab and the studio are neutral; the four products spread around the wheel at one weight
+(lilac, rose, orange, phthalo), so any two sit well side by side. Autobot and Invincible, the
+pair that ships together, are complements.
 
-## Voice
+## Symbols
 
-Write like a maintainer. Short declarative sentences. Concrete nouns. Numbers where they exist.
-State the limit as plainly as the feature.
+Lowercase letters on a pixel grid, six cells tall, two-cell strokes, square corners. They are
+the app icons (the symbol on ink), the wordmarks' marks (the symbol before the lowercase name in
+JetBrains Mono), the favicons, and three rows of half blocks beside a terminal header.
 
-- Use: “Autobot runs chat, agents, images and voice on the device.”
-- Avoid: “Experience the future of private AI.”
-- Use: “The Snapdragon paths are built for the 8 Elite Gen 5 and have not yet been run on it.”
-- Avoid: “Blazing-fast NPU acceleration.”
-- No exclamation marks, superlatives, or claims without a link.
+- Scale in whole pixels only; never smooth, round, outline or recolor.
+- The symbol is the only ornament. No illustration, mascots, halftones, gradients or glows.
+
+## Neutrals and states
+
+Page `#FBFAF7` (web) · paper `#EFEAE2` (apps, light) · wash `#F3F1EB` · rule `#DCD8CF` · muted
+`#5D5A53` · ink `#141413` · ash `#8E8A84`.
+
+States are words first, then a glyph: `✓` ash, `!` yellow `#E2C044`, `✗` red `#FF6A47`
+(`#B3250D` on paper). No brand color ever means "something is wrong".
 
 ## Type
 
-- **Inter** for body, UI, tables and labels. 16 px / 1.65 body.
-- **EB Garamond** for page titles and section headings. 40–58 px page titles, 28–34 px sections.
-- **System monospace** for code, 13 px / 1.6.
-- Page titles and headings are sentence case. Uppercase is reserved for 11 px labels.
+Inter for reading and interfaces; JetBrains Mono for machine text, labels, numbers and the
+wordmarks. Headings in Inter 600, sentence case. Uppercase only for 11 px labels. Apps use the
+platform's sans in Inter's roles.
 
-## Colour and surface
+## Layout and surface
 
-Paper `#FBFAF7`, ink `#151513`, muted `#5D5A53`, rule `#DCD8CF`. One project accent is used for
-the 9 px wordmark square, selection, focus and link hover — nothing else. No gradients, shadows,
-cards, decorative numbers, dark mode or illustrations.
+One column, 1040 px, a 68-character measure. A hairline between sections; no cards, boxes or
+shadows. One primary action per page, in the brand's signal. Paper by default, ink when the
+system asks for dark (the signal switches to its on-ink color).
 
-## Layout
+## Voice
 
-One column, 1040 px page, 24 px gutters, 68-character measure, 34 px section rhythm, 1 px rules.
-Tables and code may run wider. At 760 px the masthead stacks and margins tighten; at 480 px fact
-grids become one column.
+Write like a maintainer, not a marketer. Short declarative sentences, concrete nouns, numbers
+where they exist. State the limit as plainly as the feature. No exclamation marks, superlatives
+or claims without a link.
 
-## Components
+## In a terminal
 
-- Text links are ink and underlined. One primary action per page.
-- Tables have a 1 px ink header rule and 1 px row rules. No zebra striping.
-- Code sits on a wash block with a 1 px border. No syntax theatre.
-- Notes use a 2 px accent rule. They are for caveats, not decoration.
-- The footer states the license, the absence of accounts and telemetry, and links to source.
+The symbol in half blocks beside the header, `▪` per step, `│ └` for what came back, `✓ ! ✗`.
+Truecolor or the nearest 256 colors; nothing for `NO_COLOR` or a pipe. The palette lives in
+Invincible's `crates/invincible/src/brand.rs`, shared by both CLIs.
 
-## Delivery
-
-Static HTML and one CSS file (`public/lab.css`). No client JavaScript. Fonts are self-hosted
-WOFF2 (Inter and EB Garamond, Latin subset). No third-party requests, analytics or cookies.
-Served from Cloudflare Workers Static Assets with immutable caching for fonts.
-
-## Migration rule
-
-Autobot is the first site on this system. Do not start Invincible or Sovware until Autobot is
-confirmed. The old sites remain online meanwhile; do not mix the two systems on one page.
+Version 2 replaces the Sovware lab guide (v1): the oxide, deep-blue and forest accents, EB
+Garamond and the plain square mark are retired.

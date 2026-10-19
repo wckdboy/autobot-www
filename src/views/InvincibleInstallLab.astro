@@ -1,0 +1,44 @@
+---
+import Lab from '../layouts/Lab.astro';
+import { install, releases } from '../data/site';
+import { NAV } from '../data/nav';
+import { fmtBytes, v } from '../lib/format';
+
+const n = NAV.invincible;
+const latest = releases.invincible.latest;
+---
+<Lab path="/install/" current="install" title="Install" nav={[...n.nav]} footerNote={n.footer} description="Install Invincible and the Autobot agent with one command, on Linux or macOS.">
+  <p class="label">Invincible · install</p>
+  <h1>Install</h1>
+  <p class="lede">One command on Linux or macOS. It installs the gateway and the agent, and asks a few questions the first time.</p>
+  <pre><code>curl -fsSL https://invincible.sh/install.sh | sh</code></pre>
+  <p class="meta">install.sh · {fmtBytes(install.bytes)} · SHA-256 <code>{install.sha256}</code> · <a href={install.source} rel="noopener">upstream copy ↗</a></p>
+
+  <section>
+    <h2>What it does</h2>
+    <ol class="list-plain">
+      <li><b>Downloads</b> the release for your platform (v{v(latest.tag)}), or builds from source when there is none.</li>
+      <li><b>Checks</b> SHA256SUMS against the pinned release key with ssh-keygen, and the build attestation with gh when it is installed.</li>
+      <li><b>Installs</b> <code>invincible</code> and <code>autobot</code> in <code>~/.local/bin</code>, and llama.cpp when you want local models.</li>
+      <li><b>Sets up</b> the node: a local model, cloud providers if you want them, Telegram, and background services (launchd or systemd).</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Upgrade</h2>
+    <p>Run the same command again. It keeps your setup, says which version you went from and to, and restarts the services that were running.</p>
+  </section>
+
+  <section>
+    <h2>Add a frontier model</h2>
+    <pre><code>autobot code --model anthropic    # asks for the key, adds it, restarts the gateway
+invincible cloud add deepseek     # or add it directly
+invincible cloud list</code></pre>
+  </section>
+
+  <section>
+    <h2>Check it</h2>
+    <pre><code>autobot doctor</code></pre>
+    <p>Checks the gateway, the model, the cloud keys, the sandbox and the channels, and says what to fix.</p>
+  </section>
+</Lab>

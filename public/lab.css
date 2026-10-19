@@ -1,8 +1,17 @@
 /* ============================================================================
-   Sovware lab — one stylesheet, no framework, no JavaScript.
-   Inter for reading, EB Garamond for headings, system mono for code.
+   WCKD — one stylesheet, no framework, no JavaScript (brand/kit.json, BRAND.md).
+   Inter for reading and interfaces, JetBrains Mono for machine text and labels. One accent
+   per site: its pixel symbol, focus, selection and the primary action. Paper by default,
+   ink when the system asks for dark.
    ========================================================================== */
 
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/lab/jetbrains-mono-latin.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/lab/inter-latin.woff2') format('woff2');
@@ -13,30 +22,11 @@
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
     U+2212, U+2215, U+FEFF, U+FFFD;
 }
-@font-face {
-  font-family: 'EB Garamond';
-  src: url('/fonts/lab/eb-garamond-latin.woff2') format('woff2');
-  font-weight: 400 600;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'EB Garamond';
-  src: url('/fonts/lab/eb-garamond-italic-latin.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 :root {
+  color-scheme: light dark;
   --paper: #fbfaf7;
-  --ink: #151513;
+  --ink: #141413;
   --muted: #5d5a53;
   --rule: #dcd8cf;
   --rule-strong: #a9a49a;
@@ -44,12 +34,23 @@
   --accent: #b23a2a;
 
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  --serif: var(--sans);
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --page: 1040px;
   --measure: 68ch;
   --gutter: 24px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141413;
+    --ink: #efeae2;
+    --muted: #a39d93;
+    --rule: #2f2d2a;
+    --rule-strong: #4b4945;
+    --wash: #1c1b19;
+    --accent: var(--accent-ink, var(--accent-paper));
+  }
 }
 
 *,
@@ -143,11 +144,20 @@ hr {
   color: var(--ink);
 }
 .brand__mark {
-  width: 9px;
-  height: 9px;
-  background: var(--accent);
+  display: inline-flex;
   flex: none;
-  transform: translateY(-1px);
+  height: 14px;
+  color: var(--accent);
+}
+.brand__mark svg {
+  height: 14px;
+  width: auto;
+  display: block;
+}
+.brand {
+  font-family: var(--mono);
+  font-weight: 600;
+  letter-spacing: 0;
 }
 .brand__sub {
   color: var(--muted);
@@ -185,20 +195,20 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-weight: 400;
+  font-weight: 600;
 }
 h1 {
-  font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 3.6rem);
-  line-height: 1.02;
-  letter-spacing: -0.015em;
+  font-family: var(--sans);
+  font-size: clamp(2.1rem, 4.4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
   max-width: 20ch;
 }
 h2 {
-  font-family: var(--serif);
-  font-size: clamp(1.7rem, 2.6vw, 2.1rem);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-family: var(--sans);
+  font-size: clamp(1.35rem, 2.2vw, 1.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
   margin-bottom: 16px;
 }
 h3 {
@@ -335,12 +345,13 @@ section > :last-child {
   color: var(--paper);
 }
 .button--primary {
-  background: var(--ink);
+  background: var(--accent);
+  border-color: var(--accent);
   color: var(--paper);
 }
 .button--primary:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--ink);
+  border-color: var(--ink);
   color: var(--paper);
 }
 .text-link {

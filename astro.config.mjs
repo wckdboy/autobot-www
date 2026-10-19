@@ -6,6 +6,9 @@ const ORIGIN = {
   autobot: 'https://autobot.sh',
   invincible: 'https://invincible.sh',
   sovware: 'https://sovware.io',
+  wckd: 'https://wckd.ai',
+  omnie: 'https://omnie.sh',
+  nightfall: 'https://nightfall.sh',
 };
 
 if (!ORIGIN[KEY]) {

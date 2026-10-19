@@ -1,0 +1,9 @@
+---
+import Lab from '../layouts/Lab.astro';
+interface Props { what: string }
+const { what } = Astro.props;
+---
+<Lab path={`/${what.toLowerCase()}/`} title={what} noindex description={`${what} lives on the product sites.`}>
+  <h1>{what}</h1>
+  <p class="lede">{what} pages live with the products: <a href={`https://autobot.sh/${what.toLowerCase()}/`}>autobot.sh</a> and <a href={`https://invincible.sh/${what.toLowerCase()}/`}>invincible.sh</a>.</p>
+</Lab>
