@@ -10,7 +10,7 @@ const hash = releases.autobot.checksums?.split('\n').find((l) => l.includes('rel
 const recent = releases.autobot.releases.filter((r) => !r.prerelease).slice(0, 5);
 
 const modes = [
-  ['Chat', 'llama.cpp on CPU, Adreno GPU or Hexagon NPU; Metal on iOS.', 'Streaming, reasoning, tool calls, MCP, privacy receipts.'],
+  ['Chat', 'llama.cpp on CPU; Adreno GPU and Hexagon NPU paths on Snapdragon; Metal on iOS.', 'Streaming, reasoning, tool calls, MCP, privacy receipts.'],
   ['Agents', 'A workspace with read, write, edit, glob, grep and web fetch.', 'Approvals fail closed. Skills, subagents, scheduled recipes.'],
   ['Images', 'stable-diffusion.cpp on Android; Core ML on the iOS Neural Engine.', 'SD 1.5, SDXL, FLUX.2 klein, LoRA stacks, inpainting.'],
   ['Voice', 'whisper.cpp, on the device.', 'Streaming dictation and spoken answers with barge-in.'],
