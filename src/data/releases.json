@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T18:02:29.139Z",
+  "generatedAt": "2026-10-19T21:46:53.922Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
@@ -30,13 +30,13 @@
         {
           "name": "autobot-1.10.0-release.apk",
           "size": 82237698,
-          "downloads": 1,
+          "downloads": 4,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 2,
+          "downloads": 5,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/SHA256SUMS.txt"
         }
       ]
@@ -65,13 +65,13 @@
           {
             "name": "autobot-1.10.0-release.apk",
             "size": 82237698,
-            "downloads": 1,
+            "downloads": 4,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-release.apk"
           },
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 2,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/SHA256SUMS.txt"
           }
         ]
@@ -508,7 +508,7 @@
       }
     ],
     "checksums": "b9e3232671b95e56a78f243b6cffd571a315808d9879471f03553064f932d512 *autobot-1.10.0-debug.apk\na5446a867ab1ddedc074b424fb237e621ac87671004a07b398924c9811e04766 *autobot-1.10.0-release.apk\n9cf124cea487b46d789c55e9bc7dc36dc6c24bd3f9d5e868196c236669525277 *autobot-1.10.0-mapping.txt",
-    "totalDownloads": 70
+    "totalDownloads": 76
   },
   "invincible": {
     "name": "invincible",
@@ -516,48 +516,128 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-19T17:38:30Z",
+    "pushed": "2026-10-19T19:16:01Z",
     "latest": {
-      "tag": "v0.0.6",
-      "name": "v0.0.6",
-      "published": "2026-10-19T17:46:22Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.6",
+      "tag": "v0.0.8",
+      "name": "v0.0.8",
+      "published": "2026-10-19T19:24:17Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.8",
       "prerelease": false,
-      "body": "**`autobot code`: a coding agent in your terminal**, built to work on real projects alongside Claude Code or opencode. Every model call goes through your own gateway, so it is receipted and recorded in the audit log.\n\n```sh\ncd ~/src/my-project\nautobot code --model deepseek --approvals edits\n```\n\n- **The terminal**\n  - Answers stream in as Markdown.\n  - Each tool call is one line with a short result: `⏺ Run cargo test ⎿ … [exit code 0]`, `⏺ Search fn main ⎿ 3 matches in 2 files`.\n  - Every change is shown as a colored diff before it's made.\n  - The agent's task list is drawn as checkboxes.\n  - A spinner shows what the model is thinking.\n  - Approvals take one key: `y`, `a` (always, for this session) or `n`.\n  - **Ctrl+C** stops a turn, and the conversation stays usable.\n  - The prompt has history and completion (slash commands and `@` paths); **Alt+Enter** starts a new line.\n- **The project**\n  - `AGENTS.md`, `CLAUDE.md` or `.autobot/AGENTS.md` are added to the agent's instructions.\n  - In a git repository it works like a careful engineer: it never commits unless asked.\n  - There is one conversation per project.\n- **New tools**\n  - `search`: regular expressions over the files, respecting `.gitignore`.\n  - `find_files`: find files by glob.\n  - `read_file` can read long files in parts.\n  - `todo`: the agent's task list.\n  - Tool results grow with the model's context, up to 96 KiB.\n- **Control**\n  - New approval mode, `edits`: changes inside the project run without asking; commands still ask.\n  - `/undo` puts back every file the last turn changed, takes the turn back, and returns its request for you to edit.\n  - `@file` attaches a file.\n  - `!command` runs a command yourself and passes its output to your next message.\n  - `/model` lists or switches models. Picking a cloud model allows cloud use, and the context sent per call grows to match.\n  - Also: `/approvals`, `/private`, `/tools`, `/context`, `/diff`, `/fork`, `/resume`, `/status`, `/memory`, `/skills`, `/team`, `/board`.\n- **Streaming:** answers stream from the gateway, including streamed tool calls (`[agent] stream`, on by default).\n- **Driven by other tools:** `autobot run -C DIR --model M --approvals edits --cloud --json \"task\"`.\n  - `--cloud` approves cloud use for that run, and nothing else.\n  - `--json` prints every event as a JSON line: text, tool calls, outputs, diffs and receipts.\n- **Trajectories",
+      "body": "**One command to code with a frontier model.**\n\n```sh\nautobot code --model anthropic   # the first time: sets up Anthropic on your gateway, asks for the key\nautobot                          # after that, in any git repository\n```\n\n- `autobot code --model <provider>`: if the gateway doesn't have that provider yet, Autobot sets it up on the spot. It asks for the key without showing it, adds the model with `invincible cloud add`, and restarts the gateway service.\n- `invincible cloud add` and `remove` restart the gateway service themselves, but only the one that uses that configuration.\n- `autobot code` remembers the model and approval mode in `~/.autobot/code.json`.\n- `autobot` with no command, inside a git repository, runs `autobot code`.",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 7324113,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/invincible-linux-arm64.tar.gz"
+          "size": 7403804,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 8039819,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/invincible-linux-x64.tar.gz"
+          "size": 8133556,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 6960314,
-          "downloads": 2,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/invincible-macos-arm64.tar.gz"
+          "size": 7042462,
+          "downloads": 1,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 286,
-          "downloads": 2,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/SHA256SUMS"
+          "downloads": 1,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
-          "downloads": 2,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/SHA256SUMS.sig"
+          "downloads": 1,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/SHA256SUMS.sig"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.8",
+        "name": "v0.0.8",
+        "published": "2026-10-19T19:24:17Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.8",
+        "prerelease": false,
+        "body": "**One command to code with a frontier model.**\n\n```sh\nautobot code --model anthropic   # the first time: sets up Anthropic on your gateway, asks for the key\nautobot                          # after that, in any git repository\n```\n\n- `autobot code --model <provider>`: if the gateway doesn't have that provider yet, Autobot sets it up on the spot. It asks for the key without showing it, adds the model with `invincible cloud add`, and restarts the gateway service.\n- `invincible cloud add` and `remove` restart the gateway service themselves, but only the one that uses that configuration.\n- `autobot code` remembers the model and approval mode in `~/.autobot/code.json`.\n- `autobot` with no command, inside a git repository, runs `autobot code`.",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 7403804,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 8133556,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 7042462,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/SHA256SUMS.sig"
+          }
+        ]
+      },
+      {
+        "tag": "v0.0.7",
+        "name": "v0.0.7",
+        "published": "2026-10-19T18:58:36Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.7",
+        "prerelease": false,
+        "body": "**Easier upgrades, frontier models in one command, and steering the agent while it works.**\n\n- **Steer while it works.** While a turn runs, what you type shows under the spinner. **Enter** hands it to the agent before its next step; text that arrives just as the turn ends becomes the next request. **Esc** stops a turn.\n- **`invincible cloud add deepseek|anthropic|openai|openrouter|custom`**\n  - Presets know each provider's API, a starting model, its context and its data policy.\n  - The key is read without being shown and kept in `~/.invincible/keys`, readable only by you.\n  - `egress = \"never\"` becomes `\"ask\"` when you add the first cloud model.\n  - Also `invincible cloud list` and `invincible cloud remove`.\n- **Setup offers a cloud model.** On a setup with only cloud models, that model becomes the agent's model, and agent work may use it. Re-running setup no longer offers a 15 GB download as the default.\n- **Re-running the installer upgrades.**\n  - It replaces the binaries and restarts the running services on them.\n  - It keeps your setup; `INVINCIBLE_SETUP=1` runs setup again.\n  - It reports `upgraded 0.0.6 -> 0.0.7`.\n- **Bigger coding jobs:**\n  - Coding turns get at least 100 steps.\n  - A built-in read-only `explorer` takes research questions in a fresh context and answers with file:line references.\n  - Reads in one reply run at the same time.\n  - Token counts, including cached tokens, are shown per turn.\n- **Doctor:**\n  - It waits for a model that is still loading.\n  - It counts cloud models and checks their keys.\n  - It explains a cloud-only gateway's routing.\n  - It never sends a test to a cloud model.\n- **17 bug fixes from two reviews** (one by a Claude reviewer, one by Autobot itself on DeepSeek):\n  - **Approvals:** text typed while the agent worked could answer a question, and a sentence containing an `a` meant \"always\". Typed-ahead text is now discarded, and any key other than y, a or n is no.\n  - **`/undo`:** files that were not UTF-8 were deleted instead of restored.\n  - **`@` attachments:** `@/path` could attach files outside the project without asking.\n  - **Config edits:** a config that could not be read could be overwritten.\n  - **Streaming:** tool calls without an index were merged.\n  - **Display:** wide characters and tabs broke it, and the spinner wrapped.\n  - **Diff counts:** removed `-- comment` and `---` lines were not counted.\n  - **Ct",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 7397814,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 8122891,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 7030773,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 3,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/SHA256SUMS.sig"
+          }
+        ]
+      },
       {
         "tag": "v0.0.6",
         "name": "v0.0.6",
@@ -587,13 +667,13 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 2,
+            "downloads": 8,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 2,
+            "downloads": 6,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/SHA256SUMS.sig"
           }
         ]
@@ -627,13 +707,13 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 2,
+            "downloads": 6,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.5/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 2,
+            "downloads": 6,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.5/SHA256SUMS.sig"
           }
         ]
@@ -667,13 +747,13 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 1,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.4/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 1,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.4/SHA256SUMS.sig"
           }
         ]
@@ -707,13 +787,13 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 1,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 1,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/SHA256SUMS.sig"
           }
         ]
@@ -747,13 +827,13 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 1,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 1,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/SHA256SUMS.sig"
           }
         ]
@@ -787,13 +867,13 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 2,
+            "downloads": 6,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.1/SHA256SUMS"
           }
         ]
       }
     ],
-    "checksums": "1f5444f9e5693008bf4bdf1a478adce22a499929f24d2f1c267f3583a71ea996  invincible-linux-arm64.tar.gz\nf8b2c4b0d41740b9c937782c9c4c17162ab1161a28f7277b0f280ece6aeb6ac1  invincible-linux-x64.tar.gz\n162a3114d2a6bb663d685b4fdb58f2362e4c3a8cc41a5ab5682024e5e4a90e4c  invincible-macos-arm64.tar.gz",
-    "totalDownloads": 29
+    "checksums": "15bcebe3cf7bb4fce25610707672c6f63e676292f03302389b8a7134c6d760f3  invincible-linux-arm64.tar.gz\n8b29f289703115e93c40dc6fed92ef48c263468f999772612c28f0e2020fa26b  invincible-linux-x64.tar.gz\n942e9247d872f99e9769e4d7842c65c18590b8800fb2900a89753e5c20fe607b  invincible-macos-arm64.tar.gz",
+    "totalDownloads": 83
   }
 }
