@@ -1,7 +1,12 @@
 {
+  // wckd.ai: the lab and the master brand kit (it used to redirect to sovware.io).
+  // The worker keeps its name so its custom domains stay attached.
   "name": "wckd-redirect",
-  "main": "./wckd-redirect.js",
   "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "../dist/wckd",
+    "not_found_handling": "404-page"
+  },
   "routes": [
     { "pattern": "wckd.ai", "custom_domain": true },
     { "pattern": "www.wckd.ai", "custom_domain": true }

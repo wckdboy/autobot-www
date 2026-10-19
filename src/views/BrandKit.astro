@@ -12,7 +12,7 @@ const n = (NAV as Record<string, { nav: readonly { label: string; href: string }
 const N = kit.neutrals;
 const asset = (k: string, f: string) => `/brand/${k}/${f}`;
 const swatches = [
-  ['Page', N.page, 'web ground'], ['Paper', N.paper, 'app ground, light'], ['Wash', N.wash, 'code, inert blocks'], ['Rule', N.rule, 'hairlines'],
+  ['Page', N.page, 'web ground'], ['Paper', N.paper, 'app ground, light'], ['Wash', N.wash, 'inert blocks'], ['Rule', N.rule, 'hairlines'], ['Frame', N.ruleStrong, '2 px rules under the header, over the footer'],
   ['Muted', N.muted, 'secondary text'], ['Ink', N.ink, 'text; app ground, dark'], ['Ash', N.ash, 'secondary on ink'],
 ];
 const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.warn, '! needs a look'], ['error', kit.states.error, '✗ failed (on paper ' + kit.states.errorOnPaper + ')']];
@@ -41,7 +41,7 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
         <thead><tr><th>Use</th><th>Color</th><th>Where</th></tr></thead>
         <tbody>
           <tr><td><strong>Signal on ink</strong></td><td><code>{own.onInk}</code></td><td>the symbol, the prompt, the primary action on dark grounds</td></tr>
-          <tr><td><strong>Mark on paper</strong></td><td><code>{own.onPaper}</code></td><td>the symbol and fills on light grounds (3:1 or more)</td></tr>
+          <tr><td><strong>Symbol on paper</strong></td><td><code>{own.onPaper}</code></td><td>the symbol and the headline's square on light grounds (a logo: not for text)</td></tr>
           <tr><td><strong>Text on paper</strong></td><td><code>{own.text}</code></td><td>links on hover, focus, selection, buttons with paper text (4.5:1 or more)</td></tr>
         </tbody>
       </table>
@@ -84,19 +84,20 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
 
   <section>
     <h2>Type</h2>
-    <div class="specimen"><p class="label">Inter · reading and interfaces · 16/1.65</p><p>Autobot runs chat, agents, images and voice on the device. The network is an opt-in tool, never a requirement.</p></div>
-    <div class="specimen"><p class="label">Inter 600 · headings · sentence case</p><p style="font-size:1.6rem;font-weight:600;letter-spacing:-0.015em;margin:0">The node you own</p></div>
-    <div class="specimen"><p class="label">JetBrains Mono · machine text, labels, numbers, wordmarks · 13/1.6</p><pre><code>curl -fsSL https://invincible.sh/install.sh | sh</code></pre></div>
-    <p class="small">No display face, no all-caps headings; uppercase only for 11 px labels. Apps use the system sans for the same roles.</p>
+    <div class="specimen"><p class="label">JetBrains Mono 700 · headlines · lowercase, ending in the brand's square</p><p style="font-size:30px;font-weight:700;margin:0;line-height:1.2">the node you own<span style={`display:inline-block;width:.3em;height:.3em;margin-left:.12em;background:${own.onPaper}`}></span></p></div>
+    <div class="specimen"><p class="label">JetBrains Mono 400 · reading · 16/1.6</p><p>Autobot runs chat, agents, images and voice on the device. The network is an opt-in tool, never a requirement.</p></div>
+    <div class="specimen"><p class="label">JetBrains Mono · code</p><pre><code>curl -fsSL https://invincible.sh/install.sh | sh</code></pre></div>
+    <p class="small">One family on the web, in two weights. No all-caps. Apps use the platform's sans for reading and mono for machine text.</p>
   </section>
 
   <section>
     <h2>Layout and surface</h2>
     <div class="table-wrap"><table><tbody>
-      <tr><td><strong>Page</strong></td><td>one column, 1040 px, 24 px gutters, a 68-character measure for prose</td></tr>
+      <tr><td><strong>Page</strong></td><td>one column, 1120 px, 40 px gutters, a 72-character measure for prose; white</td></tr>
+      <tr><td><strong>Frame</strong></td><td>a 2 px rule under the header and over the footer; nav links split by thin vertical rules</td></tr>
       <tr><td><strong>Sections</strong></td><td>a single hairline between them; no cards, boxes or shadows</td></tr>
       <tr><td><strong>Corners</strong></td><td>none on the web; 4–8 px in apps</td></tr>
-      <tr><td><strong>Actions</strong></td><td>one primary per page, in the signal; everything else a text link or an outline</td></tr>
+      <tr><td><strong>Actions</strong></td><td>one primary per page, solid ink; everything else a text link or an outline</td></tr>
       <tr><td><strong>Ornament</strong></td><td>the pixel symbols, and nothing else: no illustration, halftones, gradients or glows</td></tr>
       <tr><td><strong>Themes</strong></td><td>paper by default, ink when the system asks for dark; the signal changes to its on-ink color</td></tr>
     </tbody></table></div>
@@ -127,8 +128,8 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
 <style>
   .kit-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 8px 0 12px; }
   .kit-row--marks { grid-template-columns: repeat(2, 1fr); }
-  .kit-tile { margin: 0; border: 1px solid var(--rule); padding: 22px 16px 12px; display: grid; justify-items: center; gap: 10px; background: #fbfaf7; }
-  .kit-tile--ink { background: #141413; border-color: #141413; }
+  .kit-tile { margin: 0; border: 1px solid var(--rule); padding: 22px 16px 12px; display: grid; justify-items: center; gap: 10px; background: #ffffff; }
+  .kit-tile--ink { background: #111111; border-color: #111111; }
   .kit-tile figcaption { font: 11px var(--mono); color: #8e8a84; }
   .kit-tile img { max-width: 100%; height: auto; image-rendering: pixelated; }
   .kit-symbol :global(svg), .kit-inline :global(svg) { display: block; }

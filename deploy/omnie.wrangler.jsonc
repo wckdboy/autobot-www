@@ -1,0 +1,11 @@
+{
+  "name": "omnie-site",
+  "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "../dist/omnie",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "omnie.sh", "custom_domain": true }
+  ]
+}

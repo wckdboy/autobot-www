@@ -1,31 +1,127 @@
 {
-  "version": 2,
+  "version": 3,
   "name": "WCKD",
   "about": "One lab, one system. WCKD is the lab; each product is a lowercase letter in pixels and one signal color. Everything else is shared.",
   "neutrals": {
-    "page": "#FBFAF7",
+    "page": "#FFFFFF",
     "paper": "#EFEAE2",
-    "wash": "#F3F1EB",
-    "rule": "#DCD8CF",
-    "muted": "#5D5A53",
-    "ink": "#141413",
+    "wash": "#F6F5F2",
+    "rule": "#E4E1DB",
+    "muted": "#6E6A64",
+    "ink": "#111111",
     "inkPanel": "#1C1B19",
     "inkRule": "#2F2D2A",
     "ash": "#8E8A84",
-    "bone": "#EFEAE2"
+    "bone": "#EFEAE2",
+    "ruleStrong": "#D3D0C9"
   },
-  "states": { "ok": "#8E8A84", "warn": "#E2C044", "error": "#FF6A47", "errorOnPaper": "#B3250D" },
+  "states": {
+    "ok": "#8E8A84",
+    "warn": "#E2C044",
+    "error": "#FF6A47",
+    "errorOnPaper": "#B3250D"
+  },
   "type": {
-    "sans": "Inter",
-    "mono": "JetBrains Mono",
-    "rules": "Inter for reading and interfaces; JetBrains Mono for machine text, labels, numbers and the wordmarks. Sentence case. Uppercase only for 11 px labels."
+    "web": "JetBrains Mono for everything on the web: reading, headings, labels, code",
+    "apps": "the platform's sans for reading in apps; JetBrains Mono for machine text and labels",
+    "rules": "Lowercase headlines that end in the brand's pixel square. Sentence case elsewhere. No uppercase labels."
   },
   "brands": {
-    "wckd":       { "name": "WCKD",       "domain": "wckd.ai",       "role": "The lab",                                   "glyph": ["##....##", "##....##", "##.##.##", "##.##.##", "########", ".##..##."], "onInk": "#EFEAE2", "onPaper": "#141413", "text": "#141413" },
-    "sovware":    { "name": "Sovware",    "domain": "sovware.io",    "role": "Sovereign hardware and software",       "glyph": [".#####", "##....", ".####.", "....##", "....##", "#####."],                   "onInk": "#EFEAE2", "onPaper": "#141413", "text": "#141413" },
-    "autobot":    { "name": "Autobot",    "domain": "autobot.sh",    "role": "Private AI on your phone and your machine", "glyph": [".####.", "....##", ".#####", "##..##", "##..##", ".#####"],                   "onInk": "#A99BF5", "onPaper": "#5444BA", "text": "#5444BA" },
-    "invincible": { "name": "Invincible", "domain": "invincible.sh", "role": "The node you own",                          "glyph": ["##", "..", "##", "##", "##", "##"],                                           "onInk": "#F0882E", "onPaper": "#C2651A", "text": "#9E4C0C" },
-    "omnie":      { "name": "Omnie",      "domain": "omnie.sh",      "role": "Every model, agent and tool in one thread", "glyph": [".#####.", "##...##", "##...##", "##...##", "##...##", ".#####."],                   "onInk": "#3BC6A0", "onPaper": "#0E6B55", "text": "#0E6B55" },
-    "nightfall":  { "name": "Nightfall",  "domain": "nightfall.sh",  "role": "AI-native parametric CAD",                  "glyph": ["#####.", "##..##", "##..##", "##..##", "##..##", "##..##"],                   "onInk": "#EE7AA8", "onPaper": "#D0507F", "text": "#A8325F" }
+    "wckd": {
+      "name": "WCKD",
+      "domain": "wckd.ai",
+      "role": "The lab",
+      "glyph": [
+        "##....##",
+        "##....##",
+        "##.##.##",
+        "##.##.##",
+        "########",
+        ".##..##."
+      ],
+      "onInk": "#EFEAE2",
+      "onPaper": "#141413",
+      "text": "#141413"
+    },
+    "sovware": {
+      "name": "Sovware",
+      "domain": "sovware.io",
+      "role": "Sovereign hardware and software",
+      "glyph": [
+        ".#####",
+        "##....",
+        ".####.",
+        "....##",
+        "....##",
+        "#####."
+      ],
+      "onInk": "#EFEAE2",
+      "onPaper": "#141413",
+      "text": "#141413"
+    },
+    "autobot": {
+      "name": "Autobot",
+      "domain": "autobot.sh",
+      "role": "Private AI on your phone and your machine",
+      "glyph": [
+        ".####.",
+        "....##",
+        ".#####",
+        "##..##",
+        "##..##",
+        ".#####"
+      ],
+      "onInk": "#A99BF5",
+      "onPaper": "#5444BA",
+      "text": "#5444BA"
+    },
+    "invincible": {
+      "name": "Invincible",
+      "domain": "invincible.sh",
+      "role": "The node you own",
+      "glyph": [
+        "##",
+        "..",
+        "##",
+        "##",
+        "##",
+        "##"
+      ],
+      "onInk": "#FF9A3D",
+      "onPaper": "#FF9A3D",
+      "text": "#A85300"
+    },
+    "omnie": {
+      "name": "Omnie",
+      "domain": "omnie.sh",
+      "role": "Every model, agent and tool in one thread",
+      "glyph": [
+        ".#####.",
+        "##...##",
+        "##...##",
+        "##...##",
+        "##...##",
+        ".#####."
+      ],
+      "onInk": "#3BC6A0",
+      "onPaper": "#0E6B55",
+      "text": "#0E6B55"
+    },
+    "nightfall": {
+      "name": "Nightfall",
+      "domain": "nightfall.sh",
+      "role": "AI-native parametric CAD",
+      "glyph": [
+        "#####.",
+        "##..##",
+        "##..##",
+        "##..##",
+        "##..##",
+        "##..##"
+      ],
+      "onInk": "#EE7AA8",
+      "onPaper": "#D0507F",
+      "text": "#A8325F"
+    }
   }
 }

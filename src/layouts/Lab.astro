@@ -54,8 +54,8 @@ const ogImage = new URL(og, Astro.site).href;
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={brand} />
     <meta property="og:title" content={pageTitle} />
@@ -65,10 +65,9 @@ const ogImage = new URL(og, Astro.site).href;
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preload" href="/fonts/lab/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/lab/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/lab.css" />
-    <style is:inline set:html={`:root{--accent:${accentPaper};--accent-paper:${accentPaper};--accent-ink:${accentInk}}@media (prefers-color-scheme: dark){:root{--accent:${accentInk}}}`} />
+    <style is:inline set:html={`:root{--accent:${accentPaper};--accent-paper:${accentPaper};--accent-ink:${accentInk};--mark:${b.onPaper};--mark-paper:${b.onPaper};--mark-ink:${b.onInk}}@media (prefers-color-scheme: dark){:root{--accent:${accentInk};--mark:${b.onInk}}}`} />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>

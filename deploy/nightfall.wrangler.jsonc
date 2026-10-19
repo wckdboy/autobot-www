@@ -1,0 +1,11 @@
+{
+  "name": "nightfall-site",
+  "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "../dist/nightfall",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "nightfall.sh", "custom_domain": true }
+  ]
+}

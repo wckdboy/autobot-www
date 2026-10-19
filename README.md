@@ -4,11 +4,11 @@ The public sites for the WCKD lab and its brands, from one Astro codebase on one
 
 | Domain | Brand | State |
 | --- | --- | --- |
-| [autobot.sh](https://autobot.sh) | Autobot | WCKD kit v2 |
-| [invincible.sh](https://invincible.sh) | Invincible | WCKD kit v2 |
-| [sovware.io](https://sovware.io) | Sovware | previous design; its `/brand/` is on the kit |
-| wckd.ai | WCKD | builds the master kit (`pnpm build:wckd`); live domain still redirects to sovware.io |
-| omnie.sh, nightfall.sh | Omnie, Nightfall | build their brand kit as the home page; not deployed yet |
+| [autobot.sh](https://autobot.sh) | Autobot | WCKD kit v3 |
+| [invincible.sh](https://invincible.sh) | Invincible | WCKD kit v3 |
+| [sovware.io](https://sovware.io) | Sovware | WCKD kit v3 |
+| [wckd.ai](https://wckd.ai) | WCKD | the master brand kit |
+| omnie.sh, nightfall.sh | Omnie, Nightfall | build their brand kit as the home page; not deployed (the domains have other DNS records) |
 
 Brand kit: [BRAND.md](BRAND.md), source [`brand/kit.json`](brand/kit.json), assets drawn by
 `pnpm brand`, and every site's own version at `/brand/`.
@@ -19,10 +19,9 @@ Plain is the point. Static HTML, one stylesheet (`public/lab.css`), no client Ja
 third-party requests.
 
 - **Brands:** one lowercase pixel letter and one color each: Autobot lilac `a`, Invincible
-  orange `i`, Omnie phthalo `o`, Nightfall rose `n`; WCKD `w` and Sovware `s` are neutral.
-- **Type:** Inter for reading and interfaces; JetBrains Mono for machine text, labels and the
-  wordmarks.
-- **Surface:** page `#FBFAF7`, ink `#141413`, muted `#5D5A53`, rules `#DCD8CF`; dark when the
+  orange `i` (`#FF9A3D`), Omnie phthalo `o`, Nightfall rose `n`; WCKD `w` and Sovware `s` are neutral.
+- **Type:** JetBrains Mono for everything; lowercase headlines ending in the brand's square.
+- **Surface:** white page, ink `#111111`, 2 px rules framing header and footer; dark when the
   system asks for it.
 - **The accent** marks the symbol, the primary action, selection, focus and link hover.
 - **Layout:** one column, 1040 px page, 68-character measure, 1 px rules, no cards, shadows,
