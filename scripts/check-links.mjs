@@ -1,0 +1,73 @@
+#!/usr/bin/env node
+/**
+ * Static link check for the built sites: every internal href/src must resolve to
+ * a file in the same build. External URLs are listed but not fetched.
+ *   node scripts/check-links.mjs
+ */
+import { readdir, readFile, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { join, resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const SITES = ['autobot', 'invincible', 'sovware'];
+const ATTR = /(?:href|src)="([^"]+)"/g;
+const SKIP = /^(https?:|mailto:|tel:|#|data:)/;
+
+let failures = 0;
+
+async function walk(dir) {
+  const out = [];
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const p = join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...(await walk(p)));
+    else if (entry.name.endsWith('.html')) out.push(p);
+  }
+  return out;
+}
+
+for (const site of SITES) {
+  const dist = join(ROOT, 'dist', site);
+  if (!existsSync(dist)) {
+    console.log(`- ${site}: not built`);
+    continue;
+  }
+  const files = await walk(dist);
+  const missing = new Set();
+  let internal = 0;
+  for (const file of files) {
+    const html = await readFile(file, 'utf8');
+    for (const match of html.matchAll(ATTR)) {
+      const href = match[1];
+      if (SKIP.test(href)) continue;
+      const clean = href.split('#')[0].split('?')[0];
+      if (!clean) continue;
+      internal += 1;
+      const target = clean.startsWith('/') ? join(dist, clean) : resolve(dirname(file), clean);
+      const candidates = [target, join(target, 'index.html'), target + '.html'];
+      if (!candidates.some((c) => existsSync(c) && !c.endsWith('/'))) {
+        missing.add(`${site}${file.slice(dist.length)} → ${href}`);
+      }
+    }
+  }
+  console.log(`${missing.size ? '✗' : '✓'} ${site}: ${files.length} pages, ${internal} internal links`);
+  for (const m of [...missing].slice(0, 40)) {
+    failures += 1;
+    console.log(`  ${m}`);
+  }
+}
+
+// Every built site must have its touch icon, 404 and headers.
+for (const site of SITES) {
+  const dist = join(ROOT, 'dist', site);
+  if (!existsSync(dist)) continue;
+  for (const file of ['404.html', 'apple-touch-icon.png', '_headers', 'robots.txt', 'sitemap.xml', 'install.sh']) {
+    if (!existsSync(join(dist, file))) {
+      failures += 1;
+      console.log(`✗ ${site}: missing ${file}`);
+    }
+  }
+}
+
+console.log(failures ? `\n${failures} problem(s)` : '\nall links resolve');
+process.exit(failures ? 1 : 0);

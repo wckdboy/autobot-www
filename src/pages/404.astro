@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { meta } from '../data/site';
+
+const key = process.env.SITE_KEY || 'autobot';
+const label = key === 'invincible' ? 'node' : key === 'sovware' ? 'page' : 'device';
+---
+<Base path="/404" title="Not found" noindex>
+  <section class="section" style="min-height:70vh;display:flex;align-items:center">
+    <div class="shell">
+      <div class="eyebrow no-rule">Error 404 · no route</div>
+      <h1 class="title-xl" style="margin-top:1.4rem;font-size:clamp(5rem,20vw,16rem);line-height:.78">
+        4<span class="red">0</span>4
+      </h1>
+      <p class="lede mt-3" style="max-width:44ch">
+        This {label} does not exist. No request left the building to find out.
+      </p>
+      <div class="hero__actions mt-3">
+        <a class="btn" href="/">Back to {meta.name}</a>
+        <a class="btn btn--ghost" href="/releases">Releases</a>
+        <a class="btn btn--ghost" href="/install">Install</a>
+      </div>
+      <p class="mono mt-4" style="font-size:9px;letter-spacing:.12em;color:var(--muted)">
+        {meta.domain} · 404 · <a class="link" href="/sitemap.xml">Sitemap</a>
+      </p>
+    </div>
+  </section>
+</Base>

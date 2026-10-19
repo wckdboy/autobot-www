@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face {
+    font-family: 'Antonio';
+    src: url('../public/fonts/antonio-latin.woff2') format('woff2');
+    font-weight: 200 700;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../public/fonts/jetbrains-mono-latin.woff2') format('woff2');
+    font-weight: 400 700;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    --bg: #efeae2; --fg: #121211; --muted: #6f6a63; --red: #e8401c; --line: #cec6b9;
+    position: relative; background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    padding: 46px 56px 38px; display: flex; flex-direction: column;
+  }
+  body.ink { --bg: #0e0e0e; --fg: #f1ece4; --muted: #8e8a84; --line: #2f2f2e; }
+  body::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .3;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+  }
+  body.ink::before { mix-blend-mode: screen; opacity: .14; }
+  .grid {
+    position: absolute; inset: 0; pointer-events: none; opacity: .55;
+    background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--fg) 25%, transparent) .7px, transparent .9px);
+    background-size: 9px 9px;
+    -webkit-mask-image: radial-gradient(ellipse at 78% 48%, #000 0%, transparent 62%);
+  }
+  .top { display: flex; align-items: center; gap: 14px; position: relative; z-index: 2; }
+  .mark { width: 40px; height: 40px; }
+  .word { font-family: 'Antonio'; font-weight: 500; font-size: 30px; letter-spacing: .14em; text-transform: uppercase; line-height: 1; }
+  .dom { font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: .16em; color: var(--muted); text-transform: uppercase; }
+  .top .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .tag { border: 1px solid var(--line); padding: 7px 10px 6px; font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .tag.red { background: var(--red); border-color: var(--red); color: #fff5ef; }
+  .body { position: relative; z-index: 2; margin-top: 46px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  h1 { font-family: 'Antonio'; font-weight: 300; font-size: 104px; line-height: .84; letter-spacing: -.02em; text-transform: uppercase; max-width: 900px; }
+  h1 .red { color: var(--red); }
+  h1 .outline { color: transparent; -webkit-text-stroke: 1.6px var(--fg); }
+  .sub { margin-top: 24px; max-width: 620px; font-size: 17px; line-height: 1.5; color: var(--muted); }
+  .bottom { position: relative; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 16px; font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+  .bottom b { color: var(--fg); font-weight: 500; }
+  .redbar { position: absolute; left: 0; top: 0; width: 7px; height: 100%; background: var(--red); }
+  .corner { position: absolute; right: 26px; bottom: 82px; width: 210px; height: 210px; opacity: .9; }
+</style>
+</head>
+<body>
+  <div class="redbar"></div>
+  <div class="grid"></div>
+  <div class="top">
+    <svg class="mark" id="mark" viewBox="0 0 32 32"></svg>
+    <div>
+      <div class="word" id="word">AUTOBOT</div>
+      <div class="dom" id="dom">autobot.sh</div>
+    </div>
+    <div class="right">
+      <span class="tag" id="kind">ANDROID · IOS</span>
+      <span class="tag red" id="ver">v1.10.0</span>
+    </div>
+  </div>
+  <div class="body">
+    <h1 id="title"></h1>
+    <div class="sub" id="sub"></div>
+  </div>
+  <div class="bottom">
+    <span id="note">PRIVATE INTELLIGENCE · NO TELEMETRY · NO ACCOUNTS</span>
+    <span><b id="foot">AUTOBOT.SH</b></span>
+  </div>
+  <svg class="corner" id="corner" viewBox="0 0 200 200"></svg>
+<script>
+  const site = new URLSearchParams(location.search).get('site') || 'autobot';
+  const configs = {
+    autobot: {
+      ink: false,
+      word: 'AUTOBOT',
+      dom: 'autobot.sh',
+      kind: 'ANDROID · IOS',
+      ver: 'v1.10.0',
+      title: 'Private<br><span class="outline">intelligence</span><br><span class="red">on the metal.</span>',
+      sub: 'Chat, agents, images and voice on the phone’s NPU, GPU and CPU. Offline by default. A receipt for every answer.',
+      note: 'APACHE-2.0 · NO TELEMETRY · NO ACCOUNTS',
+    },
+    invincible: {
+      ink: true,
+      word: 'INVINCIBLE',
+      dom: 'invincible.sh',
+      kind: 'SELF-HOSTED NODE',
+      ver: 'v0.0.6',
+      title: 'Borrowed<br><span class="outline">intelligence</span><br><span class="red">is not yours.</span>',
+      sub: 'A node you own. Open models, policy routing, signed receipts — and it keeps working when the cloud is gone.',
+      note: 'MIT · NO ACCOUNTS · NO TELEMETRY',
+    },
+    sovware: {
+      ink: false,
+      word: 'SOVWARE',
+      dom: 'sovware.io',
+      kind: 'INDEPENDENT STUDIO',
+      ver: 'EST. 2026',
+      title: 'Sovereign<br><span class="outline">software</span><br><span class="red">for the edge.</span>',
+      sub: 'Software that answers to its owner. Private intelligence on the phone, on your node, on your terms.',
+      note: 'AUTOBOT · INVINCIBLE · WCKD',
+    },
+  };
+  const c = configs[site] || configs.autobot;
+  document.body.classList.toggle('ink', c.ink);
+  document.getElementById('word').textContent = c.word;
+  document.getElementById('dom').textContent = c.dom;
+  document.getElementById('kind').textContent = c.kind;
+  document.getElementById('ver').textContent = c.ver;
+  document.getElementById('title').innerHTML = c.title;
+  document.getElementById('sub').textContent = c.sub;
+  document.getElementById('note').textContent = c.note;
+  const foot = site === 'sovware' ? 'SOVWARE.IO' : c.dom.toUpperCase();
+  document.getElementById('foot').textContent = foot;
+
+  fetch('../src/data/releases.json')
+    .then((r) => r.json())
+    .then((data) => {
+      const tag = site === 'sovware' ? null : data[site]?.latest?.tag;
+      if (tag) {
+        const ver = document.getElementById('ver');
+        if (ver) ver.textContent = 'v' + tag.replace(/^v/, '');
+      }
+    })
+    .catch(() => {});
+
+  const red = '#E8401C';
+  const bone = '#F4EEE6';
+  const fill = site === 'autobot' ? bone : red;
+  document.getElementById('mark').innerHTML =
+    `<rect width="32" height="32" rx="7" fill="${site === 'autobot' ? red : '#141414'}"/><g fill="${fill}">` +
+    Array.from({ length: 14 }, (_, y) =>
+      Array.from({ length: 14 }, (_, x) =>
+        site === 'sovware'
+          ? `<circle cx="${7 + x * 1.4}" cy="${7 + y * 1.4}" r="${(x === 6 && y === 6 ? 1.7 : 0.7)}"/>`
+          : `<circle cx="${(5 + x * 1.65).toFixed(1)}" cy="${(5 + y * 1.65).toFixed(1)}" r="${(0.15 + ((13 - x + y) / 26) * 0.62).toFixed(2)}"/>`,
+      ).join(''),
+    ).join('') + '</g>';
+
+  // A large halftone orb in the corner, printed in the accent.
+  let dots = '';
+  const cx = 100, cy = 100, R = 92, cell = 8;
+  for (let y = cell * 0.6; y < 200; y += cell) {
+    for (let x = cell * 0.6; x < 200; x += cell) {
+      const dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy);
+      if (d > R) continue;
+      const ring = 0.5 + 0.5 * Math.sin(d * 0.22 - 0.6);
+      const fall = 1 - (d / R) ** 2 * 0.55;
+      const r = cell * 0.52 * ring * fall;
+      if (r < 0.25) continue;
+      dots += `<circle cx="${x}" cy="${y}" r="${r.toFixed(2)}" fill="${red}" opacity="${(0.35 + ring * 0.6).toFixed(2)}"/>`;
+    }
+  }
+  dots += `<circle cx="${cx}" cy="${cy}" r="8" fill="${red}"/><circle cx="${cx}" cy="${cy}" r="74" fill="none" stroke="${red}" stroke-width="1" opacity=".5"/>`;
+  document.getElementById('corner').innerHTML = dots;
+</script>
+</body>
+</html>

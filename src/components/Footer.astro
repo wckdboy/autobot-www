@@ -1,0 +1,72 @@
+---
+import Mark from './Mark.astro';
+import Icon from './Icon.astro';
+import { meta, releases } from '../data/site';
+import { v } from '../lib/format';
+
+const year = 2026;
+const built = new Date().toISOString().slice(0, 10).split('-').reverse().join('.');
+const cross =
+  meta.key === 'sovware'
+    ? null
+    : {
+        name: meta.other === 'invincible' ? 'Invincible' : 'Autobot',
+        href: meta.other === 'invincible' ? 'https://invincible.sh' : 'https://autobot.sh',
+        desc:
+          meta.other === 'invincible'
+            ? 'The node you own. Self-hosted models, policy routing, signed receipts.'
+            : 'Private intelligence on the phone. NPU, GPU, offline by default.',
+      };
+
+const latest = meta.key === 'invincible' ? releases.invincible.latest : meta.key === 'autobot' ? releases.autobot.latest : null;
+---
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div>
+        <div class="footer__word">{meta.wordmark}<span>.</span></div>
+        <p class="footer__tag">{meta.tagline}</p>
+        <p class="footer__tag mono" style="margin-top:1.2rem;font-size:9px;letter-spacing:.14em">
+          {latest ? `LATEST ${v(latest.tag)} · ${latest.published.slice(0, 10)}` : 'SOVEREIGN SOFTWARE · WCKD'}
+        </p>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="footer__col-h">Sites</h2>
+        <a href="https://autobot.sh">Autobot</a>
+        <a href="https://invincible.sh">Invincible</a>
+        <a href="https://sovware.io">Sovware</a>
+        <a href={meta.repo} rel="noopener">GitHub ↗</a>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="footer__col-h">This site</h2>
+        <a href="/releases">Releases</a>
+        <a href="/install">Install</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/verify">Verify</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="footer__col-h">Elsewhere</h2>
+        <a href="https://github.com/wckdboy/autobot" rel="noopener">autobot ↗</a>
+        <a href="https://github.com/wckdboy/invincible" rel="noopener">invincible ↗</a>
+        <a href="https://github.com/wckdboy" rel="noopener">wckdboy ↗</a>
+        <a href="mailto:boy@wckd.cc">boy@wckd.cc</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {year} WCKD · SOVWARE · {meta.license}</span>
+      <div class="colophon">
+        <span>Set in Antonio &amp; JetBrains Mono</span>
+        <span>No trackers · no cookies · no third-party requests</span>
+        <span>Built {built}</span>
+      </div>
+      <a href="#top">Back to top ↑</a>
+    </div>
+
+    <div class="footer__giant" aria-hidden="true" style={`--wm: "${meta.wordmark} ✳ ${meta.domain}"`}></div>
+  </div>
+</footer>

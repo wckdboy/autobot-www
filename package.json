@@ -1,0 +1,33 @@
+{
+  "name": "wckd-www",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The public sites for Autobot, Invincible Gateway and Sovware.",
+  "scripts": {
+    "dev": "SITE_KEY=autobot astro dev",
+    "dev:invincible": "SITE_KEY=invincible astro dev",
+    "dev:sovware": "SITE_KEY=sovware astro dev",
+    "build": "SITE_KEY=${SITE_KEY:-autobot} sh -c 'astro build && node scripts/postbuild.mjs'",
+    "build:autobot": "SITE_KEY=autobot sh -c 'astro build && node scripts/postbuild.mjs'",
+    "build:invincible": "SITE_KEY=invincible sh -c 'astro build && node scripts/postbuild.mjs'",
+    "build:sovware": "SITE_KEY=sovware sh -c 'astro build && node scripts/postbuild.mjs'",
+    "build:all": "pnpm build:autobot && pnpm build:invincible && pnpm build:sovware",
+    "preview": "astro preview",
+    "data": "node scripts/fetch-releases.mjs",
+    "sync:install": "node scripts/sync-install.mjs",
+    "og": "node scripts/build-og.mjs",
+    "verify:links": "node scripts/check-links.mjs",
+    "prepare": "node scripts/fetch-releases.mjs --soft && node scripts/sync-install.mjs",
+    "deploy": "sh scripts/deploy.sh",
+    "domains": "node scripts/attach-domains.mjs"
+  },
+  "dependencies": {
+    "astro": "7.4.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1",
+    "sharp": "^0.34.4"
+  },
+  "packageManager": "pnpm@12.6.0"
+}

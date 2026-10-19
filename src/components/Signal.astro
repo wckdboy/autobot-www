@@ -1,0 +1,43 @@
+---
+interface Props {
+  kind: 'optic' | 'globe' | 'field' | 'orb';
+  topLeft?: string;
+  topRight?: string;
+  bottomLeft?: string;
+  bottomRight?: string;
+  label?: string;
+  aria?: string;
+}
+const {
+  kind,
+  topLeft = 'SIGNAL',
+  topRight = 'LIVE',
+  bottomLeft = 'ON DEVICE',
+  bottomRight = '01',
+  label,
+  aria = 'Generated halftone artwork',
+} = Astro.props;
+---
+<div class="plate crop">
+  <div class="plate__inner">
+    <div class="signal">
+      <canvas data-halftone={kind} role="img" aria-label={aria}></canvas>
+      <div class="signal__hud">
+        <div class="signal__hud-top">
+          <span class="signal__tag">{topLeft}</span>
+          <span class="signal__tag signal__tag--red">{topRight}</span>
+        </div>
+        <div class="signal__hud-bottom">
+          <span>{bottomLeft}</span>
+          <span>{bottomRight}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {label && (
+    <div class="plate__caption">
+      <span>{label}</span>
+      <span>HALFTONE / 01</span>
+    </div>
+  )}
+</div>

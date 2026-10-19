@@ -1,0 +1,109 @@
+---
+import Mark from './Mark.astro';
+import Icon from './Icon.astro';
+import { meta, releases } from '../data/site';
+import { v } from '../lib/format';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const latest =
+  meta.key === 'autobot'
+    ? releases.autobot.latest?.tag
+    : meta.key === 'invincible'
+      ? releases.invincible.latest?.tag
+      : null;
+
+const cross =
+  meta.key === 'sovware'
+    ? null
+    : {
+        label: meta.other === 'invincible' ? 'Invincible' : 'Autobot',
+        href: meta.other === 'invincible' ? 'https://invincible.sh' : 'https://autobot.sh',
+      };
+
+const isCurrent = (href: string) => {
+  if (href.startsWith('http')) return false;
+  const clean = href.split('#')[0].replace(/\/$/, '') || '/';
+  return clean === path && !href.includes('#');
+};
+---
+<header class="nav">
+  <div class="nav__in">
+    <a class="brand" href="/" aria-label={`${meta.name} home`}>
+      <Mark kind={meta.key} size={27} class="brand__mark" />
+      <span class="brand__word">{meta.wordmark}</span>
+      <span class="brand__sub">/ {meta.domain}</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {meta.nav.map((item) => (
+        <a
+          class="nav__link"
+          href={item.href}
+          aria-current={isCurrent(item.href) ? 'page' : undefined}
+          rel={item.href.startsWith('http') ? 'noopener' : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+      {cross && (
+        <a class="nav__link" href={cross.href} rel="noopener">
+          {cross.label} <span aria-hidden="true">↗</span>
+        </a>
+      )}
+    </nav>
+
+    <div class="nav__right">
+      {latest && (
+        <a class="nav__ver" href="/releases" aria-label={`Latest release ${latest}`}>
+          <span class="dot" aria-hidden="true"></span>
+          <span>{meta.key === 'autobot' ? 'Android / iOS' : 'Node'}</span>
+          <b>v{v(latest)}</b>
+        </a>
+      )}
+      {meta.key === 'sovware' && <span class="nav__ver">WCKD / EST. 2026</span>}
+      <a
+        class="nav__link hide-mobile"
+        href={meta.repo}
+        rel="noopener"
+        aria-label={`${meta.name} on GitHub`}
+        style="display:inline-flex;align-items:center;gap:6px"
+      >
+        <Icon name="github" size={13} /> <span class="hide-mobile">Source</span>
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav__mobile" id="nav-mobile">
+  {meta.nav.map((item) => (
+    <a href={item.href} rel={item.href.startsWith('http') ? 'noopener' : undefined}>
+      {item.label} <span aria-hidden="true">↗</span>
+    </a>
+  ))}
+  {cross && <a href={cross.href} rel="noopener">{cross.label} <span aria-hidden="true">↗</span></a>}
+  <a href={meta.repo} rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+</div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav__toggle');
+  const panel = document.getElementById('nav-mobile');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    panel?.classList.toggle('is-open', !open);
+    panel?.style.setProperty('display', !open ? 'block' : 'none');
+    panel?.setAttribute('data-open', String(!open));
+  });
+  for (const link of panel?.querySelectorAll('a') ?? []) {
+    link.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      panel?.style.setProperty('display', 'none');
+    });
+  }
+  // Keep the mobile panel display rule independent of <details> semantics.
+  panel?.classList.add('nav__mobile');
+</script>

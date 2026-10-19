@@ -1,0 +1,76 @@
+---
+import Icon from './Icon.astro';
+import { fmtBytes, fmtDate, releaseNotes, v } from '../lib/format';
+import type { Release } from '../data/site';
+
+interface Props {
+  releases: Release[];
+  repo: 'autobot' | 'invincible';
+  limit?: number;
+  openFirst?: boolean;
+}
+const { releases, repo, limit, openFirst = true } = Astro.props;
+const list = (limit ? releases.slice(0, limit) : releases).filter((r) => !r.prerelease);
+
+const order = (name: string) => {
+  if (repo === 'autobot') {
+    if (/release\.apk$/.test(name)) return 0;
+    if (/debug\.apk$/.test(name)) return 1;
+    if (/SHA256SUMS/.test(name)) return 2;
+    if (/mapping/.test(name)) return 8;
+    return 5;
+  }
+  if (/macos/.test(name)) return 0;
+  if (/linux-x64/.test(name)) return 1;
+  if (/linux-arm64/.test(name)) return 2;
+  if (/SHA256SUMS$/.test(name)) return 3;
+  if (/\.sig$/.test(name)) return 4;
+  return 5;
+};
+const sub = (r: Release) => {
+  const line = r.body.split('\n').find((l) => l.trim() && !l.startsWith('#'));
+  return (line || r.name).replace(/[*_`]/g, '').slice(0, 110);
+};
+---
+<div>
+  {list.map((r, i) => (
+    <details class="release" open={openFirst && i === 0}>
+      <summary class="release__summary">
+        <span class="release__tag">{v(r.tag)}</span>
+        <span class="release__name">
+          {r.name.replace(/^Autobot\s*/i, repo === 'autobot' ? 'Autobot ' : '')}
+          <span>{sub(r)}</span>
+        </span>
+        <span class="release__date">{fmtDate(r.published)}</span>
+        <span class="release__chev" aria-hidden="true">+</span>
+      </summary>
+      <div class="release__body">
+        <div></div>
+        <div>
+          <div class="release__notes" set:html={releaseNotes(r.body)} />
+          <div class="release__assets">
+            {[...r.assets]
+              .sort((a, b) => order(a.name) - order(b.name))
+              .map((a) => (
+                <a class="asset" href={a.url} rel="noopener">
+                  <b><Icon name="download" size={11} /></b>
+                  {a.name.replace(`autobot-${v(r.tag)}-`, '')}
+                  <span>{fmtBytes(a.size)}</span>
+                </a>
+              ))}
+            <a class="asset" href={r.url} rel="noopener">
+              <b>↗</b> Full notes <span>GitHub</span>
+            </a>
+          </div>
+          <div class="term-note" style="margin-top:12px">
+            <span class="release__verified">
+              {repo === 'autobot' ? 'SHA-256 published' : 'Signed + reproducible'}
+            </span>
+            <span>{r.assets.length} files</span>
+            <span>{/* keep the row honest even with zero downloads */}Public release</span>
+          </div>
+        </div>
+      </div>
+    </details>
+  ))}
+</div>

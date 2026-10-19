@@ -1,0 +1,65 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '.shots/**'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.6.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Refresh release data and install mirror
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pnpm data
+          pnpm sync:install
+      - run: pnpm build:all
+      - run: node scripts/check-links.mjs
+
+      - name: Deploy autobot.sh
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        run: |
+          npx --yes wrangler@4 pages project create autobot-www --production-branch=main || true
+          npx --yes wrangler@4 pages deploy dist/autobot --project-name=autobot-www --branch=main
+
+      - name: Deploy invincible.sh
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        run: |
+          npx --yes wrangler@4 pages project create invincible-www --production-branch=main || true
+          npx --yes wrangler@4 pages deploy dist/invincible --project-name=invincible-www --branch=main
+
+      - name: Deploy sovware.io
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        run: |
+          npx --yes wrangler@4 pages project create sovware-www --production-branch=main || true
+          npx --yes wrangler@4 pages deploy dist/sovware --project-name=sovware-www --branch=main
+
+      - name: Cloudflare is not configured
+        if: ${{ env.CLOUDFLARE_API_TOKEN == '' }}
+        run: |
+          echo "::warning::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID are not set; the sites were built but not deployed."
+          echo "Add both repository secrets, or run pnpm deploy locally after 'npx wrangler login'."

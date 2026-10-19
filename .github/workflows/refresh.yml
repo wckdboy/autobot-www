@@ -1,0 +1,45 @@
+name: Refresh releases
+
+on:
+  schedule:
+    # Every six hours, offset from the top of the hour.
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: refresh-releases
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.6.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Bake the latest releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pnpm data
+          pnpm sync:install
+      - name: Commit if anything changed
+        run: |
+          if git diff --quiet -- src/data/releases.json src/data/install.json public/install.sh; then
+            echo "No release changes."
+            exit 0
+          fi
+          git config user.name "wckd-release-bot"
+          git config user.email "bot@wckd.cc"
+          git add src/data/releases.json src/data/install.json public/install.sh
+          git commit -m "chore: refresh release data"
+          git push

@@ -1,0 +1,799 @@
+{
+  "generatedAt": "2026-10-19T18:02:29.139Z",
+  "autobot": {
+    "name": "autobot",
+    "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
+    "stars": 0,
+    "forks": 0,
+    "license": "Apache-2.0",
+    "pushed": "2026-10-19T14:50:18Z",
+    "latest": {
+      "tag": "v1.10.0",
+      "name": "Autobot 1.10.0",
+      "published": "2026-10-19T14:29:36Z",
+      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.10.0",
+      "prerelease": false,
+      "body": "My node on iPhone too, what your machine did at a glance, recipes that run on your node, and the team of agents your machine can now run.\n\n## My node on iOS\n- **Pair your computer** in Settings › Providers › + › My node (Invincible). Paste the code, or open the `invincible://pair` link from the camera.\n- **Chats, signed receipts and \"phone first, then my node\"** all work as on Android.\n- **The agent screen.** Remote › Agents · my node: tasks on that machine, approval cards, and scheduled tasks.\n\n## What your machine did (Android and iOS)\nThe list button on the agent screen opens the node's Activity, read from its own logs:\n- **Requests:** every request the node answered: who asked, which model, tokens, and whether anything left. Each receipt is checked against the key pinned at pairing.\n- **Actions:** what the agent ran, and who allowed it.\n- **Memory and skills:** what the agent remembered (you can make it forget), and your skills.\n\n## Recipes on your node\n- **Runs on** in the recipe editor: this phone, or your node.\n- **On the node,** a recipe runs on its schedule, always on and with no 8-minute limit, on the node's models, with only the recipe's tool groups (web included).\n- **Your time, wherever the node is.** \"07:00\" means 07:00 where the phone is.\n- **Results come back** as chats in the Recipes folder, with the node's signed receipts and a notification.\n\n## A team on your machine\n- **Team members.** When the node's agent has a team, each member's answer shows under its name.\n- **You know who's asking.** An approval says which member wants it (\"coder: Run a command?\").\n- **New approval cards** for web fetches and MCP tools.\n\n## Fixes\n- Several CI tests that depended on timing are steadier.",
+      "assets": [
+        {
+          "name": "autobot-1.10.0-debug.apk",
+          "size": 138984250,
+          "downloads": 1,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-debug.apk"
+        },
+        {
+          "name": "autobot-1.10.0-mapping.txt",
+          "size": 95368990,
+          "downloads": 1,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-mapping.txt"
+        },
+        {
+          "name": "autobot-1.10.0-release.apk",
+          "size": 82237698,
+          "downloads": 1,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-release.apk"
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 277,
+          "downloads": 2,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/SHA256SUMS.txt"
+        }
+      ]
+    },
+    "releases": [
+      {
+        "tag": "v1.10.0",
+        "name": "Autobot 1.10.0",
+        "published": "2026-10-19T14:29:36Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.10.0",
+        "prerelease": false,
+        "body": "My node on iPhone too, what your machine did at a glance, recipes that run on your node, and the team of agents your machine can now run.\n\n## My node on iOS\n- **Pair your computer** in Settings › Providers › + › My node (Invincible). Paste the code, or open the `invincible://pair` link from the camera.\n- **Chats, signed receipts and \"phone first, then my node\"** all work as on Android.\n- **The agent screen.** Remote › Agents · my node: tasks on that machine, approval cards, and scheduled tasks.\n\n## What your machine did (Android and iOS)\nThe list button on the agent screen opens the node's Activity, read from its own logs:\n- **Requests:** every request the node answered: who asked, which model, tokens, and whether anything left. Each receipt is checked against the key pinned at pairing.\n- **Actions:** what the agent ran, and who allowed it.\n- **Memory and skills:** what the agent remembered (you can make it forget), and your skills.\n\n## Recipes on your node\n- **Runs on** in the recipe editor: this phone, or your node.\n- **On the node,** a recipe runs on its schedule, always on and with no 8-minute limit, on the node's models, with only the recipe's tool groups (web included).\n- **Your time, wherever the node is.** \"07:00\" means 07:00 where the phone is.\n- **Results come back** as chats in the Recipes folder, with the node's signed receipts and a notification.\n\n## A team on your machine\n- **Team members.** When the node's agent has a team, each member's answer shows under its name.\n- **You know who's asking.** An approval says which member wants it (\"coder: Run a command?\").\n- **New approval cards** for web fetches and MCP tools.\n\n## Fixes\n- Several CI tests that depended on timing are steadier.",
+        "assets": [
+          {
+            "name": "autobot-1.10.0-debug.apk",
+            "size": 138984250,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.10.0-mapping.txt",
+            "size": 95368990,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-mapping.txt"
+          },
+          {
+            "name": "autobot-1.10.0-release.apk",
+            "size": 82237698,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 277,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.9.0",
+        "name": "Autobot 1.9.0",
+        "published": "2026-10-18T22:59:14Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.9.0",
+        "prerelease": false,
+        "body": "Your own computer as Autobot's next tier: pair a machine running Invincible, chat with its models, hand its agent tasks you approve from the phone, and check what it signed.\n\n## My node (Android)\n- **Pair a computer.** Install Invincible on a desktop or VPS (`curl -fsSL https://raw.githubusercontent.com/wckdboy/invincible/main/install.sh | sh`), run `invincible pair`, and scan the code with the camera app (or paste it). Settings › Providers › My node (Invincible). No account, no relay: the phone and the node pin each other's keys (Noise).\n- **Chat with its models** like any provider. Connections follow the kill switch (offline refuses them; Tor and SOCKS5 carry them with remote DNS) and show in the Privacy Center's audit log.\n- **Signed receipts.** Every answer from the node is checked against the receipt key pinned when you paired: the receipt line says \"kept on studio ✓\" when nothing left the node, \"studio → 1 host\" when it used a cloud model (with the hosts, routes and what it redacted), or \"studio unverified\".\n- **Phone first, then my node.** With \"phone first\" on a node chat, this phone answers first and a weak answer goes to your node instead of a cloud model. The node is hardware you own, so a sensitive prompt may go there and \"Never\" allows it; these turns are marked private, so the node never sends them on to a cloud model.\n\n## The agent on your machine (Android)\n- **REMOTE › Agents · my node.** Give the Autobot Agent running on that machine a task: shell commands and file work, on its models. Every command, file write and read outside its working folder comes to the phone as a card first: Allow, Always (this conversation) or Deny.\n- **Scheduled tasks.** The calendar button lists what the agent runs on a schedule (next run, how the last one went), adds tasks (cron, @daily, every 30m) and removes them. Scheduled runs only do what you allowlisted.\n\n## Fixes\n- Node chats no longer show a REDACT chip: nothing is redacted for hardware you own.\n- The streaming check with a real node leaves room for thinking models.\n\niOS: the pairing and receipt code is shared and tested on CryptoKit; the iOS node connector comes next, so \"My node\" says \"not on iOS yet\".",
+        "assets": [
+          {
+            "name": "autobot-1.9.0-debug.apk",
+            "size": 138747714,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.9.0/autobot-1.9.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.9.0-mapping.txt",
+            "size": 94824102,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.9.0/autobot-1.9.0-mapping.txt"
+          },
+          {
+            "name": "autobot-1.9.0-release.apk",
+            "size": 82185390,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.9.0/autobot-1.9.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.9.0/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.8.0",
+        "name": "Autobot 1.8.0",
+        "published": "2026-10-18T02:01:54Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.8.0",
+        "prerelease": false,
+        "body": "Images come out the shape you pick, a full-screen viewer, recipes that run on their own, phone-first answers and a panic PIN.\n\n## Images (both platforms)\n- **16:9 means 16:9.** Picking a wide or tall shape could still give a square: on-device models compiled for one size (Core ML on iOS, QNN on Android) quietly swapped your size for theirs. They now render their square and return your shape cut from it, and Tune says \"compiled for 1024² · other shapes are cut from the square\".\n- **The resolution is a pixel budget.** 16:9 at 1024 is about a million pixels in that shape (1368×768), so wide images keep the detail of the square. Every shape chip names the exact size it makes, and the picker remembers your choice instead of snapping back to 512.\n- Picking a model keeps your shape instead of resetting to its square. MNN sizes round to the nearest 64 instead of always down.\n- A server that sends back a square anyway is cut to your shape (Android) or named in a notice (iOS), and the gallery records the size it really got.\n- **Full-screen viewer.** Tap a result, a gallery image or an image in chat: pinch or double-tap to zoom, pan, swipe through the batch, swipe down to close. The info sheet shows the real pixel size and every setting used.\n- **Do more with an image:** use it for img2img (prompt and settings carried over, strength showing), inpaint, vary, reuse settings, same seed, upscale 4× (when an upscaler is installed), share, save, copy settings, favorite, delete.\n- The agent's `generate_image` takes an aspect ratio and keeps the shape when given one side.\n- img2img without an input image now says so instead of quietly running as text-to-image; Tune says when a model can't apply your LoRAs.\n\n## Recipes (both platforms)\n- **On-device agents on a schedule.** Settings → Recipes: a prompt, a schedule, a model and the tools it may use. Runs in the background on the phone (WorkManager on Android, background processing on iOS), once for a missed time, safe across daylight-saving changes.\n- A private notification opens the result chat after the app lock. While the phone is locked, iOS says \"Unlock to run <name>\". Recipe data is encrypted and goes with a wipe.\n\n## Phone first (both platforms)\n- **The phone answers first.** Off by default. Settings → Privacy → Phone first (ask / auto / never) and a chip per chat: in a cloud chat the installed on-device model answers, and",
+        "assets": [
+          {
+            "name": "autobot-1.8.0-debug.apk",
+            "size": 132275579,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.8.0/autobot-1.8.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.8.0-mapping.txt",
+            "size": 93409948,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.8.0/autobot-1.8.0-mapping.txt"
+          },
+          {
+            "name": "autobot-1.8.0-release.apk",
+            "size": 82021896,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.8.0/autobot-1.8.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.8.0/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.7.1",
+        "name": "Autobot 1.7.1",
+        "published": "2026-10-17T23:01:07Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.7.1",
+        "prerelease": false,
+        "body": "Cleaner prints, a faster start, and dictation that keeps up: a polish release.\n\n## Cleaner ink (both platforms)\n- **No more doubled dots.** On Android, the paper behind the Image screen, chat, voice, Models, Gallery and the lock drew every dot twice, with a faint copy a few pixels off. Paper is one plate again.\n- **Prints land on their own dots.** When a result printed, its colour plate started half a dot away and read as a second grid. It now starts as a thin rim on the same dots and settles.\n- **Pictures print in where they show.** A wide image in a square chat thumbnail or a Studio chip no longer prints a stretched copy next to the cropped one.\n- One dot field per screen: the voice panel, the empty Models search and empty chat no longer stack a second field under the first, and image proofs sit on whole pixels.\n- iOS: a halftone preview always matches its own image. A new image could pick up an old image's dots.\n\n## Faster (both platforms)\n- **Android starts sooner.** The app now ships a Baseline Profile, so startup code runs precompiled even on a sideloaded install. On the emulator: 13–17% less time to the first real screen and about 20% less main-thread work.\n- **iOS starts sooner.** Fonts and device checks load in the background, about 90 ms earlier to the first frame in the simulator.\n- **Live dictation shows words sooner and more often.** Partial passes only encode the audio heard so far, 2–4× less work. Stopping usually has nothing left to transcribe.\n- **Faster draft-model checks.** Each speculative step costs less, a draft that failed to load is retried later, and a failed check carries on without the draft instead of ending the answer.\n- **Image model warm-up.** It loads again ahead of Generate after it was freed, switching models no longer loads both, and on Android it stays loaded while the Image screen is open.\n- Smoother lists: the iOS chat list scrolls with fewer hitches, and Android's Models list only redraws rows that changed. Catalog previews and parsed chat text have a memory limit on iOS.\n\n## Fixed\n- Read-aloud no longer cuts off the last words before the assistant uses a tool.\n- Talking over a spoken answer no longer triggers by itself when the voice resumes after a pause.\n- iOS: the last words you say before tapping stop are no longer lost from dictation.\n- A quick double tap on the mic starts one dictation, not two.\n- The Image scree",
+        "assets": [
+          {
+            "name": "autobot-1.7.1-debug.apk",
+            "size": 129800483,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.7.1/autobot-1.7.1-debug.apk"
+          },
+          {
+            "name": "autobot-1.7.1-mapping.txt",
+            "size": 85701169,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.7.1/autobot-1.7.1-mapping.txt"
+          },
+          {
+            "name": "autobot-1.7.1-release.apk",
+            "size": 81406272,
+            "downloads": 4,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.7.1/autobot-1.7.1-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.7.1/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.7.0",
+        "name": "Autobot 1.7.0",
+        "published": "2026-10-17T18:23:15Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.7.0",
+        "prerelease": false,
+        "body": "Your words stay yours in the cloud, replies come faster on the device, voice answers while it thinks, and you can see what every model costs.\n\n## Redact before cloud (both platforms)\n- **Placeholders, not your data.** Before a chat goes to a cloud model, names, emails, phone numbers, addresses, card, IBAN and account numbers, and your memory facts become placeholders like `[PERSON_1]`. The answer comes back with your real words, put back on your phone.\n- **Tools still work.** The agent gets the real values back on the phone, so it can still write the email or fill in the file.\n- **On by default**, in Settings → Privacy & security. A `REDACT` chip turns it off for one chat. \"This phone\" and local servers are never redacted.\n- **On the receipt.** It shows what was hidden (\"2 names · 1 email\"), never the values. Code, links, dates and version numbers are left alone, so coding chats keep working.\n\n## Faster replies with a draft model (both platforms)\n- **A small model guesses, your model checks.** Install Qwen3 0.6B next to Qwen3 4B Instruct 2507, Llama 3.2 1B next to 3B, or Qwen2.5 Coder 0.5B next to the Coders. On a Mac GPU, code, lists and rewrites came 1.3–1.7× faster and long answers about 2×.\n- **Every word is still your model's.** Thinking budgets, tool calls and the stop button work as before. Short agent steps skip the draft, so they never get slower.\n- **Auto / On / Off in Compute.** Auto drafts only when the pair fits your memory comfortably, and pauses when drafting doesn't pay. The benchmark and the diagnostics report show the speedup and how many guesses were kept.\n- Qwen3.5 models don't use drafts: their memory can't take back wrong guesses cheaply. A draft from another model family is refused with a reason.\n\n## Voice that keeps up (both platforms)\n- **Your words as you speak.** Dictation shows settled words in ink, with the rest firming up as you go. Audio is never saved.\n- **Answers start out loud after the first sentence**, not after the whole reply. Code is skipped; numbers and abbreviations are read whole.\n- **Just talk to interrupt.** In hands-free mode, speaking over an answer stops it, keeps your first words and listens.\n- Stopping dictation is faster: the last pass starts right away.\n\n## Usage, counted on your phone (both platforms)\n- **Settings › Usage:** tokens, requests and cost for today, this week and this month, a bar per day, and a",
+        "assets": [
+          {
+            "name": "autobot-1.7.0-debug.apk",
+            "size": 129758759,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.7.0/autobot-1.7.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.7.0-mapping.txt",
+            "size": 87851878,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.7.0/autobot-1.7.0-mapping.txt"
+          },
+          {
+            "name": "autobot-1.7.0-release.apk",
+            "size": 80998466,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.7.0/autobot-1.7.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.7.0/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.6.6",
+        "name": "Autobot 1.6.6",
+        "published": "2026-10-16T22:30:57Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.6",
+        "prerelease": false,
+        "body": "Faster and smarter on-device chat: a real thinking switch with a budget, the NPU reads your prompt while the CPU writes the answer, proper formatting in answers, and a lighter Run screen.\n\n## Thinking you control (both platforms)\n- **A real switch.** The `∴ think` chip above the composer cycles Auto / On / Off; long-press for a budget (256 to 4k tokens). It's remembered per chat, with optional per-model defaults. Thinking is turned off through the model's own chat template, not a prompt the model can ignore.\n- **A budget the engine enforces.** When thinking reaches its budget, the engine wraps up and the model answers. Part of the output is always reserved for the answer, and a loop guard ends thinking that goes in circles.\n- **Auto is sensible.** Small models (under 4B) skip thinking in quick chat, which is faster and, on 0.8B models, also more accurate. Agent and code modes think within a budget. Subagents and summaries never think.\n- **Before and after:** Qwen3.5 0.8B used to think about 2,000 tokens and never answer. Now it answers in 25 ms with thinking off, 1 s with a 128-token budget, and 3.3 s on Auto in agent mode.\n- **Cloud providers** get their real reasoning control (OpenAI, Claude, OpenRouter, Qwen, DeepSeek, Z.ai, Groq, Gemini, vLLM, llama.cpp server). Auto leaves each provider's default alone.\n\n## NPU reads, CPU writes (Android, Snapdragon)\n- A new **npu+cpu** setup: the Hexagon NPU reads your prompt, then the CPU writes the reply. On a OnePlus 15 with Qwen3.5 0.8B: prompts read at about 2,500 tok/s (CPU about 100), and replies are written at about 50 tok/s (NPU alone about 40). A long agent prompt that took 10–20 s to read now takes under a second.\n- Auto now ranks engines by a typical turn (about 1,000 prompt tokens + 200 generated), so it picks npu+cpu where that's fastest. If memory is short, it falls back to the NPU alone.\n- The Compute screen shows all five engines. An on-device bench (`engine/llama/bench/android.sh`) is included for anyone measuring their own phone.\n\n## Formatted answers (both platforms)\n- Answers render headings, **bold**, *italic*, lists (nested and checkboxes), quotes, tables, code blocks with copy, and links.\n- **Still private:** nothing in a message can make a network request. Images show as text (\"[image: alt · host]\"), HTML stays literal, and links ask before opening in your browser, with a warning for plain http",
+        "assets": [
+          {
+            "name": "autobot-1.6.6-debug.apk",
+            "size": 128911179,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.6/autobot-1.6.6-debug.apk"
+          },
+          {
+            "name": "autobot-1.6.6-mapping.txt",
+            "size": 85251777,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.6/autobot-1.6.6-mapping.txt"
+          },
+          {
+            "name": "autobot-1.6.6-release.apk",
+            "size": 80771054,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.6/autobot-1.6.6-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.6/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.6.5",
+        "name": "Autobot 1.6.5",
+        "published": "2026-10-16T20:50:41Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.5",
+        "prerelease": false,
+        "body": "Clear Settings and a new About screen, honest engine labels, the right image defaults, and smoother screens. Tuned on a real OnePlus 15.\n\n## Settings and About (both platforms)\n- **Settings is laid out in one clear order:** Privacy & security › Agent › Appearance › Data › About. Every setting has exactly one home. Providers, image backends and accounts live in Remote, and Panic wipe lives only in Settings.\n- **About** shows your version, build number and build date, and this release's \"What's new\". The notes are built into the app, so they work offline. \"All releases\" and \"Source code\" open in your browser. It also has licenses, the privacy statement (\"No analytics. No telemetry. Network only where you allow it.\") and Copy diagnostics.\n- **Android:** About shows the release signing certificate and checks it against the APK you're running, so you can verify your install is genuine.\n\n## Labels you can trust\n- Route tags show the engine actually doing the work.\n  - Android: NPU, GPU or CPU, for images and for chat (from what the engine reports).\n  - iPhone: Neural Engine or GPU for images, GPU (Metal) for chat.\n- \"CPU\" no longer appears for models running elsewhere.\n\n## Better image defaults\n- Picking a model applies its recommended steps, guidance, sampler and size, without overriding anything you changed. Illustrious DMD2 now opens at 8 steps and 1024² instead of 20 steps at 512². SDXL models never default to 512².\n\n## Cleaner screens\n- **Run:** the status line fits, the card grid is aligned, the image art is clean, subtitles wrap instead of cutting off, and an empty \"Recent runs\" is hidden.\n- **Models:** the phone header fits; installed rows read like \"image · NPU · 4.5 GB\".\n- No halftone dots behind text or numbers anywhere.\n- **iPhone:** nothing is cut off on the iPhone 17e or at extra-large text, and the 17e shows its chip name.\n\n## Smoother\n- **Android:** halftone fields are drawn as batched dots. On the OnePlus 15, Imagine's dropped frames halved (22% → 11%), and slow frames went from 42 ms to 16 ms (p90).\n- **iPhone:** screens hidden under the Studio stop animating (stutters 3–6 → 0). Studio Library reloads thumbnails 4× less often while scrolling, and Imagine at rest uses half the main-thread time.\n\n## Measured on a OnePlus 15 (Snapdragon 8 Elite Gen 5)\n- Qwen3.5 0.8B: CPU 49 tok/s generation, NPU 576 tok/s prompt reading. After the Compute benchmark,",
+        "assets": [
+          {
+            "name": "autobot-1.6.5-debug.apk",
+            "size": 128589211,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.5/autobot-1.6.5-debug.apk"
+          },
+          {
+            "name": "autobot-1.6.5-mapping.txt",
+            "size": 84031767,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.5/autobot-1.6.5-mapping.txt"
+          },
+          {
+            "name": "autobot-1.6.5-release.apk",
+            "size": 80680070,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.5/autobot-1.6.5-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.5/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.6.4",
+        "name": "Autobot 1.6.4",
+        "published": "2026-10-16T19:20:50Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.4",
+        "prerelease": false,
+        "body": "A calmer Android app: much less text, fewer taps, and the same Settings layout as iPhone.\n\n## Less text, fewer taps (Android)\n- **Settings** is grouped into Connections / Agent / Appearance / Security / Data / About. Rows show their state on the right (providers \"1\", Privacy \"Direct\", Vault \"Off\") instead of a subtitle. Explanations are behind ⓘ.\n- **Chat with a downloaded model: 2 taps instead of 3.** A new chat opens with the keyboard up. Tapping Chat again reuses an empty chat instead of piling up \"New chat\" rows.\n- **Generate an image: 2 taps instead of 3.** The prompt is focused, and the Generate bar now sits above the keyboard instead of under it.\n- **Shorter everywhere.** Chat rows show the model's name (\"Qwen3.5 0.8B\") and \"just now\". Model rows drop licence and footnote text, and download progress shows once, in the panel. Remote, Privacy Center, Vault, Imagine and Studio lose their paragraphs: one short line and one button where something needs doing.\n\n## Look\n- Living cards match iPhone exactly: a fixed 320 dp wave at 0.45 rad, period 12 s. Every dot stays visible at the wave's low point.\n- Run screen cards fade their dots under the title and model name, so the text stays legible.\n\n## Files\n- `autobot-1.6.4-release.apk`: signed release (`ai.wckd.autobot`, arm64-v8a, Android 14+). Signer certificate SHA-256 `9a1378acf9587885e7920355558c85a1ec0e89304f58c153feebf90fdee7f3f1`.\n- `autobot-1.6.4-debug.apk`\n- `autobot-1.6.4-mapping.txt`: R8 mapping, for reading crash reports\n- `SHA256SUMS.txt`\n\niOS: TestFlight build 1.6.4 (no iOS changes since 1.6.3).",
+        "assets": [
+          {
+            "name": "autobot-1.6.4-debug.apk",
+            "size": 128444362,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.4/autobot-1.6.4-debug.apk"
+          },
+          {
+            "name": "autobot-1.6.4-mapping.txt",
+            "size": 83580776,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.4/autobot-1.6.4-mapping.txt"
+          },
+          {
+            "name": "autobot-1.6.4-release.apk",
+            "size": 80648781,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.4/autobot-1.6.4-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.4/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.6.3",
+        "name": "Autobot 1.6.3",
+        "published": "2026-10-16T18:55:22Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.3",
+        "prerelease": false,
+        "body": "On-device chat is fixed and much faster: no more failures every other turn, follow-up replies start almost at once, and Stop takes effect immediately.\n\n## Fixed (both platforms)\n- **The default on-device chat models failed every other turn.** Qwen3.5 0.8B, 2B and 4B use recurrent layers whose memory can't be rewound to an arbitrary point. The engine ignored that, so every second message ended in \"DECODE_FAILED\", and the next one re-read the whole conversation. The engine now keeps snapshots of that memory (after the system prompt, and near the end of each prompt) and resumes from the newest usable one. Replies are identical to a fresh run.\n\n## Faster\n- **Follow-up replies start in well under a second.** The conversation already processed is reused, so the model reads only your new message. On a Mac GPU with a 3,000-token agent prompt, the second turn now starts in about 0.1 s instead of failing or re-reading for 1–2 s. On CPU, 5–8 s per turn becomes 0.1–0.5 s.\n- **New chats with the same agent reuse its system prompt and tools**, so the first reply comes sooner too.\n- **The model loads when you open a chat**, while you type, instead of when you press Send. It holds off while an image, audio or dictation job runs.\n- **Text appears sooner:** tokens are shown as soon as they're sampled, and the first words up to two tokens earlier.\n\n## Stop means stop\n- Stop while the model reads your prompt now takes effect in milliseconds (it could take over 7 s on CPU).\n- Stop during model loading cancels the load.\n- Android: a Stop pressed while a reply was waiting or loading could be lost, so the phone generated a full answer for nobody. A finished reply's Stop could also cancel the next one. Each reply is now stopped on its own.\n\n## Files\n- `autobot-1.6.3-release.apk`: signed release (`ai.wckd.autobot`, arm64-v8a, Android 14+). Signer certificate SHA-256 `9a1378acf9587885e7920355558c85a1ec0e89304f58c153feebf90fdee7f3f1`.\n- `autobot-1.6.3-debug.apk`\n- `autobot-1.6.3-mapping.txt`: R8 mapping, for reading crash reports\n- `SHA256SUMS.txt`\n\niOS: TestFlight build 1.6.3.",
+        "assets": [
+          {
+            "name": "autobot-1.6.3-debug.apk",
+            "size": 128424126,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.3/autobot-1.6.3-debug.apk"
+          },
+          {
+            "name": "autobot-1.6.3-mapping.txt",
+            "size": 83418233,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.3/autobot-1.6.3-mapping.txt"
+          },
+          {
+            "name": "autobot-1.6.3-release.apk",
+            "size": 80645505,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.3/autobot-1.6.3-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.3/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.6.2",
+        "name": "Autobot 1.6.2",
+        "published": "2026-10-16T18:44:27Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.2",
+        "prerelease": false,
+        "body": "On-device image generation fixed for Local Dream NPU models, sturdier downloads and engines, safer agents, pixel-exact dots, and much less text on iPhone.\n\n## Fixed: image generation on Snapdragon (Android)\n- **NPU image models now run.** A phone whose only image models were Local Dream / xororz NPU packages (SD 1.5, SDXL, Illustrious and others) never got a \"This phone\" image backend, so none of them could be used. They now appear in Imagine and Studio.\n- **Builds picked like Local Dream does.** Snapdragon 8 Elite Gen 5 now gets the 8gen2 builds (SDXL: 8gen3), matching Local Dream. If you installed an NPU upscaler before, reinstall it so you get the right build.\n- **SDXL uses less memory.** Only the model in use stays loaded. SDXL frees its text encoders before loading the UNet, and the VAE encoder only loads for img2img and inpainting.\n- **Clear errors.** A failure now names the stage (loading, text encoder, UNet) and quotes the engine's own message. Models › Compute › Report includes a live NPU check: how far the NPU setup got, the runtime version, the chip's library, and a test load of your smallest NPU model. If something still fails, copy that report and send it.\n\n## Downloads and engines (Android)\n- A cancelled download no longer comes back after the app is killed. Pause and cancel take effect at once, even on a stalled connection.\n- Resuming a file that changed on the server restarts it cleanly instead of splicing two versions together.\n- A disk that fills up pauses with a storage message. Gated Hugging Face models tell you to sign in and accept the terms.\n- Models whose files were deleted outside the app are detected and offered for re-download (only the missing files).\n- A crashed engine is released and restarted cleanly. Cancelling during model load now works. Broken or wrong model files are named before loading.\n- Tapping a Whisper model opens voice mode.\n\n## Agents (both platforms)\n- Every tool that can reach the network is checked for private data, and an approval prompt can no longer override a refusal.\n- Approvals cancelled midway are logged correctly. Replies the model cut short are no longer retried as empty.\n- Privacy receipts list every model your data went to, including subagents and summaries.\n- Studio remote runs time out and cancel properly.\n\n## Look and feel\n- **Pixel-exact dots (both platforms).** Bars, loaders, living cards and bac",
+        "assets": [
+          {
+            "name": "autobot-1.6.2-debug.apk",
+            "size": 128395046,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.2/autobot-1.6.2-debug.apk"
+          },
+          {
+            "name": "autobot-1.6.2-mapping.txt",
+            "size": 83386264,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.2/autobot-1.6.2-mapping.txt"
+          },
+          {
+            "name": "autobot-1.6.2-release.apk",
+            "size": 80632429,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.2/autobot-1.6.2-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.2/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.6.1",
+        "name": "Autobot 1.6.1",
+        "published": "2026-10-16T14:55:42Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.1",
+        "prerelease": false,
+        "body": "A reliability release for iPhone: no more waiting forever, faster Stable Diffusion, and clear messages whenever something is set up wrong.\n\n## Fixed (iPhone)\n- **Panic wipe could crash partway through.** Shutting down the agent called back on the wrong thread and stopped the app. Fixed.\n- **No more endless waits.** Two places that could wait forever after a cancelled download or request now always finish. Testing a provider or an MCP server now gives up after 30 s, and testing a ComfyUI server after 20 s, with \"No answer from <host>\" instead of a long spinner.\n- **Stable Diffusion 2.1 is faster.** On-device image generation now uses the backend your Compute benchmark picked instead of ignoring it. Memory settings are tuned per device: models stay loaded on 8 GB+ phones and load stage by stage on smaller ones.\n- **Multi-file downloads** no longer re-download finished files after a later file fails, and a disk that fills up mid-download is reported as a storage problem.\n- **Tells you what's wrong.**\n  - The chat shows a banner with a fix button when there's no provider, Offline mode is on, a cloud provider has no API key, or the on-device model is missing.\n  - Hugging Face and Civitai search say why a list is empty: Offline mode (with a shortcut to Privacy Center), a refused token, an error, or no results.\n  - Missing voice and audio models say where to get them.\n- Counts read properly (\"1 session\", not \"1 SESSIONS\"), model rows show one size, and Studio number fields keep what you type (\"-\", \"1.\", or clearing the field).\n- Stopping read-aloud also stops the sentence being synthesised.\n\n## Under the hood\n- 58 new iOS tests (371 app tests, 51 engine tests) covering downloads, running models, the agent bridge, and error and empty states. Every async test now has a time limit.\n\n## Files\n- `autobot-1.6.1-release.apk`: signed release (`ai.wckd.autobot`, arm64-v8a, Android 14+). Signer certificate SHA-256 `9a1378acf9587885e7920355558c85a1ec0e89304f58c153feebf90fdee7f3f1`. No Android changes since 1.6.0. Android fixes come in the next release.\n- `autobot-1.6.1-debug.apk`\n- `autobot-1.6.1-mapping.txt`: R8 mapping, for reading crash reports\n- `SHA256SUMS.txt`\n\niOS: TestFlight build 1.6.1.",
+        "assets": [
+          {
+            "name": "autobot-1.6.1-debug.apk",
+            "size": 128192678,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.1/autobot-1.6.1-debug.apk"
+          },
+          {
+            "name": "autobot-1.6.1-mapping.txt",
+            "size": 82782667,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.1/autobot-1.6.1-mapping.txt"
+          },
+          {
+            "name": "autobot-1.6.1-release.apk",
+            "size": 80581273,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.1/autobot-1.6.1-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.1/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.6.0",
+        "name": "Autobot 1.6.0",
+        "published": "2026-10-16T13:28:21Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.0",
+        "prerelease": false,
+        "body": "A Creative Studio for images, audio and video, a calmer and lighter motion language, and a full performance and bug pass so the app feels quick again on both platforms.\n\n## New\n- **Creative Studio.** A focused mode for making things. It has rooms for image, audio and video, a job queue that keeps going while you work, and a library of everything you've made with its prompts and settings. You get more control: seed, steps, guidance and size, plus reusable prompt snippets.\n- **On-device audio.** Stable Audio Open Small generates sound effects and short music clips on the phone. Powered by Stability AI.\n- **Workflows.** Connect a ComfyUI server you run yourself (the connection goes through the kill switch and the network audit). Autobot detects each workflow's inputs and turns them into simple forms. The agent can also run them through a new `run_workflow` tool.\n- **Ink motion v3.**\n  - Progress bars are now a row of dots. An empty bar is empty, and dots grow bigger as it fills.\n  - \"Working\" is a travelling wave of swelling dots.\n  - Hero cards and empty states sit on a slow, gently breathing halftone field.\n  - The animations use one shared clock per tier, are drawn only (they never trigger a re-render), stop when idle or on Low Power/Battery Saver, and turn off with Reduce Motion.\n\n## Faster\n- **iPhone:**\n  - A streaming frame now takes 1.2 ms instead of 5.6 ms.\n  - The data sent for each streamed update dropped from about 520 KB to under 1 KB, because only the new text is sent.\n  - Chat state is split, the message list is memoized, and storage work runs in the background.\n- **Android:**\n  - A streaming chat recomposes once instead of on every token.\n  - Frame time dropped from 42 ms to 24.5 ms.\n  - Session projection is incremental, and providers are cached.\n  - MCP connections pause while the app is in the background.\n- **Both:** at most four chats keep a live agent in memory. Approvals are matched exactly to the tool call that asked for them.\n\n## Privacy\n- **ONNX Runtime telemetry removed (Android).** The ONNX Runtime library added a component that sent usage pings around the kill switch and loaded a 34 MB library into every process at startup. Autobot now strips it out.\n\n## Smaller\n- The Android release APK is code-minified with R8: 80.6 MB instead of 110.5 MB. A mapping file ships with each release so crash reports can still be read.\n\n## Fixed\n- Android",
+        "assets": [
+          {
+            "name": "autobot-1.6.0-debug.apk",
+            "size": 128192678,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.0/autobot-1.6.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.6.0-mapping.txt",
+            "size": 82782667,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.0/autobot-1.6.0-mapping.txt"
+          },
+          {
+            "name": "autobot-1.6.0-release.apk",
+            "size": 80581273,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.0/autobot-1.6.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 274,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.0/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.5.0",
+        "name": "Autobot 1.5.0",
+        "published": "2026-10-15T20:20:15Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.5.0",
+        "prerelease": false,
+        "body": "Privacy you can see, and a much sturdier app. Every answer now carries a receipt, private data can't slip out through tools, your documents become searchable on the phone, and a full crash and freeze review is fixed on both platforms.\n\n## New\n- **Privacy receipts.** Under every answer: \"on device\", or which hosts were contacted, bytes out, route and the model's data policy. Tap for the full receipt. Stored with the chat, never sent anywhere.\n- **Taint tracking.** If the agent tries to send something private (memory notes, file contents, numbers from your images) through a web fetch, search or MCP tool, it must ask — even in full-access mode — and the card highlights exactly what would leave.\n- **Private vault** (Settings › Vault). Add notes, text, PDFs (and photos with on-device OCR on iPhone); they're embedded on the phone (Qwen3-Embedding, llama.cpp), encrypted and searchable by you and by the agent. Never uploaded. Off by default.\n- **Undo for agents.** Every file change the agent makes shows a diff and can be undone per step or per turn (and redone). A \"Files changed\" sheet lists everything.\n- **Chat organisation.** Rename, pin, folders, archive, search inside messages, swipe to delete with undo, multi-select, sorting and date groups. Folders and pins travel in `.autobot` backups.\n- **Ask Autobot from anywhere.** iPhone: Shortcuts/Siri, Action button, share sheet, widgets, Control Center voice control. Android: share target, text-selection \"Ask Autobot\", Quick Settings voice tile, launcher shortcuts, widget. All behind the app lock; only your own Shortcut can send a prompt.\n- **Downloads that keep going.** Android uses user-initiated transfer jobs (survive leaving or swiping the app, no 6-hour limit); iPhone relaunches in the background to verify and continue the queue. New downloads panel with speed, ETA, queue and why something waits; optional Wi-Fi only (Android).\n- **Ink motion v2.** Ink-dot loaders everywhere, a progress bar with determinate / sweeping / paused / failed states, a quiet drifting halftone paper behind empty screens and the lock screen, out-of-register screen transitions and dissolving rows. Light on battery (≤30 fps, 10 fps ambient, stops when idle) and off with Reduce Motion.\n\n## Fixed\n- A chat could crash every time it was opened after an on-device model reused a tool-call id (both apps).\n- Image generation, chat, speech and voice m",
+        "assets": [
+          {
+            "name": "autobot-1.5.0-debug.apk",
+            "size": 125723871,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.5.0/autobot-1.5.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.5.0-release.apk",
+            "size": 79943625,
+            "downloads": 3,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.5.0/autobot-1.5.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 182,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.5.0/SHA256SUMS.txt"
+          }
+        ]
+      },
+      {
+        "tag": "v1.4.2",
+        "name": "Autobot 1.4.2",
+        "published": "2026-10-15T17:01:05Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.4.2",
+        "prerelease": false,
+        "body": "Talk to it, hear it, watch it print. Voice mode, a neural voice that runs on the phone, a new motion language, and OpenCode Go support.\n\n## New\n- **Voice mode** (VOICE in the chat bar). Tap to talk: whisper transcribes on the phone and sends; the answer is read aloud when the turn ends. Tap while it speaks to interrupt. Optional hands-free mode stops listening when you go quiet. Approvals are announced, never auto-approved.\n- **Kokoro neural voice** (Models › voice). A natural-sounding voice that runs entirely on the phone: ONNX on Android, Core ML on iPhone. Pronunciation uses Kokoro's own open dictionaries; nothing is sent anywhere. Without it, read-aloud uses the phone's offline voices only.\n- **Ink motion.** While an image generates, the halftone plate flows and fills; previews develop in along the flow; the finished image prints in with the red plate settling into register. Steps stamp in, the approval card arrives out of register, thinking shows as rippling dots. Capped at 30 fps, paused when idle or off screen, and off with Reduce Motion / animations disabled.\n- **OpenCode Go** as a provider: one key, ~30 models. Each model shows its data policy (no retention, kept N days, or trains on your prompts — those need confirmation and are never picked automatically). A **helper model** per provider runs subagents and summaries to save quota. When a 5-hour or weekly limit is used up, Autobot says when it resets, and can fall back to the helper or on-device model if you allow it.\n\n## Fixed\n- Android read-aloud could use a network voice; it now only uses voices installed on the phone.\n- iPhone read-aloud was silent right after dictation.\n\n## Files\n- `autobot-1.4.2-release.apk`: signed release (`ai.wckd.autobot`, arm64-v8a, Android 14+). Signer certificate SHA-256 `9a1378acf9587885e7920355558c85a1ec0e89304f58c153feebf90fdee7f3f1`.\n- `autobot-1.4.2-debug.apk`\n- `SHA256SUMS.txt`\n\niOS: TestFlight build 1.4.2 (10).",
+        "assets": [
+          {
+            "name": "autobot-1.4.2-debug.apk",
+            "size": 123969050,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.4.2/autobot-1.4.2-debug.apk"
+          },
+          {
+            "name": "autobot-1.4.2-release.apk",
+            "size": 79466381,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.4.2/autobot-1.4.2-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 182,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.4.2/SHA256SUMS.txt"
+          }
+        ]
+      }
+    ],
+    "checksums": "b9e3232671b95e56a78f243b6cffd571a315808d9879471f03553064f932d512 *autobot-1.10.0-debug.apk\na5446a867ab1ddedc074b424fb237e621ac87671004a07b398924c9811e04766 *autobot-1.10.0-release.apk\n9cf124cea487b46d789c55e9bc7dc36dc6c24bd3f9d5e868196c236669525277 *autobot-1.10.0-mapping.txt",
+    "totalDownloads": 70
+  },
+  "invincible": {
+    "name": "invincible",
+    "description": "",
+    "stars": 0,
+    "forks": 0,
+    "license": "MIT",
+    "pushed": "2026-10-19T17:38:30Z",
+    "latest": {
+      "tag": "v0.0.6",
+      "name": "v0.0.6",
+      "published": "2026-10-19T17:46:22Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.6",
+      "prerelease": false,
+      "body": "**`autobot code`: a coding agent in your terminal**, built to work on real projects alongside Claude Code or opencode. Every model call goes through your own gateway, so it is receipted and recorded in the audit log.\n\n```sh\ncd ~/src/my-project\nautobot code --model deepseek --approvals edits\n```\n\n- **The terminal**\n  - Answers stream in as Markdown.\n  - Each tool call is one line with a short result: `⏺ Run cargo test ⎿ … [exit code 0]`, `⏺ Search fn main ⎿ 3 matches in 2 files`.\n  - Every change is shown as a colored diff before it's made.\n  - The agent's task list is drawn as checkboxes.\n  - A spinner shows what the model is thinking.\n  - Approvals take one key: `y`, `a` (always, for this session) or `n`.\n  - **Ctrl+C** stops a turn, and the conversation stays usable.\n  - The prompt has history and completion (slash commands and `@` paths); **Alt+Enter** starts a new line.\n- **The project**\n  - `AGENTS.md`, `CLAUDE.md` or `.autobot/AGENTS.md` are added to the agent's instructions.\n  - In a git repository it works like a careful engineer: it never commits unless asked.\n  - There is one conversation per project.\n- **New tools**\n  - `search`: regular expressions over the files, respecting `.gitignore`.\n  - `find_files`: find files by glob.\n  - `read_file` can read long files in parts.\n  - `todo`: the agent's task list.\n  - Tool results grow with the model's context, up to 96 KiB.\n- **Control**\n  - New approval mode, `edits`: changes inside the project run without asking; commands still ask.\n  - `/undo` puts back every file the last turn changed, takes the turn back, and returns its request for you to edit.\n  - `@file` attaches a file.\n  - `!command` runs a command yourself and passes its output to your next message.\n  - `/model` lists or switches models. Picking a cloud model allows cloud use, and the context sent per call grows to match.\n  - Also: `/approvals`, `/private`, `/tools`, `/context`, `/diff`, `/fork`, `/resume`, `/status`, `/memory`, `/skills`, `/team`, `/board`.\n- **Streaming:** answers stream from the gateway, including streamed tool calls (`[agent] stream`, on by default).\n- **Driven by other tools:** `autobot run -C DIR --model M --approvals edits --cloud --json \"task\"`.\n  - `--cloud` approves cloud use for that run, and nothing else.\n  - `--json` prints every event as a JSON line: text, tool calls, outputs, diffs and receipts.\n- **Trajectories",
+      "assets": [
+        {
+          "name": "invincible-linux-arm64.tar.gz",
+          "size": 7324113,
+          "downloads": 1,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/invincible-linux-arm64.tar.gz"
+        },
+        {
+          "name": "invincible-linux-x64.tar.gz",
+          "size": 8039819,
+          "downloads": 1,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/invincible-linux-x64.tar.gz"
+        },
+        {
+          "name": "invincible-macos-arm64.tar.gz",
+          "size": 6960314,
+          "downloads": 2,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/invincible-macos-arm64.tar.gz"
+        },
+        {
+          "name": "SHA256SUMS",
+          "size": 286,
+          "downloads": 2,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/SHA256SUMS"
+        },
+        {
+          "name": "SHA256SUMS.sig",
+          "size": 314,
+          "downloads": 2,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/SHA256SUMS.sig"
+        }
+      ]
+    },
+    "releases": [
+      {
+        "tag": "v0.0.6",
+        "name": "v0.0.6",
+        "published": "2026-10-19T17:46:22Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.6",
+        "prerelease": false,
+        "body": "**`autobot code`: a coding agent in your terminal**, built to work on real projects alongside Claude Code or opencode. Every model call goes through your own gateway, so it is receipted and recorded in the audit log.\n\n```sh\ncd ~/src/my-project\nautobot code --model deepseek --approvals edits\n```\n\n- **The terminal**\n  - Answers stream in as Markdown.\n  - Each tool call is one line with a short result: `⏺ Run cargo test ⎿ … [exit code 0]`, `⏺ Search fn main ⎿ 3 matches in 2 files`.\n  - Every change is shown as a colored diff before it's made.\n  - The agent's task list is drawn as checkboxes.\n  - A spinner shows what the model is thinking.\n  - Approvals take one key: `y`, `a` (always, for this session) or `n`.\n  - **Ctrl+C** stops a turn, and the conversation stays usable.\n  - The prompt has history and completion (slash commands and `@` paths); **Alt+Enter** starts a new line.\n- **The project**\n  - `AGENTS.md`, `CLAUDE.md` or `.autobot/AGENTS.md` are added to the agent's instructions.\n  - In a git repository it works like a careful engineer: it never commits unless asked.\n  - There is one conversation per project.\n- **New tools**\n  - `search`: regular expressions over the files, respecting `.gitignore`.\n  - `find_files`: find files by glob.\n  - `read_file` can read long files in parts.\n  - `todo`: the agent's task list.\n  - Tool results grow with the model's context, up to 96 KiB.\n- **Control**\n  - New approval mode, `edits`: changes inside the project run without asking; commands still ask.\n  - `/undo` puts back every file the last turn changed, takes the turn back, and returns its request for you to edit.\n  - `@file` attaches a file.\n  - `!command` runs a command yourself and passes its output to your next message.\n  - `/model` lists or switches models. Picking a cloud model allows cloud use, and the context sent per call grows to match.\n  - Also: `/approvals`, `/private`, `/tools`, `/context`, `/diff`, `/fork`, `/resume`, `/status`, `/memory`, `/skills`, `/team`, `/board`.\n- **Streaming:** answers stream from the gateway, including streamed tool calls (`[agent] stream`, on by default).\n- **Driven by other tools:** `autobot run -C DIR --model M --approvals edits --cloud --json \"task\"`.\n  - `--cloud` approves cloud use for that run, and nothing else.\n  - `--json` prints every event as a JSON line: text, tool calls, outputs, diffs and receipts.\n- **Trajectories",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 7324113,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 8039819,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 6960314,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.6/SHA256SUMS.sig"
+          }
+        ]
+      },
+      {
+        "tag": "v0.0.5",
+        "name": "v0.0.5",
+        "published": "2026-10-19T14:43:31Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.5",
+        "prerelease": false,
+        "body": "The Autobot Agent gets safer and steadier with nobody watching, easier to steer, and measurable on your own work.\n\n## New\n- **A sandbox for unattended commands.** Scheduled tasks, board work and phone recipes can write only in the working directory and temporary folders: `sandbox-exec` on macOS, bubblewrap on Linux. With no sandbox available, those commands are refused rather than run unconfined.\n  - `install.sh` now installs bubblewrap on Linux.\n  - `autobot doctor` checks the sandbox works.\n  - `[agent] sandbox = \"always\"` confines every command, interactive ones too; `\"off\"` turns the sandbox off.\n- **Steer while it works.** A message sent mid-turn, from Telegram or `POST …/steer`, is taken in before the next step.\n- **Heartbeat.** The agent works through `~/.autobot/HEARTBEAT.md` every 30 minutes and messages you only when something needs you.\n- **Fork a conversation:** `POST …/sessions/{id}/fork`.\n- **`autobot eval`.** Agent tasks run for real in throwaway directories and are checked by rule; `evals/agent.jsonl` and `evals/agent-hard.jsonl` are included. On this machine:\n\n  | Model | agent.jsonl | agent-hard.jsonl |\n  |---|---|---|\n  | Qwen3.5 4B | 16/16 | 8/10 |\n  | DeepSeek V3 | 16/16 | 10/10 |\n\n- **`[agent] tools`.** Choose the agent's tool groups. A shorter list made Qwen3.5 4B twice as fast at the same pass rate.\n- **Team members keep their own memory.**\n- **The team board in the app:** see Autobot#10.\n\n## Install\n\n```sh\ncurl -fsSL https://raw.githubusercontent.com/wckdboy/invincible/main/install.sh | sh\n```",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 6800141,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.5/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 7469661,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.5/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 6450654,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.5/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.5/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.5/SHA256SUMS.sig"
+          }
+        ]
+      },
+      {
+        "tag": "v0.0.4",
+        "name": "v0.0.4",
+        "published": "2026-10-19T13:21:31Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.4",
+        "prerelease": false,
+        "body": "The Autobot Agent becomes a team, and gets the web, MCP and a scheduler of its own.\n\n## Fix\n\n- **`write_file` could leave a file empty in 0.0.3** (a write that was never flushed). If you use 0.0.3, update.\n\n## New in the Autobot Agent\n\n- **A team of agents.** Define members in `config.toml`. Each has:\n  - its own instructions;\n  - the tool groups you give it;\n  - optionally its own model.\n\n  The agent hands them work with `delegate`:\n  - Several hand-offs in one reply run at the same time, up to `[team] max_parallel`.\n  - Each member starts fresh, with only the goal and context it was handed.\n  - Members can't delegate further.\n  - Their approvals come to you labelled `[coder] Approve? …`, and their receipts join the turn's.\n- **Teams on Telegram.** In a group, the bot answers you when you @mention it or reply to it. Only you can press its approval buttons, and the rest of the group is ignored. A member with a bot of its own (`telegram_token_file`) posts its own progress and answers, so the team shows up as bots working together.\n- **Its own scheduler.**\n  - `schedule_task`, `list_schedules` and `cancel_schedule`, including one-off times (`in 10m`, `at 18:30`). The answer comes back to the chat that asked.\n  - It never touches the system crontab.\n  - `/cron`, `/actions`, `/memory` and `/skills` in Telegram.\n- **`web_fetch`:** a page as text, through the gateway.\n  - It follows the node's network mode: offline means no fetch, and Tor carries it when set.\n  - HTTPS only; receipted and in the audit log.\n  - It asks first; unattended runs may only fetch allowlisted `https://` sites.\n- **MCP servers (stdio):** their tools become the agent's, each call approved and logged. Unattended runs need `mcp:<server>/<tool>` in the allowlist.\n- **`edit_file`:** replace an exact piece of a file.\n- **Context compaction:** what leaves the context window is summarized through the gateway, with a receipt, not dropped.\n- **`propose_skill`:** the agent writes down a procedure that worked. It's used only after you accept it, with `autobot skills accept`.\n- **`search_sessions`:** find what was said or decided in earlier conversations.\n\n## Gateway\n\n- `POST /v1/fetch`, loopback only (spec/receipts.md).\n- Cron accepts `CRON_TZ=UTC` and `once <time>` schedules.\n- Recipe schedules from the phone collect their runs with receipts (spec/agent.md).\n\n## Install\n\n```sh\ncurl -fsSL https://raw.g",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 6169542,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.4/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 6744697,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.4/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 5825191,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.4/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.4/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.4/SHA256SUMS.sig"
+          }
+        ]
+      },
+      {
+        "tag": "v0.0.3",
+        "name": "v0.0.3",
+        "published": "2026-10-19T11:10:39Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.3",
+        "prerelease": false,
+        "body": "Invincible Gateway and the Autobot Agent, one install.\n\n## New\n\n- **Audit log** ([spec/audit.md](https://github.com/wckdboy/invincible/blob/main/spec/audit.md)). Every request the node answered is logged with:\n  - its signed receipt;\n  - when it was answered;\n  - who asked: `local`, or a paired device by name.\n\n  Each entry carries the hash of the one before it, so a removed or edited entry breaks the chain.\n  - `invincible audit` shows the log; `--summary` adds totals per model and per host reached; `--verify` checks the chain and every signature.\n  - Paired devices read it with `GET /v1/audit`.\n  - No telemetry: nothing about your requests leaves the node unless you send it.\n- **Agent action log.** Every command, file write, outside read and cloud send the agent asked for is logged, with whether it ran and who decided: the rules, an earlier \"always\", or you on the CLI, the app or Telegram.\n  - `autobot actions` shows it, and the app reads it through `GET /v1/agent/actions`.\n- **Memory and skills.**\n  - The agent keeps short facts with `remember`, and every later conversation starts with them. `autobot memory` lists them; `--forget` removes one.\n  - Skills are Markdown how-to notes in `~/.autobot/skills/`, which the agent reads when one fits. `autobot skills` lists them.\n  - The app sees and manages both.\n- **Recipes from the phone.** An Autobot recipe can run on your node: always on, no 8-minute limit, offered only its tool groups.\n  - The phone sends it in UTC (`CRON_TZ=UTC` is new in schedules), starts it with `POST …/run`, and collects each run's whole answer and receipt ids with `GET …/runs?after=`.\n  - Receipts older than the in-memory 4096 are found in the audit log.\n- **Evals** ([spec/evals.md](https://github.com/wckdboy/invincible/blob/main/spec/evals.md)): `invincible eval` runs a task file against models the gateway serves, local or cloud, and checks every answer by rule. Thinking models answer directly unless you pass `--thinking`.\n\n## Security fixes\n\nThese came from an internal adversarial review of remote access and the agent. It is not yet the independent review.\n\n- **`invincible tunnel` needs the machine's token and a loopback `Host`.** Before, a web page open on the paired machine could reach the node through the tunnel as that device (cross-site requests, DNS rebinding). Update both machines and pass the token (`invincible token`) to whate",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 5914830,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 6462187,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 5573818,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/SHA256SUMS.sig"
+          }
+        ]
+      },
+      {
+        "tag": "v0.0.2",
+        "name": "v0.0.2",
+        "published": "2026-10-18T22:13:58Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.2",
+        "prerelease": false,
+        "body": "**Full Changelog**: https://github.com/wckdboy/invincible/compare/v0.0.1...v0.0.2",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 5575604,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 6079779,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 5235131,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/SHA256SUMS.sig"
+          }
+        ]
+      },
+      {
+        "tag": "v0.0.1",
+        "name": "v0.0.1",
+        "published": "2026-10-18T21:28:19Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.1",
+        "prerelease": false,
+        "body": "**Full Changelog**: https://github.com/wckdboy/invincible/commits/v0.0.1",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 5573211,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.1/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 6080816,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.1/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 5234664,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.1/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 2,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.1/SHA256SUMS"
+          }
+        ]
+      }
+    ],
+    "checksums": "1f5444f9e5693008bf4bdf1a478adce22a499929f24d2f1c267f3583a71ea996  invincible-linux-arm64.tar.gz\nf8b2c4b0d41740b9c937782c9c4c17162ab1161a28f7277b0f280ece6aeb6ac1  invincible-linux-x64.tar.gz\n162a3114d2a6bb663d685b4fdb58f2362e4c3a8cc41a5ab5682024e5e4a90e4c  invincible-macos-arm64.tar.gz",
+    "totalDownloads": 29
+  }
+}

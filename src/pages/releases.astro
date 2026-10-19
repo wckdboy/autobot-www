@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import Releases from '../components/Releases.astro';
+import Ticker from '../components/Ticker.astro';
+import { meta, releases } from '../data/site';
+import { fmtDate, v } from '../lib/format';
+
+const key = process.env.SITE_KEY || 'autobot';
+const a = releases.autobot;
+const i = releases.invincible;
+
+const archive = (repo: 'autobot' | 'invincible') => (repo === 'autobot' ? a : i);
+const active = key === 'sovware' ? null : archive(key as 'autobot' | 'invincible');
+const version = active?.latest?.tag;
+---
+<Base
+  path="/releases"
+  title="Releases"
+  description={`Every public release of ${key === 'sovware' ? 'Autobot and Invincible' : meta.name}, with files, notes and verification.`}
+>
+  <header class="page-head">
+    <div class="shell">
+      <div class="page-head__meta">
+        <span class="eyebrow">Archives</span>
+        <span class="pill">Baked {fmtDate(releases.generatedAt)}</span>
+        {version && <span class="pill pill--red">Latest {v(version)}</span>}
+      </div>
+      <h1>Every <em>release.</em><br />Every file.</h1>
+      <p class="lede">
+        {key === 'sovware'
+          ? 'The complete public history for Autobot and Invincible Gateway: notes, artifacts, sizes and checksums. Nothing here is generated on the client — the page was built with the data it shows.'
+          : 'The complete public history, with notes, artifacts and checksums. Every release is dated, signed where it can be, and linked to its source. This page is rebuilt from GitHub; it never fetches at runtime.'}
+      </p>
+      <div class="page-head__aside">
+        <div>Autobot {v(a.latest.tag)}</div>
+        <div>Invincible {v(i.latest.tag)}</div>
+        <div>No client-side calls</div>
+      </div>
+    </div>
+  </header>
+
+  <Ticker
+    items={[
+      `Autobot ${v(a.latest.tag)}`,
+      `Invincible ${v(i.latest.tag)}`,
+      'SHA-256 published',
+      'Signed checksums',
+      'Reproducible builds',
+      'Release notes',
+      'Open source',
+      'No accounts',
+    ]}
+    speed={54}
+  />
+
+  {key === 'sovware' ? (
+    <div class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head__meta">
+            <span class="section-head__num">A</span>
+            <span class="eyebrow no-rule">Autobot · Android + iOS</span>
+          </div>
+          <div>
+            <h2>Autobot <em>{v(a.latest.tag)}</em></h2>
+            <p>
+              Signed APKs, mapping files and SHA256SUMS. Each version moves together across Android
+              and iOS. {a.releases.length} public releases in this build.
+            </p>
+          </div>
+        </div>
+        <Releases releases={a.releases} repo="autobot" openFirst={false} />
+      </div>
+    </div>
+
+    <div class="section section--rule">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head__meta">
+            <span class="section-head__num">B</span>
+            <span class="eyebrow no-rule">Invincible · macOS + Linux</span>
+          </div>
+          <div>
+            <h2>Invincible <em>{v(i.latest.tag)}</em></h2>
+            <p>
+              Static binaries, signed SHA256SUMS and build attestations. {i.releases.length} public
+              releases in this build.
+            </p>
+          </div>
+        </div>
+        <Releases releases={i.releases} repo="invincible" openFirst={false} />
+      </div>
+    </div>
+  ) : (
+    <div class="section">
+      <div class="shell">
+        <div class="split">
+          <div class="split__aside">
+            <div class="aside-rule">
+              <h3>Read first</h3>
+              <p class="section-lede">
+                Each entry opens with its notes. The checksum file is the one to verify; the binary
+                is only as good as the hash you compare it to.
+              </p>
+              <div class="hero__actions">
+                <a class="btn btn--ghost" href="/install">Install guide</a>
+                <a class="btn btn--ghost" href="/verify">Verify</a>
+              </div>
+            </div>
+            <div class="aside-rule mt-3">
+              <h3>Totals</h3>
+              <div class="kv"><span>Releases</span><b>{active?.releases.length ?? 0}</b></div>
+              <div class="kv"><span>Latest</span><b>{v(active?.latest.tag)}</b></div>
+              <div class="kv"><span>Assets</span><b>{active?.latest.assets.length ?? 0}</b></div>
+              <div class="kv"><span>License</span><b>{active?.license}</b></div>
+            </div>
+          </div>
+          <div class="split__main">
+            <Releases releases={active?.releases ?? []} repo={key === 'invincible' ? 'invincible' : 'autobot'} />
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+</Base>

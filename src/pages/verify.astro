@@ -1,0 +1,247 @@
+---
+import Base from '../layouts/Base.astro';
+import Terminal from '../components/Terminal.astro';
+import Icon from '../components/Icon.astro';
+import { meta, releases, install } from '../data/site';
+import { fmtBytes, fmtDate, v } from '../lib/format';
+
+const key = process.env.SITE_KEY || 'autobot';
+const a = releases.autobot;
+const i = releases.invincible;
+const apk = a.latest.assets.find((x) => /release\.apk$/.test(x.name));
+const sumsA = a.latest.assets.find((x) => x.name === 'SHA256SUMS.txt');
+const sumsI = i.latest.assets.find((x) => x.name === 'SHA256SUMS');
+const sigI = i.latest.assets.find((x) => /\.sig$/.test(x.name));
+const apkHash = a.checksums?.split('\n').find((l) => l.includes('release.apk'))?.split(/\s+/)[0];
+const cert = '9a1378acf9587885e7920355558c85a1ec0e89304f58c153feebf90fdee7f3f1';
+const keyLine = "invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo";
+---
+<Base
+  path="/verify"
+  title="Verify"
+  description={`Verify ${key === 'invincible' ? 'an Invincible release' : 'an Autobot download'}: hashes, signatures, attestations and the exact commands.`}
+>
+  <header class="page-head">
+    <div class="shell">
+      <div class="page-head__meta">
+        <span class="eyebrow">Supply chain</span>
+        <span class="pill pill--red">Check, don’t trust</span>
+      </div>
+      <h1>
+        {key === 'invincible' ? <>Do not trust<br /><em>the claim.</em></> : key === 'sovware' ? <>Check the bytes.<br /><em>Then run them.</em></> : <>Check the bytes.<br /><em>Then install.</em></>}
+      </h1>
+      <p class="lede">
+        {key === 'invincible'
+          ? 'Every Invincible release is built by CI, attested, and its checksums are signed with a key the installer pins. Here is how to check the archive, the signature and the record — by hand, with tools you already have.'
+          : key === 'sovware'
+            ? 'Autobot publishes APK hashes and a pinned signing certificate. Invincible publishes a signed SHA256SUMS, reproducible Linux builds and build attestations. Both are checkable without an account.'
+            : 'The Android APK is signed, and every release publishes SHA256SUMS.txt. Here is how to check the file you downloaded and the certificate that signed it, with one command each.'}
+      </p>
+    </div>
+  </header>
+
+  {key === 'sovware' ? (
+    <div class="section">
+      <div class="shell">
+        <div class="products">
+          <a class="product" href="https://autobot.sh/verify">
+            <div class="product__top"><span class="pill pill--red">APK</span><span class="product__index">01</span></div>
+            <div>
+              <h2 class="product__bm">Auto<em>bot</em></h2>
+              <p>SHA-256 of the release APK, the pinned signing certificate, and what each check proves.</p>
+            </div>
+            <span class="product__go">Verify the APK <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="product" href="https://invincible.sh/verify">
+            <div class="product__top"><span class="pill pill--red">Node</span><span class="product__index">02</span></div>
+            <div>
+              <h2 class="product__bm">Invin<em>cible</em></h2>
+              <p>Signed checksums, Sigstore attestations, reproducible Linux builds and hash-chained receipts.</p>
+            </div>
+            <span class="product__go">Verify a release <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  ) : key === 'invincible' ? (
+    <div class="shell"><div class="article">
+      <aside class="article__toc">
+        <h2>On this page</h2>
+        <a href="#release">Release</a>
+        <a href="#signature">Signature</a>
+        <a href="#attestation">Attestation</a>
+        <a href="#repro">Reproducible</a>
+        <a href="#script">Install script</a>
+        <a href="#receipts">Receipts</a>
+        <a href="#limits">Limits</a>
+      </aside>
+      <div class="article__body">
+        <section id="release">
+          <h2>1. Get the files.</h2>
+          <p>From the <a href={i.latest.url} rel="noopener">v{v(i.latest.tag)} release</a>: the archive for your platform, plus <code>SHA256SUMS</code> and <code>SHA256SUMS.sig</code>. The install script downloads the same files and performs these checks for you.</p>
+          <div class="scene-strip">
+            {i.latest.assets.filter((x) => x.name.endsWith('.tar.gz')).map((x) => (
+              <div><b>{x.name.replace('invincible-', '').replace('.tar.gz', '')}</b><span>{fmtBytes(x.size)} · static</span></div>
+            ))}
+          </div>
+        </section>
+
+        <section id="signature">
+          <h2>2. Verify the signature.</h2>
+          <p>The release key is pinned in <code>install.sh</code>. It signs SHA256SUMS; the archive must match the file. Nothing else needs to be trusted.</p>
+          <Terminal
+            title="ssh signature · no extra tooling"
+            command={`echo '${keyLine}' > allowed_signers`}
+            lines={[
+              { kind: 'dim', text: 'ssh-keygen -Y verify -f allowed_signers -I invincible-release \\' },
+              { kind: 'dim', text: '  -n invincible-release -s SHA256SUMS.sig < SHA256SUMS' },
+              { kind: 'dim', text: 'shasum -a 256 -c SHA256SUMS' },
+              { kind: 'ok', text: 'Good "invincible-release" signature for invincible-release' },
+              { kind: 'ok', text: 'invincible-linux-x64.tar.gz: OK' },
+            ]}
+            copyText={`echo '${keyLine}' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS`}
+          />
+          <p class="mono" style="font-size:9px;line-height:1.9;letter-spacing:.09em;color:var(--muted)">
+            Key: {keyLine}<br />
+            Signature asset: {sigI ? sigI.name : 'SHA256SUMS.sig'} · checksums: {sumsI ? sumsI.name : 'SHA256SUMS'}
+          </p>
+        </section>
+
+        <section id="attestation">
+          <h2>3. Check the provenance.</h2>
+          <p>The release workflow publishes a Sigstore build attestation. With the GitHub CLI signed in, the archive can be tied to the workflow and the commit that produced it.</p>
+          <Terminal
+            title="build provenance"
+            command="gh attestation verify invincible-linux-x64.tar.gz --repo wckdboy/invincible"
+            lines={[
+              { kind: 'ok', text: '✓ loaded attestation bundle' },
+              { kind: 'ok', text: '✓ verified build by release.yml' },
+            ]}
+            copyText="gh attestation verify invincible-linux-x64.tar.gz --repo wckdboy/invincible"
+          />
+        </section>
+
+        <section id="repro">
+          <h2>4. Know what “reproducible” means.</h2>
+          <p>Before publishing, the Linux x86_64 archive is built a second time on another machine. If the bytes differ, the workflow refuses to publish. To check it yourself, build the tagged commit from a clean source tree with the flags in <code>release.yml</code> and compare the archive.</p>
+          <p>Reproducibility is a property of the Linux build, not a promise about every platform. The macOS build is attested and signed but not claimed to be byte-reproducible.</p>
+        </section>
+
+        <section id="script">
+          <h2>5. The install script you actually run.</h2>
+          <p>This site serves a verbatim mirror of the upstream script at <code>/install.sh</code>. Its hash is recorded at build time, and the byte count is shown below. The command on the install page uses this domain, not raw.githubusercontent.</p>
+          <div class="inset">
+            <div class="kv"><span>Mirror</span><b>invincible.sh/install.sh</b></div>
+            <div class="kv"><span>SHA-256</span><b style="font-size:9px">{install.sha256}</b></div>
+            <div class="kv"><span>Bytes</span><b>{fmtBytes(install.bytes)}</b></div>
+            <div class="kv"><span>Fetched</span><b>{fmtDate(install.fetchedAt)}</b></div>
+            <div class="kv"><span>Upstream</span><b><a href="https://github.com/wckdboy/invincible/blob/main/install.sh" rel="noopener">main · install.sh ↗</a></b></div>
+          </div>
+        </section>
+
+        <section id="receipts">
+          <h2>6. The runtime record.</h2>
+          <p>The supply chain ends when the binary runs. From there, the node’s own records take over: every request gets an Ed25519-signed receipt, every receipt is chained into <code>audit.jsonl</code>, and <code>invincible audit --verify</code> checks both the chain and the signatures.</p>
+          <Terminal
+            title="runtime integrity"
+            command="invincible audit --verify"
+            lines={[
+              { kind: 'ok', text: 'chain intact · receipts verified' },
+              { kind: 'cmd', text: 'invincible audit --since 7d --summary' },
+            ]}
+            copyText="invincible audit --verify"
+          />
+        </section>
+
+        <section id="limits">
+          <h2>What verification does not prove.</h2>
+          <ul>
+            <li>It does not prove the code is free of bugs or malice. It ties the bytes to a key and a build.</li>
+            <li>Invincible v0.x has not had an independent security review. The project says so on its own pages.</li>
+            <li>A correct signature with a key you did not intend to trust proves only that the signer signed. Compare the key with the one pinned here and in the installer.</li>
+          </ul>
+        </section>
+      </div>
+    </div></div>
+  ) : (
+    <div class="shell"><div class="article">
+      <aside class="article__toc">
+        <h2>On this page</h2>
+        <a href="#hash">Hash</a>
+        <a href="#cert">Certificate</a>
+        <a href="#proves">What it proves</a>
+        <a href="#agent">The agent</a>
+        <a href="#limits">Limits</a>
+      </aside>
+      <div class="article__body">
+        <section id="hash">
+          <h2>1. Check the hash.</h2>
+          <p>Download the APK and <code>SHA256SUMS.txt</code> from the same release. Compare the line for the release APK. On macOS or Linux:</p>
+          <Terminal
+            title="sha-256"
+            command={`shasum -a 256 ${apk?.name ?? 'autobot-release.apk'}`}
+            lines={[
+              { kind: 'dim', text: apkHash ? `# expected ${apkHash}` : '# compare with the release’s SHA256SUMS.txt' },
+            ]}
+            copyText={`shasum -a 256 ${apk?.name ?? 'autobot-release.apk'}`}
+            note={['Windows: certutil -hashfile <file> SHA256', 'Compare the whole line']}
+          />
+          {sumsA && (
+            <p class="mono" style="font-size:9px;letter-spacing:.09em">
+              <a class="link" href={sumsA.url} rel="noopener">SHA256SUMS.txt for v{v(a.latest.tag)} ↗</a>
+            </p>
+          )}
+        </section>
+
+        <section id="cert">
+          <h2>2. Check the signer.</h2>
+          <p>Install <code>apksigner</code> from the Android SDK build-tools, then print the certificate the APK was signed with. The SHA-256 must match the fingerprint published in the repository.</p>
+          <Terminal
+            title="apk signature"
+            command={`apksigner verify --print-certs ${apk?.name ?? 'autobot-release.apk'}`}
+            lines={[
+              { kind: 'dim', text: `# Signer #1 certificate SHA-256 digest: ${cert.slice(0, 32)}…` },
+              { kind: 'dim', text: '# full value below' },
+            ]}
+            copyText={`apksigner verify --print-certs ${apk?.name ?? 'autobot-release.apk'}`}
+          />
+          <div class="inset">
+            <div class="kv"><span>Certificate</span><b>autobot-release-2026</b></div>
+            <div class="kv"><span>SHA-256</span><b style="font-size:9px;max-width:70%;overflow-wrap:anywhere">{cert}</b></div>
+            <div class="kv"><span>App ID</span><b>ai.wckd.autobot</b></div>
+            <div class="kv"><span>Platform</span><b>Android 14+ · arm64</b></div>
+          </div>
+        </section>
+
+        <section id="proves">
+          <h2>What each check proves.</h2>
+          <p>A matching hash proves the file is the one the release published. A matching certificate proves the APK was signed by the same key as earlier Autobot builds. Neither proves the code is free of bugs; both make a swapped or tampered download visible.</p>
+          <p>Versions move together: Android and iOS ship the same version and build number. If the release notes and the certificate disagree with the file, stop and use the repository’s copy.</p>
+        </section>
+
+        <section id="agent">
+          <h2>The agent’s script.</h2>
+          <p>The Autobot Agent is installed with Invincible Gateway. That script checks a signed <code>SHA256SUMS</code> against a pinned release key before installing anything, and verifies the Sigstore attestation when the GitHub CLI is signed in. The site serves a verbatim mirror; its hash is recorded.</p>
+          <div class="inset">
+            <div class="kv"><span>Command</span><b>curl -fsSL https://invincible.sh/install.sh | sh</b></div>
+            <div class="kv"><span>Mirror SHA-256</span><b style="font-size:9px">{install.sha256.slice(0, 32)}…</b></div>
+            <div class="kv"><span>Manual checks</span><b><a href="https://invincible.sh/verify" rel="noopener">invincible.sh/verify ↗</a></b></div>
+          </div>
+        </section>
+
+        <section id="limits">
+          <h2>What this does not claim.</h2>
+          <ul>
+            <li>The APK has not had an independent security audit.</li>
+            <li>A signature proves origin, not quality. Read the source if the guarantee matters.</li>
+            <li>Encryption at rest protects a locked device. It does not protect an unlocked phone in an attacker’s hands.</li>
+          </ul>
+          <div class="hero__actions">
+            <a class="btn btn--ghost" href="/privacy">Read the privacy model</a>
+            <a class="btn btn--ghost" href={meta.repo} rel="noopener"><Icon name="github" size={12} /> Source</a>
+          </div>
+        </section>
+      </div>
+    </div></div>
+  )}
+</Base>
