@@ -35,9 +35,9 @@ const configs: Record<SiteKey, SiteMeta> = {
     wordmark: 'AUTOBOT',
     domain: 'autobot.sh',
     origin: 'https://autobot.sh',
-    title: 'Autobot — private intelligence, on the metal',
+    title: 'Autobot — private AI on your phone',
     description:
-      'A private AI agent for Android and iOS. Chat, agents, images and voice run on the phone’s NPU, GPU and CPU. Offline by default, redacted before the cloud, a receipt for every answer.',
+      'An open-source AI agent for Android and iOS. Chat, agents, image generation and voice run on your device. Offline by default, redacted before the cloud, and a privacy receipt for every answer.',
     theme: 'paper',
     nav: [
       { label: 'System', href: '/#system' },
@@ -48,7 +48,7 @@ const configs: Record<SiteKey, SiteMeta> = {
     other: 'invincible',
     repo: 'https://github.com/wckdboy/autobot',
     license: 'Apache-2.0',
-    tagline: 'Private intelligence, on the metal.',
+    tagline: 'Private AI on the phone.',
     og: '/og/autobot.png',
   },
   invincible: {
@@ -57,10 +57,10 @@ const configs: Record<SiteKey, SiteMeta> = {
     wordmark: 'INVINCIBLE',
     domain: 'invincible.sh',
     origin: 'https://invincible.sh',
-    title: 'Invincible — the node you own',
+    title: 'Invincible — a node you own',
     description:
       'A self-hosted AI node for a desktop, GPU box or VPS. Serves open models behind OpenAI and Anthropic compatible APIs, routes by policy, signs every receipt, and keeps working when the cloud is gone.',
-    theme: 'ink',
+    theme: 'paper',
     nav: [
       { label: 'Why', href: '/#why' },
       { label: 'Tiers', href: '/#tiers' },
@@ -71,7 +71,7 @@ const configs: Record<SiteKey, SiteMeta> = {
     other: 'autobot',
     repo: 'https://github.com/wckdboy/invincible',
     license: 'MIT',
-    tagline: 'Intelligence that never relies solely on someone else.',
+    tagline: 'A node you own.',
     og: '/og/invincible.png',
   },
   sovware: {
@@ -80,7 +80,7 @@ const configs: Record<SiteKey, SiteMeta> = {
     wordmark: 'SOVWARE',
     domain: 'sovware.io',
     origin: 'https://sovware.io',
-    title: 'Sovware — sovereign software',
+    title: 'Sovware — software that answers to its owner',
     description:
       'Sovereign software for a compute-critical world. The studio behind Autobot and Invincible Gateway: private intelligence on hardware you own.',
     theme: 'paper',

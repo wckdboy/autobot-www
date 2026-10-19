@@ -1,0 +1,11 @@
+{
+  "name": "sovware-site",
+  "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "../dist/sovware",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "sovware.io", "custom_domain": true }
+  ]
+}

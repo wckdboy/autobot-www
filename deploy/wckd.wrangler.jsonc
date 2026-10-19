@@ -1,0 +1,9 @@
+{
+  "name": "wckd-redirect",
+  "main": "./wckd-redirect.js",
+  "compatibility_date": "2026-10-19",
+  "routes": [
+    { "pattern": "wckd.ai", "custom_domain": true },
+    { "pattern": "www.wckd.ai", "custom_domain": true }
+  ]
+}

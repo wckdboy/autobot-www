@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Signal from '../components/Signal.astro';
-import Ticker from '../components/Ticker.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Terminal from '../components/Terminal.astro';
 import Releases from '../components/Releases.astro';
@@ -73,27 +72,23 @@ const setup = [
       <div class="hero__grid">
         <div class="hero__copy">
           <div class="hero__kicker">
-            <span class="eyebrow">Self-hosted AI node · MIT</span>
+            <span class="eyebrow">Open source · Self-hosted</span>
             <span class="pill pill--red">Latest v{v(latest.tag)}</span>
           </div>
           <h1>
-            <span class="line outline">Borrowed</span>
-            <span class="line">Intelligence</span>
-            <span class="line accent">is not yours.</span>
+            <span class="line">A node</span>
+            <span class="line">you own.</span>
           </h1>
           <div class="hero__sub">
             <p>
-              A node you own. Install it on a desktop, GPU box or VPS; it serves open models behind
-              standard APIs, reaches frontier models <b>only when your rules allow</b>, signs a
-              receipt for every request, and keeps working when the cloud is gone.
+              A self-hosted AI node for a desktop, GPU box or VPS. It serves open models behind
+              standard APIs, routes each request by policy, and signs a receipt for what ran and
+              what left. Frontier models are optional; the node keeps working without them.
             </p>
-            <div class="signature" aria-hidden="true" style="font:500 8.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;white-space:nowrap">
-              NO ACCOUNTS<br />NO RELAY<br />NO TELEMETRY
-            </div>
           </div>
           <div class="hero__actions">
             <a class="btn" href="#install">Install the node</a>
-            <a class="btn btn--ghost" href="#tiers">See the tiers <span class="btn__arrow">↓</span></a>
+            <a class="btn btn--ghost" href="/install">Install guide <span class="btn__arrow">→</span></a>
             <a class="btn btn--ghost hide-mobile" href={meta.repo} rel="noopener">
               <Icon name="github" size={13} /> Source
             </a>
@@ -111,14 +106,13 @@ const setup = [
             <div style="position:relative">
               <Signal
                 kind="globe"
-                topLeft="Node / 01"
+                topLeft="Figure 1"
                 topRight="Private"
                 bottomLeft="0 bytes out"
                 bottomRight="Local"
-                label="One node · every device"
+                label="One node, every device"
                 aria="A halftone globe with nodes and signed routes, drawn live from dots"
               />
-              <span class="stamp">No accounts</span>
             </div>
             <Terminal
               title="install · macOS / linux"
@@ -141,27 +135,20 @@ const setup = [
     </div>
   </section>
 
-  <Ticker
-    items={[
-      'No accounts',
-      'No relay',
-      'No telemetry',
-      'Local is the default',
-      'Signed receipts',
-      'OpenAI-compatible',
-      'Anthropic-compatible',
-      'Reproducible Linux builds',
-      'Conformance vectors',
-      'Hash-chained audit',
-      'No vendor lock-in',
-      'MIT',
-    ]}
-  />
-
+  
+  <div class="shell">
+    <dl class="trustbar">
+      <div><dt>Latest release</dt><dd>v{v(latest.tag)}</dd></div>
+      <div><dt>License</dt><dd>MIT</dd></div>
+      <div><dt>Platforms</dt><dd>macOS · Linux</dd></div>
+      <div><dt>Routing</dt><dd><span class="dot"></span>Local first</dd></div>
+      <div><dt>Accounts</dt><dd>None</dd></div>
+    </dl>
+  </div>
   <section class="section section--tight" id="why">
     <div class="shell">
       <SectionHead num="01" label="Why">
-        <Fragment slot="title">Capable AI is<br /><em>something you rent.</em></Fragment>
+        <Fragment slot="title">Most capable AI<br />is rented.</Fragment>
         <Fragment slot="note">
           A company, or the country it sits in, can change the price, the policy, the model or the
           terms, read what you send, or switch you off. Open weights and cheap accelerators make
@@ -220,7 +207,7 @@ const setup = [
   <section class="section section--rule" id="tiers">
     <div class="shell">
       <SectionHead num="02" label="The tiers">
-        <Fragment slot="title">One interface.<br /><em>Four places to run.</em></Fragment>
+        <Fragment slot="title">One interface.<br />Four places to run.</Fragment>
         <Fragment slot="note">
           If a tier disappears, things get slower — nothing breaks. That is the whole point of
           owning the middle.
@@ -248,8 +235,8 @@ const setup = [
 
   <section class="section is-ink">
     <div class="shell">
-      <SectionHead num="03" label="What a node does">
-        <Fragment slot="title">The glue, with<br /><em>sovereignty as the rule.</em></Fragment>
+      <SectionHead num="03" label="The node">
+        <Fragment slot="title">What a node does.</Fragment>
         <Fragment slot="note">
           Not a chat UI. Not a training stack. The node is the thing that makes models useful on
           hardware you control — and keeps the receipt.
@@ -302,8 +289,8 @@ const setup = [
 
   <section class="section is-paper" id="trust">
     <div class="shell">
-      <SectionHead num="04" label="Trust, checkable">
-        <Fragment slot="title">Do not trust the claim.<br /><em>Check the bytes.</em></Fragment>
+      <SectionHead num="04" label="Verification">
+        <Fragment slot="title">Trust you can check.</Fragment>
         <Fragment slot="note">
           Releases are signed with a key the installer pins. Linux builds are rebuilt on another
           machine and must match byte for byte before publishing. Every request gets a receipt, and
@@ -382,8 +369,8 @@ const setup = [
 
   <section class="section">
     <div class="shell">
-      <SectionHead num="05" label="Pairing">
-        <Fragment slot="title">One QR code.<br /><em>No account in between.</em></Fragment>
+      <SectionHead num="05" label="Integration">
+        <Fragment slot="title">Pairing,<br />without accounts.</Fragment>
         <Fragment slot="note">
           Invincible is built for Autobot first. The node’s key comes from the QR code; the phone’s
           key is pinned on the node. There are no accounts, no passwords and no third-party relay.
@@ -436,7 +423,7 @@ const setup = [
   <section class="section is-ink" id="install">
     <div class="shell">
       <SectionHead num="06" label="Install">
-        <Fragment slot="title">One script.<br /><em>Gateway and agent.</em></Fragment>
+        <Fragment slot="title">Get it running.</Fragment>
         <Fragment slot="note">
           macOS on Apple silicon, or Linux on x86_64 and arm64 — desktop or VPS. No root. It installs
           both commands to ~/.local/bin, verifies the release, installs llama.cpp if missing, and
@@ -532,7 +519,7 @@ const setup = [
   <section class="section">
     <div class="shell">
       <SectionHead num="07" label="Evidence">
-        <Fragment slot="title">How close is open<br /><em>to frontier?</em></Fragment>
+        <Fragment slot="title">Measured against real work.</Fragment>
         <Fragment slot="note">
           Fifty tasks built from the real code of Autobot, Omnie and Nightfall. Every expected answer
           was checked by running the code. No model grades another, so a result is the same however
@@ -547,9 +534,9 @@ const setup = [
               <tr><th>Model</th><th>All 50</th><th>Autobot</th><th>Omnie</th><th>Nightfall</th></tr>
             </thead>
             <tbody>
-              <tr><td>Qwen3.5 4B <span class="mono">on node</span></td><td>30</td><td>9 / 17</td><td>10 / 16</td><td>11 / 17</td></tr>
-              <tr><td>Qwen3 0.6B <span class="mono">on node</span></td><td>8</td><td>2 / 17</td><td>4 / 16</td><td>2 / 17</td></tr>
-              <tr><td>DeepSeek V3 <span class="mono">cloud</span></td><td>45</td><td>16 / 17</td><td>15 / 16</td><td>14 / 17</td></tr>
+              <tr><td>Qwen3.5 4B <span class="mono">on node</span></td><td data-label="All 50">30</td><td data-label="Autobot">9 / 17</td><td data-label="Omnie">10 / 16</td><td data-label="Nightfall">11 / 17</td></tr>
+              <tr><td>Qwen3 0.6B <span class="mono">on node</span></td><td data-label="All 50">8</td><td data-label="Autobot">2 / 17</td><td data-label="Omnie">4 / 16</td><td data-label="Nightfall">2 / 17</td></tr>
+              <tr><td>DeepSeek V3 <span class="mono">cloud</span></td><td data-label="All 50">45</td><td data-label="Autobot">16 / 17</td><td data-label="Omnie">15 / 16</td><td data-label="Nightfall">14 / 17</td></tr>
             </tbody>
           </table></div>
           <p class="mono mt-2" style="font-size:9px;letter-spacing:.09em;color:var(--muted)">
@@ -580,14 +567,14 @@ const setup = [
   <section class="section section--rule">
     <div class="shell">
       <SectionHead num="08" label="Releases">
-        <Fragment slot="title">Signed, dated,<br /><em>and checkable.</em></Fragment>
+        <Fragment slot="title">Release history.</Fragment>
         <Fragment slot="note">
           macOS arm64, Linux x86_64 and Linux arm64. Each archive carries a build attestation;
           SHA256SUMS carries the release signature. The site data is baked at build time.
         </Fragment>
       </SectionHead>
 
-      <Releases releases={releases.invincible.releases} repo="invincible" limit={5} />
+      <Releases releases={releases.invincible.releases} repo="invincible" limit={5} openFirst={false} />
       <div class="hero__actions mt-3">
         <a class="btn btn--ghost" href="/releases">All releases <span class="btn__arrow">→</span></a>
         <span class="mono" style="font-size:9px;color:var(--muted);display:inline-flex;align-items:center">

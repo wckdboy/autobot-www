@@ -62,6 +62,8 @@ export function releaseNotes(body: string): string {
   const out: string[] = [];
   let para: string[] = [];
   let list: string[] = [];
+  let code: string[] | null = null;
+  let table: string[] | null = null;
 
   const flushPara = () => {
     if (!para.length) return;
@@ -77,9 +79,43 @@ export function releaseNotes(body: string): string {
     flushPara();
     flushList();
   };
+  const flushCode = () => {
+    if (!code) return;
+    out.push(`<pre class="release__code"><code>${escapeHtml(code.join('\n'))}</code></pre>`);
+    code = null;
+  };
+  const flushTable = () => {
+    if (!table) return;
+    out.push(`<pre class="release__code release__table"><code>${escapeHtml(table.join('\n'))}</code></pre>`);
+    table = null;
+  };
 
-  for (const line of lines) {
-    const text = line.trim();
+  for (const raw of lines) {
+    const text = raw.trim();
+
+    if (text.startsWith('```')) {
+      flush();
+      flushTable();
+      if (code) flushCode();
+      else code = [];
+      continue;
+    }
+    if (code) {
+      code.push(raw.replace(/\s+$/, ''));
+      continue;
+    }
+
+    if (text.startsWith('|')) {
+      flush();
+      flushCode();
+      table = table || [];
+      table.push(text);
+      continue;
+    }
+    if (table) {
+      flushTable();
+    }
+
     if (!text) {
       flush();
       continue;
@@ -100,5 +136,7 @@ export function releaseNotes(body: string): string {
     para.push(text);
   }
   flush();
+  flushCode();
+  flushTable();
   return out.join('');
 }

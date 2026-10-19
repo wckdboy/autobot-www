@@ -19,15 +19,15 @@
     "og": "node scripts/build-og.mjs",
     "verify:links": "node scripts/check-links.mjs",
     "prepare": "node scripts/fetch-releases.mjs --soft && node scripts/sync-install.mjs",
-    "deploy": "sh scripts/deploy.sh",
-    "domains": "node scripts/attach-domains.mjs"
+    "deploy": "sh scripts/deploy.sh"
   },
   "dependencies": {
     "astro": "7.4.0"
   },
   "devDependencies": {
     "playwright-core": "^1.64.1",
-    "sharp": "^0.34.4"
+    "sharp": "^0.34.4",
+    "wrangler": "^4.151.1"
   },
   "packageManager": "pnpm@12.6.0"
 }

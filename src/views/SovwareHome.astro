@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Signal from '../components/Signal.astro';
-import Ticker from '../components/Ticker.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Icon from '../components/Icon.astro';
 import { releases } from '../data/site';
@@ -24,28 +23,24 @@ const principles = [
       <div class="hero__grid">
         <div class="hero__copy">
           <div class="hero__kicker">
-            <span class="eyebrow">Sovware · WCKD · independent studio</span>
+            <span class="eyebrow">Independent studio · Open source</span>
             <span class="pill pill--red">Est. 2026</span>
           </div>
           <h1>
-            <span class="line">Sovereign</span>
-            <span class="line outline">Software</span>
-            <span class="line accent">for the edge.</span>
+            <span class="line">Software that</span>
+            <span class="line">answers to its owner.</span>
           </h1>
           <div class="hero__sub">
             <p>
-              We build software that answers to its owner. Private intelligence on the phone, on a
-              machine you own, and — later — in the region you trust. <b>Nothing essential depends
-              on a landlord.</b>
+              Sovware is an independent software studio. We build private intelligence for the
+              phone and for the machine you own: software that runs locally, speaks open standards,
+              and keeps a record its owner can check.
             </p>
-            <div class="signature" aria-hidden="true" style="font:500 8.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;white-space:nowrap">
-              AUTOBOT<br />INVINCIBLE<br />AND THE NEXT
-            </div>
           </div>
           <div class="hero__actions">
             <a class="btn" href="https://autobot.sh">Autobot <span class="btn__arrow">↗</span></a>
             <a class="btn btn--ghost" href="https://invincible.sh">Invincible <span class="btn__arrow">↗</span></a>
-            <a class="btn btn--ghost hide-mobile" href="mailto:boy@wckd.cc">Write to us</a>
+            <a class="btn btn--ghost hide-mobile" href="mailto:boy@wckd.cc">Contact</a>
           </div>
           <div class="hero__meta">
             <span>autobot.sh</span>
@@ -59,14 +54,13 @@ const principles = [
           <div style="position:relative">
             <Signal
               kind="optic"
-              topLeft="Studio / 01"
+              topLeft="Figure 1"
               topRight="Open"
               bottomLeft="Two products"
               bottomRight="2026"
-              label="Sovware · sovereign software"
+              label="Sovereign software"
               aria="A halftone optic representing the studio"
             />
-            <span class="stamp">Own the metal</span>
           </div>
           <dl class="readouts">
             <div class="readout"><dt>Autobot</dt><dd>v{v(a.tag)}</dd></div>
@@ -79,24 +73,20 @@ const principles = [
     </div>
   </section>
 
-  <Ticker
-    items={[
-      'Private by construction',
-      'Local first',
-      'No telemetry',
-      'Open source',
-      'Owned means owned',
-      'Frontier optional',
-      'Signed releases',
-      'No accounts',
-      'One shared core',
-    ]}
-  />
-
+  
+  <div class="shell">
+    <dl class="trustbar">
+      <div><dt>Studio</dt><dd>Independent</dd></div>
+      <div><dt>Products</dt><dd>Autobot · Invincible</dd></div>
+      <div><dt>Licenses</dt><dd>Apache-2.0 · MIT</dd></div>
+      <div><dt>Telemetry</dt><dd>None</dd></div>
+      <div><dt>Source</dt><dd>github.com/wckdboy</dd></div>
+    </dl>
+  </div>
   <section class="section" id="work">
     <div class="shell">
       <SectionHead num="01" label="The work">
-        <Fragment slot="title">Two products.<br /><em>One idea of ownership.</em></Fragment>
+        <Fragment slot="title">Two products,<br />one idea of ownership.</Fragment>
         <Fragment slot="note">
           The phone is the first computer you own. The node is the second. Together they cover the
           space between “on my device” and “in someone else’s cloud”.
@@ -148,7 +138,7 @@ const principles = [
   <section class="section section--rule" id="principles">
     <div class="shell">
       <SectionHead num="02" label="Principles">
-        <Fragment slot="title">The rules we build to.<br /><em>Not the other way round.</em></Fragment>
+        <Fragment slot="title">How we build.</Fragment>
         <Fragment slot="note">
           These are design constraints, not marketing lines. They decide what we ship and what we
           refuse to.

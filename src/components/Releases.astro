@@ -29,7 +29,8 @@ const order = (name: string) => {
 };
 const sub = (r: Release) => {
   const line = r.body.split('\n').find((l) => l.trim() && !l.startsWith('#'));
-  return (line || r.name).replace(/[*_`]/g, '').slice(0, 110);
+  const clean = (line || r.name).replace(/[*_`]/g, '').replace(/\s+/g, ' ').trim();
+  return clean.length > 96 ? clean.slice(0, 96).replace(/\s+\S*$/, '') + '…' : clean;
 };
 ---
 <div>
@@ -38,8 +39,8 @@ const sub = (r: Release) => {
       <summary class="release__summary">
         <span class="release__tag">{v(r.tag)}</span>
         <span class="release__name">
-          {r.name.replace(/^Autobot\s*/i, repo === 'autobot' ? 'Autobot ' : '')}
-          <span>{sub(r)}</span>
+          {sub(r)}
+          <span>{r.name} · {r.assets.length} files</span>
         </span>
         <span class="release__date">{fmtDate(r.published)}</span>
         <span class="release__chev" aria-hidden="true">+</span>

@@ -1,0 +1,11 @@
+{
+  "name": "invincible-site",
+  "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "../dist/invincible",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "invincible.sh", "custom_domain": true }
+  ]
+}

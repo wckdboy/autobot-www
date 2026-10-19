@@ -47,83 +47,54 @@ metadata, canonical origin, navigation and OG image; the interior routes (`/inst
 - Refresh both data files with `GITHUB_TOKEN=$(gh auth token) pnpm data && pnpm sync:install`.
   The scheduled workflow does this every six hours.
 
-## Hosting: Cloudflare Pages
+## Hosting: Cloudflare Workers (static assets)
 
-Cloudflare Pages is the host: one repo, three projects, atomic static deploys, a global CDN,
-managed TLS, previews and instant rollbacks. All four domains are already delegated to Cloudflare
-(`elaine.ns.cloudflare.com`, `zac.ns.cloudflare.com`), so the domains attach without moving DNS.
+One repo, three Workers, four domains. Cloudflare Workers Static Assets is the host: a global CDN
+with no origin server, atomic versions, instant rollback, managed TLS and custom domains declared
+in code. All four domains are already on Cloudflare DNS, so attaching them is one deploy.
 
-### First-time setup
+### Deploy
 
-1. Push this repository to GitHub (the workflow assumes `main`).
-2. Create the three Pages projects once:
+```sh
+npx wrangler login          # once
+pnpm deploy                 # build, check links, deploy all four
+```
 
-   ```sh
-   npx wrangler login
-   npx wrangler pages project create autobot-www --production-branch=main
-   npx wrangler pages project create invincible-www --production-branch=main
-   npx wrangler pages project create sovware-www --production-branch=main
-   ```
+`pnpm deploy` runs:
 
-3. Add two repository secrets to GitHub:
-   - `CLOUDFLARE_API_TOKEN` — a token with **Cloudflare Pages: Edit** (and **Zone: Read** if the
-     domain step below is run by CI).
-   - `CLOUDFLARE_ACCOUNT_ID` — from the Cloudflare dashboard, Workers & Pages.
+| Worker | Assets | Custom domains |
+| --- | --- | --- |
+| `autobot-site` | `dist/autobot` | `autobot.sh` (www → 301) |
+| `invincible-site` | `dist/invincible` | `invincible.sh` (www → 301) |
+| `sovware-site` | `dist/sovware` | `sovware.io` (www → 301) |
+| `www-redirect` | `deploy/www-redirect.js` | all three `www` hosts → apex |
+| `wckd-redirect` | `deploy/wckd-redirect.js` | `wckd.ai`, `www.wckd.ai` → 301 sovware.io |
 
-4. Deploy once locally (or let the workflow do it):
-
-   ```sh
-   pnpm build:all
-   npx wrangler pages deploy dist/autobot     --project-name=autobot-www     --branch=main
-   npx wrangler pages deploy dist/invincible --project-name=invincible-www --branch=main
-   npx wrangler pages deploy dist/sovware    --project-name=sovware-www    --branch=main
-   ```
-
-5. Attach the domains. In **Workers & Pages → each project → Custom domains** add:
-
-   | Project | Custom domains |
-   | --- | --- |
-   | `autobot-www` | `autobot.sh`, `www.autobot.sh` |
-   | `invincible-www` | `invincible.sh`, `www.invincible.sh` |
-   | `sovware-www` | `sovware.io`, `www.sovware.io` |
-
-   Because the zones are on the same Cloudflare account, Pages creates the DNS records. If you
-   prefer to do it by hand, the records are:
-
-   | Name | Type | Target | Proxy |
-   | --- | --- | --- | --- |
-   | `@` | CNAME | `autobot-www.pages.dev` | Proxied |
-   | `www` | CNAME | `autobot-www.pages.dev` | Proxied |
-   | `@` | CNAME | `invincible-www.pages.dev` | Proxied |
-   | `www` | CNAME | `invincible-www.pages.dev` | Proxied |
-   | `@` | CNAME | `sovware-www.pages.dev` | Proxied |
-   | `www` | CNAME | `sovware-www.pages.dev` | Proxied |
-
-   Cloudflare flattens the apex CNAME. Do not add an A record as well.
-
-6. Redirect `wckd.ai`: **Rules → Redirect Rules → Create rule** with
-   `When incoming requests match: Hostname equals wckd.ai` (and `www.wckd.ai`), then
-   `Static redirect` to `https://sovware.io`, status **301**, preserve query string.
-
-7. Optionally enable **Always Use HTTPS**, **HSTS** (6 months, include subdomains) and
-   **Opportunistic Encryption** on each zone. The site also sends HSTS from `_headers`.
+The routes live in `deploy/*.wrangler.jsonc`. Workers creates the proxied DNS records for a
+custom domain automatically; no manual CNAME is needed on a zone in the same account. Each Worker
+uses `not_found_handling: "404-page"`, so the Astro 404 is served for unknown paths, and honours
+`public/_headers` (CSP, HSTS, immutable asset caching).
 
 ### CI
 
-- `.github/workflows/deploy.yml` builds all three sites and deploys them on every push to `main`.
-- `.github/workflows/refresh.yml` refreshes release data and the install mirror every six hours,
-  commits if anything changed, and lets the deploy workflow run.
-- `.github/workflows/check.yml` builds on pull requests and runs the link check.
+`.github/workflows/deploy.yml` builds all three sites and deploys on every push to `main`. Add
+two repository secrets:
 
-If the Cloudflare secrets are not configured yet, `deploy.yml` fails at the deploy step and says
-so; the build/check jobs still pass.
+- `CLOUDFLARE_API_TOKEN` — **Account → Workers Scripts: Edit**, **Workers Routes: Edit**, and
+  **Zone: Read**. (Creating a custom domain also needs the zone in the same account.)
+- `CLOUDFLARE_ACCOUNT_ID` — from the Cloudflare dashboard.
+
+Without the secrets the workflow still builds and runs the link check, then warns that it did not
+deploy. `.github/workflows/refresh.yml` refreshes release data and the install mirror every six
+hours and commits only when something changed. `.github/workflows/check.yml` builds pull requests.
 
 ### Preview locally
 
 ```sh
-pnpm build:all
-npx wrangler pages dev dist/autobot      # serves _headers with the real rules
+npx wrangler dev --config deploy/autobot.wrangler.jsonc
 ```
+
+`wrangler dev` serves the built assets with the real `_headers`. Build first after changing a page.
 
 ## Delivery
 

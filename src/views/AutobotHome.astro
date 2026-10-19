@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Signal from '../components/Signal.astro';
-import Ticker from '../components/Ticker.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Terminal from '../components/Terminal.astro';
 import Releases from '../components/Releases.astro';
@@ -85,30 +84,26 @@ const tabs = [
       <div class="hero__grid">
         <div class="hero__copy">
           <div class="hero__kicker">
-            <span class="eyebrow">Private AI · Android + iOS</span>
+            <span class="eyebrow">Open source · Android and iOS</span>
             <span class="pill pill--red">Latest v{v(latest.tag)}</span>
           </div>
           <h1>
-            <span class="line">Private</span>
-            <span class="line outline">Intelligence</span>
-            <span class="line accent">on the metal.</span>
+            <span class="line">Private AI,</span>
+            <span class="line">on your phone.</span>
           </h1>
           <div class="hero__sub">
             <p>
-              An AI agent that lives on your phone. Chat, agents, images and voice run on the
-              <b>NPU, GPU and CPU</b> — not on someone else’s server. Offline by default, redacted
-              before the cloud, and a receipt for every answer.
+              Autobot runs chat, agents, image generation and voice on your device — on the
+              NPU, GPU and CPU. It works offline by default, redacts before any cloud call, and
+              gives every answer a privacy receipt.
             </p>
-            <div class="signature" aria-hidden="true" style="font:500 8.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;white-space:nowrap">
-              APACHE-2.0<br />NO TRACKERS<br />NO ACCOUNTS
-            </div>
           </div>
           <div class="hero__actions">
             <a class="btn" href={apk?.url} rel="noopener">
               <Icon name="download" size={13} /> Download {v(latest.tag)}
             </a>
             <a class="btn btn--ghost" href="/install#agent">
-              Install the agent <span class="btn__arrow">↗</span>
+              Install guide <span class="btn__arrow">→</span>
             </a>
             <a class="btn btn--ghost hide-mobile" href={meta.repo} rel="noopener">
               <Icon name="github" size={13} /> Source
@@ -126,14 +121,13 @@ const tabs = [
           <div style="position:relative">
             <Signal
               kind="optic"
-              topLeft="Optic / 01"
+              topLeft="Figure 1"
               topRight="Local"
               bottomLeft="No egress"
               bottomRight={`v${v(latest.tag)}`}
-              label="This phone · this model"
+              label="On-device inference"
               aria="A halftone optic, drawn live from dots, representing the on-device model"
             />
-            <span class="stamp">Offline by default</span>
           </div>
           <dl class="readouts">
             <div class="readout"><dt>Release</dt><dd>{v(latest.tag)}</dd></div>
@@ -146,29 +140,20 @@ const tabs = [
     </div>
   </section>
 
-  <Ticker
-    items={[
-      'Hexagon NPU',
-      'Adreno GPU',
-      'Apple Metal',
-      'Neural Engine',
-      'llama.cpp',
-      'stable-diffusion.cpp',
-      'whisper.cpp',
-      'Offline by default',
-      'No telemetry',
-      'SQLCipher',
-      'Tor · SOCKS5',
-      'Phone first',
-      'Privacy receipts',
-      'One shared core',
-    ]}
-  />
 
+  <div class="shell">
+    <dl class="trustbar">
+      <div><dt>Latest release</dt><dd>v{v(latest.tag)}</dd></div>
+      <div><dt>License</dt><dd>Apache-2.0</dd></div>
+      <div><dt>Platforms</dt><dd>Android 14+ · iOS 18+</dd></div>
+      <div><dt>Default network</dt><dd><span class="dot"></span>Offline</dd></div>
+      <div><dt>Telemetry</dt><dd>None</dd></div>
+    </dl>
+  </div>
   <section class="section section--tight" id="system">
     <div class="shell">
       <SectionHead num="01" label="The system">
-        <Fragment slot="title">A model in your pocket.<br /><em>Not in a data centre.</em></Fragment>
+        <Fragment slot="title">Built to run<br />without a network.</Fragment>
         <Fragment slot="note">
           Autobot is one app with two native skins and one Kotlin Multiplatform core. The engines are
           shared C, the privacy rules are shared code, and the design tokens are the same file on
@@ -218,7 +203,7 @@ const tabs = [
   <section class="section section--tight">
     <div class="shell">
       <SectionHead num="02" label="Capabilities">
-        <Fragment slot="title">Four ways to use<br /><em>a private machine.</em></Fragment>
+        <Fragment slot="title">Four modes.<br />One runtime.</Fragment>
         <Fragment slot="note">
           Everything below runs without a network. Cloud providers are optional, and every one of
           them goes through the same policy, redaction and receipt.
@@ -249,7 +234,7 @@ const tabs = [
   <section class="section is-ink">
     <div class="shell">
       <SectionHead num="03" label="On the metal">
-        <Fragment slot="title">Native engines.<br /><em>No cloud in the loop.</em></Fragment>
+        <Fragment slot="title">Native engines,<br />no cloud in the loop.</Fragment>
         <Fragment slot="note">
           llama.cpp, stable-diffusion.cpp and whisper.cpp are built from pinned sources. On Android
           the image path can also use the Hexagon NPU through QNN or the Adreno GPU through MNN; on
@@ -260,7 +245,7 @@ const tabs = [
       <div class="split">
         <div class="split__aside">
           <div class="quote quote--small">
-            A 4B model on a phone is not a toy. <em>It is a private computer.</em>
+            A 4B model is useful on a phone.
           </div>
           <p class="byline">On-device inference · llama.cpp</p>
           <div class="note mt-3" style="background:color-mix(in srgb, var(--amber) 10%, transparent)">
@@ -278,8 +263,8 @@ const tabs = [
               {engines.map(([name, desc, accel]) => (
                 <tr>
                   <td>{name}</td>
-                  <td>{desc}</td>
-                  <td class="mono">{accel}</td>
+                  <td data-label="What runs">{desc}</td>
+                  <td class="mono" data-label="Accelerator">{accel}</td>
                 </tr>
               ))}
             </tbody>
@@ -296,7 +281,7 @@ const tabs = [
   <section class="section">
     <div class="shell">
       <SectionHead num="04" label="Privacy, itemised">
-        <Fragment slot="title">Every request is<br /><em>a decision you can see.</em></Fragment>
+        <Fragment slot="title">Privacy you<br />can inspect.</Fragment>
         <Fragment slot="note">
           These are the guarantees the code makes, not a policy page. The rules live in shared
           modules and are tested on both platforms.
@@ -347,8 +332,8 @@ const tabs = [
 
   <section class="section section--rule">
     <div class="shell">
-      <SectionHead num="05" label="When the phone is not enough">
-        <Fragment slot="title">Borrow a machine<br /><em>you actually own.</em></Fragment>
+      <SectionHead num="05" label="The node">
+        <Fragment slot="title">When the phone<br />is not enough.</Fragment>
         <Fragment slot="note">
           Invincible is the middle tier: a desktop, GPU box or VPS that serves stronger open models
           and runs agents without a battery. Pair it once; the phone keeps its rules.
@@ -414,7 +399,7 @@ const tabs = [
   <section class="section is-paper" id="install">
     <div class="shell">
       <SectionHead num="06" label="Install">
-        <Fragment slot="title">Put it on the phone.<br /><em>Or on a machine that stays on.</em></Fragment>
+        <Fragment slot="title">Get it running.</Fragment>
         <Fragment slot="note">
           The app is a signed APK and a TestFlight build. The agent is one script that also installs
           the node. Both are verifiable; neither needs an account.
@@ -528,14 +513,14 @@ const tabs = [
   <section class="section">
     <div class="shell">
       <SectionHead num="07" label="Releases">
-        <Fragment slot="title">Shipped, dated, and<br /><em>downloadable.</em></Fragment>
+        <Fragment slot="title">Release history.</Fragment>
         <Fragment slot="note">
           Pulled from GitHub at build time. Every release carries its notes, its files and — for the
           Android APK — a published SHA-256. Versions move together on both platforms.
         </Fragment>
       </SectionHead>
 
-      <Releases releases={releases.autobot.releases} repo="autobot" limit={4} />
+      <Releases releases={releases.autobot.releases} repo="autobot" limit={4} openFirst={false} />
       <div class="hero__actions mt-3">
         <a class="btn btn--ghost" href="/releases">All releases <span class="btn__arrow">→</span></a>
         <span class="mono" style="font-size:9px;color:var(--muted);display:inline-flex;align-items:center">
@@ -547,8 +532,8 @@ const tabs = [
 
   <section class="section section--rule">
     <div class="shell">
-      <SectionHead num="08" label="The goals">
-        <Fragment slot="title">What this is for.<br /><em>And what is next.</em></Fragment>
+      <SectionHead num="08" label="Roadmap">
+        <Fragment slot="title">Roadmap.</Fragment>
         <Fragment slot="note">
           The roadmap is public. A phase is done when its exit criteria hold on both platforms and
           on real hardware — not when the build passes.

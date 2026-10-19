@@ -1,6 +1,6 @@
 const SITES: Record<string, { name: string; short: string; theme: string; bg: string }> = {
   autobot: { name: 'Autobot — private intelligence', short: 'Autobot', theme: '#e8401c', bg: '#efeae2' },
-  invincible: { name: 'Invincible — the node you own', short: 'Invincible', theme: '#0e0e0e', bg: '#0e0e0e' },
+  invincible: { name: 'Invincible — a node you own', short: 'Invincible', theme: '#f4f1ea', bg: '#f4f1ea' },
   sovware: { name: 'Sovware — sovereign software', short: 'Sovware', theme: '#e8401c', bg: '#efeae2' },
 };
 

@@ -26,8 +26,4 @@
   Content-Type: text/x-shellscript; charset=utf-8
   Cache-Control: public, max-age=300
 
-/index.html
-  Cache-Control: public, max-age=0, must-revalidate
 
-/*
-  Cache-Control: public, max-age=0, must-revalidate

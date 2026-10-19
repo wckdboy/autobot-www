@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Releases from '../components/Releases.astro';
-import Ticker from '../components/Ticker.astro';
 import { meta, releases } from '../data/site';
 import { fmtDate, v } from '../lib/format';
 
@@ -39,19 +38,6 @@ const version = active?.latest?.tag;
     </div>
   </header>
 
-  <Ticker
-    items={[
-      `Autobot ${v(a.latest.tag)}`,
-      `Invincible ${v(i.latest.tag)}`,
-      'SHA-256 published',
-      'Signed checksums',
-      'Reproducible builds',
-      'Release notes',
-      'Open source',
-      'No accounts',
-    ]}
-    speed={54}
-  />
 
   <h2 class="sr-only">Release archive</h2>
 

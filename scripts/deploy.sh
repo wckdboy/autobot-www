@@ -1,5 +1,5 @@
 #!/bin/sh
-# Build all three sites and push them to Cloudflare Pages.
+# Build all three sites and deploy them to Cloudflare Workers Static Assets.
 # Requires: npx wrangler login   (once), or CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID.
 set -eu
 
@@ -7,12 +7,15 @@ cd "$(dirname "$0")/.."
 pnpm build:all
 node scripts/check-links.mjs
 
-for pair in "autobot:autobot-www" "invincible:invincible-www" "sovware:sovware-www"; do
-  site=${pair%%:*}
-  project=${pair##*:}
-  printf '\n==> %s → %s\n' "$site" "$project"
-  npx --yes wrangler@4 pages project create "$project" --production-branch=main >/dev/null 2>&1 || true
-  npx --yes wrangler@4 pages deploy "dist/$site" --project-name="$project" --branch=main
+for site in autobot invincible sovware; do
+  printf '\n==> %s\n' "$site"
+  npx --yes wrangler@4 deploy --config "deploy/$site.wrangler.jsonc"
 done
 
-printf '\nDone. Attach domains once with: node scripts/attach-domains.mjs\n'
+printf '\n==> www redirects\n'
+npx --yes wrangler@4 deploy --config deploy/www.wrangler.jsonc
+
+printf '\n==> wckd.ai redirect\n'
+npx --yes wrangler@4 deploy --config deploy/wckd.wrangler.jsonc
+
+printf '\nLive: https://autobot.sh · https://invincible.sh · https://sovware.io\n'

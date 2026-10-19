@@ -42,21 +42,19 @@ jobs:
 
       - name: Deploy autobot.sh
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
-        run: |
-          npx --yes wrangler@4 pages project create autobot-www --production-branch=main || true
-          npx --yes wrangler@4 pages deploy dist/autobot --project-name=autobot-www --branch=main
+        run: npx --yes wrangler@4 deploy --config deploy/autobot.wrangler.jsonc
 
       - name: Deploy invincible.sh
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
-        run: |
-          npx --yes wrangler@4 pages project create invincible-www --production-branch=main || true
-          npx --yes wrangler@4 pages deploy dist/invincible --project-name=invincible-www --branch=main
+        run: npx --yes wrangler@4 deploy --config deploy/invincible.wrangler.jsonc
 
       - name: Deploy sovware.io
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
-        run: |
-          npx --yes wrangler@4 pages project create sovware-www --production-branch=main || true
-          npx --yes wrangler@4 pages deploy dist/sovware --project-name=sovware-www --branch=main
+        run: npx --yes wrangler@4 deploy --config deploy/sovware.wrangler.jsonc
+
+      - name: Redirect wckd.ai
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        run: npx --yes wrangler@4 deploy --config deploy/wckd.wrangler.jsonc
 
       - name: Cloudflare is not configured
         if: ${{ env.CLOUDFLARE_API_TOKEN == '' }}

@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Terminal from '../components/Terminal.astro';
-import Ticker from '../components/Ticker.astro';
 import { meta, releases } from '../data/site';
 
 const key = process.env.SITE_KEY || 'autobot';
@@ -39,8 +38,16 @@ const key = process.env.SITE_KEY || 'autobot';
     </div>
   </header>
 
-  <Ticker items={['Offline by default', 'Visible egress', 'Redaction before cloud', 'Encrypted at rest', 'Panic wipe', 'No telemetry', 'No cookies', 'No analytics']} speed={52} />
 
+  <div class="shell">
+    <dl class="trustbar">
+      <div><dt>Default</dt><dd><span class="dot"></span>Local / offline</dd></div>
+      <div><dt>Egress</dt><dd>Visible &amp; switchable</dd></div>
+      <div><dt>At rest</dt><dd>Encrypted</dd></div>
+      <div><dt>Telemetry</dt><dd>None</dd></div>
+      <div><dt>This site</dt><dd>No cookies, no analytics</dd></div>
+    </dl>
+  </div>
   {key === 'sovware' ? (
     <div class="section">
       <div class="shell">
