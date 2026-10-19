@@ -34,9 +34,23 @@ RELEASE_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQ
 LLAMA_TAG="b11721"
 LLAMA_URL="https://github.com/ggml-org/llama.cpp/releases/download/$LLAMA_TAG"
 
-say() { printf '\033[1m==>\033[0m %s\n' "$*" >&2; }
-warn() { printf '\033[33m!\033[0m %s\n' "$*" >&2; }
-die() { printf '\033[31mx\033[0m %s\n' "$*" >&2; exit 1; }
+# The lab's terminal grammar (BRAND.md): a small square for each step in Invincible's orange,
+# yellow ! for what needs a look, ✗ for a failure; no color off a terminal or with NO_COLOR.
+if [ -t 2 ] && [ -z "${NO_COLOR:-}" ] && [ "${TERM:-}" != dumb ]; then
+    C_SIGNAL='\033[38;5;208m' C_AMBER='\033[38;5;185m' C_ERROR='\033[38;5;209m' C_ASH='\033[38;5;245m' C_BOLD='\033[1m' C_OFF='\033[0m'
+else
+    C_SIGNAL='' C_AMBER='' C_ERROR='' C_ASH='' C_BOLD='' C_OFF=''
+fi
+say() { printf '%b▪%b %s\n' "$C_SIGNAL" "$C_OFF" "$*" >&2; }
+warn() { printf '%b!%b %s\n' "$C_AMBER" "$C_OFF" "$*" >&2; }
+die() { printf '%b✗%b %s\n' "$C_ERROR" "$C_OFF" "$*" >&2; exit 1; }
+# The header: Invincible's pixel i (half blocks) beside the name, on a terminal that has color.
+if [ -n "$C_SIGNAL" ]; then
+    printf '%b▀▀%b  %binvincible%b\n%b██%b  %binstaller · invincible and autobot%b\n%b██%b\n\n' \
+        "$C_SIGNAL" "$C_OFF" "$C_BOLD" "$C_OFF" "$C_SIGNAL" "$C_OFF" "$C_ASH" "$C_OFF" "$C_SIGNAL" "$C_OFF" >&2
+else
+    printf 'invincible installer · invincible and autobot\n\n' >&2
+fi
 have() { command -v "$1" >/dev/null 2>&1; }
 
 # Questions go to the terminal even when this script arrives through a pipe.
