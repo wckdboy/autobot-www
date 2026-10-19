@@ -1,5 +1,12 @@
 export const GET = () => {
   const key = process.env.SITE_KEY || 'autobot';
+  if (key === 'autobot') {
+    return new Response(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" fill="#fbfaf7"/><rect x="6" y="6" width="20" height="20" fill="#b23a2a"/></svg>',
+      { headers: { 'Content-Type': 'image/svg+xml', 'Cache-Control': 'public, max-age=86400' } },
+    );
+  }
+
   const dots: string[] = [];
 
   if (key === 'invincible') {

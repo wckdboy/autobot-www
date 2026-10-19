@@ -1,0 +1,102 @@
+---
+import { meta } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  og?: string;
+  brand?: string;
+  accent?: string;
+  nav?: { label: string; href: string }[];
+  current?: string;
+  footerNote?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = meta.description,
+  path = Astro.url.pathname,
+  og = '/og/autobot-lab.png',
+  brand = 'Autobot',
+  accent = '#b23a2a',
+  nav = [
+    { label: 'Overview', href: '/' },
+    { label: 'Install', href: '/install/' },
+    { label: 'Status', href: '/#status' },
+    { label: 'Privacy', href: '/privacy/' },
+    { label: 'Verify', href: '/verify/' },
+    { label: 'Releases', href: '/releases/' },
+    { label: 'Source', href: 'https://github.com/wckdboy/autobot' },
+  ],
+  current = '',
+  footerNote = 'Autobot is free software under Apache-2.0. No accounts. No telemetry. A Sovware project.',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(path, Astro.site).href;
+const pageTitle = title ? `${title} — ${brand}` : `${brand} — private AI on the phone`;
+const ogImage = new URL(og, Astro.site).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#fbfaf7" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={brand} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/lab/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/lab/eb-garamond-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/lab.css" />
+    <style>{`:root{--accent:${accent}}`}</style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="wrap masthead__in">
+        <a class="brand" href="/"><span class="brand__mark"></span>{brand} <span class="brand__sub">/ {meta.domain}</span></a>
+        <nav class="nav" aria-label="Primary">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              aria-current={current && item.label.toLowerCase() === current ? 'page' : undefined}
+              rel={item.href.startsWith('http') ? 'noopener' : undefined}
+            >{item.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__in">
+        <p>{footerNote}</p>
+        <div class="footer__links">
+          <a href="/releases/">Releases</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/verify/">Verify</a>
+          <a href="/brand/">Brand guide</a>
+          <a href="https://sovware.io" rel="noopener">Sovware</a>
+          <a href="https://github.com/wckdboy/autobot" rel="noopener">Source</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

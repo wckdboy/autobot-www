@@ -1,0 +1,111 @@
+---
+import Lab from '../layouts/Lab.astro';
+---
+<Lab
+  path="/privacy/"
+  current="privacy"
+  title="Privacy"
+  description="The Autobot privacy model: offline by default, a kill switch before DNS, redaction before cloud, encryption at rest, panic wipe and no telemetry."
+>
+  <p class="label">Autobot · privacy model</p>
+  <h1>Privacy model</h1>
+  <p class="lede">The default is no network. This page describes what the code enforces, where the limits are, and how to check the record.</p>
+  <p class="meta">Rules live in shared code and are tested on both platforms. <a href="https://github.com/wckdboy/autobot" rel="noopener">Source ↗</a></p>
+
+  <dl class="facts">
+    <div><dt>Default network</dt><dd>Offline</dd></div>
+    <div><dt>Telemetry</dt><dd>None</dd></div>
+    <div><dt>At rest</dt><dd>Encrypted</dd></div>
+    <div><dt>Cloud</dt><dd>Optional, redacted</dd></div>
+    <div><dt>Accounts</dt><dd>None</dd></div>
+    <div><dt>Export</dt><dd>Sealed .autobot file</dd></div>
+  </dl>
+
+  <section>
+    <h2>Network</h2>
+    <p>The global mode starts at <strong>Offline</strong>. A shared <code>KillSwitch</code> rejects every request before DNS or a socket exists. Loopback servers such as a local Ollama can be allowed or blocked.</p>
+    <p>The modes are Offline, Direct, Tor (Orbot SOCKS <code>127.0.0.1:9050</code>, remote DNS) and SOCKS5. Each provider can override the route, but a Direct override can never downgrade a global Tor or SOCKS5 mode.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Behaviour</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td>Visible egress</td><td>The Privacy Center keeps a live, in-memory log of every request attempt: time, method, host, path, sizes, tag and whether it was blocked. Headers, query strings and bodies are not recorded.</td></tr>
+          <tr><td>Redirects</td><td>No automatic following. Model downloads follow redirects hop by hop, and every hop passes the kill switch and the audit log.</td></tr>
+          <tr><td>Cache and cookies</td><td>No HTTP cache, no cookies.</td></tr>
+          <tr><td>HTTPS</td><td>System CAs only. Cleartext is allowed only for <code>localhost</code>, <code>127.0.0.1</code> and <code>10.0.2.2</code>.</td></tr>
+          <tr><td>User-Agent</td><td>The constant <code>Autobot</code>. No device identifiers.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Redaction before cloud</h2>
+    <p>On by default. Names, emails, phone numbers, addresses, card, IBAN and account numbers, and memory facts become placeholders such as <code>[PERSON_1]</code> before a cloud provider sees the request. The answer gets the real values back on the phone.</p>
+    <p>Each chat can switch it off. The receipt counts what was hidden. The rules are shared Kotlin and are checked against the same vectors as Invincible’s node: both ends hide the same things.</p>
+    <div class="note"><strong>What this does not do.</strong> Redaction reduces exposure; it does not make a remote model local. A provider still sees the redacted prompt. The answer is to use one less.</div>
+  </section>
+
+  <section>
+    <h2>Phone first</h2>
+    <p>Off by default. With it on, a plain chat on a cloud model is answered by the on-device model first. A small judge — rules plus one short self-check on the same model — decides whether the answer is good enough.</p>
+    <ul>
+      <li><strong>Ask</strong> offers the cloud model after a weak local answer.</li>
+      <li><strong>Auto</strong> sends a weak answer’s prompt on its own, unless it looks personal.</li>
+      <li><strong>Never</strong> keeps everything on the phone.</li>
+    </ul>
+    <p>Both answers stay on screen, the cloud request goes through redaction, and the receipt says why. A paired node can sit in the middle: phone → node → cloud, with “never” meaning “never beyond hardware I own”.</p>
+  </section>
+
+  <section>
+    <h2>At rest</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Store</th><th>Android</th><th>iOS</th></tr></thead>
+        <tbody>
+          <tr><td>Conversations</td><td>Room over SQLCipher</td><td>SQLite with CryptoKit</td></tr>
+          <tr><td>Database key</td><td>Random 256-bit key wrapped by an AES-256-GCM Keystore key, StrongBox when available</td><td>Keychain and Secure Enclave wrapping</td></tr>
+          <tr><td>API keys</td><td>Encrypted like the database key; never logged</td><td>Keychain; never logged</td></tr>
+          <tr><td>Screen and backups</td><td><code>FLAG_SECURE</code>, recents screenshots disabled, backups and device transfer disabled</td><td>Data protection, privacy cover in the app switcher, backup exclusion</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Incognito chats are held in memory only and never touch the database. An optional app lock uses biometrics or the device credential, with an auto-lock timeout.</p>
+  </section>
+
+  <section>
+    <h2>Panic wipe</h2>
+    <p>Type <code>WIPE</code> to destroy Keystore keys, wrapped keys, databases, settings, secrets and caches. The process is then killed. A duress PIN and wipe-after-failed-unlocks are available for worse days.</p>
+  </section>
+
+  <section>
+    <h2>Export</h2>
+    <p>Settings → Export &amp; import writes one <code>.autobot</code> file sealed with your passphrase: PBKDF2-HMAC-SHA256 at 600k iterations, AES-256-GCM in 1 MiB chunks, with the header, chunk index and final flag authenticated. Tampering, reordering and truncation are rejected.</p>
+    <p>API keys are never exported. An import never switches the app online or changes the app lock. The other platform opens the same file.</p>
+  </section>
+
+  <section>
+    <h2>Permissions</h2>
+    <p>Android asks for <code>INTERNET</code> and <code>USE_BIOMETRIC</code>, plus <code>RUN_USER_INITIATED_JOBS</code>, <code>ACCESS_NETWORK_STATE</code> and <code>POST_NOTIFICATIONS</code> so a model download can keep running with a progress notification. The notification permission is requested only when the first download starts.</p>
+    <p><code>RECORD_AUDIO</code> is requested only when you first tap the microphone. Audio is transcribed on the phone and is never stored or sent. Diagnostics show the device, accelerators and benchmarks — never prompts, file paths or identifiers — and are never sent unless you copy them.</p>
+  </section>
+
+  <section>
+    <h2>This website</h2>
+    <p>Static HTML and one CSS file. No analytics, cookies, fingerprinting, session recording or third-party scripts. Fonts are self-hosted. Release data is baked at build time, not fetched by the browser. The only external requests are the links you click.</p>
+  </section>
+
+  <section>
+    <h2>Limits</h2>
+    <ul>
+      <li>A compromised phone is compromised. Encryption at rest protects a locked device, not an unlocked phone in an attacker’s hands.</li>
+      <li>The Snapdragon accelerator paths still need verification on the 8 Elite Gen 5 hardware they were built for.</li>
+      <li>The APK is signed and hashes are published, but there has been no independent security audit.</li>
+      <li>No telemetry is code, not a promise: there is no SDK to disable because there is no SDK.</li>
+    </ul>
+    <div class="actions">
+      <a class="button" href="/verify/">Verify a download</a>
+      <a class="button" href="https://github.com/wckdboy/autobot" rel="noopener">Read the source</a>
+    </div>
+  </section>
+</Lab>

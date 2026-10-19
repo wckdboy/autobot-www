@@ -2,9 +2,11 @@
 import Base from '../layouts/Base.astro';
 import Terminal from '../components/Terminal.astro';
 import { meta, releases } from '../data/site';
+import AutobotPrivacyLab from '../views/AutobotPrivacyLab.astro';
 
 const key = process.env.SITE_KEY || 'autobot';
 ---
+{key === 'autobot' ? <AutobotPrivacyLab /> : (
 <Base
   path="/privacy"
   title="Privacy"
@@ -260,3 +262,4 @@ const key = process.env.SITE_KEY || 'autobot';
     </div>
   )}
 </Base>
+)}

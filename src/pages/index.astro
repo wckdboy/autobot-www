@@ -1,8 +1,8 @@
 ---
-import AutobotHome from '../views/AutobotHome.astro';
 import InvincibleHome from '../views/InvincibleHome.astro';
 import SovwareHome from '../views/SovwareHome.astro';
+import AutobotLab from '../views/AutobotLab.astro';
 
 const key = process.env.SITE_KEY || 'autobot';
 ---
-{key === 'invincible' ? <InvincibleHome /> : key === 'sovware' ? <SovwareHome /> : <AutobotHome />}
+{key === 'invincible' ? <InvincibleHome /> : key === 'sovware' ? <SovwareHome /> : <AutobotLab />}

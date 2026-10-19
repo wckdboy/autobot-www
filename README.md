@@ -1,154 +1,160 @@
-# WCKD — public sites
+# Sovware lab — public sites
 
-The public face of **Autobot**, **Invincible Gateway** and **Sovware**.
+The public sites for **Autobot**, **Invincible** and **Sovware**.
 
-| Domain | Product | Build |
+**Current state:** Autobot is the first site on the new lab system and is awaiting review.
+Invincible and Sovware are still on the previous design until Autobot is confirmed. Do not mix
+the two systems on one page.
+
+| Domain | Project | State |
 | --- | --- | --- |
-| [autobot.sh](https://autobot.sh) | Autobot — private AI on Android and iOS | `pnpm build:autobot` → `dist/autobot` |
-| [invincible.sh](https://invincible.sh) | Invincible — the node you own | `pnpm build:invincible` → `dist/invincible` |
-| [sovware.io](https://sovware.io) | Sovware — the studio | `pnpm build:sovware` → `dist/sovware` |
-| wckd.ai | redirects to sovware.io | Cloudflare Redirect Rule |
+| [autobot.sh](https://autobot.sh) | Autobot | New lab system — review |
+| [invincible.sh](https://invincible.sh) | Invincible | Previous design |
+| [sovware.io](https://sovware.io) | Sovware | Previous design |
+| wckd.ai | Redirect | 301 → sovware.io |
 
-One Astro codebase, three static builds. No client framework, no analytics, no cookies, no
-third-party runtime requests. The design system is taken from Autobot's real
-`shared/design/tokens.json`: ink and paper, one signal red `#E8401C`, Antonio, JetBrains Mono,
-halftones, registration marks.
+Brand guide: **[autobot.sh/brand](https://autobot.sh/brand/)** · short notes in [BRAND.md](BRAND.md).
+
+## The system
+
+Plain is the point. Static HTML, one stylesheet, no client JavaScript, no third-party requests.
+
+- **Type:** Inter for body and interfaces; EB Garamond for page titles and section headings;
+  system monospace for code.
+- **Surface:** paper `#FBFAF7`, ink `#151513`, muted `#5D5A53`, rules `#DCD8CF`.
+- **One accent per project:** Autobot oxide `#B23A2A`, Invincible deep blue `#22506E`,
+  Sovware forest `#2F4A3A`. The accent appears in the wordmark square, selection, focus and
+  link hover. Nothing else.
+- **Layout:** one column, 1040 px page, 68-character measure, 1 px rules, no cards, shadows,
+  gradients, decorative numbers or illustrations.
+- **Voice:** write like a maintainer. State the limit as plainly as the feature.
+
+The full rules and component specimens are in the [brand guide](https://autobot.sh/brand/).
 
 ## Develop
 
 ```sh
 pnpm install
-pnpm dev                 # autobot.sh
-pnpm dev:invincible
-pnpm dev:sovware
+pnpm build:autobot       # → dist/autobot
+pnpm exec serve dist/autobot
 ```
 
-Build and inspect:
+The Autobot output is deliberately small: plain HTML, `/lab.css`, three WOFF2 files, a favicon and
+an OG image. The build still uses Astro for templating and the release data, then `postbuild.mjs`
+strips the previous design system from the Autobot HTML and removes unused assets. The other two
+sites still use Astro and the old stylesheet.
+
+Other commands:
 
 ```sh
-pnpm build:all
-pnpm exec serve dist/autobot   # or any static server
+pnpm build:all           # Autobot + the two previous sites
+pnpm verify:links        # every internal href/src resolves
+pnpm data                # refresh releases.json (GITHUB_TOKEN recommended)
+pnpm sync:install        # mirror the installer and record its SHA-256
+pnpm og                  # regenerate social cards
 ```
-
-`pnpm dev` and the builds read `SITE_KEY=autobot|invincible|sovware`. The key selects the cover,
-metadata, canonical origin, navigation and OG image; the interior routes (`/install`, `/releases`,
-`/privacy`, `/verify`, `/404`) adapt their copy to the same key.
 
 ## Content rules
 
-- Release history is **baked at build time** by `scripts/fetch-releases.mjs` into
+- Release history is baked at build time by `scripts/fetch-releases.mjs` into
   `src/data/releases.json`. The browser never calls GitHub. A failed fetch keeps the committed
   data (`--soft`), so a GitHub outage cannot block a deploy.
-- `scripts/sync-install.mjs` mirrors Invincible's `install.sh` verbatim to `public/install.sh` and
-  records its SHA-256 in `src/data/install.json`. The featured command is therefore
-  `curl -fsSL https://invincible.sh/install.sh | sh`, with the upstream copy as a fallback.
+- `scripts/sync-install.mjs` mirrors Invincible’s `install.sh` to `public/install.sh` and records
+  its SHA-256. The Autobot site links to the live copy at `invincible.sh/install.sh`.
 - Claims come from the product repositories. Where a path is not yet verified — Snapdragon
   hardware, the independent Invincible security review — the page says so.
-- Refresh both data files with `GITHUB_TOKEN=$(gh auth token) pnpm data && pnpm sync:install`.
-  The scheduled workflow does this every six hours.
+- Refresh with `GITHUB_TOKEN=$(gh auth token) pnpm data && pnpm sync:install`. The scheduled
+  workflow does this every six hours.
 
-## Hosting: Cloudflare Workers (static assets)
+## Hosting
 
-One repo, three Workers, four domains. Cloudflare Workers Static Assets is the host: a global CDN
-with no origin server, atomic versions, instant rollback, managed TLS and custom domains declared
-in code. All four domains are already on Cloudflare DNS, so attaching them is one deploy.
+Cloudflare Workers Static Assets, three site Workers plus two redirect Workers:
 
-### Deploy
-
-```sh
-npx wrangler login          # once
-pnpm deploy                 # build, check links, deploy all four
-```
-
-`pnpm deploy` runs:
-
-| Worker | Assets | Custom domains |
+| Worker | Assets | Domains |
 | --- | --- | --- |
-| `autobot-site` | `dist/autobot` | `autobot.sh` (www → 301) |
-| `invincible-site` | `dist/invincible` | `invincible.sh` (www → 301) |
-| `sovware-site` | `dist/sovware` | `sovware.io` (www → 301) |
-| `www-redirect` | `deploy/www-redirect.js` | all three `www` hosts → apex |
-| `wckd-redirect` | `deploy/wckd-redirect.js` | `wckd.ai`, `www.wckd.ai` → 301 sovware.io |
+| `autobot-site` | `dist/autobot` | `autobot.sh` |
+| `invincible-site` | `dist/invincible` | `invincible.sh` |
+| `sovware-site` | `dist/sovware` | `sovware.io` |
+| `www-redirect` | tiny Worker | all `www` hosts → apex |
+| `wckd-redirect` | tiny Worker | `wckd.ai` → sovware.io |
 
-The routes live in `deploy/*.wrangler.jsonc`. Workers creates the proxied DNS records for a
-custom domain automatically; no manual CNAME is needed on a zone in the same account. Each Worker
-uses `not_found_handling: "404-page"`, so the Astro 404 is served for unknown paths, and honours
-`public/_headers` (CSP, HSTS, immutable asset caching).
-
-### CI
-
-`.github/workflows/deploy.yml` builds all three sites and deploys on every push to `main`. Add
-two repository secrets:
-
-- `CLOUDFLARE_API_TOKEN` — **Account → Workers Scripts: Edit**, **Workers Routes: Edit**, and
-  **Zone: Read**. (Creating a custom domain also needs the zone in the same account.)
-- `CLOUDFLARE_ACCOUNT_ID` — from the Cloudflare dashboard.
-
-Without the secrets the workflow still builds and runs the link check, then warns that it did not
-deploy. `.github/workflows/refresh.yml` refreshes release data and the install mirror every six
-hours and commits only when something changed. `.github/workflows/check.yml` builds pull requests.
-
-### Preview locally
+Custom domains live in `deploy/*.wrangler.jsonc`. Deploy only Autobot while it is under review:
 
 ```sh
-npx wrangler dev --config deploy/autobot.wrangler.jsonc
+npx wrangler login        # once
+pnpm deploy:autobot
 ```
 
-`wrangler dev` serves the built assets with the real `_headers`. Build first after changing a page.
+Deploy everything after the other sites are migrated:
+
+```sh
+pnpm deploy
+```
+
+`.github/workflows/deploy.yml` builds all three and deploys on push to `main` when
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are set. Without them it builds and runs the
+link check, then warns. `.github/workflows/refresh.yml` refreshes release data every six hours.
 
 ## Delivery
 
 `public/_headers` is copied to every build and enforces:
 
-- a strict CSP (self only; inline styles/scripts because Astro emits them; no third-party origins),
+- a strict CSP (self only; inline styles because Astro emits a small style block),
 - HSTS, `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`,
   `Permissions-Policy` and COOP,
-- one-year immutable caching for `/_astro/*` and `/fonts/*`,
-- revalidation for HTML, and a short TTL for the install script.
+- one-year immutable caching for fonts and `/lab.css` for one hour,
+- revalidation for HTML.
 
-Other guarantees:
-
-- no analytics, cookies, localStorage or third-party scripts;
-- fonts self-hosted (WOFF2, preloaded);
-- a real `404.html`, `sitemap.xml`, `robots.txt` and per-site `site.webmanifest`;
-- OG images and touch icons generated per site (`public/og/*.png`, `apple-touch-icon.png`);
-- `prefers-reduced-motion` respected by every animation;
-- print styles for the pages.
+The Autobot build contains no `<script>` elements. Fonts are self-hosted and preloaded. There is no
+analytics, cookie, localStorage or third-party request. A real `404.html`, `sitemap.xml`,
+`robots.txt`, favicon and OG image are included.
 
 ## Checks
 
-```sh
-pnpm verify:links      # every internal href/src resolves in all three builds
-node scripts/shots.mjs # full-page screenshots at 390 / 768 / 1440 (needs a local server)
-```
+Lighthouse on the built Autobot pages (local static server):
 
-Lighthouse on the built homepages (local static server):
-
-| Site | Performance | Accessibility | Best practices | SEO |
+| Page | Performance | Accessibility | Best practices | SEO |
 | --- | --- | --- | --- | --- |
-| autobot.sh | 98 | 100 | 100 | 100 |
-| invincible.sh | 99 | 100 | 100 | 100 |
-| sovware.io | 99 | 100 | 100 | 100 |
+| `/` | 100 | 100 | 100 | 100 |
+| `/releases/` | 100 | 100 | 100 | 100 |
+| `/install/` | 100 | 100 | 100 | 100 |
+| `/privacy/` | 100 | 100 | 100 | 100 |
+| `/verify/` | 100 | 100 | 100 | 100 |
+| `/brand/` | 100 | 100 | 100 | 100 |
+
+`pnpm verify:links` checks every internal link in all three builds. `node scripts/shots.mjs`
+captures full-page screenshots at 390 / 768 / 1440.
 
 ## Layout
 
 ```
+public/
+  lab.css                  the one stylesheet
+  brand/index.html         brand and style guide
+  fonts/lab/               Inter + EB Garamond, self-hosted
+  _headers
 src/
-  components/     Nav, Footer, Mark, Icon, Signal (halftone canvas), Terminal, Releases, Ticker
-  data/           site config, baked releases.json, install.json
-  layouts/Base.astro
-  lib/format.ts   dates, bytes, safe release-note renderer
-  pages/          index, releases, install, privacy, verify, 404, sitemap, robots, favicon
-  styles/riso.css the press: tokens, type, plates, components, responsive, motion, print
-  views/          AutobotHome, InvincibleHome, SovwareHome
-scripts/          fetch-releases, sync-install, postbuild, check-links, shots, og
-public/           fonts, _headers, install.sh, og images
+  layouts/Lab.astro        the lab shell (Autobot now; reusable for the next site)
+  views/Autobot*Lab.astro  Autobot pages
+  data/                    site config, baked releases.json, install.json
+  lib/format.ts            dates, bytes, release-note renderer
+  views/                   previous Invincible/Sovware pages (until migrated)
+  styles/riso.css          previous stylesheet (Invincible/Sovware only)
+scripts/
+  deploy-autobot.sh
+  fetch-releases.mjs
+  sync-install.mjs
+  postbuild.mjs            strips old CSS, builds icons, removes unused assets
+  check-links.mjs
+  og-lab.html / build-og.mjs
+deploy/                    Worker configs and redirect scripts
 ```
 
-## Notes
+## Migration sequence
 
-- `pnpm` is configured with a minimum release age. Astro is pinned to `7.4.0` (not `^`) so a fresh
-  publish cannot slip into a deploy; update deliberately.
-- The install script mirror is a convenience, not a second source of truth. The signature is
-  checked against the key pinned in the upstream script.
-- Product content is © their authors. Autobot is Apache-2.0; Invincible is MIT.
+1. Autobot — built, awaiting review.
+2. Invincible — after Autobot is confirmed.
+3. Sovware — after Invincible is confirmed.
+
+“Confirmed” means the page has been read on a phone and a desktop, the copy is accurate, and the
+owner is happy with the direction. No next site starts before then.

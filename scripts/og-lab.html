@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: 'Inter';
+    src: url('../public/fonts/lab/inter-latin.woff2') format('woff2');
+    font-weight: 400 700;
+  }
+  @font-face {
+    font-family: 'EB Garamond';
+    src: url('../public/fonts/lab/eb-garamond-latin.woff2') format('woff2');
+    font-weight: 400 600;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background: #fbfaf7; color: #151513; padding: 54px 64px 44px;
+    font-family: 'Inter', -apple-system, sans-serif; display: flex; flex-direction: column;
+  }
+  .top { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; }
+  .top i { width: 10px; height: 10px; background: #b23a2a; display: block; }
+  .top span { color: #5d5a53; font-weight: 400; }
+  .top .right { margin-left: auto; font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: #5d5a53; letter-spacing: .04em; }
+  .body { margin-top: 92px; }
+  h1 { font-family: 'EB Garamond', Georgia, serif; font-weight: 400; font-size: 108px; line-height: .96; letter-spacing: -.02em; }
+  .tag { margin-top: 22px; font-size: 22px; line-height: 1.45; color: #151513; max-width: 620px; }
+  .rule { margin-top: 42px; border-top: 1px solid #dcd8cf; }
+  .bottom { margin-top: auto; display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid #dcd8cf; font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: #5d5a53; letter-spacing: .04em; }
+  .bottom b { color: #151513; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <i></i> Autobot <span>/ autobot.sh</span>
+    <span class="right">V1.10.0 · APACHE-2.0</span>
+  </div>
+  <div class="body">
+    <h1>Private AI,<br>on the phone.</h1>
+    <p class="tag">Chat, agents, image generation and voice on the device. Offline by default, redacted before cloud, with a receipt for every answer.</p>
+    <div class="rule"></div>
+  </div>
+  <div class="bottom">
+    <span><b>ANDROID 14+</b> · <b>iOS 18+</b> · NO TELEMETRY · NO ACCOUNT</span>
+    <span>A SOVWARE PROJECT</span>
+  </div>
+<script>
+  const version = new URLSearchParams(location.search).get('v');
+  if (version) document.querySelector('.right').textContent = `V${version} · APACHE-2.0`;
+</script>
+</body>
+</html>

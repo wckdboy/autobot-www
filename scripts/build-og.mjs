@@ -52,5 +52,10 @@ for (const site of ['autobot', 'invincible', 'sovware']) {
   await page.screenshot({ path: join(ROOT, 'public/og', `${site}.png`) });
   console.log(`→ public/og/${site}.png`);
 }
+const data = JSON.parse(await readFile(join(ROOT, 'src/data/releases.json'), 'utf8'));
+await page.goto(`http://127.0.0.1:${port}/scripts/og-lab.html?v=${(data.autobot.latest?.tag || 'v1.10.0').replace(/^v/, '')}`, { waitUntil: 'networkidle' });
+await page.screenshot({ path: join(ROOT, 'public/og/autobot-lab.png') });
+console.log('→ public/og/autobot-lab.png');
+
 await browser.close();
 server.close();

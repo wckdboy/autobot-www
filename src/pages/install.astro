@@ -4,6 +4,7 @@ import Terminal from '../components/Terminal.astro';
 import Icon from '../components/Icon.astro';
 import { meta, releases, install } from '../data/site';
 import { fmtBytes, fmtDate, v } from '../lib/format';
+import AutobotInstallLab from '../views/AutobotInstallLab.astro';
 
 const key = process.env.SITE_KEY || 'autobot';
 const a = releases.autobot;
@@ -17,6 +18,7 @@ const mac = i.latest.assets.find((x) => /macos/.test(x.name));
 const linux = i.latest.assets.find((x) => /linux-x64/.test(x.name));
 const sumsI = i.latest.assets.find((x) => x.name === 'SHA256SUMS');
 ---
+{key === 'autobot' ? <AutobotInstallLab /> : (
 <Base
   path="/install"
   title="Install"
@@ -408,3 +410,4 @@ const sumsI = i.latest.assets.find((x) => x.name === 'SHA256SUMS');
     </>
   )}
 </Base>
+)}

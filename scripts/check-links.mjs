@@ -61,7 +61,9 @@ for (const site of SITES) {
 for (const site of SITES) {
   const dist = join(ROOT, 'dist', site);
   if (!existsSync(dist)) continue;
-  for (const file of ['404.html', 'apple-touch-icon.png', '_headers', 'robots.txt', 'sitemap.xml', 'install.sh']) {
+  const required = ['404.html', 'apple-touch-icon.png', '_headers', 'robots.txt', 'sitemap.xml'];
+  if (site !== 'autobot') required.push('install.sh');
+  for (const file of required) {
     if (!existsSync(join(dist, file))) {
       failures += 1;
       console.log(`✗ ${site}: missing ${file}`);

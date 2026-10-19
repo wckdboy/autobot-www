@@ -1,0 +1,87 @@
+---
+import Lab from '../layouts/Lab.astro';
+import { install, releases } from '../data/site';
+import { fmtDate, v } from '../lib/format';
+
+const latest = releases.autobot.latest;
+const apk = latest.assets.find((a) => /release\.apk$/.test(a.name));
+const sums = latest.assets.find((a) => a.name === 'SHA256SUMS.txt');
+const hash = releases.autobot.checksums?.split('\n').find((l) => l.includes('release.apk'))?.split(/\s+/)[0];
+const cert = '9a1378acf9587885e7920355558c85a1ec0e89304f58c153feebf90fdee7f3f1';
+---
+<Lab
+  path="/verify/"
+  title="Verify"
+  description="Verify an Autobot download: SHA-256, APK signing certificate and the agent's install script. Commands and expected values."
+>
+  <p class="label">Autobot · download verification</p>
+  <h1>Verify a download</h1>
+  <p class="lede">A matching hash proves the file is the one the release published. A matching certificate proves it was signed by the same key as earlier builds.</p>
+  <p class="meta">Latest v{v(latest.tag)} · {fmtDate(latest.published)} · <a href="/install/">install notes</a></p>
+
+  <section>
+    <h2>1. Check the APK hash</h2>
+    <p>Download the APK and <code>SHA256SUMS.txt</code> from the same release. Compare the full line, not a prefix.</p>
+    <pre><code>shasum -a 256 {apk?.name}
+
+<span class="comment"># expected</span>
+{hash ?? 'see SHA256SUMS.txt'}</code></pre>
+    <div class="actions">
+      {sums && <a class="button" href={sums.url} rel="noopener">SHA256SUMS.txt</a>}
+      <a class="text-link" href={latest.url} rel="noopener">Release v{v(latest.tag)} ↗</a>
+    </div>
+    <p class="small">On Windows: <code>certutil -hashfile {apk?.name} SHA256</code></p>
+  </section>
+
+  <section>
+    <h2>2. Check the signer</h2>
+    <p><code>apksigner</code> comes with the Android SDK build-tools.</p>
+    <pre><code>apksigner verify --print-certs {apk?.name}
+
+<span class="comment"># Signer #1 certificate SHA-256 digest:</span>
+<span class="comment"># {cert}</span></code></pre>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Item</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Certificate</td><td>autobot-release-2026</td></tr>
+          <tr><td>SHA-256</td><td class="mono" style="white-space:normal;overflow-wrap:anywhere">{cert}</td></tr>
+          <tr><td>App ID</td><td class="mono">ai.wckd.autobot</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Check the agent’s install script</h2>
+    <p>This site serves a verbatim mirror of Invincible’s installer. Its SHA-256 is recorded when the site is built. The script checks a signed <code>SHA256SUMS</code> against the release key pinned inside it, and checks the Sigstore attestation when the GitHub CLI is signed in.</p>
+    <pre><code><span class="comment"># mirror served at</span>
+https://invincible.sh/install.sh
+
+<span class="comment"># SHA-256</span>
+{install.sha256}
+
+<span class="comment"># size · fetched</span>
+{install.bytes} bytes · {fmtDate(install.fetchedAt)}</code></pre>
+    <p class="small"><a href="https://github.com/wckdboy/invincible/blob/main/install.sh" rel="noopener">Upstream install.sh ↗</a> · <a href="https://invincible.sh/verify/" rel="noopener">Manual release verification ↗</a></p>
+  </section>
+
+  <section>
+    <h2>What verification proves</h2>
+    <p>A matching hash proves the file is the one the release published. A matching certificate proves the APK came from the same signing key as earlier Autobot builds. Neither proves the code is free of bugs; both make a swapped or tampered download visible.</p>
+    <p>Versions move together: Android and iOS ship the same version and build number. If the release notes and the certificate disagree with the file, stop and use the repository’s copy.</p>
+  </section>
+
+  <section>
+    <h2>What it does not prove</h2>
+    <ul>
+      <li>There has been no independent security audit of the app.</li>
+      <li>A signature proves origin, not quality. Read the source if the guarantee matters.</li>
+      <li>Encryption at rest protects a locked device, not an unlocked phone in an attacker’s hands.</li>
+    </ul>
+    <div class="actions">
+      <a class="button" href="/privacy/">Privacy model</a>
+      <a class="button" href="https://github.com/wckdboy/autobot" rel="noopener">Source</a>
+    </div>
+  </section>
+</Lab>

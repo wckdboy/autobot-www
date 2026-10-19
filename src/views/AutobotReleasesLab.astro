@@ -1,0 +1,69 @@
+---
+import Lab from '../layouts/Lab.astro';
+import { releases } from '../data/site';
+import { fmtBytes, fmtDate, releaseNotes, v } from '../lib/format';
+
+const all = releases.autobot.releases.filter((r) => !r.prerelease);
+const latest = releases.autobot.latest;
+const apk = latest.assets.find((a) => /release\.apk$/.test(a.name));
+const sums = latest.assets.find((a) => a.name === 'SHA256SUMS.txt');
+
+const label = (name: string) => {
+  if (/release\.apk$/.test(name)) return 'APK';
+  if (/debug\.apk$/.test(name)) return 'debug APK';
+  if (/SHA256SUMS/.test(name)) return 'SHA-256';
+  if (/mapping/.test(name)) return 'mapping';
+  return name;
+};
+---
+<Lab
+  path="/releases/"
+  current="releases"
+  title="Releases"
+  description="Every public Autobot release, with files, checksums and full notes. Data is baked at build time from GitHub."
+>
+  <p class="label">Autobot · release archive</p>
+  <h1>Releases</h1>
+  <p class="lede">Every public release, with its files and full notes. Versions move together on Android and iOS.</p>
+  <p class="meta">Latest v{v(latest.tag)} · {fmtDate(latest.published)} · {all.length} public releases · data {fmtDate(releases.generatedAt)}</p>
+
+  <div class="actions">
+    <a class="button button--primary" href={apk?.url} download>Download {v(latest.tag)}</a>
+    {sums && <a class="text-link" href={sums.url} rel="noopener">SHA256SUMS.txt ↗</a>}
+    <a class="text-link" href="/verify/">Verify a download</a>
+  </div>
+
+  <section>
+    {all.map((r, i) => {
+      const files = [...r.assets].sort((a, b) => {
+        const rank = (n: string) =>
+          /release\.apk$/.test(n) ? 0 : /debug\.apk$/.test(n) ? 1 : /SHA256SUMS/.test(n) ? 2 : 3;
+        return rank(a.name) - rank(b.name);
+      });
+      return (
+        <details open={i === 0} id={`v${v(r.tag)}`}>
+          <summary>
+            <strong>{v(r.tag)}</strong> <span class="small">— {fmtDate(r.published)}</span>
+            {i === 0 && <span class="label" style="display:inline;margin-left:8px">latest</span>}
+          </summary>
+          <div class="details-body">
+            <p class="small">
+              {files.map((a, n) => (
+                <>
+                  {n > 0 && ' · '}
+                  <a href={a.url} rel="noopener">{label(a.name)}</a>
+                  {' '}({fmtBytes(a.size)})
+                </>
+              ))}
+              {' · '}
+              <a href={r.url} rel="noopener">GitHub ↗</a>
+            </p>
+            <div class="release-notes" set:html={releaseNotes(r.body)} />
+          </div>
+        </details>
+      );
+    })}
+  </section>
+
+  <p class="small">The release table is generated from GitHub when the site is built. The browser does not call GitHub. <a href="/verify/">How to verify a release</a>.</p>
+</Lab>

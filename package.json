@@ -19,7 +19,8 @@
     "og": "node scripts/build-og.mjs",
     "verify:links": "node scripts/check-links.mjs",
     "prepare": "node scripts/fetch-releases.mjs --soft && node scripts/sync-install.mjs",
-    "deploy": "sh scripts/deploy.sh"
+    "deploy": "sh scripts/deploy.sh",
+    "deploy:autobot": "sh scripts/deploy-autobot.sh"
   },
   "dependencies": {
     "astro": "7.4.0"

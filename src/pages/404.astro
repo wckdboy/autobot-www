@@ -1,10 +1,23 @@
 ---
 import Base from '../layouts/Base.astro';
+import Lab from '../layouts/Lab.astro';
 import { meta } from '../data/site';
 
 const key = process.env.SITE_KEY || 'autobot';
 const label = key === 'invincible' ? 'node' : key === 'sovware' ? 'page' : 'device';
 ---
+{key === 'autobot' ? (
+  <Lab path="/404" title="Not found" noindex description="Page not found.">
+    <p class="label">Error 404</p>
+    <h1>Not found</h1>
+    <p class="lede">This page does not exist. Nothing was requested from the network to find out.</p>
+    <div class="actions">
+      <a class="button" href="/">Back to Autobot</a>
+      <a class="text-link" href="/releases/">Releases</a>
+      <a class="text-link" href="/install/">Install</a>
+    </div>
+  </Lab>
+) : (
 <Base path="/404" title="Not found" noindex>
   <section class="section" style="min-height:70vh;display:flex;align-items:center">
     <div class="shell">
@@ -26,3 +39,4 @@ const label = key === 'invincible' ? 'node' : key === 'sovware' ? 'page' : 'devi
     </div>
   </section>
 </Base>
+)}

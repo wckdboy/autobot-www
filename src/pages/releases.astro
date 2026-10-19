@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Releases from '../components/Releases.astro';
 import { meta, releases } from '../data/site';
 import { fmtDate, v } from '../lib/format';
+import AutobotReleasesLab from '../views/AutobotReleasesLab.astro';
 
 const key = process.env.SITE_KEY || 'autobot';
 const a = releases.autobot;
@@ -12,6 +13,7 @@ const archive = (repo: 'autobot' | 'invincible') => (repo === 'autobot' ? a : i)
 const active = key === 'sovware' ? null : archive(key as 'autobot' | 'invincible');
 const version = active?.latest?.tag;
 ---
+{key === 'autobot' ? <AutobotReleasesLab /> : (
 <Base
   path="/releases"
   title="Releases"
@@ -111,3 +113,4 @@ const version = active?.latest?.tag;
     </div>
   )}
 </Base>
+)}

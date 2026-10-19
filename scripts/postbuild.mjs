@@ -3,9 +3,9 @@
  * Post-build: Cloudflare Pages wants /404.html at the root, and touch icons are
  * easier to rasterise here than in a route. Everything else is already static.
  */
-import { copyFile, readFile, writeFile, access } from 'node:fs/promises';
+import { copyFile, readFile, writeFile, access, readdir, rm } from 'node:fs/promises';
 import { constants } from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
@@ -47,7 +47,9 @@ const dots = (key) => {
 
 const bg = KEY === 'autobot' ? '#E8401C' : '#141414';
 const fg = KEY === 'autobot' ? '#F4EEE6' : '#E8401C';
-const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><rect width="180" height="180" rx="36" fill="${bg}"/><g fill="${fg}">${dots(KEY)}</g>${
+const iconSvg = KEY === 'autobot'
+  ? '<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><rect width="180" height="180" fill="#fbfaf7"/><rect x="50" y="50" width="80" height="80" fill="#b23a2a"/></svg>'
+  : `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><rect width="180" height="180" rx="36" fill="${bg}"/><g fill="${fg}">${dots(KEY)}</g>${
   KEY === 'invincible' ? '<circle cx="90" cy="26" r="9" fill="#F4EEE6"/>' : ''
 }</svg>`;
 
@@ -80,5 +82,47 @@ console.log('→ apple-touch-icon.png (180×180)');
 await sharp(Buffer.from(iconSvg)).resize(32, 32).png({ compressionLevel: 9 }).toFile(resolve(DIST, 'favicon-32.png'));
 console.log('→ favicon-32.png');
 
+// The Autobot site is on the new lab stylesheet. Strip the old Astro/riso
+// bundle and Astro scope attributes from its HTML so the output is genuinely
+// plain, zero-JS HTML with one stylesheet.
+if (KEY === 'autobot') {
+  const walk = async (dir) => {
+    const out = [];
+    for (const entry of await readdir(dir, { withFileTypes: true })) {
+      const p = join(dir, entry.name);
+      if (entry.isDirectory()) out.push(...(await walk(p)));
+      else if (entry.name.endsWith('.html')) out.push(p);
+    }
+    return out;
+  };
+  for (const file of await walk(DIST)) {
+    let html = await readFile(file, 'utf8');
+    html = html
+      .replace(/<link rel="stylesheet" href="\/_astro\/[^"]+\.css">/g, '')
+      .replace(/<script[^>]+src="\/_astro\/[^"]+"[^>]*><\/script>/g, '')
+      .replace(/ data-astro-cid-[a-z0-9]+(?:="[^"]*")?/gi, '');
+    await writeFile(file, html);
+  }
+  console.log('→ stripped the old stylesheet from Autobot HTML');
+  await rm(resolve(DIST, '_astro'), { recursive: true, force: true });
+  await rm(resolve(DIST, 'fonts/antonio-latin.woff2'), { force: true });
+  await rm(resolve(DIST, 'fonts/antonio-latin-ext.woff2'), { force: true });
+  await rm(resolve(DIST, 'fonts/jetbrains-mono-latin.woff2'), { force: true });
+  await rm(resolve(DIST, 'fonts/jetbrains-mono-latin-ext.woff2'), { force: true });
+  await rm(resolve(DIST, 'og/autobot.png'), { force: true });
+  await rm(resolve(DIST, 'og/invincible.png'), { force: true });
+  await rm(resolve(DIST, 'og/sovware.png'), { force: true });
+  await rm(resolve(DIST, 'install.sh'), { force: true });
+  console.log('→ removed unused assets from the Autobot build');
+}
+
 await copyFile(resolve(ROOT, 'public/_headers'), resolve(DIST, '_headers')).catch(() => {});
+
+// The Autobot build has no scripts at all; tighten its CSP accordingly.
+if (KEY === 'autobot') {
+  const headersPath = resolve(DIST, '_headers');
+  const headers = await readFile(headersPath, 'utf8');
+  await writeFile(headersPath, headers.replace("script-src 'self' 'unsafe-inline'", "script-src 'none'"));
+  console.log("→ tightened the Autobot CSP to script-src 'none'");
+}
 console.log(`✓ dist/${KEY} ready`);

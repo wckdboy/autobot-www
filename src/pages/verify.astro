@@ -4,6 +4,7 @@ import Terminal from '../components/Terminal.astro';
 import Icon from '../components/Icon.astro';
 import { meta, releases, install } from '../data/site';
 import { fmtBytes, fmtDate, v } from '../lib/format';
+import AutobotVerifyLab from '../views/AutobotVerifyLab.astro';
 
 const key = process.env.SITE_KEY || 'autobot';
 const a = releases.autobot;
@@ -16,6 +17,7 @@ const apkHash = a.checksums?.split('\n').find((l) => l.includes('release.apk'))?
 const cert = '9a1378acf9587885e7920355558c85a1ec0e89304f58c153feebf90fdee7f3f1';
 const keyLine = "invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo";
 ---
+{key === 'autobot' ? <AutobotVerifyLab /> : (
 <Base
   path="/verify"
   title="Verify"
@@ -245,3 +247,4 @@ const keyLine = "invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq
     </div></div>
   )}
 </Base>
+)}
