@@ -78,7 +78,7 @@
     "invincible": {
       "name": "Invincible",
       "domain": "invincible.sh",
-      "role": "The node you own",
+      "role": "AI gateway and decentralized compute",
       "glyph": [
         "##",
         "..",

@@ -15,7 +15,7 @@ version of the kit at `/brand/`; wckd.ai's home is the master kit.
 | WCKD | wckd.ai | The lab | `w` | ink `#111111` (white on ink) |
 | Sovware | sovware.io | Sovereign hardware and software | `s` | ink `#111111` (white on ink) |
 | Autobot | autobot.sh | Private AI on your phone and your machine | `a` | purple `#7C5CFF` |
-| Invincible | invincible.sh | The node you own | `i` | signal orange `#FF8A1E` |
+| Invincible | invincible.sh | AI gateway and decentralized compute | `i` | signal orange `#FF8A1E` |
 | Omnie | omnie.sh | An IDE for development on iOS and iPadOS | `o` | phthalo `#00B386` |
 | Nightfall | nightfall.sh | AI-native parametric CAD | `n` | rose `#FF3E8A` |
 
