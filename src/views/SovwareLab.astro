@@ -1,37 +1,141 @@
 ---
 import Lab from '../layouts/Lab.astro';
 import { releases } from '../data/site';
-import { kit, symbolSvg } from '../data/kit';
 import { fmtDate, v } from '../lib/format';
 
 const a = releases.autobot.latest;
 const i = releases.invincible.latest;
-const products = ['autobot', 'invincible', 'omnie', 'nightfall'].map((k) => ({ key: k, ...kit.brands[k] }));
-const state: Record<string, string> = {
-  autobot: `v${v(a.tag)} · ${fmtDate(a.published)} · Android and iOS`,
-  invincible: `v${v(i.tag)} · ${fmtDate(i.published)} · Linux and macOS`,
-  omnie: 'iPhone, Mac and Vision Pro · in development',
-  nightfall: 'macOS · visual development preview',
-};
----
-<Lab path="/" current="" description="Sovereign hardware and software, made by WCKD.">
-  <h1>sovware</h1>
-  <p class="lede">Sovereign hardware and software.</p>
 
-  <section>
+const loop = [
+  ['program', 'the artifact: source you can read, parameters with units, claims with sources'],
+  ['verifier', 'an executable that returns a verdict, a score and a cost, out of process'],
+  ['gate', 'the rule that turns scores into pass, fail or refusal for a domain'],
+  ['ledger', 'hash-chained evidence of every run, replayable by anyone'],
+];
+
+const status = [
+  ['kernel', 'working', 'verify, eval, compare, ledger. conformance L1'],
+  ['schemas', '7', 'strict: an unknown field is an error'],
+  ['mechanical gate', 'draft', '4 verifiers, 3 programs. the spec asks for 30 and 10 held out'],
+  ['circuits', 'not started', 'blocked on a stable KiCad report contract'],
+  ['software', 'not started', 'the recursive domain: prompts and routing as programs'],
+  ['sandbox', 'not started', 'timeouts only; landlock and seccomp next'],
+  ['fabrication', 'closed', 'a human signature; the kernel has no path to a machine'],
+];
+
+const estate = [
+  { name: 'sovware', what: 'the gate and the ledger', state: 'L1, one draft domain' },
+  { name: 'autobot', what: 'private AI on Android and iOS', state: `v${v(a.tag)} · ${fmtDate(a.published)}`, href: 'https://autobot.sh' },
+  { name: 'invincible', what: 'the node you own: routing and signed receipts', state: `v${v(i.tag)} · ${fmtDate(i.published)}`, href: 'https://invincible.sh' },
+  { name: 'omnie', what: 'every model, agent and tool in one thread', state: 'in development', href: 'https://omnie.sh' },
+  { name: 'omnie-harness', what: 'the job engine omnie runs on', state: 'working, MIT', href: 'https://github.com/wckdboy/omnie-harness' },
+  { name: 'nightfall', what: 'AI-native parametric CAD', state: 'phase 2 preview', href: 'https://nightfall.sh' },
+  { name: 'wckd-gpu', what: 'elastic compute for the expensive verifiers', state: 'working, not hosted', href: 'https://github.com/wckdboy/wckd-gpu' },
+];
+---
+
+<Lab
+  path="/"
+  current=""
+  nav={[
+    { label: 'Goal', href: '/#goal' },
+    { label: 'Status', href: '/#status' },
+    { label: 'Projects', href: '/#projects' },
+    { label: 'Source', href: 'https://github.com/wckdboy/sovware' },
+  ]}
+  og="/og/sovware.png"
+  footerNote="Sovware is free software under Apache-2.0. The kernel runs offline. Made by WCKD."
+  description="An open-source kernel for humans and AI agents: every artifact is a program, every program is scored by verifiers, every run is recorded. Improvement is defined, not asserted."
+>
+  <h1>sovware</h1>
+  <p class="lede">Open-source tools for humans and AI agents to build things that are checked, not trusted.</p>
+
+  <dl class="facts">
+    <div><dt>License</dt><dd>Apache-2.0</dd></div>
+    <div><dt>Kernel</dt><dd>L1 · working</dd></div>
+    <div><dt>Domains</dt><dd>1 · draft</dd></div>
+  </dl>
+
+  <section id="goal">
+    <h2>The goal</h2>
+    <p>An agent can produce a part, a board, a program or a plan. It cannot tell you whether the thing is right. That gap is the whole problem, and a better model does not close it.</p>
+    <p>Sovware is the part that checks. Every artifact is a program: source you can read, parameters with units, claims with sources, a hash of the bytes that made it. Every program is scored by verifiers that run out of process and return a verdict, a score and a cost. Every run goes into a ledger that anyone can replay.</p>
+    <p>Improvement then has a definition. The gate passes, the score does not fall on a set the agent never saw, and the cost does not rise. A design that is cheaper and fails the gate is a change. We say so, and we keep the record.</p>
+    <blockquote><p>A cheaper design that fails is not an improvement. The tool says so, and keeps the record.</p></blockquote>
+  </section>
+
+  <section id="loop">
+    <h2>The loop</h2>
+    <pre><code>program ─▶ verifiers ─▶ gate ─▶ ledger
+   ▲                                 │
+   └───────── mutation ◀─────────────┘</code></pre>
     <div class="table-wrap">
       <table>
+        <thead><tr><th>Object</th><th>What it is</th></tr></thead>
         <tbody>
-          {products.map((p) => (
+          {loop.map(([name, what]) => (
+            <tr><td><strong>{name}</strong></td><td>{what}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="small">Verifiers are exact, numeric or statistical, and they say which. Exact gates. Numeric gates against a declared tolerance. Statistical informs and never gates.</p>
+  </section>
+
+  <section id="status">
+    <div class="section-head">
+      <h2>Where we are</h2>
+      <span class="label">Kernel and domains</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Part</th><th>State</th></tr></thead>
+        <tbody>
+          {status.map(([part, state, detail]) => (
+            <tr><td><strong>{part}</strong></td><td>{state} <span class="small">· {detail}</span></td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="small">Nothing here is admitted for fabrication. The mechanical gate stays a draft until it has the corpus the specification asks for: 30 programs, 10 held out, 5 known-bad.</p>
+  </section>
+
+  <section id="projects">
+    <h2>The estate</h2>
+    <p>One loop, many surfaces. The kernel is the part that decides whether any of them improved.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Project</th><th>What it does</th></tr></thead>
+        <tbody>
+          {estate.map((p) => (
             <tr>
-              <td style="width:32px"><span style={`color:${p.onPaper};display:block`} set:html={symbolSvg(p, 18, p.name)} /></td>
-              <td><strong><a href={`https://${p.domain}`} rel="noopener">{p.name.toLowerCase()}</a></strong></td>
-              <td>{p.role}</td>
-              <td class="small">{state[p.key]}</td>
+              <td><strong>{p.href ? <a href={p.href} rel="noopener">{p.name}</a> : p.name}</strong></td>
+              <td>{p.what} <span class="small">· {p.state}</span></td>
             </tr>
           ))}
         </tbody>
       </table>
+    </div>
+    <p class="small">Invincible routes the models and signs the receipts. Omnie Harness runs the jobs. Nightfall is the first CAD domain. Autobot and Omnie are where a person meets the result.</p>
+  </section>
+
+  <section id="rules">
+    <h2>The rules that matter</h2>
+    <ul class="list-plain">
+      <li><b>No claim without a source.</b> A citation that cannot be resolved is a bug.</li>
+      <li><b>An errored verifier is a refusal.</b> Missing evidence is not a pass.</li>
+      <li><b>Statistical never gates.</b> A score that cannot state its uncertainty has no vote.</li>
+      <li><b>Nothing moves matter without a human signature.</b> The kernel cannot call a printer, and neither can an agent.</li>
+      <li><b>No tuning on the held-out set.</b> The set is hashed before the mutation exists, and the tool refuses it if it changed.</li>
+    </ul>
+  </section>
+
+  <section id="read">
+    <h2>Read it</h2>
+    <p>The manifesto, the specification and the fork record live in the repository, next to the kernel. No model, no key, no network is needed to run the loop.</p>
+    <div class="actions">
+      <a class="button button--primary" href="https://github.com/wckdboy/sovware" rel="noopener">Source</a>
+      <a class="text-link" href="https://github.com/wckdboy" rel="noopener">WCKD on GitHub</a>
     </div>
   </section>
 
