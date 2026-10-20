@@ -1,47 +1,81 @@
 {
-  "generatedAt": "2026-10-20T08:24:55.719Z",
+  "generatedAt": "2026-10-20T08:55:18.059Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-20T08:12:20Z",
+    "pushed": "2026-10-20T08:54:18Z",
     "latest": {
-      "tag": "v1.11.0",
-      "name": "Autobot 1.11.0",
-      "published": "2026-10-20T06:56:51Z",
-      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.11.0",
+      "tag": "v1.11.1",
+      "name": "Autobot 1.11.1",
+      "published": "2026-10-20T08:54:50Z",
+      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.11.1",
       "prerelease": false,
-      "body": "A new look on both apps: the purple pixel a, calmer screens, and the node's team board on your phone.\n\n## A new look (Android and iOS)\n- **The icon is the purple pixel a** on white. The launch screen shows the same a.\n- **Calmer screens.** Titles and buttons are in sentence case; the main screens' titles end in a small purple square. Labels and buttons are no longer in capitals.\n- **One way to show what's selected.** Segments, chips and tabs show the choice in ink over a thin purple bar, everywhere.\n- **No more dot patterns.** Progress bars are flat, loaders are three pixels, and image previews are plain panels.\n- **Purple is rare.** It marks the a, the active tab, the switch you turned on and the main action of a screen. Links and code are in ink, and tags are neutral.\n- **Light mode looks as good as dark,** and the Image screen follows your theme instead of always being paper.\n- **The node keeps its orange i** on every screen about your node.\n- **Clearer empty screens:** the a, one sentence and one action.\n\n## Your node's team board (Android and iOS)\n- The Activity sheet has a **Board** tab with the team's plans and each task's state, and a count of the tasks waiting for you.\n- A blocked task shows the member's question, with a field to answer it from the phone.\n- Older nodes without a board show none.\n\n## Fixes\n- Session rows line up with the margin. Large text no longer overlaps the Run cards on iPhone, and segment labels no longer break mid-word on small Android phones.\n- On iPhone, \"1 providers\" now reads \"1 provider\".\n- A voice test that depended on timing is steady.",
+      "body": "See what your node did while you were away, and tell the agent what to do instead.\n\n## While you were away (Android and iOS)\n- **A card on the Run screen** sums up what your node did since you last looked: requests answered (and whether they all stayed on your node), actions it ran (and who allowed them), and recipes and schedules that ran.\n- **What needs you comes first.** \"2 approvals waiting\" opens the conversation they're in; team questions open the Board.\n- **Receipts are checked.** \"All 12 receipts verified\" in grey, or a red line first when one fails to verify.\n- Details opens the node's Activity, and ✕ dismisses the card. Nothing shows when nothing is new.\n\n## Something else (Android and iOS)\n- An approval card from your node has a quiet third answer: **Something else…** Type what the agent should do instead and it does that. It needs Invincible 0.0.12 or newer.\n\n## Smaller things\n- The theme follows your phone's setting by default. A theme you picked stays as it is.\n- Android's welcome screen has the two quiet links again: Pair a PC and Add an API key.",
       "assets": [
         {
-          "name": "autobot-1.11.0-debug.apk",
-          "size": 138907045,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-debug.apk"
+          "name": "autobot-1.11.1-debug.apk",
+          "size": 139073721,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-debug.apk"
         },
         {
-          "name": "autobot-1.11.0-mapping.txt",
-          "size": 94837379,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-mapping.txt"
+          "name": "autobot-1.11.1-mapping.txt",
+          "size": 95408007,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-mapping.txt"
         },
         {
-          "name": "autobot-1.11.0-release.apk",
-          "size": 82203978,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-release.apk"
+          "name": "autobot-1.11.1-release.apk",
+          "size": 82239298,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 5,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/SHA256SUMS.txt"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/SHA256SUMS.txt"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v1.11.1",
+        "name": "Autobot 1.11.1",
+        "published": "2026-10-20T08:54:50Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.11.1",
+        "prerelease": false,
+        "body": "See what your node did while you were away, and tell the agent what to do instead.\n\n## While you were away (Android and iOS)\n- **A card on the Run screen** sums up what your node did since you last looked: requests answered (and whether they all stayed on your node), actions it ran (and who allowed them), and recipes and schedules that ran.\n- **What needs you comes first.** \"2 approvals waiting\" opens the conversation they're in; team questions open the Board.\n- **Receipts are checked.** \"All 12 receipts verified\" in grey, or a red line first when one fails to verify.\n- Details opens the node's Activity, and ✕ dismisses the card. Nothing shows when nothing is new.\n\n## Something else (Android and iOS)\n- An approval card from your node has a quiet third answer: **Something else…** Type what the agent should do instead and it does that. It needs Invincible 0.0.12 or newer.\n\n## Smaller things\n- The theme follows your phone's setting by default. A theme you picked stays as it is.\n- Android's welcome screen has the two quiet links again: Pair a PC and Add an API key.",
+        "assets": [
+          {
+            "name": "autobot-1.11.1-debug.apk",
+            "size": 139073721,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-debug.apk"
+          },
+          {
+            "name": "autobot-1.11.1-mapping.txt",
+            "size": 95408007,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-mapping.txt"
+          },
+          {
+            "name": "autobot-1.11.1-release.apk",
+            "size": 82239298,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 277,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/SHA256SUMS.txt"
+          }
+        ]
+      },
       {
         "tag": "v1.11.0",
         "name": "Autobot 1.11.0",
@@ -65,13 +99,13 @@
           {
             "name": "autobot-1.11.0-release.apk",
             "size": 82203978,
-            "downloads": 1,
+            "downloads": 2,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-release.apk"
           },
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 5,
+            "downloads": 7,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/SHA256SUMS.txt"
           }
         ]
@@ -483,38 +517,10 @@
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.0/SHA256SUMS.txt"
           }
         ]
-      },
-      {
-        "tag": "v1.5.0",
-        "name": "Autobot 1.5.0",
-        "published": "2026-10-15T20:20:15Z",
-        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.5.0",
-        "prerelease": false,
-        "body": "Privacy you can see, and a much sturdier app. Every answer now carries a receipt, private data can't slip out through tools, your documents become searchable on the phone, and a full crash and freeze review is fixed on both platforms.\n\n## New\n- **Privacy receipts.** Under every answer: \"on device\", or which hosts were contacted, bytes out, route and the model's data policy. Tap for the full receipt. Stored with the chat, never sent anywhere.\n- **Taint tracking.** If the agent tries to send something private (memory notes, file contents, numbers from your images) through a web fetch, search or MCP tool, it must ask — even in full-access mode — and the card highlights exactly what would leave.\n- **Private vault** (Settings › Vault). Add notes, text, PDFs (and photos with on-device OCR on iPhone); they're embedded on the phone (Qwen3-Embedding, llama.cpp), encrypted and searchable by you and by the agent. Never uploaded. Off by default.\n- **Undo for agents.** Every file change the agent makes shows a diff and can be undone per step or per turn (and redone). A \"Files changed\" sheet lists everything.\n- **Chat organisation.** Rename, pin, folders, archive, search inside messages, swipe to delete with undo, multi-select, sorting and date groups. Folders and pins travel in `.autobot` backups.\n- **Ask Autobot from anywhere.** iPhone: Shortcuts/Siri, Action button, share sheet, widgets, Control Center voice control. Android: share target, text-selection \"Ask Autobot\", Quick Settings voice tile, launcher shortcuts, widget. All behind the app lock; only your own Shortcut can send a prompt.\n- **Downloads that keep going.** Android uses user-initiated transfer jobs (survive leaving or swiping the app, no 6-hour limit); iPhone relaunches in the background to verify and continue the queue. New downloads panel with speed, ETA, queue and why something waits; optional Wi-Fi only (Android).\n- **Ink motion v2.** Ink-dot loaders everywhere, a progress bar with determinate / sweeping / paused / failed states, a quiet drifting halftone paper behind empty screens and the lock screen, out-of-register screen transitions and dissolving rows. Light on battery (≤30 fps, 10 fps ambient, stops when idle) and off with Reduce Motion.\n\n## Fixed\n- A chat could crash every time it was opened after an on-device model reused a tool-call id (both apps).\n- Image generation, chat, speech and voice m",
-        "assets": [
-          {
-            "name": "autobot-1.5.0-debug.apk",
-            "size": 125723871,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.5.0/autobot-1.5.0-debug.apk"
-          },
-          {
-            "name": "autobot-1.5.0-release.apk",
-            "size": 79943625,
-            "downloads": 3,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.5.0/autobot-1.5.0-release.apk"
-          },
-          {
-            "name": "SHA256SUMS.txt",
-            "size": 182,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.5.0/SHA256SUMS.txt"
-          }
-        ]
       }
     ],
-    "checksums": "4de18567071de310c56d26d05b9141442b7aad861c775312f6706303134ef4e0 *autobot-1.11.0-debug.apk\n12585cd1b35205b3b43d3a95ce5630bd701a2d85dcde2d5822f3106fd9636f5f *autobot-1.11.0-release.apk\na285e7abbd26b267801e4a9ae52d1672a2fce014a88310e37a81c47aec4b71f8 *autobot-1.11.0-mapping.txt",
-    "totalDownloads": 103
+    "checksums": "98359ff1074df59335971480387c0d883526ab8dca6664e4e890ee90a034e5a6 *autobot-1.11.1-debug.apk\nccc6033fb0487c37398af16ac17d5648177b715b9f209bc209e927fee132646c *autobot-1.11.1-release.apk\na3a91cb1e856da879d1b7abf96ff3e95b88c5faca2ece2b828df69711938696f *autobot-1.11.1-mapping.txt",
+    "totalDownloads": 101
   },
   "invincible": {
     "name": "invincible",
@@ -552,7 +558,7 @@
         {
           "name": "SHA256SUMS",
           "size": 286,
-          "downloads": 0,
+          "downloads": 2,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS"
         },
         {
@@ -593,7 +599,7 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 0,
+            "downloads": 2,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS"
           },
           {
@@ -1040,6 +1046,6 @@
       }
     ],
     "checksums": "930f9a3cd2065be43c2aa37dcebc8a6913a0d3b5e2afd15902ef2eb7664236d3  invincible-linux-arm64.tar.gz\n104965b015ba37c7280c62bd8f7b7aebba594d2db0e739d84358f9bbe53cd94f  invincible-linux-x64.tar.gz\n4ae5363b5b0fc8553284f246fdc635376b9f40ad680e7263a82fc80821d6d013  invincible-macos-arm64.tar.gz",
-    "totalDownloads": 202
+    "totalDownloads": 204
   }
 }
