@@ -14,8 +14,9 @@ const status = [
   ['Always on', 'working', 'launchd or systemd, health checks, self-update'],
   ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix, WhatsApp'],
   ['Home Assistant', 'working', 'a tool with approvals, and a conversation agent'],
-  ['Speech and images', 'working', 'your own backends first, cloud only when allowed, with receipts'],
-  ['Skills hub', 'working', 'search skills.sh, review before installing'],
+  ['Speech and images', 'working', 'your own backends first, cloud only when allowed, with receipts; delivered as files on every channel'],
+  ['Skills hub', 'working', 'search, review, check for updates, audit before installing'],
+  ['Editors', 'working', 'autobot acp for Zed and other ACP editors'],
   ['Security review', 'not independent yet', ''],
 ];
 ---
@@ -42,7 +43,7 @@ autobot setup</code></pre>
     <h2>Code with Autobot</h2>
     <pre><code>autobot code --model anthropic</code></pre>
     <AutobotTerm />
-    <p class="small">Inline, keeps your scrollback. Enter sends, / opens commands, @ attaches a file, ctrl+r searches, a pasted or dragged image goes along to models that can see, esc interrupts; y, a, n or e (no, and say what instead) answers an approval.</p>
+    <p class="small">Inline, keeps your scrollback. Enter sends, / opens commands, @ attaches a file, ctrl+r searches, a pasted or dragged image goes along to models that can see, esc interrupts; y, a, n or e (no, and say what instead) answers an approval. In Zed or another ACP editor, add <code>autobot acp</code> as an agent server.</p>
   </section>
 
   <section id="bots">
@@ -60,8 +61,10 @@ autobot service status</code></pre>
 autobot config set agent.recall_model off
 autobot model
 autobot skills search pdf
-autobot skills install pdf      # shows the source and SKILL.md, then asks</code></pre>
-    <p class="small">In a chat, <code>/recall</code> searches every earlier conversation and <code>/context</code> lists the instructions in play, from AGENTS.md, CLAUDE.md and the rest.</p>
+autobot skills install pdf      # shows the source and SKILL.md, then asks
+autobot skills check            # updates, and skills edited locally
+autobot skills audit pdf        # risky scripts, and how far the source is trusted</code></pre>
+    <p class="small">In a chat, <code>/recall</code> searches every earlier conversation and <code>/context</code> lists the instructions in play, from AGENTS.md, CLAUDE.md and the rest. A file that looks like a prompt injection is quoted to the model as data, with a warning.</p>
   </section>
 
   <section id="status">

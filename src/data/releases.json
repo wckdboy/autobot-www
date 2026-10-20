@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-20T17:03:38.330Z",
+  "generatedAt": "2026-10-20T17:14:23.289Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-20T16:56:54Z",
+    "pushed": "2026-10-20T17:14:11Z",
     "latest": {
       "tag": "v1.12.0",
       "name": "Autobot 1.12.0",
@@ -36,7 +36,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 9,
+          "downloads": 10,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
         }
       ]
@@ -71,7 +71,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 9,
+            "downloads": 10,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
           }
         ]
@@ -520,7 +520,7 @@
       }
     ],
     "checksums": "7ac3b564cbd449ceaa446526efca70e2b34ce8dc2b8915efaf911436e2cc19a1 *autobot-1.12.0-debug.apk\n96b8961c5c53d7dca3f0422ce50aee26280b065c71751e6862a203c6638127e4 *autobot-1.12.0-release.apk\n79642b8652d78fd4c16f8aefbe11978b72f0e8fcb0a3acf9ea844973920e00dd *autobot-1.12.0-mapping.txt",
-    "totalDownloads": 119
+    "totalDownloads": 120
   },
   "invincible": {
     "name": "invincible",
@@ -530,52 +530,98 @@
     "license": "MIT",
     "pushed": "2026-10-20T17:01:18Z",
     "latest": {
-      "tag": "v0.0.15",
-      "name": "v0.0.15",
-      "published": "2026-10-20T14:37:09Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.15",
+      "tag": "v0.0.16",
+      "name": "v0.0.16",
+      "published": "2026-10-20T17:13:53Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.16",
       "prerelease": false,
-      "body": "Settings from the command line, recall across conversations, speech and images through your node, a skills hub, and project instructions.\n\n**Tools, config and model**\n- **`autobot tools`** shows each tool group and tool as on or off, per bot with `--bot`. `autobot tools enable|disable <group|tool>` changes them. The new groups are `schedule` and `media`.\n- **`autobot config get|set|unset <key>`** edits `config.toml` or a bot's `bot.toml` and keeps your comments. A change is checked before it is written; a bad one is refused and the file stays as it was.\n- **`autobot model`** picks the model from your node's list.\n\n**Recall**\n- **Each conversation gets a small search index**, so finding an old conversation no longer reads every transcript.\n- **The best matches are summarized** for what they say about your question, and the summary is cached until the conversation changes. `[agent] recall_model` picks the model; `off` turns summaries off.\n- **`/recall <query>`** works in the terminal, and on chat channels for the owner.\n\n**Speech and images through the node**\n- **The gateway has two new endpoints**, `POST /v1/audio/speech` and `POST /v1/images/generations`, served by the `[[speech]]` and `[[images]]` backends in your config.\n  - A backend on the machine is local. Any other backend follows the same rules as cloud chat: private and offline requests never leave the machine.\n  - The text that leaves is redacted, and every request gets a signed receipt.\n- **The agent has `speak` and `generate_image` tools** when your node has those backends. It asks first before using one off the machine.\n- **Telegram sends the results as a voice message or a photo, and Discord as a file.** Other channels get the file's path.\n\n**Skills hub**\n- **`autobot skills search <words>`** searches the public skills directory at skills.sh, falling back to GitHub.\n- **`autobot skills install <name>`** shows where the skill comes from, its files and the whole SKILL.md, and installs it only when you say yes. It is pinned to one commit and size-limited. Scripts are never made executable.\n\n**Project instructions**\n- **The agent reads `AGENTS.md`, `CLAUDE.md`, `.hermes.md`/`HERMES.md` and `.autobot/AGENTS.md`** from the repository root down to where you work. It reads `.cursorrules` only when none of those exist.\n- **A subfolder's own `AGENTS.md` arrives before the agent's first edit there.**\n- **`",
+      "body": "Faster everywhere, Autobot in your editor, files delivered on every channel, a safer skills hub, and project files checked for prompt injection.\n\n**Faster**\n- **`autobot` starts in about 6 ms, down from about 105 ms.** Connections to your own machine no longer load the system's certificate store.\n- **`autobot serve` handles about twice as many turns per second**, and long conversations need about half as many model calls per turn.\n- **Both services use less memory.** `autobot serve` keeps at most 64 idle conversations per bot in memory; the rest stay on disk.\n\n**Autobot in your editor**\n- **`autobot acp`** speaks the Agent Client Protocol, so Zed and other ACP editors can use Autobot as their agent. Edits arrive as diffs, approvals as the editor's permission prompts, and reads and writes go through the editor's open buffers. The README shows how to add it to Zed.\n\n**Files on every channel**\n- **Speech and images now arrive as real files** on Slack, Signal, Matrix, WhatsApp and email, as they already did on Telegram and Discord.\n- **The agent API takes photos** in a turn, so the app's photos reach the node agent.\n\n**Skills hub**\n- **`autobot skills check`** tells you which installed skills have updates, are gone from their source, or were edited locally.\n- **`autobot skills update`** shows exactly what changes, with a risk scan, and asks before replacing anything. It restores the old skill if the update fails.\n- **`autobot skills audit`** scans a skill for risky scripts and shows how far its source is trusted. **`uninstall`** removes one.\n\n**Safer project files**\n- **AGENTS.md, CLAUDE.md and the others are checked for prompt injection.** A suspicious file is not dropped: the model gets it quoted as data under a warning, and `/context` marks it.\n- **A restart no longer repeats a subfolder's instructions** that a conversation already had.\n\n**Smaller things**\n- **`autobot config get`** shows the value in effect, and whether it is a default.\n- **`autobot sessions prune --days N`** removes conversations untouched that long.\n- **Property tests and a nightly soak test** found and fixed five bugs, including an unbounded allocation from a malformed tool call and a hang when splitting long Markdown.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 9870974,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-linux-arm64.tar.gz"
+          "size": 10127565,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 10840836,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-linux-x64.tar.gz"
+          "size": 11104298,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 9447462,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-macos-arm64.tar.gz"
+          "size": 9663708,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 360,
-          "downloads": 3,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/SHA256SUMS"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/SHA256SUMS.sig"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/SHA256SUMS.sig"
         },
         {
           "name": "VERSION",
           "size": 7,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/VERSION"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/VERSION"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.16",
+        "name": "v0.0.16",
+        "published": "2026-10-20T17:13:53Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.16",
+        "prerelease": false,
+        "body": "Faster everywhere, Autobot in your editor, files delivered on every channel, a safer skills hub, and project files checked for prompt injection.\n\n**Faster**\n- **`autobot` starts in about 6 ms, down from about 105 ms.** Connections to your own machine no longer load the system's certificate store.\n- **`autobot serve` handles about twice as many turns per second**, and long conversations need about half as many model calls per turn.\n- **Both services use less memory.** `autobot serve` keeps at most 64 idle conversations per bot in memory; the rest stay on disk.\n\n**Autobot in your editor**\n- **`autobot acp`** speaks the Agent Client Protocol, so Zed and other ACP editors can use Autobot as their agent. Edits arrive as diffs, approvals as the editor's permission prompts, and reads and writes go through the editor's open buffers. The README shows how to add it to Zed.\n\n**Files on every channel**\n- **Speech and images now arrive as real files** on Slack, Signal, Matrix, WhatsApp and email, as they already did on Telegram and Discord.\n- **The agent API takes photos** in a turn, so the app's photos reach the node agent.\n\n**Skills hub**\n- **`autobot skills check`** tells you which installed skills have updates, are gone from their source, or were edited locally.\n- **`autobot skills update`** shows exactly what changes, with a risk scan, and asks before replacing anything. It restores the old skill if the update fails.\n- **`autobot skills audit`** scans a skill for risky scripts and shows how far its source is trusted. **`uninstall`** removes one.\n\n**Safer project files**\n- **AGENTS.md, CLAUDE.md and the others are checked for prompt injection.** A suspicious file is not dropped: the model gets it quoted as data under a warning, and `/context` marks it.\n- **A restart no longer repeats a subfolder's instructions** that a conversation already had.\n\n**Smaller things**\n- **`autobot config get`** shows the value in effect, and whether it is a default.\n- **`autobot sessions prune --days N`** removes conversations untouched that long.\n- **Property tests and a nightly soak test** found and fixed five bugs, including an unbounded allocation from a malformed tool call and a hang when splitting long Markdown.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 10127565,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 11104298,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 9663708,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 360,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/SHA256SUMS.sig"
+          },
+          {
+            "name": "VERSION",
+            "size": 7,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/VERSION"
+          }
+        ]
+      },
       {
         "tag": "v0.0.15",
         "name": "v0.0.15",
@@ -605,7 +651,7 @@
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 3,
+            "downloads": 4,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/SHA256SUMS"
           },
           {
@@ -1119,49 +1165,9 @@
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.4/SHA256SUMS.sig"
           }
         ]
-      },
-      {
-        "tag": "v0.0.3",
-        "name": "v0.0.3",
-        "published": "2026-10-19T11:10:39Z",
-        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.3",
-        "prerelease": false,
-        "body": "Invincible Gateway and the Autobot Agent, one install.\n\n## New\n\n- **Audit log** ([spec/audit.md](https://github.com/wckdboy/invincible/blob/main/spec/audit.md)). Every request the node answered is logged with:\n  - its signed receipt;\n  - when it was answered;\n  - who asked: `local`, or a paired device by name.\n\n  Each entry carries the hash of the one before it, so a removed or edited entry breaks the chain.\n  - `invincible audit` shows the log; `--summary` adds totals per model and per host reached; `--verify` checks the chain and every signature.\n  - Paired devices read it with `GET /v1/audit`.\n  - No telemetry: nothing about your requests leaves the node unless you send it.\n- **Agent action log.** Every command, file write, outside read and cloud send the agent asked for is logged, with whether it ran and who decided: the rules, an earlier \"always\", or you on the CLI, the app or Telegram.\n  - `autobot actions` shows it, and the app reads it through `GET /v1/agent/actions`.\n- **Memory and skills.**\n  - The agent keeps short facts with `remember`, and every later conversation starts with them. `autobot memory` lists them; `--forget` removes one.\n  - Skills are Markdown how-to notes in `~/.autobot/skills/`, which the agent reads when one fits. `autobot skills` lists them.\n  - The app sees and manages both.\n- **Recipes from the phone.** An Autobot recipe can run on your node: always on, no 8-minute limit, offered only its tool groups.\n  - The phone sends it in UTC (`CRON_TZ=UTC` is new in schedules), starts it with `POST …/run`, and collects each run's whole answer and receipt ids with `GET …/runs?after=`.\n  - Receipts older than the in-memory 4096 are found in the audit log.\n- **Evals** ([spec/evals.md](https://github.com/wckdboy/invincible/blob/main/spec/evals.md)): `invincible eval` runs a task file against models the gateway serves, local or cloud, and checks every answer by rule. Thinking models answer directly unless you pass `--thinking`.\n\n## Security fixes\n\nThese came from an internal adversarial review of remote access and the agent. It is not yet the independent review.\n\n- **`invincible tunnel` needs the machine's token and a loopback `Host`.** Before, a web page open on the paired machine could reach the node through the tunnel as that device (cross-site requests, DNS rebinding). Update both machines and pass the token (`invincible token`) to whate",
-        "assets": [
-          {
-            "name": "invincible-linux-arm64.tar.gz",
-            "size": 5914830,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/invincible-linux-arm64.tar.gz"
-          },
-          {
-            "name": "invincible-linux-x64.tar.gz",
-            "size": 6462187,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/invincible-linux-x64.tar.gz"
-          },
-          {
-            "name": "invincible-macos-arm64.tar.gz",
-            "size": 5573818,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/invincible-macos-arm64.tar.gz"
-          },
-          {
-            "name": "SHA256SUMS",
-            "size": 286,
-            "downloads": 11,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/SHA256SUMS"
-          },
-          {
-            "name": "SHA256SUMS.sig",
-            "size": 314,
-            "downloads": 11,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/SHA256SUMS.sig"
-          }
-        ]
       }
     ],
-    "checksums": "e46e397a8e27fe72d2a00a68f0441c152274800aa14ffcbcfc0d4be435054fac  invincible-linux-arm64.tar.gz\ne97b0df67558b0a2a3da9153f8e4c0d99a55fa56efa5aca5c8c3a49cb2103b87  invincible-linux-x64.tar.gz\nae2cc61d37ba75e92c70eeca872bf97f9c8c3cb70ee216869c80aac80d81b11a  invincible-macos-arm64.tar.gz\nc7a7731a83ec67d107b65232828977adc4373af137dc22f278b59d6747b79ee2  VERSION",
-    "totalDownloads": 196
+    "checksums": "1614e4ad7e14111fd6d3db460a3a44c262f14a7f57a8cf9961b25cecc5171367  invincible-linux-arm64.tar.gz\ncc39c8a45d3f5b3b114a0d23abd56508d9b631a6b8e557805f29242d06028e87  invincible-linux-x64.tar.gz\n0fdb9a1a82059adeaaaa0362b1088cecb6f4316c54a6a86423932a4519b412a8  invincible-macos-arm64.tar.gz\n32b2a9a75cf864ae305d51be5c32d687fba891d494997ffea3b0538feba06abe  VERSION",
+    "totalDownloads": 172
   }
 }
