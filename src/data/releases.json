@@ -1,47 +1,81 @@
 {
-  "generatedAt": "2026-10-20T04:50:35.151Z",
+  "generatedAt": "2026-10-20T06:57:13.557Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-20T01:19:44Z",
+    "pushed": "2026-10-20T06:57:11Z",
     "latest": {
-      "tag": "v1.10.0",
-      "name": "Autobot 1.10.0",
-      "published": "2026-10-19T14:29:36Z",
-      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.10.0",
+      "tag": "v1.11.0",
+      "name": "Autobot 1.11.0",
+      "published": "2026-10-20T06:56:51Z",
+      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.11.0",
       "prerelease": false,
-      "body": "My node on iPhone too, what your machine did at a glance, recipes that run on your node, and the team of agents your machine can now run.\n\n## My node on iOS\n- **Pair your computer** in Settings › Providers › + › My node (Invincible). Paste the code, or open the `invincible://pair` link from the camera.\n- **Chats, signed receipts and \"phone first, then my node\"** all work as on Android.\n- **The agent screen.** Remote › Agents · my node: tasks on that machine, approval cards, and scheduled tasks.\n\n## What your machine did (Android and iOS)\nThe list button on the agent screen opens the node's Activity, read from its own logs:\n- **Requests:** every request the node answered: who asked, which model, tokens, and whether anything left. Each receipt is checked against the key pinned at pairing.\n- **Actions:** what the agent ran, and who allowed it.\n- **Memory and skills:** what the agent remembered (you can make it forget), and your skills.\n\n## Recipes on your node\n- **Runs on** in the recipe editor: this phone, or your node.\n- **On the node,** a recipe runs on its schedule, always on and with no 8-minute limit, on the node's models, with only the recipe's tool groups (web included).\n- **Your time, wherever the node is.** \"07:00\" means 07:00 where the phone is.\n- **Results come back** as chats in the Recipes folder, with the node's signed receipts and a notification.\n\n## A team on your machine\n- **Team members.** When the node's agent has a team, each member's answer shows under its name.\n- **You know who's asking.** An approval says which member wants it (\"coder: Run a command?\").\n- **New approval cards** for web fetches and MCP tools.\n\n## Fixes\n- Several CI tests that depended on timing are steadier.",
+      "body": "A new look on both apps: the purple pixel a, calmer screens, and the node's team board on your phone.\n\n## A new look (Android and iOS)\n- **The icon is the purple pixel a** on white. The launch screen shows the same a.\n- **Calmer screens.** Titles and buttons are in sentence case; the main screens' titles end in a small purple square. Labels and buttons are no longer in capitals.\n- **One way to show what's selected.** Segments, chips and tabs show the choice in ink over a thin purple bar, everywhere.\n- **No more dot patterns.** Progress bars are flat, loaders are three pixels, and image previews are plain panels.\n- **Purple is rare.** It marks the a, the active tab, the switch you turned on and the main action of a screen. Links and code are in ink, and tags are neutral.\n- **Light mode looks as good as dark,** and the Image screen follows your theme instead of always being paper.\n- **The node keeps its orange i** on every screen about your node.\n- **Clearer empty screens:** the a, one sentence and one action.\n\n## Your node's team board (Android and iOS)\n- The Activity sheet has a **Board** tab with the team's plans and each task's state, and a count of the tasks waiting for you.\n- A blocked task shows the member's question, with a field to answer it from the phone.\n- Older nodes without a board show none.\n\n## Fixes\n- Session rows line up with the margin. Large text no longer overlaps the Run cards on iPhone, and segment labels no longer break mid-word on small Android phones.\n- On iPhone, \"1 providers\" now reads \"1 provider\".\n- A voice test that depended on timing is steady.",
       "assets": [
         {
-          "name": "autobot-1.10.0-debug.apk",
-          "size": 138984250,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-debug.apk"
+          "name": "autobot-1.11.0-debug.apk",
+          "size": 138907045,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-debug.apk"
         },
         {
-          "name": "autobot-1.10.0-mapping.txt",
-          "size": 95368990,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-mapping.txt"
+          "name": "autobot-1.11.0-mapping.txt",
+          "size": 94837379,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-mapping.txt"
         },
         {
-          "name": "autobot-1.10.0-release.apk",
-          "size": 82237698,
-          "downloads": 14,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-release.apk"
+          "name": "autobot-1.11.0-release.apk",
+          "size": 82203978,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 18,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/SHA256SUMS.txt"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/SHA256SUMS.txt"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v1.11.0",
+        "name": "Autobot 1.11.0",
+        "published": "2026-10-20T06:56:51Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.11.0",
+        "prerelease": false,
+        "body": "A new look on both apps: the purple pixel a, calmer screens, and the node's team board on your phone.\n\n## A new look (Android and iOS)\n- **The icon is the purple pixel a** on white. The launch screen shows the same a.\n- **Calmer screens.** Titles and buttons are in sentence case; the main screens' titles end in a small purple square. Labels and buttons are no longer in capitals.\n- **One way to show what's selected.** Segments, chips and tabs show the choice in ink over a thin purple bar, everywhere.\n- **No more dot patterns.** Progress bars are flat, loaders are three pixels, and image previews are plain panels.\n- **Purple is rare.** It marks the a, the active tab, the switch you turned on and the main action of a screen. Links and code are in ink, and tags are neutral.\n- **Light mode looks as good as dark,** and the Image screen follows your theme instead of always being paper.\n- **The node keeps its orange i** on every screen about your node.\n- **Clearer empty screens:** the a, one sentence and one action.\n\n## Your node's team board (Android and iOS)\n- The Activity sheet has a **Board** tab with the team's plans and each task's state, and a count of the tasks waiting for you.\n- A blocked task shows the member's question, with a field to answer it from the phone.\n- Older nodes without a board show none.\n\n## Fixes\n- Session rows line up with the margin. Large text no longer overlaps the Run cards on iPhone, and segment labels no longer break mid-word on small Android phones.\n- On iPhone, \"1 providers\" now reads \"1 provider\".\n- A voice test that depended on timing is steady.",
+        "assets": [
+          {
+            "name": "autobot-1.11.0-debug.apk",
+            "size": 138907045,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.11.0-mapping.txt",
+            "size": 94837379,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-mapping.txt"
+          },
+          {
+            "name": "autobot-1.11.0-release.apk",
+            "size": 82203978,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 277,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/SHA256SUMS.txt"
+          }
+        ]
+      },
       {
         "tag": "v1.10.0",
         "name": "Autobot 1.10.0",
@@ -71,7 +105,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 18,
+            "downloads": 19,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/SHA256SUMS.txt"
           }
         ]
@@ -477,38 +511,10 @@
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.5.0/SHA256SUMS.txt"
           }
         ]
-      },
-      {
-        "tag": "v1.4.2",
-        "name": "Autobot 1.4.2",
-        "published": "2026-10-15T17:01:05Z",
-        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.4.2",
-        "prerelease": false,
-        "body": "Talk to it, hear it, watch it print. Voice mode, a neural voice that runs on the phone, a new motion language, and OpenCode Go support.\n\n## New\n- **Voice mode** (VOICE in the chat bar). Tap to talk: whisper transcribes on the phone and sends; the answer is read aloud when the turn ends. Tap while it speaks to interrupt. Optional hands-free mode stops listening when you go quiet. Approvals are announced, never auto-approved.\n- **Kokoro neural voice** (Models › voice). A natural-sounding voice that runs entirely on the phone: ONNX on Android, Core ML on iPhone. Pronunciation uses Kokoro's own open dictionaries; nothing is sent anywhere. Without it, read-aloud uses the phone's offline voices only.\n- **Ink motion.** While an image generates, the halftone plate flows and fills; previews develop in along the flow; the finished image prints in with the red plate settling into register. Steps stamp in, the approval card arrives out of register, thinking shows as rippling dots. Capped at 30 fps, paused when idle or off screen, and off with Reduce Motion / animations disabled.\n- **OpenCode Go** as a provider: one key, ~30 models. Each model shows its data policy (no retention, kept N days, or trains on your prompts — those need confirmation and are never picked automatically). A **helper model** per provider runs subagents and summaries to save quota. When a 5-hour or weekly limit is used up, Autobot says when it resets, and can fall back to the helper or on-device model if you allow it.\n\n## Fixed\n- Android read-aloud could use a network voice; it now only uses voices installed on the phone.\n- iPhone read-aloud was silent right after dictation.\n\n## Files\n- `autobot-1.4.2-release.apk`: signed release (`ai.wckd.autobot`, arm64-v8a, Android 14+). Signer certificate SHA-256 `9a1378acf9587885e7920355558c85a1ec0e89304f58c153feebf90fdee7f3f1`.\n- `autobot-1.4.2-debug.apk`\n- `SHA256SUMS.txt`\n\niOS: TestFlight build 1.4.2 (10).",
-        "assets": [
-          {
-            "name": "autobot-1.4.2-debug.apk",
-            "size": 123969050,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.4.2/autobot-1.4.2-debug.apk"
-          },
-          {
-            "name": "autobot-1.4.2-release.apk",
-            "size": 79466381,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.4.2/autobot-1.4.2-release.apk"
-          },
-          {
-            "name": "SHA256SUMS.txt",
-            "size": 182,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.4.2/SHA256SUMS.txt"
-          }
-        ]
       }
     ],
-    "checksums": "b9e3232671b95e56a78f243b6cffd571a315808d9879471f03553064f932d512 *autobot-1.10.0-debug.apk\na5446a867ab1ddedc074b424fb237e621ac87671004a07b398924c9811e04766 *autobot-1.10.0-release.apk\n9cf124cea487b46d789c55e9bc7dc36dc6c24bd3f9d5e868196c236669525277 *autobot-1.10.0-mapping.txt",
-    "totalDownloads": 99
+    "checksums": "4de18567071de310c56d26d05b9141442b7aad861c775312f6706303134ef4e0 *autobot-1.11.0-debug.apk\n12585cd1b35205b3b43d3a95ce5630bd701a2d85dcde2d5822f3106fd9636f5f *autobot-1.11.0-release.apk\na285e7abbd26b267801e4a9ae52d1672a2fce014a88310e37a81c47aec4b71f8 *autobot-1.11.0-mapping.txt",
+    "totalDownloads": 95
   },
   "invincible": {
     "name": "invincible",
@@ -546,7 +552,7 @@
         {
           "name": "SHA256SUMS",
           "size": 286,
-          "downloads": 3,
+          "downloads": 4,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS"
         },
         {
@@ -587,7 +593,7 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 3,
+            "downloads": 4,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS"
           },
           {
@@ -954,6 +960,6 @@
       }
     ],
     "checksums": "9a193191eb360181c77608046b9d473eebb4840f8453a87ab01bdf52f6c71439  invincible-linux-arm64.tar.gz\n9a7bdb7a4c88e56061fa22bf8af1379d1ec480828cb4b87c48707cfb65a3e629  invincible-linux-x64.tar.gz\n7608a741839e2c0d8b9c58646648b050a595046d01aa659c31fa9ada93d83a13  invincible-macos-arm64.tar.gz",
-    "totalDownloads": 197
+    "totalDownloads": 198
   }
 }
