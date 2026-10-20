@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-20T07:16:01.311Z",
+  "generatedAt": "2026-10-20T08:24:55.719Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-20T07:02:20Z",
+    "pushed": "2026-10-20T08:12:20Z",
     "latest": {
       "tag": "v1.11.0",
       "name": "Autobot 1.11.0",
@@ -36,7 +36,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 3,
+          "downloads": 5,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/SHA256SUMS.txt"
         }
       ]
@@ -71,7 +71,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 3,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/SHA256SUMS.txt"
           }
         ]
@@ -514,7 +514,7 @@
       }
     ],
     "checksums": "4de18567071de310c56d26d05b9141442b7aad861c775312f6706303134ef4e0 *autobot-1.11.0-debug.apk\n12585cd1b35205b3b43d3a95ce5630bd701a2d85dcde2d5822f3106fd9636f5f *autobot-1.11.0-release.apk\na285e7abbd26b267801e4a9ae52d1672a2fce014a88310e37a81c47aec4b71f8 *autobot-1.11.0-mapping.txt",
-    "totalDownloads": 101
+    "totalDownloads": 103
   },
   "invincible": {
     "name": "invincible",
@@ -522,48 +522,88 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-20T07:07:50Z",
+    "pushed": "2026-10-20T08:08:37Z",
     "latest": {
-      "tag": "v0.0.11",
-      "name": "v0.0.11",
-      "published": "2026-10-20T07:15:35Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.11",
+      "tag": "v0.0.12",
+      "name": "v0.0.12",
+      "published": "2026-10-20T08:24:23Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.12",
       "prerelease": false,
-      "body": "The terminal, round two: search, pickers, and saying what to do instead.\n\n**Autobot in the terminal**\n- **Ctrl+R searches what you sent**, as you type. Ctrl+R again goes further back, Enter keeps the match, and Esc puts back what you had.\n- **Shift+Enter starts a new line** in terminals with the kitty keyboard protocol (kitty, Ghostty, WezTerm, iTerm2 with it turned on). Alt+Enter and Ctrl+J work everywhere.\n- **Say what to do instead.** An approval card now has a fourth key: `e` means no, and you type what the agent should do instead. It reads that with the refusal and does it. In plain mode, type `e <text>`.\n- **Pickers.** `/model` on its own lists the node's models and their context. `/resume` lists recent conversations with their first request and how long ago they were. Type to narrow, then press Enter.\n- **The window title** reads `autobot · <project>`, and your old title comes back when you leave.\n- **Notifications.** A turn of 10 seconds or more, or an approval that is waiting, notifies you while the window is in the background: OSC 9 in iTerm2, Ghostty, WezTerm and kitty, a bell elsewhere. Set `[terminal] notify = \"auto\" | \"bell\" | \"off\"`.\n- **`/copy`** puts the last answer on your clipboard as Markdown, inside tmux too.\n- Long `refused:` and `error:` lines are cut to the width instead of wrapping mid-word.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
+      "body": "Show the agent an image, and see from your phone what is waiting for you.\n\n**Images in the terminal**\n- **Attach an image** by dragging or pasting its path (one or several files), with `@shot.png` in the project, with `/image <path>`, or with Ctrl+V from the clipboard (`pngpaste` or `osascript` on macOS, `wl-paste` or `xclip` on Linux). It shows in the composer as `[image 1: shot.png 1280×720]`.\n- **Big images are scaled down** to 1568 px on the longest side before sending.\n- **Models that can't see images get none.** You're told plainly and pointed to `/model`; nothing is sent.\n- **Sessions keep a reference** to each image (path, SHA-256, size), never the bytes. An image that is gone by the time a session resumes is replaced by a note.\n\n**Gateway**\n- **Images pass through** to local engines and cloud backends. Only the text is redacted.\n- **`/v1/models` says which models can see.** A local model sees with a projector (`mmproj`). `vision = true|false` overrides that, and a cloud model is judged by its name.\n- **Image requests are routed to models that can see.** With `auto`, only those are chosen. A model asked for by name that is known to be blind gets `400 model_cannot_see_images`.\n- **Receipts and the audit log list images by hash, size and type,** never their contents.\n- **Inference requests can be up to 32 MiB.**\n\n**Agent API**\n- **`GET /v1/agent/approvals`** lists the questions waiting for you now, so a paired phone can show them without watching a turn as it runs.\n- **Answer an approval with what to do instead:** `{\"answer\": \"instead\", \"text\": \"…\"}`.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 7683652,
+          "size": 8163658,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/invincible-linux-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 8444703,
+          "size": 8966148,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/invincible-linux-x64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 7307086,
+          "size": 7778149,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/invincible-macos-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 286,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/SHA256SUMS"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/SHA256SUMS.sig"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS.sig"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.12",
+        "name": "v0.0.12",
+        "published": "2026-10-20T08:24:23Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.12",
+        "prerelease": false,
+        "body": "Show the agent an image, and see from your phone what is waiting for you.\n\n**Images in the terminal**\n- **Attach an image** by dragging or pasting its path (one or several files), with `@shot.png` in the project, with `/image <path>`, or with Ctrl+V from the clipboard (`pngpaste` or `osascript` on macOS, `wl-paste` or `xclip` on Linux). It shows in the composer as `[image 1: shot.png 1280×720]`.\n- **Big images are scaled down** to 1568 px on the longest side before sending.\n- **Models that can't see images get none.** You're told plainly and pointed to `/model`; nothing is sent.\n- **Sessions keep a reference** to each image (path, SHA-256, size), never the bytes. An image that is gone by the time a session resumes is replaced by a note.\n\n**Gateway**\n- **Images pass through** to local engines and cloud backends. Only the text is redacted.\n- **`/v1/models` says which models can see.** A local model sees with a projector (`mmproj`). `vision = true|false` overrides that, and a cloud model is judged by its name.\n- **Image requests are routed to models that can see.** With `auto`, only those are chosen. A model asked for by name that is known to be blind gets `400 model_cannot_see_images`.\n- **Receipts and the audit log list images by hash, size and type,** never their contents.\n- **Inference requests can be up to 32 MiB.**\n\n**Agent API**\n- **`GET /v1/agent/approvals`** lists the questions waiting for you now, so a paired phone can show them without watching a turn as it runs.\n- **Answer an approval with what to do instead:** `{\"answer\": \"instead\", \"text\": \"…\"}`.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 8163658,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 8966148,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 7778149,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS.sig"
+          }
+        ]
+      },
       {
         "tag": "v0.0.11",
         "name": "v0.0.11",
@@ -593,7 +633,7 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 0,
+            "downloads": 2,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/SHA256SUMS"
           },
           {
@@ -999,7 +1039,7 @@
         ]
       }
     ],
-    "checksums": "7144e0809d5a89f45be1767f74cf99cdf5e279ea7d533f970037e2b12d448fd2  invincible-linux-arm64.tar.gz\n5774830cb8966eb9024c4416526c567767cda3ed195e5b5fe853a48629ee5b20  invincible-linux-x64.tar.gz\n76ebce067395a0596b9f95f6602b774c0ea2822cf3a5a4c4190d32142185297b  invincible-macos-arm64.tar.gz",
-    "totalDownloads": 200
+    "checksums": "930f9a3cd2065be43c2aa37dcebc8a6913a0d3b5e2afd15902ef2eb7664236d3  invincible-linux-arm64.tar.gz\n104965b015ba37c7280c62bd8f7b7aebba594d2db0e739d84358f9bbe53cd94f  invincible-linux-x64.tar.gz\n4ae5363b5b0fc8553284f246fdc635376b9f40ad680e7263a82fc80821d6d013  invincible-macos-arm64.tar.gz",
+    "totalDownloads": 202
   }
 }
