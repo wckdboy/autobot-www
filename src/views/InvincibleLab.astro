@@ -12,7 +12,8 @@ const status = [
   ['Receipts and audit log', 'working', 'signed, hash-chained'],
   ['Pairing', 'working, not reviewed', 'Noise'],
   ['Always on', 'working', 'launchd or systemd, health checks, self-update'],
-  ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix'],
+  ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix, WhatsApp'],
+  ['Home Assistant', 'working', 'a tool with approvals, and a conversation agent'],
   ['Security review', 'not independent yet', ''],
 ];
 ---
@@ -44,7 +45,7 @@ autobot setup</code></pre>
 
   <section id="bots">
     <h2>Bots</h2>
-    <p>Several agents on one node, each with its own persona, model, memory and channels. One <code>autobot serve</code> runs them all, around the clock.</p>
+    <p>Several agents on one node, each with its own persona, model, memory and channels. One <code>autobot serve</code> runs them all, around the clock, and picks up a new or changed bot without a restart.</p>
     <pre><code>autobot bots add ops            # asks for the persona, model and channels
 autobot identities link telegram:123 slack:U456
 autobot service status</code></pre>
