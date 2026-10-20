@@ -57,7 +57,7 @@ const configs: Record<SiteKey, SiteMeta> = {
     wordmark: 'INVINCIBLE',
     domain: 'invincible.sh',
     origin: 'https://invincible.sh',
-    title: 'Invincible — a node you own',
+    title: 'Invincible — the node you own',
     description:
       'A self-hosted AI node for a desktop, GPU box or VPS. Serves open models behind OpenAI and Anthropic compatible APIs, routes by policy, signs every receipt, and keeps working when the cloud is gone.',
     theme: 'paper',
@@ -80,7 +80,7 @@ const configs: Record<SiteKey, SiteMeta> = {
     wordmark: 'SOVWARE',
     domain: 'sovware.io',
     origin: 'https://sovware.io',
-    title: 'Sovware — software that answers to its owner',
+    title: 'Sovware — sovereign hardware and software',
     description:
       'Sovereign software for a compute-critical world. The studio behind Autobot and Invincible Gateway: private intelligence on hardware you own.',
     theme: 'paper',

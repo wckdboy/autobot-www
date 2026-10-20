@@ -41,7 +41,7 @@ const b = kit.brands[meta.key] ?? kit.brands.autobot;
 const accentPaper = accent ?? b.text;
 const accentInk = b.onInk;
 const canonical = new URL(path, Astro.site).href;
-const pageTitle = title ? `${title} — ${brand}` : `${brand} — private AI on the phone`;
+const pageTitle = title ? `${title} — ${brand}` : meta.title;
 const ogImage = new URL(og, Astro.site).href;
 ---
 <!doctype html>

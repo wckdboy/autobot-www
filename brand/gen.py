@@ -52,21 +52,22 @@ for key, b in kit["brands"].items():
         W = int(end + 2)
         body = runs(g, px, 0, base - 6 * px, col) + f'<path d="{d}" fill="{ink}" shape-rendering="geometricPrecision"/>'
         open(f"{out}/wordmark-{mode}.svg", "w").write(svg(W, 44, body, b["name"]))
+    # App icon: the colored letter on white, one cell size for every brand so they sit together
+    # (each glyph six cells tall, centered on the same line; only the widths differ).
     cell = 1024 / 12
-    icon = f'<rect width="1024" height="1024" fill="{N["ink"]}"/>' + runs(g, cell, (1024 - w * cell) / 2, (1024 - 6 * cell) / 2 + cell / 2, b["onInk"])
+    icon = '<rect width="1024" height="1024" fill="#FFFFFF"/>' + runs(g, cell, (1024 - w * cell) / 2, (1024 - 6 * cell) / 2, b["onPaper"])
     open(f"{out}/icon.svg", "w").write(svg(1024, 1024, icon, b["name"]))
-    # favicon: the symbol on ink, a 16-unit square
+    # Favicon: the letter on a transparent ground, its on-ink color in a dark browser.
     fx = (16 - w * 2) / 2
-    fav = f'<rect width="16" height="16" rx="3" fill="{N["ink"]}"/>' + runs(g, 2, fx, 2.5, b["onInk"])
+    fav = (f'<style>rect{{fill:{b["onPaper"]}}}@media (prefers-color-scheme: dark){{rect{{fill:{b["onInk"]}}}}}</style>'
+           + runs(g, 2, fx, 2, b["onPaper"]))
     open(f"{out}/favicon.svg", "w").write(svg(16, 16, fav, b["name"]))
-    # social preview, 1200 × 630: the symbol large on ink, the name and the role
+    # Social preview, 1200 × 630: white, the letter large, the name and the domain.
     px = 30
-    og = f'<rect width="1200" height="630" fill="{N["ink"]}"/>' + runs(g, px, 96, 150, b["onInk"])
+    og = '<rect width="1200" height="630" fill="#FFFFFF"/>' + runs(g, px, 96, 150, b["onPaper"])
     nd, _ = text_path(name, 96, 430, 76)
-    og += f'<path d="{nd}" fill="{N["bone"]}" shape-rendering="geometricPrecision"/>'
-    rd, _ = text_path(b["role"], 96, 500, 30)
-    og += f'<path d="{rd}" fill="{N["ash"]}" shape-rendering="geometricPrecision"/>'
-    dd, _ = text_path(b["domain"], 96, 560, 24)
-    og += f'<path d="{dd}" fill="{b["onInk"]}" shape-rendering="geometricPrecision"/>'
+    og += f'<path d="{nd}" fill="{N["ink"]}" shape-rendering="geometricPrecision"/>'
+    dd, _ = text_path(b["domain"], 96, 500, 28)
+    og += f'<path d="{dd}" fill="{N["muted"]}" shape-rendering="geometricPrecision"/>'
     open(f"{out}/og.svg", "w").write(svg(1200, 630, og, b["name"]))
 print("brand assets:", ", ".join(kit["brands"]))

@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "WCKD",
-  "about": "One lab, one system. WCKD is the lab; each product is a lowercase letter in pixels and one signal color. Everything else is shared.",
+  "about": "One lab, one system. Each brand is a lowercase letter in pixels and one vivid color; the color is for marks, never for text.",
   "neutrals": {
     "page": "#FFFFFF",
     "paper": "#EFEAE2",
@@ -39,9 +39,9 @@
         "########",
         ".##..##."
       ],
-      "onInk": "#EFEAE2",
-      "onPaper": "#141413",
-      "text": "#141413"
+      "onInk": "#FFFFFF",
+      "onPaper": "#111111",
+      "text": "#111111"
     },
     "sovware": {
       "name": "Sovware",
@@ -50,14 +50,14 @@
       "glyph": [
         ".#####",
         "##....",
-        ".####.",
-        "....##",
+        "####..",
+        "..####",
         "....##",
         "#####."
       ],
-      "onInk": "#EFEAE2",
-      "onPaper": "#141413",
-      "text": "#141413"
+      "onInk": "#FFFFFF",
+      "onPaper": "#111111",
+      "text": "#111111"
     },
     "autobot": {
       "name": "Autobot",
@@ -71,9 +71,9 @@
         "##..##",
         ".#####"
       ],
-      "onInk": "#A99BF5",
-      "onPaper": "#5444BA",
-      "text": "#5444BA"
+      "onInk": "#7C5CFF",
+      "onPaper": "#7C5CFF",
+      "text": "#7C5CFF"
     },
     "invincible": {
       "name": "Invincible",
@@ -87,9 +87,9 @@
         "##",
         "##"
       ],
-      "onInk": "#FF9A3D",
-      "onPaper": "#FF9A3D",
-      "text": "#A85300"
+      "onInk": "#FF8A1E",
+      "onPaper": "#FF8A1E",
+      "text": "#FF8A1E"
     },
     "omnie": {
       "name": "Omnie",
@@ -103,9 +103,9 @@
         "##...##",
         ".#####."
       ],
-      "onInk": "#3BC6A0",
-      "onPaper": "#0E6B55",
-      "text": "#0E6B55"
+      "onInk": "#00B386",
+      "onPaper": "#00B386",
+      "text": "#00B386"
     },
     "nightfall": {
       "name": "Nightfall",
@@ -119,9 +119,9 @@
         "##..##",
         "##..##"
       ],
-      "onInk": "#EE7AA8",
-      "onPaper": "#D0507F",
-      "text": "#A8325F"
+      "onInk": "#FF3E8A",
+      "onPaper": "#FF3E8A",
+      "text": "#FF3E8A"
     }
   }
 }

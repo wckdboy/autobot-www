@@ -4,9 +4,9 @@ The public sites for the WCKD lab and its brands, from one Astro codebase on one
 
 | Domain | Brand | State |
 | --- | --- | --- |
-| [autobot.sh](https://autobot.sh) | Autobot | WCKD kit v3 |
-| [invincible.sh](https://invincible.sh) | Invincible | WCKD kit v3 |
-| [sovware.io](https://sovware.io) | Sovware | WCKD kit v3 |
+| [autobot.sh](https://autobot.sh) | Autobot | WCKD kit v4 |
+| [invincible.sh](https://invincible.sh) | Invincible | WCKD kit v4 |
+| [sovware.io](https://sovware.io) | Sovware | WCKD kit v4 |
 | [wckd.ai](https://wckd.ai) | WCKD | the master brand kit |
 | omnie.sh, nightfall.sh | Omnie, Nightfall | build their brand kit as the home page; not deployed (the domains have other DNS records) |
 
@@ -18,12 +18,13 @@ Brand kit: [BRAND.md](BRAND.md), source [`brand/kit.json`](brand/kit.json), asse
 Plain is the point. Static HTML, one stylesheet (`public/lab.css`), no client JavaScript, no
 third-party requests.
 
-- **Brands:** one lowercase pixel letter and one color each: Autobot lilac `a`, Invincible
-  orange `i` (`#FF9A3D`), Omnie phthalo `o`, Nightfall rose `n`; WCKD `w` and Sovware `s` are neutral.
+- **Brands:** one lowercase pixel letter and one color each: Autobot purple `a` (`#7C5CFF`),
+  Invincible orange `i` (`#FF8A1E`), Omnie phthalo `o`, Nightfall rose `n`; WCKD `w` and Sovware `s` are neutral.
 - **Type:** JetBrains Mono for everything; lowercase headlines ending in the brand's square.
 - **Surface:** white page, ink `#111111`, 2 px rules framing header and footer; dark when the
   system asks for it.
-- **The accent** marks the symbol, the primary action, selection, focus and link hover.
+- **The accent** marks the symbol, the headline's square, selection, focus and link underlines.
+  It is never text: text is ink.
 - **Layout:** one column, 1040 px page, 68-character measure, 1 px rules, no cards, shadows,
   gradients or illustration.
 - **Voice:** write like a maintainer. State the limit as plainly as the feature.
@@ -60,8 +61,8 @@ pnpm og                  # regenerate social cards
   data (`--soft`), so a GitHub outage cannot block a deploy.
 - `scripts/sync-install.mjs` mirrors Invincible’s `install.sh` to `public/install.sh` and records
   its SHA-256. The Autobot site links to the live copy at `invincible.sh/install.sh`.
-- Claims come from the product repositories. Where a path is not yet verified — Snapdragon
-  hardware, the independent Invincible security review — the page says so.
+- Claims come from the product repositories. Where a path is not yet verified, such as the
+  independent security review, the page says so.
 - Refresh with `GITHUB_TOKEN=$(gh auth token) pnpm data && pnpm sync:install`. The scheduled
   workflow does this every six hours.
 

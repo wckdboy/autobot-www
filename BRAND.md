@@ -10,23 +10,26 @@ version of the kit at `/brand/`; wckd.ai's home is the master kit.
 
 ## The family
 
-| Brand | Domain | Role | Symbol | On ink | Mark on paper | Text on paper |
-| --- | --- | --- | --- | --- | --- | --- |
-| WCKD | wckd.ai | The lab | `w` | `#EFEAE2` | `#141413` | `#141413` |
-| Sovware | sovware.io | Sovereign hardware and software | `s` | `#EFEAE2` | `#141413` | `#141413` |
-| Autobot | autobot.sh | Private AI on your phone and your machine | `a` | `#A99BF5` lilac | `#5444BA` | `#5444BA` |
-| Invincible | invincible.sh | The node you own | `i` | `#FF9A3D` orange | `#FF9A3D` | `#A85300` |
-| Omnie | omnie.sh | Every model, agent and tool in one thread | `o` | `#3BC6A0` phthalo | `#0E6B55` | `#0E6B55` |
-| Nightfall | nightfall.sh | AI-native parametric CAD | `n` | `#EE7AA8` rose | `#D0507F` | `#A8325F` |
+| Brand | Domain | Role | Symbol | Signal |
+| --- | --- | --- | --- | --- |
+| WCKD | wckd.ai | The lab | `w` | ink `#111111` (white on ink) |
+| Sovware | sovware.io | Sovereign hardware and software | `s` | ink `#111111` (white on ink) |
+| Autobot | autobot.sh | Private AI on your phone and your machine | `a` | purple `#7C5CFF` |
+| Invincible | invincible.sh | The node you own | `i` | signal orange `#FF8A1E` |
+| Omnie | omnie.sh | Every model, agent and tool in one thread | `o` | phthalo `#00B386` |
+| Nightfall | nightfall.sh | AI-native parametric CAD | `n` | rose `#FF3E8A` |
 
-The lab and the studio are neutral; the four products spread around the wheel at one weight
-(lilac, rose, orange, phthalo), so any two sit well side by side. Autobot and Invincible, the
-pair that ships together, are complements.
+Each signal is one vivid color (high saturation, high brightness) used the same on white and on
+ink. Because it is that bright, **color is for marks, never for text**: the symbol, the
+headline's square, focus rings, selection and link underlines. Text is always ink (white on
+dark). The lab and the studio are neutral; the four products spread around the wheel (purple,
+rose, orange, phthalo), so any two sit well side by side. Autobot and Invincible, the pair that
+ships together, are complements.
 
 ## Symbols
 
 Lowercase letters on a pixel grid, six cells tall, two-cell strokes, square corners. They are
-the app icons (the symbol on ink), the wordmarks' marks (the symbol before the lowercase name in
+the app icons (the symbol on white), the wordmarks' marks (the symbol before the lowercase name in
 JetBrains Mono), the favicons, and three rows of half blocks beside a terminal header.
 
 - Scale in whole pixels only; never smooth, round, outline or recolor.

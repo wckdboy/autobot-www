@@ -20,16 +20,14 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
 <Lab path={Astro.props.home ? '/' : '/brand/'} current="" title={Astro.props.home ? undefined : 'Brand'} nav={n ? [...n.nav] : undefined} footerNote={n?.footer} description={`The ${own.name} brand kit: symbol, wordmark, icon, colors and the WCKD system it shares.`}>
   <p class="label">{own.name} · brand kit · WCKD v{kit.version}</p>
   <h1>{own.name}</h1>
-  <p class="lede">{key === 'wckd'
-    ? 'The lab behind Sovware, Autobot, Invincible, Omnie and Nightfall. Each brand is one lowercase letter in pixels and one color; everything else is one shared system, set out here.'
-    : `${own.role}. One lowercase letter in pixels and one color; everything else is the system it shares with the rest of WCKD.`}</p>
+  <p class="lede">{key === 'wckd' ? 'One lab, one system. Each brand is a lowercase letter in pixels and one color.' : own.role + '.'}</p>
 
   <section>
     <h2>Symbol and wordmark</h2>
     <div class="kit-row">
       <figure class="kit-tile kit-tile--ink"><span class="kit-symbol" style={`color:${own.onInk}`} set:html={symbolSvg(own, 72, own.name)} /><figcaption>on ink · {own.onInk}</figcaption></figure>
       <figure class="kit-tile"><span class="kit-symbol" style={`color:${own.onPaper}`} set:html={symbolSvg(own, 72, own.name)} /><figcaption>on paper · {own.onPaper}</figcaption></figure>
-      <figure class="kit-tile kit-tile--ink"><img src={asset(key, 'icon.svg')} width="96" height="96" alt={`${own.name} app icon`} /><figcaption>app icon · 1024</figcaption></figure>
+      <figure class="kit-tile"><img src={asset(key, 'icon.svg')} width="96" height="96" alt={`${own.name} app icon`} style="border:1px solid var(--rule)" /><figcaption>app icon</figcaption></figure>
     </div>
     <div class="kit-row kit-row--marks">
       <figure class="kit-tile"><img src={asset(key, 'wordmark-paper.svg')} height="44" alt={`${own.name} wordmark on paper`} /></figure>
@@ -40,34 +38,26 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
       <table>
         <thead><tr><th>Use</th><th>Color</th><th>Where</th></tr></thead>
         <tbody>
-          <tr><td><strong>Signal on ink</strong></td><td><code>{own.onInk}</code></td><td>the symbol, the prompt, the primary action on dark grounds</td></tr>
-          <tr><td><strong>Symbol on paper</strong></td><td><code>{own.onPaper}</code></td><td>the symbol and the headline's square on light grounds (a logo: not for text)</td></tr>
-          <tr><td><strong>Text on paper</strong></td><td><code>{own.text}</code></td><td>links on hover, focus, selection, buttons with paper text (4.5:1 or more)</td></tr>
+          <tr><td><strong>Signal</strong></td><td><code>{own.onPaper}</code></td><td>the symbol, the headline's square, focus, selection and link underlines, on white and on ink</td></tr>
+          <tr><td><strong>Text</strong></td><td><code>#111111</code></td><td>always ink (white on dark): color never carries text</td></tr>
         </tbody>
       </table>
     </div>
-    <ul class="list-plain">
-      <li><b>Do</b> put the symbol before the lowercase name, at the name's cap height, with one cell of space.</li>
-      <li><b>Do</b> scale it in whole pixels: 2, 3, 4… units a cell. Never smooth or round it.</li>
-      <li><b>Don't</b> recolor it, outline it, put it on a photo, or set it in a different letter.</li>
-      <li><b>Don't</b> use the signal for headings, bullets or decoration. Rare is what makes it a signal.</li>
-    </ul>
+    <p class="small">Whole pixels only. No recoloring, outlines or photos behind it. The color is for the symbol, not for headings or decoration.</p>
   </section>
 
   <section>
     <h2>The family</h2>
-    <p>WCKD is the lab. Each brand is a letter and a color; together the colors spread around the wheel at one weight, so any two sit well side by side.</p>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Symbol</th><th>Brand</th><th>Role</th><th>On ink</th><th>On paper</th></tr></thead>
+        <thead><tr><th>Symbol</th><th>Brand</th><th>Role</th><th>Signal</th></tr></thead>
         <tbody>
           {family.map(([k, b]) => (
             <tr>
               <td><span class="kit-inline" style={`color:${b.onPaper}`} set:html={symbolSvg(b, 18, b.name)} /></td>
               <td><strong>{b.name}</strong><br /><span class="small"><a href={`https://${b.domain}`} rel="noopener">{b.domain}</a> · <a href={asset(k, 'icon.svg')}>files</a></span></td>
               <td>{b.role}</td>
-              <td><code>{b.onInk}</code></td>
-              <td><code>{b.text}</code></td>
+              <td><code>{b.onPaper}</code></td>
             </tr>
           ))}
         </tbody>
@@ -78,7 +68,6 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
   <section>
     <h2>Neutrals and states</h2>
     <div class="swatches">{swatches.map(([name, hex, use]) => (<div class="swatch"><span style={`background:${hex}`}></span><b>{name}</b><small>{hex} · {use}</small></div>))}</div>
-    <p class="small" style="margin-top:14px">States are words first, then a glyph; color never carries meaning alone. A warning is yellow and an error red, so no brand color ever means trouble.</p>
     <div class="swatches">{states.map(([name, hex, use]) => (<div class="swatch"><span style={`background:${hex}`}></span><b>{name}</b><small>{hex} · {use}</small></div>))}</div>
   </section>
 
@@ -87,7 +76,6 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
     <div class="specimen"><p class="label">JetBrains Mono 700 · headlines · lowercase, ending in the brand's square</p><p style="font-size:30px;font-weight:700;margin:0;line-height:1.2">the node you own<span style={`display:inline-block;width:.3em;height:.3em;margin-left:.12em;background:${own.onPaper}`}></span></p></div>
     <div class="specimen"><p class="label">JetBrains Mono 400 · reading · 16/1.6</p><p>Autobot runs chat, agents, images and voice on the device. The network is an opt-in tool, never a requirement.</p></div>
     <div class="specimen"><p class="label">JetBrains Mono · code</p><pre><code>curl -fsSL https://invincible.sh/install.sh | sh</code></pre></div>
-    <p class="small">One family on the web, in two weights. No all-caps. Apps use the platform's sans for reading and mono for machine text.</p>
   </section>
 
   <section>
@@ -114,15 +102,10 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
 ▪ Run cargo test -p parser
   │ test result: FAILED. 41 passed; 1 failed
   └ exit 101</code></pre>
-    <p class="small">The symbol in half blocks beside the header (with color only), <code>▪</code> for each step, <code>│ └</code> for what it gave back, <code>✓ ! ✗</code> for states. Truecolor or the nearest 256, nothing for <code>NO_COLOR</code>.</p>
   </section>
 
-  <section>
-    <h2>Voice</h2>
-    <p>Write like a maintainer, not a marketer. Short declarative sentences, concrete nouns, numbers where they exist. State the limit as plainly as the feature: "built for the 8 Elite Gen 5, not yet run on one". No exclamation marks, superlatives or claims without a link. If a sentence would fit in a funding announcement, cut it; if it would fit in a README, keep it.</p>
-  </section>
 
-  <p class="small">The source of this page is <code>brand/kit.json</code>; <code>python brand/gen.py</code> draws every file from it.</p>
+  <p class="small">Source: <code>brand/kit.json</code></p>
 </Lab>
 
 <style>

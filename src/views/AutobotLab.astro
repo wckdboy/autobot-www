@@ -5,152 +5,38 @@ import { fmtBytes, fmtDate, v } from '../lib/format';
 
 const latest = releases.autobot.latest;
 const apk = latest.assets.find((a) => /release\.apk$/.test(a.name));
-const sums = latest.assets.find((a) => a.name === 'SHA256SUMS.txt');
-const hash = releases.autobot.checksums?.split('\n').find((l) => l.includes('release.apk'))?.split(/\s+/)[0];
-const recent = releases.autobot.releases.filter((r) => !r.prerelease).slice(0, 5);
-
-const modes = [
-  ['Chat', 'llama.cpp on CPU; Adreno GPU and Hexagon NPU paths on Snapdragon; Metal on iOS.', 'Streaming, reasoning, tool calls, MCP, privacy receipts.'],
-  ['Agents', 'A workspace with read, write, edit, glob, grep and web fetch.', 'Approvals fail closed. Skills, subagents, scheduled recipes.'],
-  ['Images', 'stable-diffusion.cpp on Android; Core ML on the iOS Neural Engine.', 'SD 1.5, SDXL, FLUX.2 klein, LoRA stacks, inpainting.'],
-  ['Voice', 'whisper.cpp, on the device.', 'Streaming dictation and spoken answers with barge-in.'],
+const status = [
+  ['Android', 'shipping', 'signed APK, Android 14+, arm64'],
+  ['iOS', 'TestFlight', 'same version as Android'],
+  ['Snapdragon NPU / GPU', 'verified', 'OnePlus 15, 8 Elite Gen 5'],
+  ['Security review', 'not independent yet', 'signed, hashes published'],
 ];
 ---
-<Lab path="/" current="overview" description="Autobot is a private AI agent for Android and iOS. Chat, agents, image generation and voice run on the device, offline by default.">
-  <p class="label">Android + iOS · v{v(latest.tag)} · Apache-2.0</p>
-  <h1>Autobot</h1>
-  <p class="lede">A private AI agent for Android and iOS. Chat, agents, image generation and voice run on the device.</p>
-  <p style="margin-top:16px">It works offline by default. Cloud providers are optional: requests are redacted before they leave, and every answer carries a privacy receipt. There is no account, no telemetry, and no analytics SDK.</p>
+<Lab path="/" current="overview" description="Private AI on your phone. Chat, agents, images and voice run on the device, offline by default.">
+  <h1>autobot</h1>
+  <p class="lede">Private AI on your phone. Chat, agents, images and voice run on the device, offline by default.</p>
 
   <div class="actions">
     <a class="button button--primary" href={apk?.url} download>Download {v(latest.tag)}</a>
-    <a class="button" href="/install/">Install</a>
-    <a class="text-link" href={releases.autobot.latest.url} rel="noopener">Release notes ↗</a>
-    <a class="text-link" href="https://github.com/wckdboy/autobot" rel="noopener">Source ↗</a>
+    <a class="text-link" href="/install/">Install</a>
+    <a class="text-link" href="https://github.com/wckdboy/autobot" rel="noopener">Source</a>
   </div>
 
-  <p class="meta">Android 14+ (arm64) · iOS 18+ · {apk ? fmtBytes(apk.size) : 'signed APK'} · {fmtDate(latest.published)} · <a href="/verify/">verify the download</a></p>
-
   <dl class="facts">
-    <div><dt>Latest release</dt><dd>v{v(latest.tag)}</dd></div>
-    <div><dt>License</dt><dd>Apache-2.0</dd></div>
+    <div><dt>Release</dt><dd>v{v(latest.tag)} · {fmtDate(latest.published)}</dd></div>
     <div><dt>Platforms</dt><dd>Android 14+, iOS 18+</dd></div>
-    <div><dt>Default network</dt><dd>Offline</dd></div>
+    <div><dt>License</dt><dd>Apache-2.0</dd></div>
+    <div><dt>Network</dt><dd>Offline by default</dd></div>
     <div><dt>Telemetry</dt><dd>None</dd></div>
-    <div><dt>Engines</dt><dd>llama.cpp, whisper.cpp, sd.cpp</dd></div>
+    <div><dt>Size</dt><dd>{apk ? fmtBytes(apk.size) : '—'}</dd></div>
   </dl>
 
-  <section id="what">
-    <h2>What it does</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Mode</th><th>What runs</th><th>Details</th></tr></thead>
-        <tbody>
-          {modes.map(([name, what, detail]) => (
-            <tr><td><strong>{name}</strong></td><td>{what}</td><td>{detail}</td></tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <p class="small" style="margin-top:14px">Models are downloaded separately. The app opens without one and says so. Supported local models include Qwen3.5, Gemma 4, Phi-4 mini, Llama 3.2, Qwen2.5 Coder, SD 1.5, SDXL, Z-Image and FLUX.2 klein.</p>
-  </section>
-
-  <section id="install">
-    <div class="section-head"><h2>Install</h2><span class="label">No account</span></div>
-    <h3>Android</h3>
-    <p>Download the signed APK and sideload it. Android 14 or newer, arm64. The SHA-256 for every release is published.</p>
-    <div class="actions">
-      <a class="button button--primary" href={apk?.url} download>Download APK</a>
-      {sums && <a class="text-link" href={sums.url} rel="noopener">SHA256SUMS.txt ↗</a>}
-      <a class="text-link" href="/verify/">Verification steps</a>
-    </div>
-
-    <h3>iOS</h3>
-    <p>TestFlight, app id <code>ai.wckd.autobot</code>. The iOS app runs the same Kotlin Multiplatform core as Android. Build instructions are in the repository.</p>
-    <p class="small"><a href="https://github.com/wckdboy/autobot/blob/main/ios/README.md" rel="noopener">ios/README.md ↗</a></p>
-
-    <h3>Autobot Agent (desktop or VPS)</h3>
-    <p>The same agent as the phone’s, for a machine that stays on. One script installs the agent and Invincible Gateway, verifies the release, and runs setup. No root.</p>
-    <pre><code>curl -fsSL https://invincible.sh/install.sh | sh</code></pre>
-    <p class="small">macOS arm64, Linux x86_64 and arm64. Signed release, pinned key, reproducible Linux builds. <a href="https://invincible.sh/install/" rel="noopener">Full install notes ↗</a></p>
-
-    <div class="note"><strong>No model is bundled.</strong> The app starts offline with no model installed. Add one from MODELS when you are ready; downloads are checked against the hub’s SHA-256.</div>
-  </section>
-
   <section id="status">
-    <div class="section-head"><h2>Status</h2><span class="label">20 October 2026</span></div>
+    <h2>Status</h2>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Area</th><th>State</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Android</td><td>Shipping</td><td>Signed APK, Android 14+, arm64.</td></tr>
-          <tr><td>iOS</td><td>TestFlight</td><td>Metal, Core ML, whisper.cpp. Same version and build number.</td></tr>
-          <tr><td>Snapdragon NPU / GPU</td><td>Built, not yet verified</td><td>The paths target the 8 Elite Gen 5 (Hexagon V81, Adreno 840). Models → Compute → report closes this.</td></tr>
-          <tr><td>Security review</td><td>Not independent</td><td>The APK is signed and hashes are published. There has been no independent audit.</td></tr>
-          <tr><td>Network</td><td>Offline by default</td><td>Kill switch before DNS. Direct, Tor and SOCKS5 are opt-in.</td></tr>
-          <tr><td>Data at rest</td><td>Encrypted</td><td>SQLCipher; Keystore or Secure Enclave wrapping; panic wipe.</td></tr>
-        </tbody>
+        <tbody>{status.map(([part, state, note]) => (<tr><td><strong>{part}</strong></td><td>{state}</td><td class="small">{note}</td></tr>))}</tbody>
       </table>
     </div>
-  </section>
-
-  <section id="privacy">
-    <div class="section-head"><h2>Privacy</h2><span class="label">Defaults</span></div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Guarantee</th><th>What the software does</th></tr></thead>
-        <tbody>
-          <tr><td>Offline by default</td><td>A shared kill switch rejects requests before DNS or a socket exists. Loopback models can be allowed or blocked.</td></tr>
-          <tr><td>Visible egress</td><td>The Privacy Center logs every request attempt: time, method, host, path, sizes, tag, blocked or not. No headers, query strings or bodies.</td></tr>
-          <tr><td>Redaction</td><td>Names, emails, phone numbers, addresses, cards, IBANs and account numbers become placeholders before a cloud provider sees them.</td></tr>
-          <tr><td>Receipts</td><td>Every answer says where it ran, what was redacted, and how many bytes crossed the wire.</td></tr>
-          <tr><td>No telemetry</td><td>No Play Services, Firebase, analytics or crash reporting. No device identifiers. Backups and device transfer are disabled.</td></tr>
-          <tr><td>Export</td><td>One <code>.autobot</code> file sealed with your passphrase. API keys are never exported. The other platform opens the same file.</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="small" style="margin-top:14px"><a href="/privacy/">Read the full privacy model</a></p>
-  </section>
-
-  <section id="releases">
-    <div class="section-head"><h2>Releases</h2><a class="text-link" href="/releases/">All releases</a></div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Version</th><th>Date</th><th>Files</th><th>Notes</th></tr></thead>
-        <tbody>
-          {recent.map((r) => {
-            const releaseApk = r.assets.find((a) => /release\.apk$/.test(a.name));
-            const rsums = r.assets.find((a) => a.name === 'SHA256SUMS.txt');
-            return (
-              <tr>
-                <td class="num"><strong>{v(r.tag)}</strong></td>
-                <td class="num">{fmtDate(r.published)}</td>
-                <td>
-                  {releaseApk && <a href={releaseApk.url} rel="noopener">APK</a>}
-                  {releaseApk && rsums && ' · '}
-                  {rsums && <a href={rsums.url} rel="noopener">SHA-256</a>}
-                </td>
-                <td><a href={r.url} rel="noopener">Release notes ↗</a></td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-    <p class="small" style="margin-top:14px">Data baked at build time from GitHub. Latest v{v(latest.tag)}. {releases.autobot.releases.length} public releases.</p>
-  </section>
-
-  <section id="project">
-    <h2>Project</h2>
-    <p>Autobot is developed in the open. The runtime, network policy, redaction and model management are in the repository, with the roadmap and issue tracker beside them.</p>
-    <ul class="list-plain">
-      <li><b>Source:</b> <a href="https://github.com/wckdboy/autobot" rel="noopener">github.com/wckdboy/autobot</a></li>
-      <li><b>Roadmap:</b> <a href="https://github.com/wckdboy/autobot/blob/main/ROADMAP.md" rel="noopener">ROADMAP.md</a></li>
-      <li><b>Issues:</b> <a href="https://github.com/wckdboy/autobot/issues" rel="noopener">github.com/wckdboy/autobot/issues</a></li>
-      <li><b>License:</b> <a href="https://github.com/wckdboy/autobot/blob/main/LICENSE" rel="noopener">Apache-2.0</a></li>
-      <li><b>Releases:</b> <a href="/releases/">this site</a> · <a href={latest.url} rel="noopener">GitHub</a></li>
-      <li><b>Brand:</b> <a href="/brand/">Sovware brand guide</a></li>
-    </ul>
-    <div class="note"><strong>Scope.</strong> Autobot is a local runtime and client. It is not a hosted service, a model vendor or a subscription. The node and cloud tiers are optional and separate.</div>
   </section>
 </Lab>
