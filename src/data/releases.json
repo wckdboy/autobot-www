@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-20T20:34:53.800Z",
+  "generatedAt": "2026-10-20T21:31:44.255Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-20T20:27:45Z",
+    "pushed": "2026-10-20T21:22:00Z",
     "latest": {
       "tag": "v1.12.0",
       "name": "Autobot 1.12.0",
@@ -36,7 +36,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 16,
+          "downloads": 18,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
         }
       ]
@@ -71,7 +71,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 16,
+            "downloads": 18,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
           }
         ]
@@ -520,7 +520,7 @@
       }
     ],
     "checksums": "7ac3b564cbd449ceaa446526efca70e2b34ce8dc2b8915efaf911436e2cc19a1 *autobot-1.12.0-debug.apk\n96b8961c5c53d7dca3f0422ce50aee26280b065c71751e6862a203c6638127e4 *autobot-1.12.0-release.apk\n79642b8652d78fd4c16f8aefbe11978b72f0e8fcb0a3acf9ea844973920e00dd *autobot-1.12.0-mapping.txt",
-    "totalDownloads": 126
+    "totalDownloads": 128
   },
   "invincible": {
     "name": "invincible",
@@ -528,54 +528,100 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-20T20:27:12Z",
+    "pushed": "2026-10-20T21:19:09Z",
     "latest": {
-      "tag": "v0.0.19",
-      "name": "v0.0.19",
-      "published": "2026-10-20T20:34:22Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.19",
+      "tag": "v0.0.20",
+      "name": "v0.0.20",
+      "published": "2026-10-20T21:31:15Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.20",
       "prerelease": false,
-      "body": "A security update for TLS certificate checks.\n\n**Security**\n- **rustls-webpki 0.103.16** ([RUSTSEC-2026-0382](https://rustsec.org/advisories/RUSTSEC-2026-0382)): certificate chains through the distrusted emSign intermediates, whose private keys are now known, are rejected. Every HTTPS connection both programs make (cloud models, updates, channels) goes through it. Update with `invincible update`.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
+      "body": "Eval results kept over time, and the kill switch written down as a rule the node and the app now provably share.\n\n**Evals: the local–cloud gap over time**\n- **Every `invincible eval` and `autobot eval` run is kept** in `~/.invincible/evals/history.jsonl`: each model's score, whether it ran on the node or in the cloud, and its median time. `--no-record` leaves a run out.\n- **`invincible eval --history [FILE] [--tag TAG]`** shows each suite's runs and the gap between the best local and the best cloud model, and how that gap moved from the first run to the latest.\n- A task whose prompt, checks or files change starts a history of its own, and a model that did not answer (refused, unreachable) is shown as such and left out of the gap.\n\n**Egress and the kill switch** ([spec/egress.md](https://github.com/wckdboy/invincible/blob/main/spec/egress.md))\n- **A model backend on this machine is reached behind Tor or a SOCKS5 proxy.** Loopback now skips the proxy, which cannot reach it; before, such a backend failed under those modes. Its receipts say `direct`.\n- **A typo in the network mode fails closed**: `network = \"direct:…\"` now means offline, as any other malformed value does.\n- `*.localhost` names count as this machine.\n- 39 shared test cases pin the rules down; Autobot runs the same cases, so the phone and the node block, send and proxy the same requests.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 10459962,
+          "size": 10504070,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.19/invincible-linux-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 11491324,
+          "size": 11541035,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.19/invincible-linux-x64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 9994084,
+          "size": 10043382,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.19/invincible-macos-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 360,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.19/SHA256SUMS"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.19/SHA256SUMS.sig"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/SHA256SUMS.sig"
         },
         {
           "name": "VERSION",
           "size": 7,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.19/VERSION"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/VERSION"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.20",
+        "name": "v0.0.20",
+        "published": "2026-10-20T21:31:15Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.20",
+        "prerelease": false,
+        "body": "Eval results kept over time, and the kill switch written down as a rule the node and the app now provably share.\n\n**Evals: the local–cloud gap over time**\n- **Every `invincible eval` and `autobot eval` run is kept** in `~/.invincible/evals/history.jsonl`: each model's score, whether it ran on the node or in the cloud, and its median time. `--no-record` leaves a run out.\n- **`invincible eval --history [FILE] [--tag TAG]`** shows each suite's runs and the gap between the best local and the best cloud model, and how that gap moved from the first run to the latest.\n- A task whose prompt, checks or files change starts a history of its own, and a model that did not answer (refused, unreachable) is shown as such and left out of the gap.\n\n**Egress and the kill switch** ([spec/egress.md](https://github.com/wckdboy/invincible/blob/main/spec/egress.md))\n- **A model backend on this machine is reached behind Tor or a SOCKS5 proxy.** Loopback now skips the proxy, which cannot reach it; before, such a backend failed under those modes. Its receipts say `direct`.\n- **A typo in the network mode fails closed**: `network = \"direct:…\"` now means offline, as any other malformed value does.\n- `*.localhost` names count as this machine.\n- 39 shared test cases pin the rules down; Autobot runs the same cases, so the phone and the node block, send and proxy the same requests.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 10504070,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 11541035,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 10043382,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 360,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/SHA256SUMS.sig"
+          },
+          {
+            "name": "VERSION",
+            "size": 7,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.20/VERSION"
+          }
+        ]
+      },
       {
         "tag": "v0.0.19",
         "name": "v0.0.19",
@@ -605,7 +651,7 @@
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 0,
+            "downloads": 2,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.19/SHA256SUMS"
           },
           {
@@ -1020,27 +1066,27 @@
       },
       {
         "tag": "edge",
-        "name": "edge (0.0.17-edge.0ecbaa9)",
+        "name": "edge (0.0.19-edge.06cdb35)",
         "published": "2026-10-20T10:17:13Z",
         "url": "https://github.com/wckdboy/invincible/releases/tag/edge",
         "prerelease": true,
-        "body": "Built from 0ecbaa98ab352f060a72c74b5cc854ec6eeb03e0 on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
+        "body": "Built from 06cdb350595042679afff9d7d925d7d1b1f1328a on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
         "assets": [
           {
             "name": "invincible-linux-arm64.tar.gz",
-            "size": 10354581,
+            "size": 10504649,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-arm64.tar.gz"
           },
           {
             "name": "invincible-linux-x64.tar.gz",
-            "size": 11381624,
+            "size": 11545611,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-x64.tar.gz"
           },
           {
             "name": "invincible-macos-arm64.tar.gz",
-            "size": 9906198,
+            "size": 10037916,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-macos-arm64.tar.gz"
           },
@@ -1143,49 +1189,9 @@
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.8/SHA256SUMS.sig"
           }
         ]
-      },
-      {
-        "tag": "v0.0.7",
-        "name": "v0.0.7",
-        "published": "2026-10-19T18:58:36Z",
-        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.7",
-        "prerelease": false,
-        "body": "**Easier upgrades, frontier models in one command, and steering the agent while it works.**\n\n- **Steer while it works.** While a turn runs, what you type shows under the spinner. **Enter** hands it to the agent before its next step; text that arrives just as the turn ends becomes the next request. **Esc** stops a turn.\n- **`invincible cloud add deepseek|anthropic|openai|openrouter|custom`**\n  - Presets know each provider's API, a starting model, its context and its data policy.\n  - The key is read without being shown and kept in `~/.invincible/keys`, readable only by you.\n  - `egress = \"never\"` becomes `\"ask\"` when you add the first cloud model.\n  - Also `invincible cloud list` and `invincible cloud remove`.\n- **Setup offers a cloud model.** On a setup with only cloud models, that model becomes the agent's model, and agent work may use it. Re-running setup no longer offers a 15 GB download as the default.\n- **Re-running the installer upgrades.**\n  - It replaces the binaries and restarts the running services on them.\n  - It keeps your setup; `INVINCIBLE_SETUP=1` runs setup again.\n  - It reports `upgraded 0.0.6 -> 0.0.7`.\n- **Bigger coding jobs:**\n  - Coding turns get at least 100 steps.\n  - A built-in read-only `explorer` takes research questions in a fresh context and answers with file:line references.\n  - Reads in one reply run at the same time.\n  - Token counts, including cached tokens, are shown per turn.\n- **Doctor:**\n  - It waits for a model that is still loading.\n  - It counts cloud models and checks their keys.\n  - It explains a cloud-only gateway's routing.\n  - It never sends a test to a cloud model.\n- **17 bug fixes from two reviews** (one by a Claude reviewer, one by Autobot itself on DeepSeek):\n  - **Approvals:** text typed while the agent worked could answer a question, and a sentence containing an `a` meant \"always\". Typed-ahead text is now discarded, and any key other than y, a or n is no.\n  - **`/undo`:** files that were not UTF-8 were deleted instead of restored.\n  - **`@` attachments:** `@/path` could attach files outside the project without asking.\n  - **Config edits:** a config that could not be read could be overwritten.\n  - **Streaming:** tool calls without an index were merged.\n  - **Display:** wide characters and tabs broke it, and the spinner wrapped.\n  - **Diff counts:** removed `-- comment` and `---` lines were not counted.\n  - **Ct",
-        "assets": [
-          {
-            "name": "invincible-linux-arm64.tar.gz",
-            "size": 7397814,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/invincible-linux-arm64.tar.gz"
-          },
-          {
-            "name": "invincible-linux-x64.tar.gz",
-            "size": 8122891,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/invincible-linux-x64.tar.gz"
-          },
-          {
-            "name": "invincible-macos-arm64.tar.gz",
-            "size": 7030773,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/invincible-macos-arm64.tar.gz"
-          },
-          {
-            "name": "SHA256SUMS",
-            "size": 286,
-            "downloads": 9,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/SHA256SUMS"
-          },
-          {
-            "name": "SHA256SUMS.sig",
-            "size": 314,
-            "downloads": 7,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.7/SHA256SUMS.sig"
-          }
-        ]
       }
     ],
-    "checksums": "621ad6d2e5fa41d91f5443f6ef3be57fb585838bd6af4c4cd2bb1b5af388ccf8  invincible-linux-arm64.tar.gz\n648e9f8fc8e3e0038e6f2c3d70d9fe83d088a4b247e1f3936fc1420f1290ddc4  invincible-linux-x64.tar.gz\n1a74e890b6c54f82eeafb9ace38431e88ed154a890367212db5619cff1969c71  invincible-macos-arm64.tar.gz\n2b65a7e0146dad770492e3d960618cfe1fceae06a2e9f95cdbbdbbefb9b93184  VERSION",
-    "totalDownloads": 95
+    "checksums": "4bc07fd26a2fc41e56d0ec79e7443425751325e5a908cba7d932906981ea4dc2  invincible-linux-arm64.tar.gz\n7dbed21248f59cbb7d8f683c6042db22af9b80570bee91352055d61a598ff641  invincible-linux-x64.tar.gz\ne2e34ac8cf0d5bfff08ad2957e6da2cafcbc8f42ac089e0507cad3563b235092  invincible-macos-arm64.tar.gz\n70f67cbedcd68a755dec43879b0ff7cd9ab2e697d64839be798e8b5764394cf2  VERSION",
+    "totalDownloads": 80
   }
 }
