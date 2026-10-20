@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-20T06:57:13.557Z",
+  "generatedAt": "2026-10-20T07:16:01.311Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-20T06:57:11Z",
+    "pushed": "2026-10-20T07:02:20Z",
     "latest": {
       "tag": "v1.11.0",
       "name": "Autobot 1.11.0",
@@ -18,25 +18,25 @@
         {
           "name": "autobot-1.11.0-debug.apk",
           "size": 138907045,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-debug.apk"
         },
         {
           "name": "autobot-1.11.0-mapping.txt",
           "size": 94837379,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-mapping.txt"
         },
         {
           "name": "autobot-1.11.0-release.apk",
           "size": 82203978,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 0,
+          "downloads": 3,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/SHA256SUMS.txt"
         }
       ]
@@ -53,25 +53,25 @@
           {
             "name": "autobot-1.11.0-debug.apk",
             "size": 138907045,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-debug.apk"
           },
           {
             "name": "autobot-1.11.0-mapping.txt",
             "size": 94837379,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-mapping.txt"
           },
           {
             "name": "autobot-1.11.0-release.apk",
             "size": 82203978,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/autobot-1.11.0-release.apk"
           },
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.0/SHA256SUMS.txt"
           }
         ]
@@ -514,7 +514,7 @@
       }
     ],
     "checksums": "4de18567071de310c56d26d05b9141442b7aad861c775312f6706303134ef4e0 *autobot-1.11.0-debug.apk\n12585cd1b35205b3b43d3a95ce5630bd701a2d85dcde2d5822f3106fd9636f5f *autobot-1.11.0-release.apk\na285e7abbd26b267801e4a9ae52d1672a2fce014a88310e37a81c47aec4b71f8 *autobot-1.11.0-mapping.txt",
-    "totalDownloads": 95
+    "totalDownloads": 101
   },
   "invincible": {
     "name": "invincible",
@@ -522,48 +522,88 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-20T01:07:23Z",
+    "pushed": "2026-10-20T07:07:50Z",
     "latest": {
-      "tag": "v0.0.10",
-      "name": "v0.0.10",
-      "published": "2026-10-20T01:15:51Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.10",
+      "tag": "v0.0.11",
+      "name": "v0.0.11",
+      "published": "2026-10-20T07:15:35Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.11",
       "prerelease": false,
-      "body": "A new terminal for the agent, and the brand's vivid colors.\n\n**Autobot in the terminal (`autobot chat`, `autobot code`)**\n- **It stays in your scrollback.** Only the bottom of the screen redraws, and only the rows that changed. Nothing flickers.\n- **A real composer.** It takes several lines (Alt+Enter, Ctrl+J or a trailing `\\`) and keeps your history. Long pastes fold into `[pasted N lines]` and still go out in full. The usual editing keys work (Ctrl+A/E/W/U/K/Y, Alt+B/F/D).\n- **A status line:** the model (`auto → qwen (node)` once a receipt says which model auto picked), your approvals mode, the project and branch, how much of the context is used, and tokens. The hints on the right follow what you can do now.\n- **`/` opens a palette** of commands, your own included, each with a one-line description. **`@` completes file paths** in the project and respects `.gitignore`.\n- **Live steps.** A spinner shows the running step and its seconds. Esc or Ctrl+C interrupts, and typing while the agent works steers it.\n- **Answers render properly:** headings, lists with hanging indents, quotes, aligned tables, and framed code blocks with a light syntax tint.\n- **Tool output is short.** Command output shows its last lines and the exit code. Diffs show line numbers in green and red.\n- **Approvals are a card** you answer with one key: y, a (always, this session) or n.\n- **Scripts still work.** Without a terminal it falls back to plain lines. `NO_COLOR` is respected. The terminal is restored on exit, on a crash, and on SIGTERM and SIGHUP.\n- **Smaller:** rustyline is gone, taking 10 dependencies with it.\n\n**Brand**\n- Vivid colors: Invincible orange `#FF8A1E` (256-color 208) and Autobot purple `#7C5CFF` (99), for the symbols, the prompt and what is running, never for text.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
+      "body": "The terminal, round two: search, pickers, and saying what to do instead.\n\n**Autobot in the terminal**\n- **Ctrl+R searches what you sent**, as you type. Ctrl+R again goes further back, Enter keeps the match, and Esc puts back what you had.\n- **Shift+Enter starts a new line** in terminals with the kitty keyboard protocol (kitty, Ghostty, WezTerm, iTerm2 with it turned on). Alt+Enter and Ctrl+J work everywhere.\n- **Say what to do instead.** An approval card now has a fourth key: `e` means no, and you type what the agent should do instead. It reads that with the refusal and does it. In plain mode, type `e <text>`.\n- **Pickers.** `/model` on its own lists the node's models and their context. `/resume` lists recent conversations with their first request and how long ago they were. Type to narrow, then press Enter.\n- **The window title** reads `autobot · <project>`, and your old title comes back when you leave.\n- **Notifications.** A turn of 10 seconds or more, or an approval that is waiting, notifies you while the window is in the background: OSC 9 in iTerm2, Ghostty, WezTerm and kitty, a bell elsewhere. Set `[terminal] notify = \"auto\" | \"bell\" | \"off\"`.\n- **`/copy`** puts the last answer on your clipboard as Markdown, inside tmux too.\n- Long `refused:` and `error:` lines are cut to the width instead of wrapping mid-word.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 7654505,
+          "size": 7683652,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/invincible-linux-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 8409119,
+          "size": 8444703,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/invincible-linux-x64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 7273596,
+          "size": 7307086,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/invincible-macos-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 286,
-          "downloads": 4,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS.sig"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/SHA256SUMS.sig"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.11",
+        "name": "v0.0.11",
+        "published": "2026-10-20T07:15:35Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.11",
+        "prerelease": false,
+        "body": "The terminal, round two: search, pickers, and saying what to do instead.\n\n**Autobot in the terminal**\n- **Ctrl+R searches what you sent**, as you type. Ctrl+R again goes further back, Enter keeps the match, and Esc puts back what you had.\n- **Shift+Enter starts a new line** in terminals with the kitty keyboard protocol (kitty, Ghostty, WezTerm, iTerm2 with it turned on). Alt+Enter and Ctrl+J work everywhere.\n- **Say what to do instead.** An approval card now has a fourth key: `e` means no, and you type what the agent should do instead. It reads that with the refusal and does it. In plain mode, type `e <text>`.\n- **Pickers.** `/model` on its own lists the node's models and their context. `/resume` lists recent conversations with their first request and how long ago they were. Type to narrow, then press Enter.\n- **The window title** reads `autobot · <project>`, and your old title comes back when you leave.\n- **Notifications.** A turn of 10 seconds or more, or an approval that is waiting, notifies you while the window is in the background: OSC 9 in iTerm2, Ghostty, WezTerm and kitty, a bell elsewhere. Set `[terminal] notify = \"auto\" | \"bell\" | \"off\"`.\n- **`/copy`** puts the last answer on your clipboard as Markdown, inside tmux too.\n- Long `refused:` and `error:` lines are cut to the width instead of wrapping mid-word.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 7683652,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 8444703,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 7307086,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 286,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/SHA256SUMS.sig"
+          }
+        ]
+      },
       {
         "tag": "v0.0.10",
         "name": "v0.0.10",
@@ -593,7 +633,7 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 4,
+            "downloads": 6,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS"
           },
           {
@@ -959,7 +999,7 @@
         ]
       }
     ],
-    "checksums": "9a193191eb360181c77608046b9d473eebb4840f8453a87ab01bdf52f6c71439  invincible-linux-arm64.tar.gz\n9a7bdb7a4c88e56061fa22bf8af1379d1ec480828cb4b87c48707cfb65a3e629  invincible-linux-x64.tar.gz\n7608a741839e2c0d8b9c58646648b050a595046d01aa659c31fa9ada93d83a13  invincible-macos-arm64.tar.gz",
-    "totalDownloads": 198
+    "checksums": "7144e0809d5a89f45be1767f74cf99cdf5e279ea7d533f970037e2b12d448fd2  invincible-linux-arm64.tar.gz\n5774830cb8966eb9024c4416526c567767cda3ed195e5b5fe853a48629ee5b20  invincible-linux-x64.tar.gz\n76ebce067395a0596b9f95f6602b774c0ea2822cf3a5a4c4190d32142185297b  invincible-macos-arm64.tar.gz",
+    "totalDownloads": 200
   }
 }
