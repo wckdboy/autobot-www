@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-20T08:55:18.059Z",
+  "generatedAt": "2026-10-20T11:16:50.038Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-20T08:54:18Z",
+    "pushed": "2026-10-20T11:14:52Z",
     "latest": {
       "tag": "v1.11.1",
       "name": "Autobot 1.11.1",
@@ -18,25 +18,25 @@
         {
           "name": "autobot-1.11.1-debug.apk",
           "size": 139073721,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-debug.apk"
         },
         {
           "name": "autobot-1.11.1-mapping.txt",
           "size": 95408007,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-mapping.txt"
         },
         {
           "name": "autobot-1.11.1-release.apk",
           "size": 82239298,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 0,
+          "downloads": 3,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/SHA256SUMS.txt"
         }
       ]
@@ -53,25 +53,25 @@
           {
             "name": "autobot-1.11.1-debug.apk",
             "size": 139073721,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-debug.apk"
           },
           {
             "name": "autobot-1.11.1-mapping.txt",
             "size": 95408007,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-mapping.txt"
           },
           {
             "name": "autobot-1.11.1-release.apk",
             "size": 82239298,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-release.apk"
           },
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/SHA256SUMS.txt"
           }
         ]
@@ -520,7 +520,7 @@
       }
     ],
     "checksums": "98359ff1074df59335971480387c0d883526ab8dca6664e4e890ee90a034e5a6 *autobot-1.11.1-debug.apk\nccc6033fb0487c37398af16ac17d5648177b715b9f209bc209e927fee132646c *autobot-1.11.1-release.apk\na3a91cb1e856da879d1b7abf96ff3e95b88c5faca2ece2b828df69711938696f *autobot-1.11.1-mapping.txt",
-    "totalDownloads": 101
+    "totalDownloads": 107
   },
   "invincible": {
     "name": "invincible",
@@ -528,55 +528,107 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-20T08:08:37Z",
+    "pushed": "2026-10-20T10:56:45Z",
     "latest": {
-      "tag": "v0.0.12",
-      "name": "v0.0.12",
-      "published": "2026-10-20T08:24:23Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.12",
+      "tag": "v0.0.13",
+      "name": "v0.0.13",
+      "published": "2026-10-20T11:15:55Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.13",
       "prerelease": false,
-      "body": "Show the agent an image, and see from your phone what is waiting for you.\n\n**Images in the terminal**\n- **Attach an image** by dragging or pasting its path (one or several files), with `@shot.png` in the project, with `/image <path>`, or with Ctrl+V from the clipboard (`pngpaste` or `osascript` on macOS, `wl-paste` or `xclip` on Linux). It shows in the composer as `[image 1: shot.png 1280×720]`.\n- **Big images are scaled down** to 1568 px on the longest side before sending.\n- **Models that can't see images get none.** You're told plainly and pointed to `/model`; nothing is sent.\n- **Sessions keep a reference** to each image (path, SHA-256, size), never the bytes. An image that is gone by the time a session resumes is replaced by a note.\n\n**Gateway**\n- **Images pass through** to local engines and cloud backends. Only the text is redacted.\n- **`/v1/models` says which models can see.** A local model sees with a projector (`mmproj`). `vision = true|false` overrides that, and a cloud model is judged by its name.\n- **Image requests are routed to models that can see.** With `auto`, only those are chosen. A model asked for by name that is known to be blind gets `400 model_cannot_see_images`.\n- **Receipts and the audit log list images by hash, size and type,** never their contents.\n- **Inference requests can be up to 32 MiB.**\n\n**Agent API**\n- **`GET /v1/agent/approvals`** lists the questions waiting for you now, so a paired phone can show them without watching a turn as it runs.\n- **Answer an approval with what to do instead:** `{\"answer\": \"instead\", \"text\": \"…\"}`.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
+      "body": "Always on, many bots, and the agent grows up: an installer you can rerun, rolling releases, self-update, bots with their own channels, and the features of a full agent harness.\n\n**Install, update, run 24/7**\n- **`install.sh` converges.** Run it any number of times. The same release downloads nothing, a new one swaps the binaries atomically and restarts only what changed, and your config and data are never touched. A lock stops two runs at once, and a broken download resumes. Flags: `--channel stable|edge`, `--version`, `--prefix`, `--no-service`, `--uninstall [--purge]`, `--yes`. Piped, it asks nothing; `autobot setup` asks the questions.\n- **Rolling releases.** Every green commit on main is published as the `edge` prerelease, signed like a stable release; `invincible --version` says `0.0.13-edge.<sha>`.\n- **`invincible update`** (and `autobot update`) installs the newest release of your channel, checked exactly as the installer checks it. `--check` only asks. `--auto stable|edge|off` turns on a daily job; it is off by default, so nothing phones home.\n- **24/7 on a Mac or a VPS.** On macOS the services are launchd agents. On Linux they are systemd user units with linger, or system units when installed as root. They start at boot and restart when they exit.\n- **Health and logs.** Both services answer `GET /healthz`, and a watchdog restarts them when it goes quiet. Logs are capped at 16 MiB.\n- **Checking it.** `autobot service status` shows each service's state and how it last stopped. `autobot doctor` ends with a 24/7 readiness check: linger, Mac sleep, disk, clock sync and the update channel.\n\n**Bots**\n- **Several bots on one node.** Each lives in `~/.autobot/bots/<name>/` with its own persona (SOUL.md), model, tools, approvals, memory, skills, sessions, schedules and channels. Your existing setup is the bot named `default`.\n- **The CLI:** `autobot bots add|show|edit|remove|enable|disable|status`, and `--bot <name>` on any command.\n- **Isolated.** One `autobot serve` runs them all; one bot's crash or slow model doesn't stall the others.\n\n**Channels**\n- **Slack** (Socket Mode, no public URL), **Email** (IMAP and SMTP, only allowlisted senders that pass SPF/DKIM/DMARC), **Signal** (signal-cli) and **Matrix** join Telegram and Discord. All of them get pairing, approvals, steering, chunking and the commands `/status /new /stop /model /sethome /bots`.\n- **One con",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 8163658,
+          "size": 9426649,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-linux-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 8966148,
+          "size": 10348585,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-linux-x64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 7778149,
+          "size": 9014459,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-macos-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
-          "size": 286,
-          "downloads": 2,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS"
+          "size": 360,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS.sig"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/SHA256SUMS.sig"
+        },
+        {
+          "name": "VERSION",
+          "size": 7,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/VERSION"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.13",
+        "name": "v0.0.13",
+        "published": "2026-10-20T11:15:55Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.13",
+        "prerelease": false,
+        "body": "Always on, many bots, and the agent grows up: an installer you can rerun, rolling releases, self-update, bots with their own channels, and the features of a full agent harness.\n\n**Install, update, run 24/7**\n- **`install.sh` converges.** Run it any number of times. The same release downloads nothing, a new one swaps the binaries atomically and restarts only what changed, and your config and data are never touched. A lock stops two runs at once, and a broken download resumes. Flags: `--channel stable|edge`, `--version`, `--prefix`, `--no-service`, `--uninstall [--purge]`, `--yes`. Piped, it asks nothing; `autobot setup` asks the questions.\n- **Rolling releases.** Every green commit on main is published as the `edge` prerelease, signed like a stable release; `invincible --version` says `0.0.13-edge.<sha>`.\n- **`invincible update`** (and `autobot update`) installs the newest release of your channel, checked exactly as the installer checks it. `--check` only asks. `--auto stable|edge|off` turns on a daily job; it is off by default, so nothing phones home.\n- **24/7 on a Mac or a VPS.** On macOS the services are launchd agents. On Linux they are systemd user units with linger, or system units when installed as root. They start at boot and restart when they exit.\n- **Health and logs.** Both services answer `GET /healthz`, and a watchdog restarts them when it goes quiet. Logs are capped at 16 MiB.\n- **Checking it.** `autobot service status` shows each service's state and how it last stopped. `autobot doctor` ends with a 24/7 readiness check: linger, Mac sleep, disk, clock sync and the update channel.\n\n**Bots**\n- **Several bots on one node.** Each lives in `~/.autobot/bots/<name>/` with its own persona (SOUL.md), model, tools, approvals, memory, skills, sessions, schedules and channels. Your existing setup is the bot named `default`.\n- **The CLI:** `autobot bots add|show|edit|remove|enable|disable|status`, and `--bot <name>` on any command.\n- **Isolated.** One `autobot serve` runs them all; one bot's crash or slow model doesn't stall the others.\n\n**Channels**\n- **Slack** (Socket Mode, no public URL), **Email** (IMAP and SMTP, only allowlisted senders that pass SPF/DKIM/DMARC), **Signal** (signal-cli) and **Matrix** join Telegram and Discord. All of them get pairing, approvals, steering, chunking and the commands `/status /new /stop /model /sethome /bots`.\n- **One con",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 9426649,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 10348585,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 9014459,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 360,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/SHA256SUMS.sig"
+          },
+          {
+            "name": "VERSION",
+            "size": 7,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/VERSION"
+          }
+        ]
+      },
       {
         "tag": "v0.0.12",
         "name": "v0.0.12",
         "published": "2026-10-20T08:24:23Z",
         "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.12",
         "prerelease": false,
-        "body": "Show the agent an image, and see from your phone what is waiting for you.\n\n**Images in the terminal**\n- **Attach an image** by dragging or pasting its path (one or several files), with `@shot.png` in the project, with `/image <path>`, or with Ctrl+V from the clipboard (`pngpaste` or `osascript` on macOS, `wl-paste` or `xclip` on Linux). It shows in the composer as `[image 1: shot.png 1280×720]`.\n- **Big images are scaled down** to 1568 px on the longest side before sending.\n- **Models that can't see images get none.** You're told plainly and pointed to `/model`; nothing is sent.\n- **Sessions keep a reference** to each image (path, SHA-256, size), never the bytes. An image that is gone by the time a session resumes is replaced by a note.\n\n**Gateway**\n- **Images pass through** to local engines and cloud backends. Only the text is redacted.\n- **`/v1/models` says which models can see.** A local model sees with a projector (`mmproj`). `vision = true|false` overrides that, and a cloud model is judged by its name.\n- **Image requests are routed to models that can see.** With `auto`, only those are chosen. A model asked for by name that is known to be blind gets `400 model_cannot_see_images`.\n- **Receipts and the audit log list images by hash, size and type,** never their contents.\n- **Inference requests can be up to 32 MiB.**\n\n**Agent API**\n- **`GET /v1/agent/approvals`** lists the questions waiting for you now, so a paired phone can show them without watching a turn as it runs.\n- **Answer an approval with what to do instead:** `{\"answer\": \"instead\", \"text\": \"…\"}`.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
+        "body": "Show the agent an image, and see from your phone what is waiting for you.\n\n**Images in the terminal**\n- **Attach an image** by dragging or pasting its path (one or several files), with `@shot.png` in the project, with `/image <path>`, or with Ctrl+V from the clipboard (`pngpaste` or `osascript` on macOS, `wl-paste` or `xclip` on Linux). It shows in the composer as `[image 1: shot.png 1280×720]`.\n- **Big images are scaled down** to 1568 px on the longest side before sending.\n- **Models that can't see images get none.** You're told plainly and pointed to `/model`; nothing is sent.\n- **Sessions keep a reference** to each image (path, SHA-256, size), never the bytes. An image that is gone by the time a session resumes is replaced by a note.\n\n**Gateway**\n- **Images pass through** to local engines and cloud backends. Only the text is redacted.\n- **`/v1/models` says which models can see.** A local model sees with a projector (`mmproj`). `vision = true|false` overrides that, and a cloud model is judged by its name.\n- **Image requests are routed to models that can see.** With `auto`, only those are chosen. A model asked for by name that is known to be blind gets `400 model_cannot_see_images`.\n- **Receipts and the audit log list images by hash, size and type,** never their contents.\n- **Inference requests can be up to 32 MiB.**\n\n**Agent API**\n- **`GET /v1/agent/approvals`** lists the questions waiting for you now, so a paired phone can show them without watching a turn as it runs.\n- **Answer an approval with what to do instead:** `{\"answer\": \"instead\", \"text\": \"…\"}`.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
         "assets": [
           {
             "name": "invincible-linux-arm64.tar.gz",
@@ -593,19 +645,19 @@
           {
             "name": "invincible-macos-arm64.tar.gz",
             "size": 7778149,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/invincible-macos-arm64.tar.gz"
           },
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 2,
+            "downloads": 7,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.12/SHA256SUMS.sig"
           }
         ]
@@ -616,7 +668,7 @@
         "published": "2026-10-20T07:15:35Z",
         "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.11",
         "prerelease": false,
-        "body": "The terminal, round two: search, pickers, and saying what to do instead.\n\n**Autobot in the terminal**\n- **Ctrl+R searches what you sent**, as you type. Ctrl+R again goes further back, Enter keeps the match, and Esc puts back what you had.\n- **Shift+Enter starts a new line** in terminals with the kitty keyboard protocol (kitty, Ghostty, WezTerm, iTerm2 with it turned on). Alt+Enter and Ctrl+J work everywhere.\n- **Say what to do instead.** An approval card now has a fourth key: `e` means no, and you type what the agent should do instead. It reads that with the refusal and does it. In plain mode, type `e <text>`.\n- **Pickers.** `/model` on its own lists the node's models and their context. `/resume` lists recent conversations with their first request and how long ago they were. Type to narrow, then press Enter.\n- **The window title** reads `autobot · <project>`, and your old title comes back when you leave.\n- **Notifications.** A turn of 10 seconds or more, or an approval that is waiting, notifies you while the window is in the background: OSC 9 in iTerm2, Ghostty, WezTerm and kitty, a bell elsewhere. Set `[terminal] notify = \"auto\" | \"bell\" | \"off\"`.\n- **`/copy`** puts the last answer on your clipboard as Markdown, inside tmux too.\n- Long `refused:` and `error:` lines are cut to the width instead of wrapping mid-word.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
+        "body": "The terminal, round two: search, pickers, and saying what to do instead.\n\n**Autobot in the terminal**\n- **Ctrl+R searches what you sent**, as you type. Ctrl+R again goes further back, Enter keeps the match, and Esc puts back what you had.\n- **Shift+Enter starts a new line** in terminals with the kitty keyboard protocol (kitty, Ghostty, WezTerm, iTerm2 with it turned on). Alt+Enter and Ctrl+J work everywhere.\n- **Say what to do instead.** An approval card now has a fourth key: `e` means no, and you type what the agent should do instead. It reads that with the refusal and does it. In plain mode, type `e <text>`.\n- **Pickers.** `/model` on its own lists the node's models and their context. `/resume` lists recent conversations with their first request and how long ago they were. Type to narrow, then press Enter.\n- **The window title** reads `autobot · <project>`, and your old title comes back when you leave.\n- **Notifications.** A turn of 10 seconds or more, or an approval that is waiting, notifies you while the window is in the background: OSC 9 in iTerm2, Ghostty, WezTerm and kitty, a bell elsewhere. Set `[terminal] notify = \"auto\" | \"bell\" | \"off\"`.\n- **`/copy`** puts the last answer on your clipboard as Markdown, inside tmux too.\n- Long `refused:` and `error:` lines are cut to the width instead of wrapping mid-word.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
         "assets": [
           {
             "name": "invincible-linux-arm64.tar.gz",
@@ -656,7 +708,7 @@
         "published": "2026-10-20T01:15:51Z",
         "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.10",
         "prerelease": false,
-        "body": "A new terminal for the agent, and the brand's vivid colors.\n\n**Autobot in the terminal (`autobot chat`, `autobot code`)**\n- **It stays in your scrollback.** Only the bottom of the screen redraws, and only the rows that changed. Nothing flickers.\n- **A real composer.** It takes several lines (Alt+Enter, Ctrl+J or a trailing `\\`) and keeps your history. Long pastes fold into `[pasted N lines]` and still go out in full. The usual editing keys work (Ctrl+A/E/W/U/K/Y, Alt+B/F/D).\n- **A status line:** the model (`auto → qwen (node)` once a receipt says which model auto picked), your approvals mode, the project and branch, how much of the context is used, and tokens. The hints on the right follow what you can do now.\n- **`/` opens a palette** of commands, your own included, each with a one-line description. **`@` completes file paths** in the project and respects `.gitignore`.\n- **Live steps.** A spinner shows the running step and its seconds. Esc or Ctrl+C interrupts, and typing while the agent works steers it.\n- **Answers render properly:** headings, lists with hanging indents, quotes, aligned tables, and framed code blocks with a light syntax tint.\n- **Tool output is short.** Command output shows its last lines and the exit code. Diffs show line numbers in green and red.\n- **Approvals are a card** you answer with one key: y, a (always, this session) or n.\n- **Scripts still work.** Without a terminal it falls back to plain lines. `NO_COLOR` is respected. The terminal is restored on exit, on a crash, and on SIGTERM and SIGHUP.\n- **Smaller:** rustyline is gone, taking 10 dependencies with it.\n\n**Brand**\n- Vivid colors: Invincible orange `#FF8A1E` (256-color 208) and Autobot purple `#7C5CFF` (99), for the symbols, the prompt and what is running, never for text.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
+        "body": "A new terminal for the agent, and the brand's vivid colors.\n\n**Autobot in the terminal (`autobot chat`, `autobot code`)**\n- **It stays in your scrollback.** Only the bottom of the screen redraws, and only the rows that changed. Nothing flickers.\n- **A real composer.** It takes several lines (Alt+Enter, Ctrl+J or a trailing `\\`) and keeps your history. Long pastes fold into `[pasted N lines]` and still go out in full. The usual editing keys work (Ctrl+A/E/W/U/K/Y, Alt+B/F/D).\n- **A status line:** the model (`auto → qwen (node)` once a receipt says which model auto picked), your approvals mode, the project and branch, how much of the context is used, and tokens. The hints on the right follow what you can do now.\n- **`/` opens a palette** of commands, your own included, each with a one-line description. **`@` completes file paths** in the project and respects `.gitignore`.\n- **Live steps.** A spinner shows the running step and its seconds. Esc or Ctrl+C interrupts, and typing while the agent works steers it.\n- **Answers render properly:** headings, lists with hanging indents, quotes, aligned tables, and framed code blocks with a light syntax tint.\n- **Tool output is short.** Command output shows its last lines and the exit code. Diffs show line numbers in green and red.\n- **Approvals are a card** you answer with one key: y, a (always, this session) or n.\n- **Scripts still work.** Without a terminal it falls back to plain lines. `NO_COLOR` is respected. The terminal is restored on exit, on a crash, and on SIGTERM and SIGHUP.\n- **Smaller:** rustyline is gone, taking 10 dependencies with it.\n\n**Brand**\n- Vivid colors: Invincible orange `#FF8A1E` (256-color 208) and Autobot purple `#7C5CFF` (99), for the symbols, the prompt and what is running, never for text.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
         "assets": [
           {
             "name": "invincible-linux-arm64.tar.gz",
@@ -691,12 +743,58 @@
         ]
       },
       {
+        "tag": "edge",
+        "name": "edge (0.0.12-edge.bfad01d)",
+        "published": "2026-10-20T10:17:13Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/edge",
+        "prerelease": true,
+        "body": "Built from bfad01d6707a44520e1bd5dafeffb41653058094 on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 8299276,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 9115724,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 7904526,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 360,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/edge/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/edge/SHA256SUMS.sig"
+          },
+          {
+            "name": "VERSION",
+            "size": 20,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/edge/VERSION"
+          }
+        ]
+      },
+      {
         "tag": "v0.0.9",
         "name": "v0.0.9",
         "published": "2026-10-19T23:45:35Z",
         "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.9",
         "prerelease": false,
-        "body": "The agent grows into a full harness, and the node gets its brand.\n\n**Agent (Autobot)**\n- Background processes: `terminal` with `background: true` leaves a dev server or watcher running; `process` reads its output, waits for it or stops it. `/ps` in the TUI.\n- Your own slash commands from `.autobot/commands`, `.claude/commands` and `~/.autobot/commands` (`$ARGUMENTS`); `/init` writes AGENTS.md; `/compact` folds the conversation.\n- `[agent.docker]`: commands in a per-project container.\n- Webhooks: `[hooks]` and `POST /hooks/<name>`, signed like GitHub; the body is fenced as data. `autobot hooks`, `autobot hooks new`.\n- Discord: direct messages and mentions, pairing codes, approval buttons, steering. `autobot discord approve|users|revoke`.\n- `allow = [\"cloud\"]` lets unattended turns use a cloud model that keeps prompts.\n\n**Brand**\n- Invincible is orange, Autobot lilac. Each has a pixel symbol: an `i` and an `a`. Warnings are yellow, errors red.\n- Both CLIs share one terminal palette and grammar; `autobot` shows its symbol beside the header, and the installer shows Invincible's.\n\n**Verify**\n```\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig < SHA256SUMS\n```",
+        "body": "The agent grows into a full harness, and the node gets its brand.\n\n**Agent (Autobot)**\n- Background processes: `terminal` with `background: true` leaves a dev server or watcher running; `process` reads its output, waits for it or stops it. `/ps` in the TUI.\n- Your own slash commands from `.autobot/commands`, `.claude/commands` and `~/.autobot/commands` (`$ARGUMENTS`); `/init` writes AGENTS.md; `/compact` folds the conversation.\n- `[agent.docker]`: commands in a per-project container.\n- Webhooks: `[hooks]` and `POST /hooks/<name>`, signed like GitHub; the body is fenced as data. `autobot hooks`, `autobot hooks new`.\n- Discord: direct messages and mentions, pairing codes, approval buttons, steering. `autobot discord approve|users|revoke`.\n- `allow = [\"cloud\"]` lets unattended turns use a cloud model that keeps prompts.\n\n**Brand**\n- Invincible is orange, Autobot lilac. Each has a pixel symbol: an `i` and an `a`. Warnings are yellow, errors red.\n- Both CLIs share one terminal palette and grammar; `autobot` shows its symbol beside the header, and the installer shows Invincible's.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
         "assets": [
           {
             "name": "invincible-linux-arm64.tar.gz",
@@ -1045,7 +1143,7 @@
         ]
       }
     ],
-    "checksums": "930f9a3cd2065be43c2aa37dcebc8a6913a0d3b5e2afd15902ef2eb7664236d3  invincible-linux-arm64.tar.gz\n104965b015ba37c7280c62bd8f7b7aebba594d2db0e739d84358f9bbe53cd94f  invincible-linux-x64.tar.gz\n4ae5363b5b0fc8553284f246fdc635376b9f40ad680e7263a82fc80821d6d013  invincible-macos-arm64.tar.gz",
-    "totalDownloads": 204
+    "checksums": "f56ff8c83f3235710ac99fb30bb2125261327d7ff12213ec5f00946bb2113bea  invincible-linux-arm64.tar.gz\n9735676ca10e91e72fd33576ca877508ffe66140e34ce03da3a65dfd3fa0a4ff  invincible-linux-x64.tar.gz\ndd78aa000c837ef552563543e4c6e6cfef0b7184eda326111b956ac501bc3e93  invincible-macos-arm64.tar.gz\n4e2cfd99f6017055138f4ee98534be3d0a2bfb6872a023df2770fea483135b73  VERSION",
+    "totalDownloads": 217
   }
 }

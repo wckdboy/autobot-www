@@ -11,6 +11,8 @@ const status = [
   ['Gateway', 'working', 'OpenAI- and Anthropic-compatible APIs'],
   ['Receipts and audit log', 'working', 'signed, hash-chained'],
   ['Pairing', 'working, not reviewed', 'Noise'],
+  ['Always on', 'working', 'launchd or systemd, health checks, self-update'],
+  ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix'],
   ['Security review', 'not independent yet', ''],
 ];
 ---
@@ -18,7 +20,8 @@ const status = [
   <h1>invincible</h1>
   <p class="lede">The node you own. Open models on your hardware, frontier models when you allow it, a signed receipt for every call.</p>
 
-  <pre><code>curl -fsSL https://invincible.sh/install.sh | sh</code></pre>
+  <pre><code>curl -fsSL https://invincible.sh/install.sh | sh
+autobot setup</code></pre>
 
   <div class="actions">
     <a class="button button--primary" href="/install/">Install</a>
@@ -37,6 +40,14 @@ const status = [
     <pre><code>autobot code --model anthropic</code></pre>
     <AutobotTerm />
     <p class="small">Inline, keeps your scrollback. Enter sends, / opens commands, @ attaches a file, ctrl+r searches, a pasted or dragged image goes along to models that can see, esc interrupts; y, a, n or e (no, and say what instead) answers an approval.</p>
+  </section>
+
+  <section id="bots">
+    <h2>Bots</h2>
+    <p>Several agents on one node, each with its own persona, model, memory and channels. One <code>autobot serve</code> runs them all, around the clock.</p>
+    <pre><code>autobot bots add ops            # asks for the persona, model and channels
+autobot identities link telegram:123 slack:U456
+autobot service status</code></pre>
   </section>
 
   <section id="status">

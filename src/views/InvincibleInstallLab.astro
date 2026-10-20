@@ -10,23 +10,49 @@ const latest = releases.invincible.latest;
 <Lab path="/install/" current="install" title="Install" nav={[...n.nav]} footerNote={n.footer} description="Install Invincible and the Autobot agent with one command, on Linux or macOS.">
   <p class="label">Invincible · install</p>
   <h1>Install</h1>
-  <p class="lede">One command on Linux or macOS. It installs the gateway and the agent, and asks a few questions the first time.</p>
-  <pre><code>curl -fsSL https://invincible.sh/install.sh | sh</code></pre>
+  <p class="lede">One command on Linux or macOS, then <code>autobot setup</code>. Run it again any time: it converges.</p>
+  <pre><code>curl -fsSL https://invincible.sh/install.sh | sh
+autobot setup</code></pre>
   <p class="meta">install.sh · {fmtBytes(install.bytes)} · SHA-256 <code>{install.sha256}</code> · <a href={install.source} rel="noopener">upstream copy ↗</a></p>
 
   <section>
     <h2>What it does</h2>
     <ol class="list-plain">
-      <li><b>Downloads</b> the release for your platform (v{v(latest.tag)}), or builds from source when there is none.</li>
-      <li><b>Checks</b> SHA256SUMS against the pinned release key with ssh-keygen, and the build attestation with gh when it is installed.</li>
-      <li><b>Installs</b> <code>invincible</code> and <code>autobot</code> in <code>~/.local/bin</code>, and llama.cpp when you want local models.</li>
-      <li><b>Sets up</b> the node: a local model, cloud providers if you want them, Telegram, and background services (launchd or systemd).</li>
+      <li><b>Downloads</b> the release for your platform (v{v(latest.tag)}), or nothing when it is installed already.</li>
+      <li><b>Checks</b> the signed SHA256SUMS against the pinned release key, then the archive against it.</li>
+      <li><b>Installs</b> <code>invincible</code> and <code>autobot</code> in <code>~/.local/bin</code>, swapping them atomically, and restarts the services only when a binary changed.</li>
+      <li><b>Leaves</b> your config and data alone. <code>autobot setup</code> asks the questions: model, cloud keys, channels, background services.</li>
     </ol>
   </section>
 
   <section>
-    <h2>Upgrade</h2>
-    <p>Run the same command again. It keeps your setup, says which version you went from and to, and restarts the services that were running.</p>
+    <h2>Options</h2>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><td><code>--channel edge</code></td><td>every commit on main that passed CI (stable: tagged releases)</td></tr>
+          <tr><td><code>--version 0.0.12</code></td><td>that release, also to go back</td></tr>
+          <tr><td><code>--prefix DIR</code></td><td>binaries in <code>DIR/bin</code></td></tr>
+          <tr><td><code>--no-service</code></td><td>leave the background services alone</td></tr>
+          <tr><td><code>--uninstall</code></td><td>remove binaries and services, keep data (<code>--purge</code> removes it too)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <pre><code>curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge</code></pre>
+  </section>
+
+  <section>
+    <h2>Update</h2>
+    <pre><code>invincible update            # the newest release of your channel, checked like the installer
+invincible update --check    # only say whether there is one
+invincible update --auto stable   # daily, opt-in (off by default)</code></pre>
+  </section>
+
+  <section>
+    <h2>Run it 24/7</h2>
+    <p>On a Mac or a VPS, the gateway and the agent run as services (launchd, or systemd with linger) that start at boot, restart when they exit, and restart themselves when their health check stops answering.</p>
+    <pre><code>autobot service status
+autobot doctor               # ends with a 24/7 readiness check</code></pre>
   </section>
 
   <section>
