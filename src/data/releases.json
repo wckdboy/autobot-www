@@ -1,47 +1,81 @@
 {
-  "generatedAt": "2026-10-20T11:35:55.277Z",
+  "generatedAt": "2026-10-20T12:08:30.073Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-20T11:14:52Z",
+    "pushed": "2026-10-20T12:08:27Z",
     "latest": {
-      "tag": "v1.11.1",
-      "name": "Autobot 1.11.1",
-      "published": "2026-10-20T08:54:50Z",
-      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.11.1",
+      "tag": "v1.12.0",
+      "name": "Autobot 1.12.0",
+      "published": "2026-10-20T12:06:20Z",
+      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.12.0",
       "prerelease": false,
-      "body": "See what your node did while you were away, and tell the agent what to do instead.\n\n## While you were away (Android and iOS)\n- **A card on the Run screen** sums up what your node did since you last looked: requests answered (and whether they all stayed on your node), actions it ran (and who allowed them), and recipes and schedules that ran.\n- **What needs you comes first.** \"2 approvals waiting\" opens the conversation they're in; team questions open the Board.\n- **Receipts are checked.** \"All 12 receipts verified\" in grey, or a red line first when one fails to verify.\n- Details opens the node's Activity, and ✕ dismisses the card. Nothing shows when nothing is new.\n\n## Something else (Android and iOS)\n- An approval card from your node has a quiet third answer: **Something else…** Type what the agent should do instead and it does that. It needs Invincible 0.0.12 or newer.\n\n## Smaller things\n- The theme follows your phone's setting by default. A theme you picked stays as it is.\n- Android's welcome screen has the two quiet links again: Pair a PC and Add an API key.",
+      "body": "Your node's bots on your phone, a first chat in three taps, and a chat that reads like the terminal.\n\n## Bots (Android and iOS)\n- **Remote › Agents · my node lists your node's bots.** Each row shows the name, persona, model, the channels it is on (telegram · slack), and what's wrong when a channel is down. The list refreshes each time you open the tab.\n- **A bot's page** shows its channels and their state, its model and approvals mode, the approvals waiting for it (you can answer them there), its recent sessions, an on/off switch, and **New chat with <bot>**.\n- The agent screen and approval cards say which bot is asking. \"While you were away\" gives one line per bot.\n- It needs Invincible 0.0.13 or newer. Older nodes keep today's single agent.\n\n## A first chat in three taps\n- **Start here** on Models picks one chat model that fits your phone. One button walks you through Download, Pause or Resume, then Start a chat.\n- Autobot starts offline, and the card says so in one sentence: \"Allow network and download\" turns it on for the download. Once the model is ready, you can turn offline mode back on with one tap.\n- **Pair a PC** and **Add an API key** on the welcome screen open what they say directly.\n\n## Chat (Android and iOS)\n- **Agent steps** read like the terminal: ▪ for each step, with what it did underneath. A failed step is red and says why.\n- **Answers** have Copy, Share and Read aloud. The last one has Retry.\n- **Long-press** on any message gives the same menu on both apps.\n\n## Smaller things\n- Models lists chat models first. Android shows NPU packages only on phones with a Snapdragon NPU.\n- Remote, the Privacy Center and Providers use the same words on both apps. Model names replace catalog ids.\n- The iOS tab bar now marks the active tab with a purple bar under its label, as on Android.",
       "assets": [
         {
-          "name": "autobot-1.11.1-debug.apk",
-          "size": 139073721,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-debug.apk"
+          "name": "autobot-1.12.0-debug.apk",
+          "size": 139461937,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-debug.apk"
         },
         {
-          "name": "autobot-1.11.1-mapping.txt",
-          "size": 95408007,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-mapping.txt"
+          "name": "autobot-1.12.0-mapping.txt",
+          "size": 96737547,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-mapping.txt"
         },
         {
-          "name": "autobot-1.11.1-release.apk",
-          "size": 82239298,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/autobot-1.11.1-release.apk"
+          "name": "autobot-1.12.0-release.apk",
+          "size": 82320466,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 5,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/SHA256SUMS.txt"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v1.12.0",
+        "name": "Autobot 1.12.0",
+        "published": "2026-10-20T12:06:20Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.12.0",
+        "prerelease": false,
+        "body": "Your node's bots on your phone, a first chat in three taps, and a chat that reads like the terminal.\n\n## Bots (Android and iOS)\n- **Remote › Agents · my node lists your node's bots.** Each row shows the name, persona, model, the channels it is on (telegram · slack), and what's wrong when a channel is down. The list refreshes each time you open the tab.\n- **A bot's page** shows its channels and their state, its model and approvals mode, the approvals waiting for it (you can answer them there), its recent sessions, an on/off switch, and **New chat with <bot>**.\n- The agent screen and approval cards say which bot is asking. \"While you were away\" gives one line per bot.\n- It needs Invincible 0.0.13 or newer. Older nodes keep today's single agent.\n\n## A first chat in three taps\n- **Start here** on Models picks one chat model that fits your phone. One button walks you through Download, Pause or Resume, then Start a chat.\n- Autobot starts offline, and the card says so in one sentence: \"Allow network and download\" turns it on for the download. Once the model is ready, you can turn offline mode back on with one tap.\n- **Pair a PC** and **Add an API key** on the welcome screen open what they say directly.\n\n## Chat (Android and iOS)\n- **Agent steps** read like the terminal: ▪ for each step, with what it did underneath. A failed step is red and says why.\n- **Answers** have Copy, Share and Read aloud. The last one has Retry.\n- **Long-press** on any message gives the same menu on both apps.\n\n## Smaller things\n- Models lists chat models first. Android shows NPU packages only on phones with a Snapdragon NPU.\n- Remote, the Privacy Center and Providers use the same words on both apps. Model names replace catalog ids.\n- The iOS tab bar now marks the active tab with a purple bar under its label, as on Android.",
+        "assets": [
+          {
+            "name": "autobot-1.12.0-debug.apk",
+            "size": 139461937,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.12.0-mapping.txt",
+            "size": 96737547,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-mapping.txt"
+          },
+          {
+            "name": "autobot-1.12.0-release.apk",
+            "size": 82320466,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 277,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
+          }
+        ]
+      },
       {
         "tag": "v1.11.1",
         "name": "Autobot 1.11.1",
@@ -71,7 +105,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 5,
+            "downloads": 6,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.11.1/SHA256SUMS.txt"
           }
         ]
@@ -483,44 +517,10 @@
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.1/SHA256SUMS.txt"
           }
         ]
-      },
-      {
-        "tag": "v1.6.0",
-        "name": "Autobot 1.6.0",
-        "published": "2026-10-16T13:28:21Z",
-        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.0",
-        "prerelease": false,
-        "body": "A Creative Studio for images, audio and video, a calmer and lighter motion language, and a full performance and bug pass so the app feels quick again on both platforms.\n\n## New\n- **Creative Studio.** A focused mode for making things. It has rooms for image, audio and video, a job queue that keeps going while you work, and a library of everything you've made with its prompts and settings. You get more control: seed, steps, guidance and size, plus reusable prompt snippets.\n- **On-device audio.** Stable Audio Open Small generates sound effects and short music clips on the phone. Powered by Stability AI.\n- **Workflows.** Connect a ComfyUI server you run yourself (the connection goes through the kill switch and the network audit). Autobot detects each workflow's inputs and turns them into simple forms. The agent can also run them through a new `run_workflow` tool.\n- **Ink motion v3.**\n  - Progress bars are now a row of dots. An empty bar is empty, and dots grow bigger as it fills.\n  - \"Working\" is a travelling wave of swelling dots.\n  - Hero cards and empty states sit on a slow, gently breathing halftone field.\n  - The animations use one shared clock per tier, are drawn only (they never trigger a re-render), stop when idle or on Low Power/Battery Saver, and turn off with Reduce Motion.\n\n## Faster\n- **iPhone:**\n  - A streaming frame now takes 1.2 ms instead of 5.6 ms.\n  - The data sent for each streamed update dropped from about 520 KB to under 1 KB, because only the new text is sent.\n  - Chat state is split, the message list is memoized, and storage work runs in the background.\n- **Android:**\n  - A streaming chat recomposes once instead of on every token.\n  - Frame time dropped from 42 ms to 24.5 ms.\n  - Session projection is incremental, and providers are cached.\n  - MCP connections pause while the app is in the background.\n- **Both:** at most four chats keep a live agent in memory. Approvals are matched exactly to the tool call that asked for them.\n\n## Privacy\n- **ONNX Runtime telemetry removed (Android).** The ONNX Runtime library added a component that sent usage pings around the kill switch and loaded a 34 MB library into every process at startup. Autobot now strips it out.\n\n## Smaller\n- The Android release APK is code-minified with R8: 80.6 MB instead of 110.5 MB. A mapping file ships with each release so crash reports can still be read.\n\n## Fixed\n- Android",
-        "assets": [
-          {
-            "name": "autobot-1.6.0-debug.apk",
-            "size": 128192678,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.0/autobot-1.6.0-debug.apk"
-          },
-          {
-            "name": "autobot-1.6.0-mapping.txt",
-            "size": 82782667,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.0/autobot-1.6.0-mapping.txt"
-          },
-          {
-            "name": "autobot-1.6.0-release.apk",
-            "size": 80581273,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.0/autobot-1.6.0-release.apk"
-          },
-          {
-            "name": "SHA256SUMS.txt",
-            "size": 274,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.0/SHA256SUMS.txt"
-          }
-        ]
       }
     ],
-    "checksums": "98359ff1074df59335971480387c0d883526ab8dca6664e4e890ee90a034e5a6 *autobot-1.11.1-debug.apk\nccc6033fb0487c37398af16ac17d5648177b715b9f209bc209e927fee132646c *autobot-1.11.1-release.apk\na3a91cb1e856da879d1b7abf96ff3e95b88c5faca2ece2b828df69711938696f *autobot-1.11.1-mapping.txt",
-    "totalDownloads": 109
+    "checksums": "7ac3b564cbd449ceaa446526efca70e2b34ce8dc2b8915efaf911436e2cc19a1 *autobot-1.12.0-debug.apk\n96b8961c5c53d7dca3f0422ce50aee26280b065c71751e6862a203c6638127e4 *autobot-1.12.0-release.apk\n79642b8652d78fd4c16f8aefbe11978b72f0e8fcb0a3acf9ea844973920e00dd *autobot-1.12.0-mapping.txt",
+    "totalDownloads": 104
   },
   "invincible": {
     "name": "invincible",
@@ -528,7 +528,7 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-20T11:22:34Z",
+    "pushed": "2026-10-20T12:05:09Z",
     "latest": {
       "tag": "v0.0.13",
       "name": "v0.0.13",
@@ -558,7 +558,7 @@
         {
           "name": "SHA256SUMS",
           "size": 360,
-          "downloads": 2,
+          "downloads": 3,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/SHA256SUMS"
         },
         {
@@ -605,7 +605,7 @@
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 2,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/SHA256SUMS"
           },
           {
@@ -1144,6 +1144,6 @@
       }
     ],
     "checksums": "f56ff8c83f3235710ac99fb30bb2125261327d7ff12213ec5f00946bb2113bea  invincible-linux-arm64.tar.gz\n9735676ca10e91e72fd33576ca877508ffe66140e34ce03da3a65dfd3fa0a4ff  invincible-linux-x64.tar.gz\ndd78aa000c837ef552563543e4c6e6cfef0b7184eda326111b956ac501bc3e93  invincible-macos-arm64.tar.gz\n4e2cfd99f6017055138f4ee98534be3d0a2bfb6872a023df2770fea483135b73  VERSION",
-    "totalDownloads": 220
+    "totalDownloads": 221
   }
 }
