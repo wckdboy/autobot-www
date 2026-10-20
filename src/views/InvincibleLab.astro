@@ -12,6 +12,7 @@ const status = [
   ['Receipts and audit log', 'working', 'signed, hash-chained'],
   ['Pairing', 'working, not reviewed', 'Noise'],
   ['Always on', 'working', 'launchd or systemd, health checks, self-update'],
+  ['Backups and alerts', 'working', 'one-file backups with checksums, scheduled; crashes, outages and failed tasks sent to your chat'],
   ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix, WhatsApp'],
   ['Home Assistant', 'working', 'a tool with approvals, and a conversation agent'],
   ['Speech and images', 'working', 'your own backends first, cloud only when allowed, with receipts; delivered as files on every channel'],
@@ -52,6 +53,11 @@ autobot setup</code></pre>
     <pre><code>autobot bots add ops            # asks for the persona, model and channels
 autobot identities link telegram:123 slack:U456
 autobot service status</code></pre>
+    <p>Left to run for months, it tells you when something goes wrong: a crash, the gateway or a model gone, a full disk, a failed task or backup, an update. Alerts go to your home chat, at most so many an hour, held through quiet hours.</p>
+    <pre><code>autobot backup                  # the whole agent in one .tar.gz, secrets left out
+autobot restore backup.tar.gz   # checks every file, shows what changes, keeps the old home
+autobot alerts test
+autobot logs agent --follow</code></pre>
   </section>
 
   <section id="agent">
