@@ -17,7 +17,7 @@ const status = [
   ['Home Assistant', 'working', 'a tool with approvals, and a conversation agent'],
   ['Speech and images', 'working', 'your own backends first, cloud only when allowed, with receipts; delivered as files on every channel'],
   ['Skills hub', 'working', 'search, review, check for updates, audit before installing'],
-  ['Editors', 'working', 'autobot acp for Zed and other ACP editors'],
+  ['Editors', 'working', 'autobot acp for Zed: its terminal, its MCP servers, model picker, slash commands, voice'],
   ['Security review', 'not independent yet', ''],
 ];
 ---
@@ -44,7 +44,7 @@ autobot setup</code></pre>
     <h2>Code with Autobot</h2>
     <pre><code>autobot code --model anthropic</code></pre>
     <AutobotTerm />
-    <p class="small">Inline, keeps your scrollback. Enter sends, / opens commands, @ attaches a file, ctrl+r searches, a pasted or dragged image goes along to models that can see, esc interrupts; y, a, n or e (no, and say what instead) answers an approval. In Zed or another ACP editor, add <code>autobot acp</code> as an agent server.</p>
+    <p class="small">Inline, keeps your scrollback. Enter sends, / opens commands, @ attaches a file, ctrl+r searches, a pasted or dragged image goes along to models that can see, esc interrupts; y, a, n or e (no, and say what instead) answers an approval. In Zed or another ACP editor, add <code>autobot acp</code> as an agent server: commands run in Zed's terminal, Zed's MCP servers join Autobot's, and the model, the approval mode and the slash commands are in Zed's menus.</p>
   </section>
 
   <section id="bots">
