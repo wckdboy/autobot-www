@@ -17,6 +17,7 @@ export const NAV = {
     nav: [
       { label: 'Overview', href: '/' },
       { label: 'Install', href: '/install/' },
+      { label: 'Guides', href: '/guides/' },
       { label: 'Status', href: '/#status' },
       { label: 'Verify', href: '/verify/' },
       { label: 'Releases', href: '/releases/' },

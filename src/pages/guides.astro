@@ -1,0 +1,7 @@
+---
+import InvincibleGuidesLab from '../views/InvincibleGuidesLab.astro';
+import NotHere from '../views/NotHere.astro';
+
+const key = process.env.SITE_KEY || 'autobot';
+---
+{key === 'invincible' ? <InvincibleGuidesLab /> : <NotHere what="Guides" />}

@@ -1,0 +1,41 @@
+---
+import Lab from '../layouts/Lab.astro';
+import { NAV } from '../data/nav';
+
+const n = NAV.invincible;
+---
+<Lab path="/guides/" current="guides" title="Guides" nav={[...n.nav]} footerNote={n.footer} description="Short guides: a node on a VPS, your first bot, and keeping it on around the clock.">
+  <p class="label">Invincible · guides</p>
+  <h1>Guides</h1>
+  <p class="lede">Three short ones. Each ends with something running.</p>
+
+  <section id="vps">
+    <h2>A node on a VPS</h2>
+    <p>Any Linux machine with 2 GB of RAM will do for cloud models; local models want more. As your own user, over SSH:</p>
+    <pre><code>curl -fsSL https://invincible.sh/install.sh | sh
+autobot setup          # the network, a model or a cloud key, approvals, background services
+autobot doctor         # says what is missing</code></pre>
+    <p>The services run as your user and keep running after you log out. When the installer runs as root, they run as system services instead. Nothing listens beyond loopback until you pair a device.</p>
+  </section>
+
+  <section id="bot">
+    <h2>Your first bot</h2>
+    <p>Make a Telegram bot with @BotFather and keep its token. Then:</p>
+    <pre><code>autobot bots add ops --description "Watches the servers" \
+  --tools files-read,terminal --approvals allowlist --telegram-token 123:abc
+autobot bots           # it starts within a few seconds; no restart</code></pre>
+    <p>Write to your bot in Telegram. It answers with a one-time code; let yourself in:</p>
+    <pre><code>autobot telegram approve 4F7K2Q</code></pre>
+    <p>Give it a persona with <code>autobot bots edit ops --soul</code>. Slack, Discord, Email, Signal, Matrix and WhatsApp work the same way; the <a href="https://github.com/wckdboy/invincible#bots-and-channels" rel="noopener">README</a> lists what each needs. To be one person on all of them:</p>
+    <pre><code>autobot identities link telegram:123 slack:U456</code></pre>
+  </section>
+
+  <section id="always-on">
+    <h2>Always on</h2>
+    <p>The gateway and the agent start at boot, restart when they stop, and restart themselves when their health check goes quiet.</p>
+    <pre><code>autobot service status       # running, starts at boot, how it last stopped
+autobot doctor               # ends with a 24/7 readiness check
+invincible update --auto stable   # optional: a daily update, off by default</code></pre>
+    <p>On a Mac, keep it awake: <code>sudo pmset -a sleep 0</code>. To get the newest work before it is tagged, switch to edge: <code>invincible update --channel edge</code>.</p>
+  </section>
+</Lab>
