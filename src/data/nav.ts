@@ -50,11 +50,11 @@ export const NAV = {
   omnie: {
     nav: [
       { label: 'Brand', href: '/' },
-      { label: 'Source', href: 'https://github.com/wckdboy/Omnie' },
+      { label: 'Source', href: 'https://github.com/wckdboy/omnie-dev' },
       { label: 'WCKD', href: 'https://wckd.ai' },
     ],
-    footer: 'Omnie puts every model, agent and tool in one thread. Made by WCKD.',
-    repo: 'https://github.com/wckdboy/Omnie',
+    footer: 'Omnie is an IDE for development on iPad and iPhone. Made by WCKD.',
+    repo: 'https://github.com/wckdboy/omnie-dev',
   },
   nightfall: {
     nav: [

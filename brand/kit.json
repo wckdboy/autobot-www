@@ -94,7 +94,7 @@
     "omnie": {
       "name": "Omnie",
       "domain": "omnie.sh",
-      "role": "Every model, agent and tool in one thread",
+      "role": "An IDE for development on iOS and iPadOS",
       "glyph": [
         ".#####.",
         "##...##",

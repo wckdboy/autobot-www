@@ -103,8 +103,8 @@ const configs: Record<SiteKey, SiteMeta> = {
   },
   omnie: {
     key: 'omnie', name: 'Omnie', wordmark: 'omnie', domain: 'omnie.sh', origin: 'https://omnie.sh',
-    title: 'Omnie — every model, agent and tool in one thread', description: 'Omnie puts every model, agent and tool behind one composer on iPhone, Mac and Vision Pro.',
-    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/Omnie', license: 'see the repository', tagline: 'Every model in one thread.', og: '/og/sovware.png',
+    title: 'Omnie — an IDE for iOS and iPadOS', description: 'An offline-first IDE for agent-assisted development on iPad and iPhone: a native editor, git, a local model, and a sandbox that runs the project\'s own tests.',
+    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/omnie-dev', license: 'Apache-2.0', tagline: 'The IDE on the iPad.', og: '/og/sovware.png',
   },
   nightfall: {
     key: 'nightfall', name: 'Nightfall', wordmark: 'nightfall', domain: 'nightfall.sh', origin: 'https://nightfall.sh',
