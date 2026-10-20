@@ -874,3 +874,18 @@ main.wrap {
     padding-top: 34px;
   }
 }
+
+/* A frame of the autobot terminal: always ink, like a terminal. */
+pre.term {
+  background: #111111;
+  color: #EFEAE2;
+  border: 0;
+  line-height: 1.35;
+  font-size: 13px;
+  padding: 16px 18px;
+}
+pre.term .t-mark { color: #7C5CFF; }
+pre.term .t-faint { color: #8E8A84; }
+pre.term .t-add { color: #8FB573; }
+pre.term .t-del { color: #E06C5C; }
+pre.term .t-head { display: block; line-height: 1.02; }

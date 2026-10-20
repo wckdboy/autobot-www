@@ -1,5 +1,6 @@
 ---
 import Lab from '../layouts/Lab.astro';
+import AutobotTerm from '../components/AutobotTerm.astro';
 import { releases } from '../data/site';
 import { fmtBytes, fmtDate, v } from '../lib/format';
 
@@ -8,6 +9,7 @@ const apk = latest.assets.find((a) => /release\.apk$/.test(a.name));
 const status = [
   ['Android', 'shipping', 'signed APK, Android 14+, arm64'],
   ['iOS', 'TestFlight', 'same version as Android'],
+  ['Terminal', 'shipping', 'macOS and Linux, with Invincible'],
   ['Snapdragon NPU / GPU', 'verified', 'OnePlus 15, 8 Elite Gen 5'],
   ['Security review', 'not independent yet', 'signed, hashes published'],
 ];
@@ -30,6 +32,14 @@ const status = [
     <div><dt>Telemetry</dt><dd>None</dd></div>
     <div><dt>Size</dt><dd>{apk ? fmtBytes(apk.size) : '—'}</dd></div>
   </dl>
+
+  <section id="terminal">
+    <h2>On your machine</h2>
+    <p>The same agent in your terminal on macOS and Linux, through Invincible.</p>
+    <pre><code>curl -fsSL https://invincible.sh/install.sh | sh
+autobot code</code></pre>
+    <AutobotTerm />
+  </section>
 
   <section id="status">
     <h2>Status</h2>

@@ -1,5 +1,6 @@
 ---
 import Lab from '../layouts/Lab.astro';
+import AutobotTerm from '../components/AutobotTerm.astro';
 import { releases } from '../data/site';
 import { NAV } from '../data/nav';
 import { fmtDate, v } from '../lib/format';
@@ -34,6 +35,8 @@ const status = [
   <section id="code">
     <h2>Code with Autobot</h2>
     <pre><code>autobot code --model anthropic</code></pre>
+    <AutobotTerm />
+    <p class="small">Inline, keeps your scrollback. Enter sends, / opens commands, @ attaches a file, esc interrupts, y / a / n answers an approval.</p>
   </section>
 
   <section id="status">

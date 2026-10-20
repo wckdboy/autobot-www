@@ -1,0 +1,23 @@
+---
+// A frame of the autobot terminal (autobot code), drawn as text.
+---
+<pre class="term" aria-label="The autobot terminal: a header with the pixel a, a step that ran tests, a diff, the composer and the status line"><span class="t-head"><span class="t-mark"> ▀▀▀█▄</span>  autobot · via invincible
+<span class="t-mark">▄█▀▀██</span><span class="t-faint">    model      </span>auto → qwen (node)
+<span class="t-mark">▀█▄▄██</span><span class="t-faint">    approvals  </span>ask</span><span class="t-faint">          project    </span>~/src/app  main  AGENTS.md
+
+<span class="t-mark">›</span> fix the failing test
+
+<span class="t-mark">▪</span> Run cargo test -p parser
+<span class="t-faint">  │ </span>test result: FAILED. 41 passed; 1 failed
+<span class="t-faint">  └ </span>exit 101
+<span class="t-mark">▪</span> Change src/header.rs
+<span class="t-faint">     2 </span><span class="t-del">-     let len = buf[0] as usize;</span>
+<span class="t-faint">     2 </span><span class="t-add">+     let len = usize::from(buf[0]);</span>
+<span class="t-faint">  └ </span>+1 −1
+
+<span class="t-faint">  ─ qwen (node) · 3 tool calls · 18.2k in · 412 out · 9.4s</span>
+
+<span class="t-faint">╭────────────────────────────────────────────────────────╮</span>
+<span class="t-faint">│</span> <span class="t-mark">›</span> <span class="t-faint">ask for a change, / commands, @ files</span>                <span class="t-faint">│</span>
+<span class="t-faint">╰────────────────────────────────────────────────────────╯</span>
+<span class="t-faint">  auto → qwen (node) · approvals ask · app mainesc interrupts</span></pre>
