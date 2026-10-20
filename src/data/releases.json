@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T01:48:31.119Z",
+  "generatedAt": "2026-10-20T04:50:35.151Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
@@ -30,13 +30,13 @@
         {
           "name": "autobot-1.10.0-release.apk",
           "size": 82237698,
-          "downloads": 13,
+          "downloads": 14,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 15,
+          "downloads": 18,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/SHA256SUMS.txt"
         }
       ]
@@ -65,13 +65,13 @@
           {
             "name": "autobot-1.10.0-release.apk",
             "size": 82237698,
-            "downloads": 13,
+            "downloads": 14,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-release.apk"
           },
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 15,
+            "downloads": 18,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/SHA256SUMS.txt"
           }
         ]
@@ -508,7 +508,7 @@
       }
     ],
     "checksums": "b9e3232671b95e56a78f243b6cffd571a315808d9879471f03553064f932d512 *autobot-1.10.0-debug.apk\na5446a867ab1ddedc074b424fb237e621ac87671004a07b398924c9811e04766 *autobot-1.10.0-release.apk\n9cf124cea487b46d789c55e9bc7dc36dc6c24bd3f9d5e868196c236669525277 *autobot-1.10.0-mapping.txt",
-    "totalDownloads": 95
+    "totalDownloads": 99
   },
   "invincible": {
     "name": "invincible",
@@ -546,7 +546,7 @@
         {
           "name": "SHA256SUMS",
           "size": 286,
-          "downloads": 0,
+          "downloads": 3,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS"
         },
         {
@@ -587,7 +587,7 @@
           {
             "name": "SHA256SUMS",
             "size": 286,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS"
           },
           {
@@ -954,6 +954,6 @@
       }
     ],
     "checksums": "9a193191eb360181c77608046b9d473eebb4840f8453a87ab01bdf52f6c71439  invincible-linux-arm64.tar.gz\n9a7bdb7a4c88e56061fa22bf8af1379d1ec480828cb4b87c48707cfb65a3e629  invincible-linux-x64.tar.gz\n7608a741839e2c0d8b9c58646648b050a595046d01aa659c31fa9ada93d83a13  invincible-macos-arm64.tar.gz",
-    "totalDownloads": 194
+    "totalDownloads": 197
   }
 }
