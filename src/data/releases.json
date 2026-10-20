@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-20T12:18:08.670Z",
+  "generatedAt": "2026-10-20T14:39:09.302Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-20T12:08:27Z",
+    "pushed": "2026-10-20T14:31:42Z",
     "latest": {
       "tag": "v1.12.0",
       "name": "Autobot 1.12.0",
@@ -30,13 +30,13 @@
         {
           "name": "autobot-1.12.0-release.apk",
           "size": 82320466,
-          "downloads": 1,
+          "downloads": 3,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 3,
+          "downloads": 6,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
         }
       ]
@@ -65,13 +65,13 @@
           {
             "name": "autobot-1.12.0-release.apk",
             "size": 82320466,
-            "downloads": 1,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-release.apk"
           },
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 3,
+            "downloads": 6,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
           }
         ]
@@ -167,7 +167,7 @@
           {
             "name": "autobot-1.10.0-release.apk",
             "size": 82237698,
-            "downloads": 14,
+            "downloads": 15,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.10.0/autobot-1.10.0-release.apk"
           },
           {
@@ -520,7 +520,7 @@
       }
     ],
     "checksums": "7ac3b564cbd449ceaa446526efca70e2b34ce8dc2b8915efaf911436e2cc19a1 *autobot-1.12.0-debug.apk\n96b8961c5c53d7dca3f0422ce50aee26280b065c71751e6862a203c6638127e4 *autobot-1.12.0-release.apk\n79642b8652d78fd4c16f8aefbe11978b72f0e8fcb0a3acf9ea844973920e00dd *autobot-1.12.0-mapping.txt",
-    "totalDownloads": 110
+    "totalDownloads": 116
   },
   "invincible": {
     "name": "invincible",
@@ -528,54 +528,100 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-20T12:05:09Z",
+    "pushed": "2026-10-20T14:30:43Z",
     "latest": {
-      "tag": "v0.0.14",
-      "name": "v0.0.14",
-      "published": "2026-10-20T12:17:26Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.14",
+      "tag": "v0.0.15",
+      "name": "v0.0.15",
+      "published": "2026-10-20T14:37:09Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.15",
       "prerelease": false,
-      "body": "Bots that change while they run, Home Assistant, WhatsApp, and a steadier browser.\n\n**Bots, live**\n- `autobot serve` picks up changes as they happen. A bot you add or enable starts. One you disable or remove stops and closes its channels. One whose `bot.toml` or tokens changed restarts. The other bots aren't touched.\n- `autobot bots add|enable|disable|remove|edit` and the app's on/off switch take effect at once. `POST /v1/agent/bots/reload` rereads everything.\n- A `SOUL.md` edit applies from the next message, with no restart.\n\n**Learning from every channel**\n- The pass that keeps your profile (USER.md) and memory up to date now runs after turns from every platform and the API. It runs in the background, at most once a minute per bot, and never posts a message in the chat.\n\n**Home Assistant**\n- **A `home` tool:** the agent can read entities and services freely. Calling a service is an approval, of the new kind `home`. Unattended runs can be allowed per service (`home:light.turn_on`) or per domain (`home:light.*`). `[homeassistant] entities` limits what the agent sees.\n- **A conversation agent for Home Assistant:** an OpenAI-compatible endpoint lets HA's assistant talk to a bot. `autobot homeassistant setup <url>` sets it up, and the token is kept in a 0600 file.\n\n**WhatsApp**\n- **Through the WhatsApp Business Cloud API, off by default.** Meta's webhook calls are checked, with signatures and duplicates handled once. Pairing, approval buttons and voice notes work as on the other platforms.\n- **It needs a public HTTPS URL**, such as a tunnel. WhatsApp only allows free-form replies within 24 hours of the person's last message.\n\n**Fixes**\n- **The browser waits for a page to commit** before reading it. An approval is always about the right page, and returning to a site you already allowed no longer asks again.\n- **Stopping a bot stops all of it.** Some of its tasks kept running before.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
+      "body": "Settings from the command line, recall across conversations, speech and images through your node, a skills hub, and project instructions.\n\n**Tools, config and model**\n- **`autobot tools`** shows each tool group and tool as on or off, per bot with `--bot`. `autobot tools enable|disable <group|tool>` changes them. The new groups are `schedule` and `media`.\n- **`autobot config get|set|unset <key>`** edits `config.toml` or a bot's `bot.toml` and keeps your comments. A change is checked before it is written; a bad one is refused and the file stays as it was.\n- **`autobot model`** picks the model from your node's list.\n\n**Recall**\n- **Each conversation gets a small search index**, so finding an old conversation no longer reads every transcript.\n- **The best matches are summarized** for what they say about your question, and the summary is cached until the conversation changes. `[agent] recall_model` picks the model; `off` turns summaries off.\n- **`/recall <query>`** works in the terminal, and on chat channels for the owner.\n\n**Speech and images through the node**\n- **The gateway has two new endpoints**, `POST /v1/audio/speech` and `POST /v1/images/generations`, served by the `[[speech]]` and `[[images]]` backends in your config.\n  - A backend on the machine is local. Any other backend follows the same rules as cloud chat: private and offline requests never leave the machine.\n  - The text that leaves is redacted, and every request gets a signed receipt.\n- **The agent has `speak` and `generate_image` tools** when your node has those backends. It asks first before using one off the machine.\n- **Telegram sends the results as a voice message or a photo, and Discord as a file.** Other channels get the file's path.\n\n**Skills hub**\n- **`autobot skills search <words>`** searches the public skills directory at skills.sh, falling back to GitHub.\n- **`autobot skills install <name>`** shows where the skill comes from, its files and the whole SKILL.md, and installs it only when you say yes. It is pinned to one commit and size-limited. Scripts are never made executable.\n\n**Project instructions**\n- **The agent reads `AGENTS.md`, `CLAUDE.md`, `.hermes.md`/`HERMES.md` and `.autobot/AGENTS.md`** from the repository root down to where you work. It reads `.cursorrules` only when none of those exist.\n- **A subfolder's own `AGENTS.md` arrives before the agent's first edit there.**\n- **`",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 9602022,
+          "size": 9870974,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.14/invincible-linux-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 10548115,
+          "size": 10840836,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.14/invincible-linux-x64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 9188480,
+          "size": 9447462,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.14/invincible-macos-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 360,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.14/SHA256SUMS"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.14/SHA256SUMS.sig"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/SHA256SUMS.sig"
         },
         {
           "name": "VERSION",
           "size": 7,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.14/VERSION"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/VERSION"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.15",
+        "name": "v0.0.15",
+        "published": "2026-10-20T14:37:09Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.15",
+        "prerelease": false,
+        "body": "Settings from the command line, recall across conversations, speech and images through your node, a skills hub, and project instructions.\n\n**Tools, config and model**\n- **`autobot tools`** shows each tool group and tool as on or off, per bot with `--bot`. `autobot tools enable|disable <group|tool>` changes them. The new groups are `schedule` and `media`.\n- **`autobot config get|set|unset <key>`** edits `config.toml` or a bot's `bot.toml` and keeps your comments. A change is checked before it is written; a bad one is refused and the file stays as it was.\n- **`autobot model`** picks the model from your node's list.\n\n**Recall**\n- **Each conversation gets a small search index**, so finding an old conversation no longer reads every transcript.\n- **The best matches are summarized** for what they say about your question, and the summary is cached until the conversation changes. `[agent] recall_model` picks the model; `off` turns summaries off.\n- **`/recall <query>`** works in the terminal, and on chat channels for the owner.\n\n**Speech and images through the node**\n- **The gateway has two new endpoints**, `POST /v1/audio/speech` and `POST /v1/images/generations`, served by the `[[speech]]` and `[[images]]` backends in your config.\n  - A backend on the machine is local. Any other backend follows the same rules as cloud chat: private and offline requests never leave the machine.\n  - The text that leaves is redacted, and every request gets a signed receipt.\n- **The agent has `speak` and `generate_image` tools** when your node has those backends. It asks first before using one off the machine.\n- **Telegram sends the results as a voice message or a photo, and Discord as a file.** Other channels get the file's path.\n\n**Skills hub**\n- **`autobot skills search <words>`** searches the public skills directory at skills.sh, falling back to GitHub.\n- **`autobot skills install <name>`** shows where the skill comes from, its files and the whole SKILL.md, and installs it only when you say yes. It is pinned to one commit and size-limited. Scripts are never made executable.\n\n**Project instructions**\n- **The agent reads `AGENTS.md`, `CLAUDE.md`, `.hermes.md`/`HERMES.md` and `.autobot/AGENTS.md`** from the repository root down to where you work. It reads `.cursorrules` only when none of those exist.\n- **A subfolder's own `AGENTS.md` arrives before the agent's first edit there.**\n- **`",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 9870974,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 10840836,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 9447462,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 360,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/SHA256SUMS.sig"
+          },
+          {
+            "name": "VERSION",
+            "size": 7,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/VERSION"
+          }
+        ]
+      },
       {
         "tag": "v0.0.14",
         "name": "v0.0.14",
@@ -605,7 +651,7 @@
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.14/SHA256SUMS"
           },
           {
@@ -651,7 +697,7 @@
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 3,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.13/SHA256SUMS"
           },
           {
@@ -790,27 +836,27 @@
       },
       {
         "tag": "edge",
-        "name": "edge (0.0.13-edge.285249b)",
+        "name": "edge (0.0.14-edge.104d865)",
         "published": "2026-10-20T10:17:13Z",
         "url": "https://github.com/wckdboy/invincible/releases/tag/edge",
         "prerelease": true,
-        "body": "Built from 285249b311c8579a5c6e27d6639a2d780226ff39 on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
+        "body": "Built from 104d865045760f0307dfbb92eeae67e6d25eb349 on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
         "assets": [
           {
             "name": "invincible-linux-arm64.tar.gz",
-            "size": 9441351,
+            "size": 9601969,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-arm64.tar.gz"
           },
           {
             "name": "invincible-linux-x64.tar.gz",
-            "size": 10360783,
+            "size": 10548508,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-x64.tar.gz"
           },
           {
             "name": "invincible-macos-arm64.tar.gz",
-            "size": 9022690,
+            "size": 9188383,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-macos-arm64.tar.gz"
           },
@@ -1113,49 +1159,9 @@
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.3/SHA256SUMS.sig"
           }
         ]
-      },
-      {
-        "tag": "v0.0.2",
-        "name": "v0.0.2",
-        "published": "2026-10-18T22:13:58Z",
-        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.2",
-        "prerelease": false,
-        "body": "**Full Changelog**: https://github.com/wckdboy/invincible/compare/v0.0.1...v0.0.2",
-        "assets": [
-          {
-            "name": "invincible-linux-arm64.tar.gz",
-            "size": 5575604,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/invincible-linux-arm64.tar.gz"
-          },
-          {
-            "name": "invincible-linux-x64.tar.gz",
-            "size": 6079779,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/invincible-linux-x64.tar.gz"
-          },
-          {
-            "name": "invincible-macos-arm64.tar.gz",
-            "size": 5235131,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/invincible-macos-arm64.tar.gz"
-          },
-          {
-            "name": "SHA256SUMS",
-            "size": 286,
-            "downloads": 11,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/SHA256SUMS"
-          },
-          {
-            "name": "SHA256SUMS.sig",
-            "size": 314,
-            "downloads": 11,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.2/SHA256SUMS.sig"
-          }
-        ]
       }
     ],
-    "checksums": "96092070520db4209ba25c66bcdc11b92d1ce5db1241e01433fa7f165c67b09d  invincible-linux-arm64.tar.gz\nc3ef288ec6b66ee735cb6c46e909fdc7adbfd77257915056c39ba4e603d5754c  invincible-linux-x64.tar.gz\n7b2cee37c4835143620bbb01024ae92411d944eeda52f5796b22475f355d5e0e  invincible-macos-arm64.tar.gz\n0f63b381bd90c7ea26cb2d670dca30aed0d0ddf72a353623e73202f322aec657  VERSION",
-    "totalDownloads": 206
+    "checksums": "e46e397a8e27fe72d2a00a68f0441c152274800aa14ffcbcfc0d4be435054fac  invincible-linux-arm64.tar.gz\ne97b0df67558b0a2a3da9153f8e4c0d99a55fa56efa5aca5c8c3a49cb2103b87  invincible-linux-x64.tar.gz\nae2cc61d37ba75e92c70eeca872bf97f9c8c3cb70ee216869c80aac80d81b11a  invincible-macos-arm64.tar.gz\nc7a7731a83ec67d107b65232828977adc4373af137dc22f278b59d6747b79ee2  VERSION",
+    "totalDownloads": 188
   }
 }
