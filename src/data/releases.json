@@ -1,47 +1,81 @@
 {
-  "generatedAt": "2026-10-21T21:42:51.630Z",
+  "generatedAt": "2026-10-21T22:27:23.003Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-21T20:27:36Z",
+    "pushed": "2026-10-21T22:27:12Z",
     "latest": {
-      "tag": "v1.12.0",
-      "name": "Autobot 1.12.0",
-      "published": "2026-10-20T12:06:20Z",
-      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.12.0",
+      "tag": "v1.13.0",
+      "name": "Autobot 1.13.0",
+      "published": "2026-10-21T22:26:36Z",
+      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.13.0",
       "prerelease": false,
-      "body": "Your node's bots on your phone, a first chat in three taps, and a chat that reads like the terminal.\n\n## Bots (Android and iOS)\n- **Remote › Agents · my node lists your node's bots.** Each row shows the name, persona, model, the channels it is on (telegram · slack), and what's wrong when a channel is down. The list refreshes each time you open the tab.\n- **A bot's page** shows its channels and their state, its model and approvals mode, the approvals waiting for it (you can answer them there), its recent sessions, an on/off switch, and **New chat with <bot>**.\n- The agent screen and approval cards say which bot is asking. \"While you were away\" gives one line per bot.\n- It needs Invincible 0.0.13 or newer. Older nodes keep today's single agent.\n\n## A first chat in three taps\n- **Start here** on Models picks one chat model that fits your phone. One button walks you through Download, Pause or Resume, then Start a chat.\n- Autobot starts offline, and the card says so in one sentence: \"Allow network and download\" turns it on for the download. Once the model is ready, you can turn offline mode back on with one tap.\n- **Pair a PC** and **Add an API key** on the welcome screen open what they say directly.\n\n## Chat (Android and iOS)\n- **Agent steps** read like the terminal: ▪ for each step, with what it did underneath. A failed step is red and says why.\n- **Answers** have Copy, Share and Read aloud. The last one has Retry.\n- **Long-press** on any message gives the same menu on both apps.\n\n## Smaller things\n- Models lists chat models first. Android shows NPU packages only on phones with a Snapdragon NPU.\n- Remote, the Privacy Center and Providers use the same words on both apps. Model names replace catalog ids.\n- The iOS tab bar now marks the active tab with a purple bar under its label, as on Android.",
+      "body": "A native look on both phones, layouts that fit tablets, and forms the on-device agent can show you.\n\n## Native on each phone\n- **Android uses Material 3 Expressive** in Autobot's purple: standard top bars, lists, switches, chips and buttons, the new loading indicators and motion. Every screen moved, from Chat and Run to Image, Studio and the lock screen.\n- **iPhone and iPad use the system look with Liquid Glass**: system navigation bars and toolbars, grouped lists and forms, glass buttons, the purple tint.\n- The brand stays as the pixel a and the purple dot after a title. The old print-style controls are gone.\n\n## Layouts for every size\n- **Tablets and wide windows** get a navigation rail (Android) or a sidebar (iPad), and lists open their item beside them: chats, nodes, settings pages.\n- Back on a tablet goes one screen back instead of closing the app.\n- Text stays readable at the largest sizes: chips wrap, banners stack, nothing runs off the screen.\n\n## Generative UI (phone chats)\n- **The on-device agent can show a form, choices or a card** when that's quicker than text: pick a time, fill in a booking, tick options. Your answer goes back to the agent as your next message.\n- A sent form locks and shows \"Sent\"; what you entered is kept when you reopen the chat.\n- Images in a form load only when you tap them, through your network settings.\n- Turn it off in Settings › Agent › Generative UI.\n\n## Faster and steadier\n- Streaming answers draw about twice as fast on iPhone; Android starts with a fresh startup profile for the new screens.\n- A message you started typing is kept when you go back or switch chats.\n- Hidden fields (pairing codes, passwords) no longer feed keyboard suggestions.\n- Bigger tap targets for the small buttons (ⓘ, Copy code, Run now).",
       "assets": [
         {
-          "name": "autobot-1.12.0-debug.apk",
-          "size": 139461937,
-          "downloads": 10,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-debug.apk"
+          "name": "autobot-1.13.0-debug.apk",
+          "size": 145419500,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-debug.apk"
         },
         {
-          "name": "autobot-1.12.0-mapping.txt",
-          "size": 96737547,
-          "downloads": 1,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-mapping.txt"
+          "name": "autobot-1.13.0-mapping.txt",
+          "size": 114971815,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-mapping.txt"
         },
         {
-          "name": "autobot-1.12.0-release.apk",
-          "size": 82320466,
-          "downloads": 6,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/autobot-1.12.0-release.apk"
+          "name": "autobot-1.13.0-release.apk",
+          "size": 83649326,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 28,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/SHA256SUMS.txt"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v1.13.0",
+        "name": "Autobot 1.13.0",
+        "published": "2026-10-21T22:26:36Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.13.0",
+        "prerelease": false,
+        "body": "A native look on both phones, layouts that fit tablets, and forms the on-device agent can show you.\n\n## Native on each phone\n- **Android uses Material 3 Expressive** in Autobot's purple: standard top bars, lists, switches, chips and buttons, the new loading indicators and motion. Every screen moved, from Chat and Run to Image, Studio and the lock screen.\n- **iPhone and iPad use the system look with Liquid Glass**: system navigation bars and toolbars, grouped lists and forms, glass buttons, the purple tint.\n- The brand stays as the pixel a and the purple dot after a title. The old print-style controls are gone.\n\n## Layouts for every size\n- **Tablets and wide windows** get a navigation rail (Android) or a sidebar (iPad), and lists open their item beside them: chats, nodes, settings pages.\n- Back on a tablet goes one screen back instead of closing the app.\n- Text stays readable at the largest sizes: chips wrap, banners stack, nothing runs off the screen.\n\n## Generative UI (phone chats)\n- **The on-device agent can show a form, choices or a card** when that's quicker than text: pick a time, fill in a booking, tick options. Your answer goes back to the agent as your next message.\n- A sent form locks and shows \"Sent\"; what you entered is kept when you reopen the chat.\n- Images in a form load only when you tap them, through your network settings.\n- Turn it off in Settings › Agent › Generative UI.\n\n## Faster and steadier\n- Streaming answers draw about twice as fast on iPhone; Android starts with a fresh startup profile for the new screens.\n- A message you started typing is kept when you go back or switch chats.\n- Hidden fields (pairing codes, passwords) no longer feed keyboard suggestions.\n- Bigger tap targets for the small buttons (ⓘ, Copy code, Run now).",
+        "assets": [
+          {
+            "name": "autobot-1.13.0-debug.apk",
+            "size": 145419500,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.13.0-mapping.txt",
+            "size": 114971815,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-mapping.txt"
+          },
+          {
+            "name": "autobot-1.13.0-release.apk",
+            "size": 83649326,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 277,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/SHA256SUMS.txt"
+          }
+        ]
+      },
       {
         "tag": "v1.12.0",
         "name": "Autobot 1.12.0",
@@ -71,7 +105,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 28,
+            "downloads": 29,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.12.0/SHA256SUMS.txt"
           }
         ]
@@ -483,44 +517,10 @@
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.2/SHA256SUMS.txt"
           }
         ]
-      },
-      {
-        "tag": "v1.6.1",
-        "name": "Autobot 1.6.1",
-        "published": "2026-10-16T14:55:42Z",
-        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.1",
-        "prerelease": false,
-        "body": "A reliability release for iPhone: no more waiting forever, faster Stable Diffusion, and clear messages whenever something is set up wrong.\n\n## Fixed (iPhone)\n- **Panic wipe could crash partway through.** Shutting down the agent called back on the wrong thread and stopped the app. Fixed.\n- **No more endless waits.** Two places that could wait forever after a cancelled download or request now always finish. Testing a provider or an MCP server now gives up after 30 s, and testing a ComfyUI server after 20 s, with \"No answer from <host>\" instead of a long spinner.\n- **Stable Diffusion 2.1 is faster.** On-device image generation now uses the backend your Compute benchmark picked instead of ignoring it. Memory settings are tuned per device: models stay loaded on 8 GB+ phones and load stage by stage on smaller ones.\n- **Multi-file downloads** no longer re-download finished files after a later file fails, and a disk that fills up mid-download is reported as a storage problem.\n- **Tells you what's wrong.**\n  - The chat shows a banner with a fix button when there's no provider, Offline mode is on, a cloud provider has no API key, or the on-device model is missing.\n  - Hugging Face and Civitai search say why a list is empty: Offline mode (with a shortcut to Privacy Center), a refused token, an error, or no results.\n  - Missing voice and audio models say where to get them.\n- Counts read properly (\"1 session\", not \"1 SESSIONS\"), model rows show one size, and Studio number fields keep what you type (\"-\", \"1.\", or clearing the field).\n- Stopping read-aloud also stops the sentence being synthesised.\n\n## Under the hood\n- 58 new iOS tests (371 app tests, 51 engine tests) covering downloads, running models, the agent bridge, and error and empty states. Every async test now has a time limit.\n\n## Files\n- `autobot-1.6.1-release.apk`: signed release (`ai.wckd.autobot`, arm64-v8a, Android 14+). Signer certificate SHA-256 `9a1378acf9587885e7920355558c85a1ec0e89304f58c153feebf90fdee7f3f1`. No Android changes since 1.6.0. Android fixes come in the next release.\n- `autobot-1.6.1-debug.apk`\n- `autobot-1.6.1-mapping.txt`: R8 mapping, for reading crash reports\n- `SHA256SUMS.txt`\n\niOS: TestFlight build 1.6.1.",
-        "assets": [
-          {
-            "name": "autobot-1.6.1-debug.apk",
-            "size": 128192678,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.1/autobot-1.6.1-debug.apk"
-          },
-          {
-            "name": "autobot-1.6.1-mapping.txt",
-            "size": 82782667,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.1/autobot-1.6.1-mapping.txt"
-          },
-          {
-            "name": "autobot-1.6.1-release.apk",
-            "size": 80581273,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.1/autobot-1.6.1-release.apk"
-          },
-          {
-            "name": "SHA256SUMS.txt",
-            "size": 274,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.1/SHA256SUMS.txt"
-          }
-        ]
       }
     ],
-    "checksums": "7ac3b564cbd449ceaa446526efca70e2b34ce8dc2b8915efaf911436e2cc19a1 *autobot-1.12.0-debug.apk\n96b8961c5c53d7dca3f0422ce50aee26280b065c71751e6862a203c6638127e4 *autobot-1.12.0-release.apk\n79642b8652d78fd4c16f8aefbe11978b72f0e8fcb0a3acf9ea844973920e00dd *autobot-1.12.0-mapping.txt",
-    "totalDownloads": 150
+    "checksums": "17f2bdb00fc80a20d6d83c8a695bc8782094a7276e9f603c58962a3439b26e2e *autobot-1.13.0-debug.apk\n67e1e3fcf01e464788e43ade2a14fb24b17a348c3d76dc508e9f4ef8a6a16adb *autobot-1.13.0-release.apk\n1cff2386af2be28a8330b9d0444fd58493e4692a9dc3fb72f7d9955b41291c71 *autobot-1.13.0-mapping.txt",
+    "totalDownloads": 146
   },
   "invincible": {
     "name": "invincible",
@@ -528,7 +528,7 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-21T20:13:53Z",
+    "pushed": "2026-10-21T21:49:30Z",
     "latest": {
       "tag": "v0.0.21",
       "name": "v0.0.21",
@@ -558,7 +558,7 @@
         {
           "name": "SHA256SUMS",
           "size": 360,
-          "downloads": 2,
+          "downloads": 3,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS"
         },
         {
@@ -605,7 +605,7 @@
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 2,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS"
           },
           {
@@ -1198,6 +1198,6 @@
       }
     ],
     "checksums": "9e1077b50d4e4890b4b4f0eb2fa7dda1a55b161361778f7bf7b29206e59361c9  invincible-linux-arm64.tar.gz\n55a8bb06a1dd1f5f280c2e58e449500366811fdfe61b1a01f7223f4ebfd4b35c  invincible-linux-x64.tar.gz\n808f90e564011498497ae770100d1c11fc01bae9595b82665eb7c8b30ce8ce11  invincible-macos-arm64.tar.gz\n374c2ee0c45e53453feeea1e53ed7bacea934f7658b6b2c4ff1f1226379f99cf  VERSION",
-    "totalDownloads": 67
+    "totalDownloads": 68
   }
 }

@@ -7,8 +7,9 @@ import { fmtBytes, fmtDate, v } from '../lib/format';
 const latest = releases.autobot.latest;
 const apk = latest.assets.find((a) => /release\.apk$/.test(a.name));
 const status = [
-  ['Android', 'shipping', 'signed APK, Android 14+, arm64'],
-  ['iOS', 'TestFlight', 'same version as Android'],
+  ['Android', 'shipping', 'signed APK, Android 14+, arm64; Material 3 Expressive, rail and two panes on tablets'],
+  ['iOS', 'TestFlight', 'same version as Android; the system look with Liquid Glass, sidebar and split chat on iPad'],
+  ['Generative UI', 'shipping', 'the on-device agent shows forms and choices in phone chats (A2UI v1.0); off in Settings'],
   ['Terminal', 'shipping', 'macOS and Linux, with Invincible'],
   ['Bots', 'shipping', 'your node\'s bots on the phone: channels, approvals, on/off'],
   ['Snapdragon NPU / GPU', 'verified', 'OnePlus 15, 8 Elite Gen 5'],
