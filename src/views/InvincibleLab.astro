@@ -25,6 +25,22 @@ const cluster = [
   ['6 · phones as shards', 'planned', 'a charging phone on Wi-Fi lends its NPU; it drops out when it warms up'],
 ];
 
+const training = [
+  ['T1 · one device', 'planned', 'invincible train: LoRA fine-tuning on this node, datasets as files, adapters as models, an eval gate before an adapter is served'],
+  ['T2 · across devices', 'planned', 'data-parallel LoRA on the machines you own, DiLoCo-style outer steps so a slow link does not stall the run'],
+  ['T3 · with phones', 'planned', 'federated LoRA: each phone trains on its own data and only the update leaves; the data stays on the device'],
+  ['T4 · larger runs', 'planned', 'pipeline-parallel training across machines, DeMo compression on the wire'],
+];
+
+const plain = [
+  ['Serve a model', 'curl … | sh, then autobot setup. The node finds the fastest backend it has and answers on one endpoint for every device you own.'],
+  ['Know what it costs you', 'every call has a receipt: model, route, tokens, redactions, signature. The audit log is a file you can read.'],
+  ['Measure before believing', 'invincible eval runs your own tasks against a local model and a frontier one, keeps every run, and shows the gap as a number over time.'],
+  ['Run a model bigger than one box', 'pair a second machine; the node splits the model and the router picks where a request goes. (Phase 1, in progress.)'],
+  ['Teach it your work', 'the frontier model\'s runs become a local model\'s training data, with the eval gate deciding whether the adapter ships. (Planned.)'],
+  ['Deploy at scale', 'the same binary from one laptop to a rack: static, reproducible, attested, always on, with health alerts to your chat.'],
+];
+
 const status = [
   ['Gateway', 'working', 'OpenAI- and Anthropic-compatible APIs; every request through the routing rules (51 conformance vectors)'],
   ['Receipts and audit log', 'working', 'signed, hash-chained'],
@@ -32,7 +48,7 @@ const status = [
   ['Platforms', 'Linux, macOS', 'static, reproducible binaries with build attestations; Windows (x86_64, arm64) planned'],
   ['Auto-tune', 'planned', 'the node measures its own hardware and picks the layers, context and batch that run fastest; today the benchmarks run on demand'],
   ['Cluster', 'phase 1 in progress', 'see above'],
-  ['Training', 'planned', 'LoRA on one device, then data-parallel across devices, then federated with phones'],
+  ['Training', 'planned', 'see above: LoRA on one device, then across devices, then federated with phones, then larger runs'],
   ['Always on', 'working', 'launchd or systemd, health checks, self-update; Tor and SOCKS5 with the kill switch as a shared, tested rule; stopping leaves nothing running'],
   ['Agent', 'working', 'retries on provider errors, long turns kept within the context, loop detection, forgiving edits'],
   ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix, WhatsApp, Home Assistant'],
@@ -42,7 +58,7 @@ const status = [
 ---
 <Lab path="/" current="overview" nav={[...n.nav]} footerNote={n.footer} description="The node you own: one gateway for every model you run, on the hardware you have, across the machines you own, with frontier models only when you allow it and a signed receipt for every call.">
   <h1>invincible</h1>
-  <p class="lede">The node you own. One gateway for every model you run: text, speech and images today, video next, on the hardware you have, across the machines you own. Frontier models only when you allow it, and a signed receipt for every call.</p>
+  <p class="lede">The node you own. One gateway for every model you run: text, speech and images today, video next, on the hardware you have, across the machines you own, with the training to make them yours. Frontier models only when you allow it, a signed receipt for every call, and the hard parts of AI made plain.</p>
 
   <pre><code>curl -fsSL https://invincible.sh/install.sh | sh
 autobot setup</code></pre>
@@ -68,6 +84,16 @@ autobot setup</code></pre>
     <p class="small">Reference points: <a href="https://github.com/exo-explore/exo" rel="noopener">exo</a> pools Macs and workstations into one inference cluster over Thunderbolt and 10 GbE; <a href="https://github.com/deepseek-ai" rel="noopener">DeepInfer</a>, open-sourced by DeepSeek on 20 October 2026, is the engine behind its production API, for one model on data-centre GPUs. Invincible sits between them: llama.cpp on the machines people have, paired and receipted, growing into a cluster of the machines you own.</p>
   </section>
 
+  <section id="plain">
+    <h2>The hard parts, made plain</h2>
+    <p>Research, building and deployment of AI are hard mostly in the glue: drivers and quantizations, which layers fit where, what a run cost, whether the new adapter is actually better. Invincible takes each of those and gives it one command, plain words and a number you can check. Where it cannot yet, it says so.</p>
+    <div class="table-wrap">
+      <table>
+        <tbody>{plain.map(([task, how]) => (<tr><td><strong>{task}</strong></td><td class="small">{how}</td></tr>))}</tbody>
+      </table>
+    </div>
+  </section>
+
   <section id="models">
     <h2>Every kind of model</h2>
     <div class="table-wrap">
@@ -87,6 +113,17 @@ autobot setup</code></pre>
       </table>
     </div>
     <p class="small">Nothing here is faster than one machine yet. Phase 1 is being built; the numbers will be published with it, from the same benchmarks the node runs every night.</p>
+  </section>
+
+  <section id="training">
+    <h2>Decentralized fine-tuning and training</h2>
+    <p>The same cluster that serves a model can train one. Fine-tuning starts on one node with your own data and an eval gate, grows across the machines you own, then to phones that keep their data and send only the update. Every stage is a LoRA adapter the node serves like any model, and every run is kept with its numbers.</p>
+    <div class="table-wrap">
+      <table>
+        <tbody>{training.map(([part, state, note]) => (<tr><td><strong>{part}</strong></td><td>{state}</td><td class="small">{note}</td></tr>))}</tbody>
+      </table>
+    </div>
+    <p class="small">What exists today is the feed: the evals keep every frontier and local run, so a frontier model's work on your tasks is already a local model's training set in waiting. The trainer itself is planned; nothing on this table ships yet.</p>
   </section>
 
   <section id="rules">

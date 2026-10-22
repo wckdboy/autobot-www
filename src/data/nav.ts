@@ -19,6 +19,7 @@ export const NAV = {
       { label: 'Install', href: '/install/' },
       { label: 'Guides', href: '/guides/' },
       { label: 'Cluster', href: '/#cluster' },
+      { label: 'Training', href: '/#training' },
       { label: 'Status', href: '/#status' },
       { label: 'Verify', href: '/verify/' },
       { label: 'Releases', href: '/releases/' },
