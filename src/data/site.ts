@@ -82,10 +82,11 @@ const configs: Record<SiteKey, SiteMeta> = {
     origin: 'https://sovware.io',
     title: 'Sovware — sovereign software and hardware',
     description:
-      'Sovereign software and hardware: AI that runs on the devices you own, offline by default, with no accounts and no telemetry, and a verifier kernel that checks what an agent made.',
+      'Sovware is the non-profit community behind WCKD\'s software: it advocates for sovereign software and hardware and makes sure the stack actually is, with mirrors, archives, security across every repository and a verifier kernel.',
     theme: 'paper',
     nav: [
       { label: 'Sovereign', href: '/#sovereign' },
+      { label: 'The org', href: '/#work' },
       { label: 'Stack', href: '/#stack' },
       { label: 'Kernel', href: '/#kernel' },
       { label: 'Source', href: 'https://github.com/wckdboy' },
@@ -93,7 +94,7 @@ const configs: Record<SiteKey, SiteMeta> = {
     other: 'autobot',
     repo: 'https://github.com/wckdboy/sovware',
     license: 'Apache-2.0',
-    tagline: 'Yours to run. Checked, not trusted.',
+    tagline: 'The org that keeps it sovereign.',
     og: '/og/sovware.png',
   },
   wckd: {

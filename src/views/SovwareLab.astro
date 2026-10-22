@@ -13,12 +13,22 @@ const sovereign = [
   ['Source you can read', 'free software, signed releases, published hashes. Build it yourself and compare.'],
   ['Open formats', 'your sessions, parts and receipts in files you can move, back up and read without us.'],
   ['Checked, not trusted', 'what an agent made is scored by verifiers out of process and written to a ledger anyone can replay.'],
+  ['Still there tomorrow', 'the source, the releases and the data are mirrored and archived where no single company, host or country can take them down.'],
+];
+
+const work = [
+  ['Advocacy', 'ongoing', 'the rules above, written down, argued for, and applied to every project in the stack before it ships'],
+  ['Signed releases', 'shipping', 'Autobot and Invincible publish checksums, attestations and a pinned signing key; every release is reproducible or says why not'],
+  ['Security across the repos', 'in progress', 'one policy for secrets, dependencies, supply chain and disclosure across every WCKD repository; internal reviews are in, the independent review of pairing and remote access is still to come'],
+  ['Mirrors', 'planned', 'every repository and every release mirrored outside GitHub, on infrastructure the community runs, with the same signatures'],
+  ['Archives', 'planned', 'model weights, datasets and specifications the stack depends on, archived with hashes so a vanished upstream does not break a build'],
+  ['The verifier kernel', 'L1 · one draft domain', 'the tool the org uses to check that a thing got better, not just different'],
 ];
 
 const stack = [
   { name: 'autobot', what: 'private AI on Android and iOS, and the agent in your terminal', state: `v${v(a.tag)} · ${fmtDate(a.published)}`, href: 'https://autobot.sh' },
   { name: 'invincible', what: 'the node you own: one gateway for every model you run, on your hardware and across the machines you own, frontier models by policy, a signed receipt for every call', state: `v${v(i.tag)} · ${fmtDate(i.published)}`, href: 'https://invincible.sh' },
-  { name: 'niobium', what: 'a pixel-art client for a Hermes agent, on Android and iOS', state: 'v1.1 · v2 in development', href: 'https://niobium.sh' },
+  { name: 'niobium', what: 'a client for your AI bots, built for Hermes, in pixel art', state: 'v1.1 · v2 in development', href: 'https://niobium.sh' },
   { name: 'omnie', what: 'an IDE for development on iPad and iPhone', state: 'TestFlight', href: 'https://omnie.sh' },
   { name: 'nightfall', what: 'AI-native CAD, a fork of FreeCAD', state: 'forking', href: 'https://nightfall.sh' },
   { name: 'sovware', what: 'the verifier kernel: programs, verifiers, gates and the ledger', state: 'L1 · one draft domain', href: 'https://github.com/wckdboy/sovware' },
@@ -39,22 +49,21 @@ const status = [
   path="/"
   current=""
   og="/og/sovware.png"
-  description="Sovereign software and hardware: AI that runs on the devices you own, offline by default, with no accounts and no telemetry, and a verifier kernel that checks what an agent made."
+  description="Sovware is the non-profit community behind WCKD's software: it advocates for sovereign software and hardware and makes sure the stack actually is, with mirrors, archives, security across every repository and a verifier kernel."
 >
   <h1>sovware</h1>
-  <p class="lede">Sovereign software and hardware. AI that runs on what you own, answers to nobody else, and proves what it did.</p>
+  <p class="lede">The non-profit community behind the stack. Sovware advocates for sovereign software and hardware, and makes sure the things WCKD ships actually are: mirrored, archived, secured and checked.</p>
 
   <dl class="facts">
-    <div><dt>Runs on</dt><dd>your phone, your machine, your node</dd></div>
-    <div><dt>Network</dt><dd>off by default</dd></div>
-    <div><dt>Accounts</dt><dd>none</dd></div>
-    <div><dt>Telemetry</dt><dd>none</dd></div>
+    <div><dt>What</dt><dd>a non-profit community</dd></div>
+    <div><dt>Keeps</dt><dd>mirrors, archives, the security policy</dd></div>
+    <div><dt>Checks with</dt><dd>the verifier kernel</dd></div>
     <div><dt>Licenses</dt><dd>Apache-2.0, MIT</dd></div>
   </dl>
 
   <section id="sovereign">
     <h2>What sovereign means here</h2>
-    <p>A model you rent on someone else's machine is a service. It can change, be rate-limited, read your data or go away. Sovereign software runs on hardware you control, keeps its state in files you can read, and treats the network as a tool you switch on, not a condition of use. Sovereign hardware is the machine you already have: the phone in your pocket with its NPU, the desktop under the desk, the GPU box in the closet, the server you rent and can leave.</p>
+    <p>A model you rent on someone else's machine is a service. It can change, be rate-limited, read your data or go away. Sovereign software runs on hardware you control, keeps its state in files you can read, and treats the network as a tool you switch on, not a condition of use. Sovereign hardware is the machine you already have: the phone in your pocket with its NPU, the desktop under the desk, the GPU box in the closet, the server you rent and can leave. And sovereign means it is still there tomorrow, whatever happens to a host, a company or a country.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Rule</th><th>In practice</th></tr></thead>
@@ -65,12 +74,28 @@ const status = [
         </tbody>
       </table>
     </div>
-    <blockquote><p>The network is an opt-in tool, never a requirement. Nothing leaves the device unless you can see it in the log and could have switched it off.</p></blockquote>
+    <blockquote><p>Saying a thing is sovereign is marketing. Sovware is the part that checks, and keeps the copies.</p></blockquote>
+  </section>
+
+  <section id="work">
+    <h2>What the org does</h2>
+    <p>The projects build; Sovware makes sure what they build stays sovereign. It holds the rules, keeps the copies, runs the security policy across every repository, and uses the kernel to say whether a change was an improvement.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Duty</th><th>State</th></tr></thead>
+        <tbody>
+          {work.map(([duty, state, detail]) => (
+            <tr><td><strong>{duty}</strong></td><td>{state} <span class="small">· {detail}</span></td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="small">States are the org's own reading. "Planned" means not started; a mirror that is not yet live is not listed as one.</p>
   </section>
 
   <section id="stack">
     <h2>The stack</h2>
-    <p>Six projects from one lab, on one brand kit. The phone runs the agent; the node runs the models; the kernel decides whether anything got better.</p>
+    <p>Six projects from one lab, on one brand kit, under one set of rules. The phone runs the agent; the node runs the models; the org keeps all of it honest and available.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Project</th><th>What it is</th></tr></thead>
@@ -92,7 +117,7 @@ const status = [
       <h2>Checked, not trusted</h2>
       <span class="label">The verifier kernel</span>
     </div>
-    <p>An agent can produce a part, a board, a program or a plan. It cannot tell you whether the thing is right, and a better model does not close that gap. The kernel is the part that checks: every artifact is a program with source you can read, parameters with units and claims with sources; every program is scored by verifiers that run out of process and return a verdict, a score and a cost; every run goes into a hash-chained ledger anyone can replay.</p>
+    <p>An agent can produce a part, a board, a program or a plan. It cannot tell you whether the thing is right, and a better model does not close that gap. The kernel is the org's instrument for that: every artifact is a program with source you can read, parameters with units and claims with sources; every program is scored by verifiers that run out of process and return a verdict, a score and a cost; every run goes into a hash-chained ledger anyone can replay.</p>
     <pre><code>program ─▶ verifiers ─▶ gate ─▶ ledger
    ▲                                 │
    └───────── mutation ◀─────────────┘</code></pre>
@@ -118,6 +143,7 @@ const status = [
       <li>Statistical never gates. A score that cannot state its uncertainty has no vote.</li>
       <li>Nothing moves matter without a human signature. The kernel cannot call a printer, and neither can an agent.</li>
       <li>No tuning on the held-out set. The set is hashed before the first run.</li>
+      <li>No single point of removal. Source, releases and data have a copy the org controls.</li>
     </ul>
   </section>
 </Lab>

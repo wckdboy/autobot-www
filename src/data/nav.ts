@@ -44,12 +44,13 @@ export const NAV = {
   sovware: {
     nav: [
       { label: 'Sovereign', href: '/#sovereign' },
+      { label: 'The org', href: '/#work' },
       { label: 'Stack', href: '/#stack' },
       { label: 'Kernel', href: '/#kernel' },
       { label: 'Brand', href: '/brand/' },
       { label: 'Source', href: 'https://github.com/wckdboy' },
     ],
-    footer: 'Sovware is sovereign software and hardware: free software that runs on what you own. Made by WCKD.',
+    footer: 'Sovware is the non-profit community that keeps WCKD\'s software sovereign: mirrored, archived, secured, checked.',
     repo: 'https://github.com/wckdboy',
   },
   omnie: {
