@@ -6,8 +6,8 @@ const work = [
   ['Agent evaluation', 'every reference part built from its description, edited and repaired by an agent through `nf mcp`, then measured against the exact part. First run: 60 of 60 within 1e-6 in volume and area, median 7 turns per task', 'in review'],
   ['Feature program', 'a JSON feature list with named parameters and units, selectors instead of face indices, content hashes so one parameter change rebuilds only what it touches', 'shipped'],
   ['Kernel', 'OpenCASCADE 7.9.3 behind an XPC service with a watchdog; Rust owns the math, the ownership rules and the policy; exact STEP AP242 out', 'shipped'],
-  ['Sketcher', 'a permissive Rust constraint solver owns the constraints; the agent proposes relations and reads degrees of freedom, conflicts and redundancy back. A measured spike picked SolidCraft\'s solver over ezpz on diagnostics', 'next'],
-  ['Assemblies', 'components and occurrences, one frame-based joint per pair that carries its degrees of freedom, a small SE(3) solver, interference and clearance, URDF out so MuJoCo or Chrono can test the mechanism', 'planned'],
+  ['Sketcher', 'sketch constraints now solve: draw roughly, add relations and dimensions, and the geometry follows; conflicts are named, never guessed. The solver was chosen by a measured spike and vendored with no extra dependencies', 'in review'],
+  ['Assemblies', 'components and occurrences, one frame-based joint per pair that carries its degrees of freedom, and an SE(3) solver that closes four-bars and slider-cranks to 1e-13 mm; interference, clearance and URDF out next', 'solver in review'],
   ['Studies', 'structural, thermal and fluid studies as objects in the document, run out of process on permissive solvers, gated by analytic cases before anything is called a result', 'planned'],
   ['macOS app', 'SwiftUI and a Metal viewport: parameters, history, rollback and exact measures today; interactive sketching after the solver', 'preview'],
 ];
@@ -17,7 +17,7 @@ const status = [
   ['Platforms', 'macOS 15+', 'Apple Silicon; the headless engine and `nf` CLI build without the app'],
   ['License', 'Apache-2.0', 'OpenCASCADE is LGPL-2.1 and dynamically linked; no GPL code is linked'],
   ['Kernel decision', 'RFC 0001', 'bake-off on a 20-part corpus and 200 ABC models: OCCT 77.4 vs SMLib 50.7; SMLib stays buildable for re-evaluation'],
-  ['Evidence', '899 tests', 'the occt gate, including the agent evaluation\'s reference run; every headless build returns a factual record: volumes, areas, digests, cache activity, timings'],
+  ['Evidence', '890+ tests', 'the occt gate, including the agent evaluation\'s reference run; every headless build returns a factual record: volumes, areas, digests, cache activity, timings'],
   ['FreeCAD', 'oracle', 'an earlier fork direction was retired; FreeCAD runs as a separate program to compute reference values for tests'],
 ];
 ---
