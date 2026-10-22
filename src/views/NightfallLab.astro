@@ -2,21 +2,22 @@
 import Lab from '../layouts/Lab.astro';
 
 const work = [
-  ['AI integration', 'an agent that edits the model as a program: typed tools over the document, a rebuild and a check after every edit, and a verdict from the Sovware kernel before anything is called done', 'design'],
-  ['Sketcher', 'a sketch workspace that stays fluid under constraints: fewer modes, solver feedback you can read, dimensions you type', 'planned'],
-  ['Part design', 'the feature history as the source of truth, with named parameters, equations and clear errors when a rebuild fails', 'planned'],
-  ['Assemblies', 'one assembly workbench, joints and constraints that survive edits, bills of materials that are right', 'planned'],
-  ['PCB and KiCad', 'boards and enclosures together: KiCad in, outlines and keep-outs out, and a report the circuits gate can verify', 'planned'],
-  ['Drafting', '2D drawings from the model that stay in step with it: views, sections, dimensions, title blocks', 'planned'],
-  ['Architecture and BIM', 'walls, openings, levels and IFC, built on the same history and the same checks', 'planned'],
+  ['Agent surface', '`nf mcp`: a stdio MCP server over the headless engine. Inspect the part, set parameters or replace the program, measure exact volume, area, centroid and bounds, export STEP. Every edit is rebuilt; a failed feature rolls back; every error carries a JSON Pointer into the document', 'in review'],
+  ['Feature program', 'a JSON feature list with named parameters and units, selectors instead of face indices, content hashes so one parameter change rebuilds only what it touches', 'shipped'],
+  ['Kernel', 'OpenCASCADE 7.9.3 behind an XPC service with a watchdog; Rust owns the math, the ownership rules and the policy; exact STEP AP242 out', 'shipped'],
+  ['Sketcher', 'a permissive Rust constraint solver owns the constraints; the agent proposes relations and reads degrees of freedom, conflicts and redundancy back', 'next'],
+  ['Assemblies', 'components and occurrences, one frame-based joint per pair that carries its degrees of freedom, a small SE(3) solver, interference and clearance, URDF out so MuJoCo or Chrono can test the mechanism', 'planned'],
+  ['Studies', 'structural, thermal and fluid studies as objects in the document, run out of process on permissive solvers, gated by analytic cases before anything is called a result', 'planned'],
+  ['macOS app', 'SwiftUI and a Metal viewport: parameters, history, rollback and exact measures today; interactive sketching after the solver', 'preview'],
 ];
 
 const status = [
-  ['Fork', 'starting', 'FreeCAD, with its OpenCASCADE kernel and workbenches; the fork keeps file compatibility'],
-  ['Platforms', 'macOS first', 'Linux and Windows follow FreeCAD'],
-  ['License', 'LGPL-2.1+', 'FreeCAD\'s licence carries over to the fork; see the repository'],
-  ['Research preview', 'archived', 'the macOS preview with its own exact kernel (NURBS, Metal, feature IR) set the bar and stays in the history'],
-  ['Kernel gate', 'draft', 'Nightfall is the first CAD domain for the Sovware verifier kernel'],
+  ['Direction', 'RFC 0011', 'the AI design loop program, in review: agent surface first, then sketch solver, assemblies and studies'],
+  ['Platforms', 'macOS 15+', 'Apple Silicon; the headless engine and `nf` CLI build without the app'],
+  ['License', 'Apache-2.0', 'OpenCASCADE is LGPL-2.1 and dynamically linked; no GPL code is linked'],
+  ['Kernel decision', 'RFC 0001', 'bake-off on a 20-part corpus and 200 ABC models: OCCT 77.4 vs SMLib 50.7; SMLib stays buildable for re-evaluation'],
+  ['Evidence', '888 tests', 'the occt gate; every headless build returns a factual record: volumes, areas, digests, cache activity, timings'],
+  ['FreeCAD', 'oracle', 'an earlier fork direction was retired; FreeCAD runs as a separate program to compute reference values for tests'],
 ];
 ---
 
@@ -24,10 +25,10 @@ const status = [
   path="/"
   current="overview"
   og="/og/nightfall.png"
-  description="Nightfall is AI-native CAD: a fork of FreeCAD that makes the agent a first-class user of the sketcher, part design, assemblies, PCB and KiCad, drafting and BIM, with every edit rebuilt and checked."
+  description="Nightfall is AI-native CAD for macOS: exact NURBS geometry, a feature program as the source of truth, and an agent that edits the program, rebuilds and measures every change."
 >
   <h1>nightfall</h1>
-  <p class="lede">AI-native CAD. A fork of FreeCAD where an agent edits the model as a program, and every edit is rebuilt and checked.</p>
+  <p class="lede">AI-native CAD. Every part is a program; the agent edits the program, never the geometry, and every edit is rebuilt and measured.</p>
 
   <div class="actions">
     <a class="button button--primary" href="https://github.com/wckdboy/nightfall" rel="noopener">Source</a>
@@ -36,23 +37,23 @@ const status = [
   </div>
 
   <dl class="facts">
-    <div><dt>Base</dt><dd>FreeCAD</dd></div>
+    <div><dt>Geometry</dt><dd>exact NURBS</dd></div>
     <div><dt>Kernel</dt><dd>OpenCASCADE</dd></div>
-    <div><dt>State</dt><dd>forking</dd></div>
+    <div><dt>State</dt><dd>preview</dd></div>
     <div><dt>Telemetry</dt><dd>none</dd></div>
   </dl>
 
   <section id="why">
-    <h2>Why a fork</h2>
-    <p>FreeCAD is the open parametric CAD: an exact kernel, a sketcher, part design, assemblies, drafting, architecture and a long memory of real parts. What it lacks is a way for an agent to work in it that is more than pasting Python. Nightfall starts from FreeCAD instead of from a kernel of its own, and spends the effort on the parts that make an AI a useful co-worker: the model as a program it can read and edit, a rebuild and a check after every edit, and workspaces that stay fluid when a constraint fights back.</p>
-    <p>The rules do not change. Math is the source of truth and meshes are derived. Every part is a program: a feature list with named parameters, geometry as a cache. The agent edits the program, never the geometry. Built for making real things: millimetres, explicit tolerances, STEP, 3MF and SVG out.</p>
+    <h2>Why a program, not a mesh</h2>
+    <p>Text-to-3D gives you a mesh nobody can edit. Nightfall gives the agent the same thing a good engineer keeps: a feature program with named parameters, units and references that survive edits. The agent reads it, changes it, and gets back what actually happened: which bodies changed, their exact volume and area, and a pointer to the field that failed. That loop, write then run then measure then revise, is what makes an AI a useful co-worker in CAD, and it is the part most tools leave out.</p>
+    <p>The rules do not change. Math is the source of truth and meshes are derived. Every part is a program: a feature list with named parameters, geometry as a cache. The agent edits the program, never the geometry. Built for making real things: millimetres, explicit tolerances, STEP, 3MF and SVG out. Rebuild status is never the verdict; measured geometry is.</p>
   </section>
 
   <section id="work">
     <h2>The work</h2>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Area</th><th>What changes</th><th>State</th></tr></thead>
+        <thead><tr><th>Area</th><th>What</th><th>State</th></tr></thead>
         <tbody>
           {work.map(([area, what, state]) => (
             <tr><td><strong>{area}</strong></td><td>{what}</td><td class="small">{state}</td></tr>
@@ -60,7 +61,7 @@ const status = [
         </tbody>
       </table>
     </div>
-    <p class="small">Order of work: the fork and its build, then AI integration and the sketcher, then part design and assemblies. PCB, drafting and BIM follow, each as a domain the kernel can gate.</p>
+    <p class="small">Order of work: the agent loop first, with an evaluation suite over the reference parts, then the sketch solver, then assemblies and studies. The kernel keeps improving behind them; it is never the thing the loop waits on.</p>
   </section>
 
   <section id="status">
@@ -74,6 +75,6 @@ const status = [
         </tbody>
       </table>
     </div>
-    <p class="small">Nothing on this page is shipping yet. The state column says what exists; the rest is the plan.</p>
+    <p class="small">The headless engine, the `nf` CLI and the macOS preview exist and are tested; the agent surface is in review; assemblies and studies are plans with written gates. The state column says what exists.</p>
   </section>
 </Lab>

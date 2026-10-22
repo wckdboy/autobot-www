@@ -71,7 +71,7 @@ export const NAV = {
       { label: 'Source', href: 'https://github.com/wckdboy/nightfall' },
       { label: 'WCKD', href: 'https://wckd.ai' },
     ],
-    footer: 'Nightfall is AI-native CAD, a fork of FreeCAD. Made by WCKD.',
+    footer: 'Nightfall is AI-native CAD: every part is a program. Made by WCKD.',
     repo: 'https://github.com/wckdboy/nightfall',
   },
 } as const;

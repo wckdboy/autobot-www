@@ -109,8 +109,8 @@ const configs: Record<SiteKey, SiteMeta> = {
   },
   nightfall: {
     key: 'nightfall', name: 'Nightfall', wordmark: 'nightfall', domain: 'nightfall.sh', origin: 'https://nightfall.sh',
-    title: 'Nightfall — AI-native CAD', description: 'AI-native CAD: a fork of FreeCAD where an agent edits the model as a program, across the sketcher, part design, assemblies, PCB and KiCad, drafting and BIM.',
-    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/nightfall', license: 'LGPL-2.1+', tagline: 'Every part is a program.', og: '/og/nightfall.png',
+    title: 'Nightfall — AI-native CAD', description: 'AI-native CAD for macOS: exact NURBS geometry, a feature program as the source of truth, and an agent that edits the program, rebuilds and measures every change.',
+    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/nightfall', license: 'Apache-2.0', tagline: 'Every part is a program.', og: '/og/nightfall.png',
   },
 };
 
