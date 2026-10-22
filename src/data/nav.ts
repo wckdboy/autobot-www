@@ -33,6 +33,7 @@ export const NAV = {
       { label: 'Invincible', href: 'https://invincible.sh' },
       { label: 'Omnie', href: 'https://omnie.sh' },
       { label: 'Nightfall', href: 'https://nightfall.sh' },
+      { label: 'Niobium', href: 'https://niobium.sh' },
       { label: 'GitHub', href: 'https://github.com/wckdboy' },
     ],
     footer: 'WCKD is an independent lab. Free software, signed releases, checkable claims.',
@@ -40,12 +41,13 @@ export const NAV = {
   },
   sovware: {
     nav: [
-      { label: 'Autobot', href: 'https://autobot.sh' },
-      { label: 'Invincible', href: 'https://invincible.sh' },
+      { label: 'Sovereign', href: '/#sovereign' },
+      { label: 'Stack', href: '/#stack' },
+      { label: 'Kernel', href: '/#kernel' },
       { label: 'Brand', href: '/brand/' },
-      { label: 'GitHub', href: 'https://github.com/wckdboy' },
+      { label: 'Source', href: 'https://github.com/wckdboy' },
     ],
-    footer: 'Sovware is sovereign hardware and software, made by WCKD.',
+    footer: 'Sovware is sovereign software and hardware: free software that runs on what you own. Made by WCKD.',
     repo: 'https://github.com/wckdboy',
   },
   omnie: {
@@ -59,11 +61,14 @@ export const NAV = {
   },
   nightfall: {
     nav: [
-      { label: 'Brand', href: '/' },
+      { label: 'Overview', href: '/' },
+      { label: 'Work', href: '/#work' },
+      { label: 'Status', href: '/#status' },
+      { label: 'Brand', href: '/brand/' },
       { label: 'Source', href: 'https://github.com/wckdboy/nightfall' },
       { label: 'WCKD', href: 'https://wckd.ai' },
     ],
-    footer: 'Nightfall is open-source, AI-native parametric CAD. Made by WCKD.',
+    footer: 'Nightfall is AI-native CAD, a fork of FreeCAD. Made by WCKD.',
     repo: 'https://github.com/wckdboy/nightfall',
   },
 } as const;

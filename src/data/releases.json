@@ -1,47 +1,81 @@
 {
-  "generatedAt": "2026-10-21T22:27:23.003Z",
+  "generatedAt": "2026-10-22T00:29:20.724Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
     "stars": 0,
     "forks": 0,
     "license": "Apache-2.0",
-    "pushed": "2026-10-21T22:27:12Z",
+    "pushed": "2026-10-22T00:27:49Z",
     "latest": {
-      "tag": "v1.13.0",
-      "name": "Autobot 1.13.0",
-      "published": "2026-10-21T22:26:36Z",
-      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.13.0",
+      "tag": "v1.14.0",
+      "name": "Autobot 1.14.0",
+      "published": "2026-10-22T00:28:13Z",
+      "url": "https://github.com/wckdboy/autobot/releases/tag/v1.14.0",
       "prerelease": false,
-      "body": "A native look on both phones, layouts that fit tablets, and forms the on-device agent can show you.\n\n## Native on each phone\n- **Android uses Material 3 Expressive** in Autobot's purple: standard top bars, lists, switches, chips and buttons, the new loading indicators and motion. Every screen moved, from Chat and Run to Image, Studio and the lock screen.\n- **iPhone and iPad use the system look with Liquid Glass**: system navigation bars and toolbars, grouped lists and forms, glass buttons, the purple tint.\n- The brand stays as the pixel a and the purple dot after a title. The old print-style controls are gone.\n\n## Layouts for every size\n- **Tablets and wide windows** get a navigation rail (Android) or a sidebar (iPad), and lists open their item beside them: chats, nodes, settings pages.\n- Back on a tablet goes one screen back instead of closing the app.\n- Text stays readable at the largest sizes: chips wrap, banners stack, nothing runs off the screen.\n\n## Generative UI (phone chats)\n- **The on-device agent can show a form, choices or a card** when that's quicker than text: pick a time, fill in a booking, tick options. Your answer goes back to the agent as your next message.\n- A sent form locks and shows \"Sent\"; what you entered is kept when you reopen the chat.\n- Images in a form load only when you tap them, through your network settings.\n- Turn it off in Settings › Agent › Generative UI.\n\n## Faster and steadier\n- Streaming answers draw about twice as fast on iPhone; Android starts with a fresh startup profile for the new screens.\n- A message you started typing is kept when you go back or switch chats.\n- Hidden fields (pairing codes, passwords) no longer feed keyboard suggestions.\n- Bigger tap targets for the small buttons (ⓘ, Copy code, Run now).",
+      "body": "The DeepSeek Harness itself, running on your iPhone.\n\n## Harness tab (iOS)\n- **A Linux agent workspace on the phone.** The Harness tab boots Alpine Linux with Node inside the iSH-ARM64 emulator and runs the DeepSeek Harness's own web UI, served on the device. No server, no Mac, no jailbreak.\n- **Your key, once.** A DeepSeek provider with an API key in Autobot signs the harness's model calls; otherwise the harness asks for one and keeps it in its guest.\n- **The same privacy rules.** The guest runs only while a network mode allows a route out: Offline stops it. The audit log records that it is running and where its calls go.\n- **Guest shell and log.** A shell into the running guest (`apk add`, `npm i -g`, a look at `~/.dsh`) and a shareable harness log, from the tab's menu.\n- **It recovers.** A page that fails, a web process that dies or a server that stopped in the background is reloaded; after three failed loads it says so and waits for Reload.\n- Experimental: the first boot imports the 85 MB guest image, a warm boot takes about a minute, and the emulator is slow. iPhone and iPad only.\n\n## Licence\n- The iOS app now includes GPL-3.0 components (dsh-ios, iSH-ARM64), so the iOS build is distributed under GPL-3.0 as a combined work. Autobot's own code stays Apache-2.0, and so does the Android app. Settings › Licenses lists the notices.",
       "assets": [
         {
-          "name": "autobot-1.13.0-debug.apk",
-          "size": 145419500,
+          "name": "autobot-1.14.0-debug.apk",
+          "size": 145435532,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-debug.apk"
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/autobot-1.14.0-debug.apk"
         },
         {
-          "name": "autobot-1.13.0-mapping.txt",
+          "name": "autobot-1.14.0-mapping.txt",
           "size": 114971815,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-mapping.txt"
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/autobot-1.14.0-mapping.txt"
         },
         {
-          "name": "autobot-1.13.0-release.apk",
-          "size": 83649326,
+          "name": "autobot-1.14.0-release.apk",
+          "size": 83665578,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-release.apk"
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/autobot-1.14.0-release.apk"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/SHA256SUMS.txt"
+          "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v1.14.0",
+        "name": "Autobot 1.14.0",
+        "published": "2026-10-22T00:28:13Z",
+        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.14.0",
+        "prerelease": false,
+        "body": "The DeepSeek Harness itself, running on your iPhone.\n\n## Harness tab (iOS)\n- **A Linux agent workspace on the phone.** The Harness tab boots Alpine Linux with Node inside the iSH-ARM64 emulator and runs the DeepSeek Harness's own web UI, served on the device. No server, no Mac, no jailbreak.\n- **Your key, once.** A DeepSeek provider with an API key in Autobot signs the harness's model calls; otherwise the harness asks for one and keeps it in its guest.\n- **The same privacy rules.** The guest runs only while a network mode allows a route out: Offline stops it. The audit log records that it is running and where its calls go.\n- **Guest shell and log.** A shell into the running guest (`apk add`, `npm i -g`, a look at `~/.dsh`) and a shareable harness log, from the tab's menu.\n- **It recovers.** A page that fails, a web process that dies or a server that stopped in the background is reloaded; after three failed loads it says so and waits for Reload.\n- Experimental: the first boot imports the 85 MB guest image, a warm boot takes about a minute, and the emulator is slow. iPhone and iPad only.\n\n## Licence\n- The iOS app now includes GPL-3.0 components (dsh-ios, iSH-ARM64), so the iOS build is distributed under GPL-3.0 as a combined work. Autobot's own code stays Apache-2.0, and so does the Android app. Settings › Licenses lists the notices.",
+        "assets": [
+          {
+            "name": "autobot-1.14.0-debug.apk",
+            "size": 145435532,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/autobot-1.14.0-debug.apk"
+          },
+          {
+            "name": "autobot-1.14.0-mapping.txt",
+            "size": 114971815,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/autobot-1.14.0-mapping.txt"
+          },
+          {
+            "name": "autobot-1.14.0-release.apk",
+            "size": 83665578,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/autobot-1.14.0-release.apk"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "size": 277,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
+          }
+        ]
+      },
       {
         "tag": "v1.13.0",
         "name": "Autobot 1.13.0",
@@ -53,25 +87,25 @@
           {
             "name": "autobot-1.13.0-debug.apk",
             "size": 145419500,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-debug.apk"
           },
           {
             "name": "autobot-1.13.0-mapping.txt",
             "size": 114971815,
-            "downloads": 0,
+            "downloads": 2,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-mapping.txt"
           },
           {
             "name": "autobot-1.13.0-release.apk",
             "size": 83649326,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/autobot-1.13.0-release.apk"
           },
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 0,
+            "downloads": 4,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.13.0/SHA256SUMS.txt"
           }
         ]
@@ -483,44 +517,10 @@
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.3/SHA256SUMS.txt"
           }
         ]
-      },
-      {
-        "tag": "v1.6.2",
-        "name": "Autobot 1.6.2",
-        "published": "2026-10-16T18:44:27Z",
-        "url": "https://github.com/wckdboy/autobot/releases/tag/v1.6.2",
-        "prerelease": false,
-        "body": "On-device image generation fixed for Local Dream NPU models, sturdier downloads and engines, safer agents, pixel-exact dots, and much less text on iPhone.\n\n## Fixed: image generation on Snapdragon (Android)\n- **NPU image models now run.** A phone whose only image models were Local Dream / xororz NPU packages (SD 1.5, SDXL, Illustrious and others) never got a \"This phone\" image backend, so none of them could be used. They now appear in Imagine and Studio.\n- **Builds picked like Local Dream does.** Snapdragon 8 Elite Gen 5 now gets the 8gen2 builds (SDXL: 8gen3), matching Local Dream. If you installed an NPU upscaler before, reinstall it so you get the right build.\n- **SDXL uses less memory.** Only the model in use stays loaded. SDXL frees its text encoders before loading the UNet, and the VAE encoder only loads for img2img and inpainting.\n- **Clear errors.** A failure now names the stage (loading, text encoder, UNet) and quotes the engine's own message. Models › Compute › Report includes a live NPU check: how far the NPU setup got, the runtime version, the chip's library, and a test load of your smallest NPU model. If something still fails, copy that report and send it.\n\n## Downloads and engines (Android)\n- A cancelled download no longer comes back after the app is killed. Pause and cancel take effect at once, even on a stalled connection.\n- Resuming a file that changed on the server restarts it cleanly instead of splicing two versions together.\n- A disk that fills up pauses with a storage message. Gated Hugging Face models tell you to sign in and accept the terms.\n- Models whose files were deleted outside the app are detected and offered for re-download (only the missing files).\n- A crashed engine is released and restarted cleanly. Cancelling during model load now works. Broken or wrong model files are named before loading.\n- Tapping a Whisper model opens voice mode.\n\n## Agents (both platforms)\n- Every tool that can reach the network is checked for private data, and an approval prompt can no longer override a refusal.\n- Approvals cancelled midway are logged correctly. Replies the model cut short are no longer retried as empty.\n- Privacy receipts list every model your data went to, including subagents and summaries.\n- Studio remote runs time out and cancel properly.\n\n## Look and feel\n- **Pixel-exact dots (both platforms).** Bars, loaders, living cards and bac",
-        "assets": [
-          {
-            "name": "autobot-1.6.2-debug.apk",
-            "size": 128395046,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.2/autobot-1.6.2-debug.apk"
-          },
-          {
-            "name": "autobot-1.6.2-mapping.txt",
-            "size": 83386264,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.2/autobot-1.6.2-mapping.txt"
-          },
-          {
-            "name": "autobot-1.6.2-release.apk",
-            "size": 80632429,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.2/autobot-1.6.2-release.apk"
-          },
-          {
-            "name": "SHA256SUMS.txt",
-            "size": 274,
-            "downloads": 1,
-            "url": "https://github.com/wckdboy/autobot/releases/download/v1.6.2/SHA256SUMS.txt"
-          }
-        ]
       }
     ],
-    "checksums": "17f2bdb00fc80a20d6d83c8a695bc8782094a7276e9f603c58962a3439b26e2e *autobot-1.13.0-debug.apk\n67e1e3fcf01e464788e43ade2a14fb24b17a348c3d76dc508e9f4ef8a6a16adb *autobot-1.13.0-release.apk\n1cff2386af2be28a8330b9d0444fd58493e4692a9dc3fb72f7d9955b41291c71 *autobot-1.13.0-mapping.txt",
-    "totalDownloads": 146
+    "checksums": "27783c50bc79a7fe605bd9d2ffcc2ca4c369d181d11c7fe6c3c6613630066e98 *autobot-1.14.0-debug.apk\n7c2113e62d9ab369429f5763c33b25f7cbaf9ed3a54032ffac5ea32bcd2043bd *autobot-1.14.0-release.apk\n1cff2386af2be28a8330b9d0444fd58493e4692a9dc3fb72f7d9955b41291c71 *autobot-1.14.0-mapping.txt",
+    "totalDownloads": 152
   },
   "invincible": {
     "name": "invincible",
@@ -558,7 +558,7 @@
         {
           "name": "SHA256SUMS",
           "size": 360,
-          "downloads": 3,
+          "downloads": 5,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS"
         },
         {
@@ -605,7 +605,7 @@
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 3,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS"
           },
           {
@@ -1198,6 +1198,6 @@
       }
     ],
     "checksums": "9e1077b50d4e4890b4b4f0eb2fa7dda1a55b161361778f7bf7b29206e59361c9  invincible-linux-arm64.tar.gz\n55a8bb06a1dd1f5f280c2e58e449500366811fdfe61b1a01f7223f4ebfd4b35c  invincible-linux-x64.tar.gz\n808f90e564011498497ae770100d1c11fc01bae9595b82665eb7c8b30ce8ce11  invincible-macos-arm64.tar.gz\n374c2ee0c45e53453feeea1e53ed7bacea934f7658b6b2c4ff1f1226379f99cf  VERSION",
-    "totalDownloads": 68
+    "totalDownloads": 70
   }
 }

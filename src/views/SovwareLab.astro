@@ -6,11 +6,22 @@ import { fmtDate, v } from '../lib/format';
 const a = releases.autobot.latest;
 const i = releases.invincible.latest;
 
-const loop = [
-  ['program', 'the artifact: source you can read, parameters with units, claims with sources'],
-  ['verifier', 'an executable that returns a verdict, a score and a cost, out of process'],
-  ['gate', 'the rule that turns scores into pass, fail or refusal for a domain'],
-  ['ledger', 'hash-chained evidence of every run, replayable by anyone'],
+const sovereign = [
+  ['Runs on what you own', "the phone's NPU and GPU, a desktop, a GPU box, a server you rent. A cloud model is a choice you make per call, never a requirement."],
+  ['Offline by default', 'every app starts with the network off. A kill switch rejects a request before DNS or a socket; the route (direct, Tor, SOCKS5) is yours to set.'],
+  ['No accounts, no telemetry', 'nothing phones home. Crash reports and analytics do not exist. The log of what left the device is on the device.'],
+  ['Source you can read', 'free software, signed releases, published hashes. Build it yourself and compare.'],
+  ['Open formats', 'your sessions, parts and receipts in files you can move, back up and read without us.'],
+  ['Checked, not trusted', 'what an agent made is scored by verifiers out of process and written to a ledger anyone can replay.'],
+];
+
+const stack = [
+  { name: 'autobot', what: 'private AI on Android and iOS, and the agent in your terminal', state: `v${v(a.tag)} · ${fmtDate(a.published)}`, href: 'https://autobot.sh' },
+  { name: 'invincible', what: 'the node you own: open models on your hardware, frontier models by policy, a signed receipt for every call', state: `v${v(i.tag)} · ${fmtDate(i.published)}`, href: 'https://invincible.sh' },
+  { name: 'niobium', what: 'a pixel-art client for a Hermes agent, on Android and iOS', state: 'v1.1 · v2 in development', href: 'https://niobium.sh' },
+  { name: 'omnie', what: 'an IDE for development on iPad and iPhone', state: 'TestFlight', href: 'https://omnie.sh' },
+  { name: 'nightfall', what: 'AI-native CAD, a fork of FreeCAD', state: 'forking', href: 'https://nightfall.sh' },
+  { name: 'sovware', what: 'the verifier kernel: programs, verifiers, gates and the ledger', state: 'L1 · one draft domain', href: 'https://github.com/wckdboy/sovware' },
 ];
 
 const status = [
@@ -22,69 +33,70 @@ const status = [
   ['sandbox', 'not started', 'timeouts only; landlock and seccomp next'],
   ['fabrication', 'closed', 'a human signature; the kernel has no path to a machine'],
 ];
-
-const estate = [
-  { name: 'sovware', what: 'the gate and the ledger', state: 'L1, one draft domain' },
-  { name: 'autobot', what: 'private AI on Android and iOS', state: `v${v(a.tag)} · ${fmtDate(a.published)}`, href: 'https://autobot.sh' },
-  { name: 'invincible', what: 'the AI gateway and decentralized compute', state: `v${v(i.tag)} · ${fmtDate(i.published)}`, href: 'https://invincible.sh' },
-  { name: 'omnie', what: 'an IDE for development on iOS and iPadOS', state: 'TestFlight · iPad and iPhone', href: 'https://omnie.sh' },
-  { name: 'nightfall', what: 'AI-native parametric CAD', state: 'phase 2 preview', href: 'https://nightfall.sh' },
-];
 ---
 
 <Lab
   path="/"
   current=""
-  nav={[
-    { label: 'Goal', href: '/#goal' },
-    { label: 'Status', href: '/#status' },
-    { label: 'Projects', href: '/#projects' },
-    { label: 'Source', href: 'https://github.com/wckdboy/sovware' },
-  ]}
   og="/og/sovware.png"
-  footerNote="Sovware is free software under Apache-2.0. The kernel runs offline. Made by WCKD."
-  description="An open-source kernel for humans and AI agents: every artifact is a program, every program is scored by verifiers, every run is recorded. Improvement is defined, not asserted."
+  description="Sovereign software and hardware: AI that runs on the devices you own, offline by default, with no accounts and no telemetry, and a verifier kernel that checks what an agent made."
 >
   <h1>sovware</h1>
-  <p class="lede">Open-source tools for humans and AI agents to build things that are checked, not trusted.</p>
+  <p class="lede">Sovereign software and hardware. AI that runs on what you own, answers to nobody else, and proves what it did.</p>
 
   <dl class="facts">
-    <div><dt>License</dt><dd>Apache-2.0</dd></div>
-    <div><dt>Kernel</dt><dd>L1 · working</dd></div>
-    <div><dt>Domains</dt><dd>1 · draft</dd></div>
+    <div><dt>Runs on</dt><dd>your phone, your machine, your node</dd></div>
+    <div><dt>Network</dt><dd>off by default</dd></div>
+    <div><dt>Accounts</dt><dd>none</dd></div>
+    <div><dt>Telemetry</dt><dd>none</dd></div>
+    <div><dt>Licenses</dt><dd>Apache-2.0, MIT</dd></div>
   </dl>
 
-  <section id="goal">
-    <h2>The goal</h2>
-    <p>An agent can produce a part, a board, a program or a plan. It cannot tell you whether the thing is right. That gap is the whole problem, and a better model does not close it.</p>
-    <p>Sovware is the part that checks. Every artifact is a program: source you can read, parameters with units, claims with sources, a hash of the bytes that made it. Every program is scored by verifiers that run out of process and return a verdict, a score and a cost. Every run goes into a ledger that anyone can replay.</p>
-    <p>Improvement then has a definition. The gate passes, the score does not fall on a set the agent never saw, and the cost does not rise. A design that is cheaper and fails the gate is a change. We say so, and we keep the record.</p>
-    <blockquote><p>A cheaper design that fails is not an improvement. The tool says so, and keeps the record.</p></blockquote>
-  </section>
-
-  <section id="loop">
-    <h2>The loop</h2>
-    <pre><code>program ─▶ verifiers ─▶ gate ─▶ ledger
-   ▲                                 │
-   └───────── mutation ◀─────────────┘</code></pre>
+  <section id="sovereign">
+    <h2>What sovereign means here</h2>
+    <p>A model you rent on someone else's machine is a service. It can change, be rate-limited, read your data or go away. Sovereign software runs on hardware you control, keeps its state in files you can read, and treats the network as a tool you switch on, not a condition of use. Sovereign hardware is the machine you already have: the phone in your pocket with its NPU, the desktop under the desk, the GPU box in the closet, the server you rent and can leave.</p>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Object</th><th>What it is</th></tr></thead>
+        <thead><tr><th>Rule</th><th>In practice</th></tr></thead>
         <tbody>
-          {loop.map(([name, what]) => (
-            <tr><td><strong>{name}</strong></td><td>{what}</td></tr>
+          {sovereign.map(([rule, how]) => (
+            <tr><td><strong>{rule}</strong></td><td>{how}</td></tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p class="small">Verifiers are exact, numeric or statistical, and they say which. Exact gates. Numeric gates against a declared tolerance. Statistical informs and never gates.</p>
+    <blockquote><p>The network is an opt-in tool, never a requirement. Nothing leaves the device unless you can see it in the log and could have switched it off.</p></blockquote>
   </section>
 
-  <section id="status">
-    <div class="section-head">
-      <h2>Where we are</h2>
-      <span class="label">Kernel and domains</span>
+  <section id="stack">
+    <h2>The stack</h2>
+    <p>Six projects from one lab, on one brand kit. The phone runs the agent; the node runs the models; the kernel decides whether anything got better.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Project</th><th>What it is</th></tr></thead>
+        <tbody>
+          {stack.map((p) => (
+            <tr>
+              <td><strong><a href={p.href} rel="noopener">{p.name}</a></strong></td>
+              <td>{p.what} <span class="small">· {p.state}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
+    <p class="small">Autobot pairs with Invincible over Noise and runs the node's agent, approvals and receipts from the phone. Invincible routes the models, signs the receipts and absorbs wckd-gpu's elastic compute. Omnie is where the code is written and reviewed. Nightfall is the first CAD domain for the kernel. Niobium is the client for a Hermes agent you host.</p>
+  </section>
+
+  <section id="kernel">
+    <div class="section-head">
+      <h2>Checked, not trusted</h2>
+      <span class="label">The verifier kernel</span>
+    </div>
+    <p>An agent can produce a part, a board, a program or a plan. It cannot tell you whether the thing is right, and a better model does not close that gap. The kernel is the part that checks: every artifact is a program with source you can read, parameters with units and claims with sources; every program is scored by verifiers that run out of process and return a verdict, a score and a cost; every run goes into a hash-chained ledger anyone can replay.</p>
+    <pre><code>program ─▶ verifiers ─▶ gate ─▶ ledger
+   ▲                                 │
+   └───────── mutation ◀─────────────┘</code></pre>
+    <p>Improvement then has a definition: the gate passes, the score does not fall on a set the agent never saw, and the cost does not rise. A design that is cheaper and fails the gate is a change. The tool says so, and keeps the record.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Part</th><th>State</th></tr></thead>
@@ -95,53 +107,17 @@ const estate = [
         </tbody>
       </table>
     </div>
-    <p class="small">Nothing here is admitted for fabrication. The mechanical gate stays a draft until it has the corpus the specification asks for: 30 programs, 10 held out, 5 known-bad.</p>
-  </section>
-
-  <section id="projects">
-    <h2>The estate</h2>
-    <p>One loop, many surfaces. The kernel is the part that decides whether any of them improved.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Project</th><th>What it does</th></tr></thead>
-        <tbody>
-          {estate.map((p) => (
-            <tr>
-              <td><strong>{p.href ? <a href={p.href} rel="noopener">{p.name}</a> : p.name}</strong></td>
-              <td>{p.what} <span class="small">· {p.state}</span></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <p class="small">Invincible routes the models, signs the receipts, and is absorbing wckd-gpu's elastic compute. Autobot runs the agent, on the phone and on your node. Omnie is the IDE where you write and review the code. Nightfall is the first CAD domain. Omnie Harness is retired; its job engine lives in Autobot and Invincible.</p>
+    <p class="small">Nothing here is admitted for fabrication. The mechanical gate stays a draft until it has the corpus the specification asks for: 30 programs, 10 held out, 5 known-bad. Source: <a href="https://github.com/wckdboy/sovware" rel="noopener">wckdboy/sovware</a>.</p>
   </section>
 
   <section id="rules">
     <h2>The rules that matter</h2>
-    <ul class="list-plain">
-      <li><b>No claim without a source.</b> A citation that cannot be resolved is a bug.</li>
-      <li><b>An errored verifier is a refusal.</b> Missing evidence is not a pass.</li>
-      <li><b>Statistical never gates.</b> A score that cannot state its uncertainty has no vote.</li>
-      <li><b>Nothing moves matter without a human signature.</b> The kernel cannot call a printer, and neither can an agent.</li>
-      <li><b>No tuning on the held-out set.</b> The set is hashed before the mutation exists, and the tool refuses it if it changed.</li>
+    <ul>
+      <li>No claim without a source. A citation that cannot be resolved is a bug.</li>
+      <li>An errored verifier is a refusal. Missing evidence is not a pass.</li>
+      <li>Statistical never gates. A score that cannot state its uncertainty has no vote.</li>
+      <li>Nothing moves matter without a human signature. The kernel cannot call a printer, and neither can an agent.</li>
+      <li>No tuning on the held-out set. The set is hashed before the first run.</li>
     </ul>
   </section>
-
-  <section id="read">
-    <h2>Read it</h2>
-    <p>The manifesto outranks the specification, which outranks the code. No model, no key, no network is needed to run the loop.</p>
-    <ul class="list-plain">
-      <li><b><a href="https://github.com/wckdboy/sovware/blob/main/MANIFESTO.md" rel="noopener">Manifesto</a></b> · thirteen articles and what we refuse.</li>
-      <li><b><a href="https://github.com/wckdboy/sovware/blob/main/docs/SPEC.md" rel="noopener">Specification</a></b> · twelve requirements, each with a test.</li>
-      <li><b><a href="https://github.com/wckdboy/sovware/blob/main/docs/FORKS.md" rel="noopener">Fork record</a></b> · what we link, what we call, what we fork, and why.</li>
-      <li><b><a href="https://github.com/wckdboy/sovware/blob/main/docs/ROADMAP.md" rel="noopener">Roadmap</a></b> · the next gates, and the two that stay closed.</li>
-    </ul>
-    <div class="actions">
-      <a class="button button--primary" href="https://github.com/wckdboy/sovware" rel="noopener">Source</a>
-      <a class="text-link" href="https://github.com/wckdboy" rel="noopener">WCKD on GitHub</a>
-    </div>
-  </section>
-
-  <p class="small">boy@wckd.cc · <a href="https://github.com/wckdboy" rel="noopener">github</a></p>
 </Lab>

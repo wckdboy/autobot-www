@@ -122,6 +122,22 @@
       "onInk": "#FF3E8A",
       "onPaper": "#FF3E8A",
       "text": "#FF3E8A"
+    },
+    "niobium": {
+      "name": "Niobium",
+      "domain": "niobium.sh",
+      "role": "A pixel-art Hermes agent client for Android and iOS",
+      "glyph": [
+        "#####...",
+        "##..##..",
+        "##..##..",
+        "##..##..",
+        "##..##..",
+        "##..##.#"
+      ],
+      "onInk": "#1E8CFF",
+      "onPaper": "#1E8CFF",
+      "text": "#1E8CFF"
     }
   }
 }

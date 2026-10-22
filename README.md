@@ -6,9 +6,11 @@ The public sites for the WCKD lab and its brands, from one Astro codebase on one
 | --- | --- | --- |
 | [autobot.sh](https://autobot.sh) | Autobot | WCKD kit v4 |
 | [invincible.sh](https://invincible.sh) | Invincible | WCKD kit v4 |
-| [sovware.io](https://sovware.io) | Sovware | WCKD kit v4 |
+| [sovware.io](https://sovware.io) | Sovware | WCKD kit v4 · sovereign software and hardware |
 | [wckd.ai](https://wckd.ai) | WCKD | the master brand kit |
-| omnie.sh, nightfall.sh | Omnie, Nightfall | build their brand kit as the home page; not deployed (the domains have other DNS records) |
+| [nightfall.sh](https://nightfall.sh) | Nightfall | WCKD kit v4 · the FreeCAD fork's page |
+| omnie.sh | Omnie | builds its brand kit as the home page; not deployed |
+| [niobium.sh](https://niobium.sh) | Niobium | its own repo (`wckdboy/niobium`, `site/`); in the kit since v4 with the `n.` symbol |
 
 Brand kit: [BRAND.md](BRAND.md), source [`brand/kit.json`](brand/kit.json), assets drawn by
 `pnpm brand`, and every site's own version at `/brand/`.

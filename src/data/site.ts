@@ -80,25 +80,25 @@ const configs: Record<SiteKey, SiteMeta> = {
     wordmark: 'SOVWARE',
     domain: 'sovware.io',
     origin: 'https://sovware.io',
-    title: 'Sovware — the verifier kernel',
+    title: 'Sovware — sovereign software and hardware',
     description:
-      'An open-source kernel for humans and AI agents. Every artifact is a program, every program is scored by verifiers, every run is recorded. Improvement is defined, not asserted.',
+      'Sovereign software and hardware: AI that runs on the devices you own, offline by default, with no accounts and no telemetry, and a verifier kernel that checks what an agent made.',
     theme: 'paper',
     nav: [
-      { label: 'Goal', href: '/#goal' },
-      { label: 'Status', href: '/#status' },
-      { label: 'Projects', href: '/#projects' },
-      { label: 'Source', href: 'https://github.com/wckdboy/sovware' },
+      { label: 'Sovereign', href: '/#sovereign' },
+      { label: 'Stack', href: '/#stack' },
+      { label: 'Kernel', href: '/#kernel' },
+      { label: 'Source', href: 'https://github.com/wckdboy' },
     ],
     other: 'autobot',
     repo: 'https://github.com/wckdboy/sovware',
     license: 'Apache-2.0',
-    tagline: 'Checked, not trusted.',
+    tagline: 'Yours to run. Checked, not trusted.',
     og: '/og/sovware.png',
   },
   wckd: {
     key: 'wckd', name: 'WCKD', wordmark: 'wckd', domain: 'wckd.ai', origin: 'https://wckd.ai',
-    title: 'WCKD — one lab, one system', description: 'The WCKD lab and its brand kit: Sovware, Autobot, Invincible, Omnie and Nightfall, each a lowercase letter in pixels and one color.',
+    title: 'WCKD — one lab, one system', description: 'The WCKD lab and its brand kit: Sovware, Autobot, Invincible, Omnie, Nightfall and Niobium, each a lowercase letter in pixels and one color.',
     theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy', license: 'Apache-2.0 / MIT', tagline: 'One lab, one system.', og: '/og/sovware.png',
   },
   omnie: {
@@ -108,8 +108,8 @@ const configs: Record<SiteKey, SiteMeta> = {
   },
   nightfall: {
     key: 'nightfall', name: 'Nightfall', wordmark: 'nightfall', domain: 'nightfall.sh', origin: 'https://nightfall.sh',
-    title: 'Nightfall — AI-native parametric CAD', description: 'Open-source, AI-native parametric CAD for macOS: exact NURBS geometry, full history, every part a program.',
-    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/nightfall', license: 'see the repository', tagline: 'Every part is a program.', og: '/og/sovware.png',
+    title: 'Nightfall — AI-native CAD', description: 'AI-native CAD: a fork of FreeCAD where an agent edits the model as a program, across the sketcher, part design, assemblies, PCB and KiCad, drafting and BIM.',
+    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/nightfall', license: 'LGPL-2.1+', tagline: 'Every part is a program.', og: '/og/nightfall.png',
   },
 };
 

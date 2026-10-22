@@ -2,8 +2,9 @@
 import AutobotLab from '../views/AutobotLab.astro';
 import InvincibleLab from '../views/InvincibleLab.astro';
 import SovwareLab from '../views/SovwareLab.astro';
+import NightfallLab from '../views/NightfallLab.astro';
 import BrandKit from '../views/BrandKit.astro';
 
 const key = process.env.SITE_KEY || 'autobot';
 ---
-{key === 'autobot' ? <AutobotLab /> : key === 'invincible' ? <InvincibleLab /> : key === 'sovware' ? <SovwareLab /> : <BrandKit home />}
+{key === 'autobot' ? <AutobotLab /> : key === 'invincible' ? <InvincibleLab /> : key === 'sovware' ? <SovwareLab /> : key === 'nightfall' ? <NightfallLab /> : <BrandKit home />}
