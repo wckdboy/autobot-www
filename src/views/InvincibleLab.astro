@@ -7,24 +7,42 @@ import { fmtDate, v } from '../lib/format';
 
 const latest = releases.invincible.latest;
 const n = NAV.invincible;
+
+const models = [
+  ['Text', 'working', 'open models through llama.cpp, Metal on Apple silicon and CUDA on NVIDIA; one engine, one model format on every node'],
+  ['Speech', 'working', 'in through whisper.cpp or any server in the OpenAI shape; out through Kokoro; your own backends first, cloud only when allowed'],
+  ['Images', 'working', 'through your own image backends; delivered as files on every channel, with receipts'],
+  ['Video', 'planned', 'the same route and receipt rules; no engine wired yet'],
+  ['Frontier models', 'working', 'only when you allow it, redacted before they leave, every call signed'],
+];
+
+const cluster = [
+  ['1 · two paired nodes', 'in progress', 'one model split across two nodes: llama.cpp RPC inside Noise shard links'],
+  ['2 · real machines', 'planned', 'mDNS discovery, calibration, speed-aware plans, local weights; the installer ships the RPC server'],
+  ['3 · resilience', 'planned', 'resume after a reshard, relaunch when a peer returns, micro-batched prefill'],
+  ['4 · placement', 'planned', 'whole model on a peer, or split; the router picks head, peer or split per request'],
+  ['5 · wired fast paths', 'planned', 'tensor parallel over 10 GbE and opt-in RDMA between machines you own'],
+  ['6 · phones as shards', 'planned', 'a charging phone on Wi-Fi lends its NPU; it drops out when it warms up'],
+];
+
 const status = [
-  ['Gateway', 'working', 'OpenAI- and Anthropic-compatible APIs'],
+  ['Gateway', 'working', 'OpenAI- and Anthropic-compatible APIs; every request through the routing rules (51 conformance vectors)'],
   ['Receipts and audit log', 'working', 'signed, hash-chained'],
   ['Pairing', 'working, not reviewed', 'Noise'],
-  ['Always on', 'working', 'launchd or systemd, health checks, self-update; Tor and SOCKS5 with the kill switch as a shared, tested rule; a slow local model is kept alive while it reads a long prompt; stopping leaves nothing running'],
-  ['Agent', 'working', 'retries on provider errors, long turns kept within the context, loop detection, forgiving edits, commands without a terminal and stopped with all they started'],
+  ['Platforms', 'Linux, macOS', 'static, reproducible binaries with build attestations; Windows (x86_64, arm64) planned'],
+  ['Auto-tune', 'planned', 'the node measures its own hardware and picks the layers, context and batch that run fastest; today the benchmarks run on demand'],
+  ['Cluster', 'phase 1 in progress', 'see above'],
+  ['Training', 'planned', 'LoRA on one device, then data-parallel across devices, then federated with phones'],
+  ['Always on', 'working', 'launchd or systemd, health checks, self-update; Tor and SOCKS5 with the kill switch as a shared, tested rule; stopping leaves nothing running'],
+  ['Agent', 'working', 'retries on provider errors, long turns kept within the context, loop detection, forgiving edits'],
+  ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix, WhatsApp, Home Assistant'],
   ['Backups and alerts', 'working', 'one-file backups with checksums, scheduled; crashes, outages and failed tasks sent to your chat'],
-  ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix, WhatsApp'],
-  ['Home Assistant', 'working', 'a tool with approvals, and a conversation agent'],
-  ['Speech and images', 'working', 'your own backends first, cloud only when allowed, with receipts; delivered as files on every channel'],
-  ['Skills hub', 'working', 'search, review, check for updates, audit before installing'],
-  ['Editors', 'working', 'autobot acp for Zed: its terminal, its MCP servers, model picker, slash commands, voice'],
-  ['Security review', 'not independent yet', ''],
+  ['Security review', 'not independent yet', 'fixes from an internal review are in'],
 ];
 ---
-<Lab path="/" current="overview" nav={[...n.nav]} footerNote={n.footer} description="The node you own: open models on your hardware, frontier models when you allow it, a signed receipt for every call.">
+<Lab path="/" current="overview" nav={[...n.nav]} footerNote={n.footer} description="The node you own: one gateway for every model you run, on the hardware you have, across the machines you own, with frontier models only when you allow it and a signed receipt for every call.">
   <h1>invincible</h1>
-  <p class="lede">The node you own. Open models on your hardware, frontier models when you allow it, a signed receipt for every call.</p>
+  <p class="lede">The node you own. One gateway for every model you run: text, speech and images today, video next, on the hardware you have, across the machines you own. Frontier models only when you allow it, and a signed receipt for every call.</p>
 
   <pre><code>curl -fsSL https://invincible.sh/install.sh | sh
 autobot setup</code></pre>
@@ -39,7 +57,47 @@ autobot setup</code></pre>
     <div><dt>Release</dt><dd>v{v(latest.tag)} · {fmtDate(latest.published)}</dd></div>
     <div><dt>Platforms</dt><dd>Linux, macOS</dd></div>
     <div><dt>License</dt><dd>MIT</dd></div>
+    <div><dt>Engine</dt><dd>llama.cpp · Metal, CUDA</dd></div>
+    <div><dt>Telemetry</dt><dd>none</dd></div>
   </dl>
+
+  <section id="why">
+    <h2>What it is for</h2>
+    <p>Capable AI is something you rent. The company, or the country it sits in, can change the price, the model or the terms, read what you send, or switch you off. Open-weight models and cheap accelerators make another path possible, but running them well is still a weekend of glue per machine, and nothing ties them into the tools people use.</p>
+    <p>Invincible is that glue, with sovereignty as the design rule. One node on a desktop, a GPU box or a server gives every device you own one endpoint for intelligence. It runs open models itself, reaches frontier models only by your policy, keeps working when they are gone, and is the backend Autobot, Niobium and the rest of the lab deploy against, from one phone to a rack.</p>
+    <p class="small">Reference points: <a href="https://github.com/exo-explore/exo" rel="noopener">exo</a> pools Macs and workstations into one inference cluster over Thunderbolt and 10 GbE; <a href="https://github.com/deepseek-ai" rel="noopener">DeepInfer</a>, open-sourced by DeepSeek on 20 October 2026, is the engine behind its production API, for one model on data-centre GPUs. Invincible sits between them: llama.cpp on the machines people have, paired and receipted, growing into a cluster of the machines you own.</p>
+  </section>
+
+  <section id="models">
+    <h2>Every kind of model</h2>
+    <div class="table-wrap">
+      <table>
+        <tbody>{models.map(([part, state, note]) => (<tr><td><strong>{part}</strong></td><td>{state}</td><td class="small">{note}</td></tr>))}</tbody>
+      </table>
+    </div>
+    <p class="small">One rule for all of them: your own backend first, the cloud only when the route allows it, a receipt either way.</p>
+  </section>
+
+  <section id="cluster">
+    <h2>Many nodes, one model</h2>
+    <p>A model too large for one machine runs across the machines you own: the desktop, the GPU box, the laptop, in time the phone. Pairing, receipts and the audit log already exist for one node; the cluster reuses them. The plan, in the order it ships:</p>
+    <div class="table-wrap">
+      <table>
+        <tbody>{cluster.map(([part, state, note]) => (<tr><td><strong>{part}</strong></td><td>{state}</td><td class="small">{note}</td></tr>))}</tbody>
+      </table>
+    </div>
+    <p class="small">Nothing here is faster than one machine yet. Phase 1 is being built; the numbers will be published with it, from the same benchmarks the node runs every night.</p>
+  </section>
+
+  <section id="rules">
+    <h2>Security, speed, anonymity, stability</h2>
+    <ul>
+      <li><strong>Security.</strong> Devices pair over Noise; personal data is redacted before anything leaves; every request gets a signed receipt and a line in a hash-chained audit log; releases are reproducible, attested and signed with a pinned key. The independent review is still to come.</li>
+      <li><strong>Speed.</strong> One engine and one model format on every node, on the fastest backend the machine has; speculative decoding and the auto-tune are next. Benchmarks run every night and every run is kept.</li>
+      <li><strong>Anonymity.</strong> Offline by default; Tor and SOCKS5 as routes with the kill switch as a shared, tested rule; no accounts, no telemetry, nothing phones home.</li>
+      <li><strong>Stability.</strong> Always on under launchd or systemd with health checks and self-update; a ten-minute soak test every night; backups in one file; stopping leaves nothing running; it tells your chat when something breaks.</li>
+    </ul>
+  </section>
 
   <section id="code">
     <h2>Code with Autobot</h2>

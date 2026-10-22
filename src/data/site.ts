@@ -59,11 +59,11 @@ const configs: Record<SiteKey, SiteMeta> = {
     origin: 'https://invincible.sh',
     title: 'Invincible — the node you own',
     description:
-      'A self-hosted AI node for a desktop, GPU box or VPS. Serves open models behind OpenAI and Anthropic compatible APIs, routes by policy, signs every receipt, and keeps working when the cloud is gone.',
+      'The node you own: one gateway for every model you run, text, speech and images today, on the hardware you have and across the machines you own, with frontier models only by your policy and a signed receipt for every call.',
     theme: 'paper',
     nav: [
       { label: 'Why', href: '/#why' },
-      { label: 'Tiers', href: '/#tiers' },
+      { label: 'Cluster', href: '/#cluster' },
       { label: 'Trust', href: '/verify' },
       { label: 'Install', href: '/install' },
       { label: 'Releases', href: '/releases' },
