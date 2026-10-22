@@ -18,7 +18,7 @@ version of the kit at `/brand/`; wckd.ai's home is the master kit.
 | Invincible | invincible.sh | AI gateway and decentralized compute | `i` | signal orange `#FF8A1E` |
 | Omnie | omnie.sh | An IDE for development on iOS and iPadOS | `o` | phthalo `#00B386` |
 | Nightfall | nightfall.sh | AI-native parametric CAD | `n` | rose `#FF3E8A` |
-| Niobium | niobium.sh | A pixel-art Hermes agent client for Android and iOS | `n.` (the n and its companion pixel) | niobium blue `#1E8CFF` |
+| Niobium | niobium.sh | A pixel-art Hermes agent client for Android and iOS | `n.` (the n and its companion pixel) | pastel purple `#A78BFA` |
 
 Each signal is one vivid color (high saturation, high brightness) used the same on white and on
 ink. Because it is that bright, **color is for marks, never for text**: the symbol, the
