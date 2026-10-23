@@ -2,6 +2,7 @@
 import Lab from '../layouts/Lab.astro';
 
 const work = [
+  ['SolidCraft', 'the app Nightfall now builds on: SolidCraft, an open-source Rust CAD with a parametric timeline and AI tools, in a fork that adds what Nightfall does best. Its weak operations can run on Nightfall\'s OpenCASCADE kernel; on 100 generated designs it builds 92 against 83 on its own. Static stress analysis runs on Nightfall\'s verified solver: pick the held and loaded faces and read the stress, the deflection and the safety factor. An AI agent designed a steel arm to carry 500 N at a safety factor of two and passed an independent check. Crash fixes go back to SolidCraft itself', 'in review'],
   ['Agent surface', '`nf mcp`: a stdio MCP server over the headless engine. Read the part and its faces by name, set parameters or patch the program with JSON Patch, measure exact volume, area, centroid and bounds, export STEP and meshes. Every edit is rebuilt; a failed feature rolls back; every error carries a JSON Pointer into the document', 'in review'],
   ['Agent evaluation', 'every reference part built from its description, edited and repaired by an agent through `nf mcp`, then measured against the exact part. First run: 60 of 60 within 1e-6 in volume and area, median 7 turns per task', 'in review'],
   ['Feature program', 'a JSON feature list with named parameters and units, selectors instead of face indices, content hashes so one parameter change rebuilds only what it touches', 'shipped'],
@@ -14,7 +15,7 @@ const work = [
 ];
 
 const status = [
-  ['Direction', 'RFC 0011', 'the AI design loop program, accepted: agent surface first, then sketch solver, assemblies and studies'],
+  ['Direction', 'SolidCraft', 'from October 2026, improving SolidCraft instead of a second CAD from scratch: Nightfall supplies its kernel, its analysis and the fixes'],
   ['Platforms', 'macOS 15+', 'Apple Silicon; the headless engine and `nf` CLI build without the app'],
   ['License', 'Apache-2.0', 'OpenCASCADE is LGPL-2.1 and dynamically linked; no GPL code is linked'],
   ['Kernel decision', 'RFC 0001', 'bake-off on a 20-part corpus and 200 ABC models: OCCT 77.4 vs SMLib 50.7; SMLib stays buildable for re-evaluation'],
