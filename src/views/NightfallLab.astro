@@ -8,7 +8,8 @@ const work = [
   ['Kernel', 'OpenCASCADE 7.9.3 behind an XPC service with a watchdog; Rust owns the math, the ownership rules and the policy; exact STEP AP242 out', 'shipped'],
   ['Sketcher', 'sketch constraints now solve: draw roughly, add relations and dimensions, and the geometry follows; conflicts are named, never guessed. The solver was chosen by a measured spike and vendored with no extra dependencies', 'in review'],
   ['Assemblies', 'components, occurrences and joints in the same document. Joint frames come from named faces, so they follow parameter edits; the solver places real solids, and a four-bar and a slider-crank close at their textbook positions within 1e-9 mm. Agents read the solve and drive joints through `nf mcp`; a conflict rolls the edit back. The showcase is Theo Jansen\'s Strandbeest: 26 parts, 37 joints and 12 closed loops, with every toe on Jansen\'s closed-form path within 1e-9 mm over a full crank turn. Agents can check interference and clearance and run motion studies; the first study caught the walker\'s crank links crossing a hip pin, now fixed. Mass, centre of mass and inertia come from exact volume integrals, and a solved assembly exports to URDF: a six-joint arm reproduces the solver within 4e-15 m in MuJoCo', 'in review'],
-  ['Studies', 'structural, thermal and fluid studies as objects in the document, run out of process on permissive solvers, gated by analytic cases before anything is called a result; the design (RFC 0014) is up for decision', 'planned'],
+  ['Studies', 'structural and thermal studies as objects in the document (RFC 0014, accepted): selectors pick faces, every value carries its unit, and `nf study run` and the `run_study` agent tool solve them out of process. Netgen meshes the exact solids and MFEM solves with second-order elements. A cantilever lands within 0.5% of beam theory at three refinements with its reactions balancing to 1e-9, and a heated slab carries its 16.7 kW exactly; laminar flow is next', 'in review'],
+  ['Kernel for other apps', '`nf kernel serve` (RFC 0015) lends the kernel to other CAD programs one operation at a time: solids go in as STEP, and each result face comes back with its history in the caller\'s own numbering. First client: a SolidCraft fork whose joins, cuts, fillets, chamfers and shells now run on OpenCASCADE, keeping its own agent tools and naming. On 100 fuzzed designs it builds 92 against 83 on its own kernel, with no timeouts', 'in review'],
   ['macOS app', 'SwiftUI and a Metal viewport: parameters, history, rollback and exact measures; assemblies open in the app, and editing a joint parameter re-solves and redraws the mechanism. Interactive sketching is next', 'preview'],
 ];
 
@@ -17,7 +18,7 @@ const status = [
   ['Platforms', 'macOS 15+', 'Apple Silicon; the headless engine and `nf` CLI build without the app'],
   ['License', 'Apache-2.0', 'OpenCASCADE is LGPL-2.1 and dynamically linked; no GPL code is linked'],
   ['Kernel decision', 'RFC 0001', 'bake-off on a 20-part corpus and 200 ABC models: OCCT 77.4 vs SMLib 50.7; SMLib stays buildable for re-evaluation'],
-  ['Evidence', '941 tests', 'the occt gate, including the agent evaluation\'s reference run; every headless build returns a factual record: volumes, areas, digests, cache activity, timings'],
+  ['Evidence', '970 tests', 'the occt gate, including the agent evaluation\'s reference run; every headless build returns a factual record: volumes, areas, digests, cache activity, timings'],
   ['FreeCAD', 'oracle', 'an earlier fork direction was retired; FreeCAD runs as a separate program to compute reference values for tests'],
 ];
 ---
