@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T11:38:44.806Z",
+  "generatedAt": "2026-10-23T17:06:39.978Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
@@ -36,7 +36,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 22,
+          "downloads": 24,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
         }
       ]
@@ -71,7 +71,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 22,
+            "downloads": 24,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
           }
         ]
@@ -520,7 +520,7 @@
       }
     ],
     "checksums": "27783c50bc79a7fe605bd9d2ffcc2ca4c369d181d11c7fe6c3c6613630066e98 *autobot-1.14.0-debug.apk\n7c2113e62d9ab369429f5763c33b25f7cbaf9ed3a54032ffac5ea32bcd2043bd *autobot-1.14.0-release.apk\n1cff2386af2be28a8330b9d0444fd58493e4692a9dc3fb72f7d9955b41291c71 *autobot-1.14.0-mapping.txt",
-    "totalDownloads": 190
+    "totalDownloads": 192
   },
   "invincible": {
     "name": "invincible",
@@ -558,7 +558,7 @@
         {
           "name": "SHA256SUMS",
           "size": 360,
-          "downloads": 27,
+          "downloads": 29,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS"
         },
         {
@@ -651,7 +651,7 @@
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 27,
+            "downloads": 29,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS"
           },
           {
@@ -1198,6 +1198,6 @@
       }
     ],
     "checksums": "9e1077b50d4e4890b4b4f0eb2fa7dda1a55b161361778f7bf7b29206e59361c9  invincible-linux-arm64.tar.gz\n55a8bb06a1dd1f5f280c2e58e449500366811fdfe61b1a01f7223f4ebfd4b35c  invincible-linux-x64.tar.gz\n808f90e564011498497ae770100d1c11fc01bae9595b82665eb7c8b30ce8ce11  invincible-macos-arm64.tar.gz\n374c2ee0c45e53453feeea1e53ed7bacea934f7658b6b2c4ff1f1226379f99cf  VERSION",
-    "totalDownloads": 93
+    "totalDownloads": 95
   }
 }
