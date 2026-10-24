@@ -138,6 +138,22 @@
       "onInk": "#A78BFA",
       "onPaper": "#A78BFA",
       "text": "#A78BFA"
+    },
+    "polykrom": {
+      "name": "Polykrom",
+      "domain": "cad.polykrom.app",
+      "role": "Open-source CAD for parts that have to work, with an AI companion",
+      "glyph": [
+        "#####.",
+        "##..##",
+        "##..##",
+        "#####.",
+        "##....",
+        "##...."
+      ],
+      "onInk": "#CCFF00",
+      "onPaper": "#111111",
+      "text": "#111111"
     }
   }
 }
