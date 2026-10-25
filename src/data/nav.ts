@@ -30,15 +30,11 @@ export const NAV = {
   },
   wckd: {
     nav: [
-      { label: 'Sovware', href: 'https://sovware.io' },
-      { label: 'Autobot', href: 'https://autobot.sh' },
-      { label: 'Invincible', href: 'https://invincible.sh' },
-      { label: 'Omnie', href: 'https://omnie.sh' },
-      { label: 'Nightfall', href: 'https://nightfall.sh' },
-      { label: 'Niobium', href: 'https://niobium.sh' },
+      { label: 'Projects', href: '/#projects' },
+      { label: 'Brand', href: '/brand/' },
       { label: 'GitHub', href: 'https://github.com/wckdboy' },
     ],
-    footer: 'WCKD is an independent lab. Free software, signed releases, checkable claims.',
+    footer: 'WCKD is an independent lab. Software, experiments and open research.',
     repo: 'https://github.com/wckdboy',
   },
   sovware: {

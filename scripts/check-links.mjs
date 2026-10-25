@@ -5,14 +5,14 @@
  *   node scripts/check-links.mjs
  */
 import { readdir, readFile, stat } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const SITES = ['autobot', 'invincible', 'sovware'];
+const ROOT = resolve(process.argv[2] || resolve(dirname(fileURLToPath(import.meta.url)), '..'));
+const SITES = ['autobot', 'invincible', 'sovware', 'wckd', 'omnie', 'nightfall'];
 const ATTR = /(?:href|src)="([^"]+)"/g;
-const SKIP = /^(https?:|mailto:|tel:|#|data:)/;
+const SKIP = /^(https?:|mailto:|tel:|data:)/;
 
 let failures = 0;
 
@@ -40,13 +40,21 @@ for (const site of SITES) {
     for (const match of html.matchAll(ATTR)) {
       const href = match[1];
       if (SKIP.test(href)) continue;
-      const clean = href.split('#')[0].split('?')[0];
-      if (!clean) continue;
+      const hash = href.indexOf('#');
+      const path = hash < 0 ? href : href.slice(0, hash);
+      const fragment = hash < 0 ? '' : href.slice(hash + 1);
+      const clean = path.split('?')[0];
       internal += 1;
-      const target = clean.startsWith('/') ? join(dist, clean) : resolve(dirname(file), clean);
+      const target = !clean ? file : clean.startsWith('/') ? join(dist, clean) : resolve(dirname(file), clean);
       const candidates = [target, join(target, 'index.html'), target + '.html'];
-      if (!candidates.some((c) => existsSync(c) && !c.endsWith('/'))) {
+      const found = candidates.find((c) => existsSync(c) && statSync(c).isFile());
+      if (!found) {
         missing.add(`${site}${file.slice(dist.length)} → ${href}`);
+      } else if (fragment && found.endsWith('.html')) {
+        const ids = new Set([...(await readFile(found, 'utf8')).matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+        let decoded = fragment;
+        try { decoded = decodeURIComponent(fragment); } catch { /* A literal % may be an HTML id. */ }
+        if (!ids.has(fragment) && !ids.has(decoded)) missing.add(`${site}${file.slice(dist.length)} → ${href} (missing anchor)`);
       }
     }
   }

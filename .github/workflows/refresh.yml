@@ -31,15 +31,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pnpm data
+          pnpm projects:data --soft
           pnpm sync:install
       - name: Commit if anything changed
         run: |
-          if git diff --quiet -- src/data/releases.json src/data/install.json public/install.sh; then
+          if git diff --quiet -- src/data/releases.json src/data/public-repos.json src/data/install.json public/install.sh; then
             echo "No release changes."
             exit 0
           fi
           git config user.name "wckd-release-bot"
           git config user.email "bot@wckd.cc"
-          git add src/data/releases.json src/data/install.json public/install.sh
+          git add src/data/releases.json src/data/public-repos.json src/data/install.json public/install.sh
           git commit -m "chore: refresh release data"
           git push

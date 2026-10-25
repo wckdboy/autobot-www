@@ -22,3 +22,5 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build:all
       - run: node scripts/check-links.mjs
+      - run: pnpm projects:check
+      - run: pnpm projects:browser
