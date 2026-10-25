@@ -7,6 +7,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const snapshot = JSON.parse(await readFile(resolve(root, 'src/data/public-repos.json'), 'utf8'));
 const projects = JSON.parse(await readFile(resolve(root, 'src/data/projects.json'), 'utf8'));
 const html = await readFile(resolve(root, 'dist/wckd/index.html'), 'utf8');
+const robots = await readFile(resolve(root, 'dist/wckd/robots.txt'), 'utf8');
 const sitemap = await readFile(resolve(root, 'dist/wckd/sitemap.xml'), 'utf8');
 assert.equal(snapshot.owner, 'wckdboy');
 assert.match(snapshot.updated, /^\d{4}-\d{2}-\d{2}$/);
@@ -31,5 +32,6 @@ for (const repo of ['omnie-dev','omnie-edit','omnie-ios','omnie-edu','eidolon','
 assert(!/<script\b/i.test(html), 'Project directory must have zero client JavaScript');
 assert(html.includes('href="https://wckd.ai/"'), 'Incorrect canonical URL');
 assert(html.includes('href="/brand/"') && html.includes('id="source"'));
+assert(robots.includes('Sitemap: https://wckd.ai/sitemap.xml') && !robots.includes('https://autobot.sh/'));
 assert(sitemap.includes('https://wckd.ai/') && !sitemap.includes('https://autobot.sh/'));
 console.log(`Project directory verified: ${projects.length} profiles, ${snapshot.repositories.length} public repositories, lab apps, source privacy, canonical, sitemap and zero runtime JS.`);
