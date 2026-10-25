@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - '**/*.md'
       - '.shots/**'
+  pull_request:
   workflow_dispatch:
 
 concurrency:
@@ -43,19 +44,19 @@ jobs:
       - run: pnpm projects:browser
 
       - name: Deploy autobot.sh
-        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && github.event_name != 'pull_request' }}
         run: npx --yes wrangler@4 deploy --config deploy/autobot.wrangler.jsonc
 
       - name: Deploy invincible.sh
-        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && github.event_name != 'pull_request' }}
         run: npx --yes wrangler@4 deploy --config deploy/invincible.wrangler.jsonc
 
       - name: Deploy sovware.io
-        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && github.event_name != 'pull_request' }}
         run: npx --yes wrangler@4 deploy --config deploy/sovware.wrangler.jsonc
 
       - name: Deploy wckd.ai
-        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && github.event_name != 'pull_request' }}
         run: npx --yes wrangler@4 deploy --config deploy/wckd.wrangler.jsonc
 
       - name: Cloudflare is not configured
