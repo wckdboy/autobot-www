@@ -32,9 +32,10 @@ No tokens, private metadata or browser-side GitHub requests enter the directory.
 
 ```sh
 pnpm projects:data       # refresh the public catalog; token optional
-pnpm build:wckd
+pnpm build:all           # create all six outputs before checking their links
 pnpm projects:check      # privacy/normalization cases + complete rendered directory
 pnpm verify:links       # all six built sites
+pnpm projects:browser   # desktop/mobile/dark and keyboard checks
 npx wrangler deploy --config deploy/wckd.wrangler.jsonc
 ```
 
