@@ -275,6 +275,14 @@
       "isArchived": false
     },
     {
+      "name": "sealed",
+      "url": "https://github.com/wckdboy/sealed",
+      "description": "Sealed — a self-hostable encrypted media vault. The server stores ciphertext it cannot read.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
       "name": "solidcraft",
       "url": "https://github.com/wckdboy/solidcraft",
       "description": "SolidCraft: an open-source parametric 3D CAD application built in pure Rust. Desktop, web, and automation through MCP.",
