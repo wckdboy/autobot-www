@@ -1,15 +1,8 @@
-const ORIGIN: Record<string, string> = {
-  autobot: 'https://autobot.sh',
-  invincible: 'https://invincible.sh',
-  sovware: 'https://sovware.io',
-  wckd: 'https://wckd.ai',
-  omnie: 'https://omnie.sh',
-  nightfall: 'https://nightfall.sh',
-};
+import { meta } from '../data/site';
 
 export const GET = () => {
-  const key = process.env.SITE_KEY || 'autobot';
-  const origin = ORIGIN[key] || ORIGIN.autobot;
+  const key = meta.key;
+  const origin = meta.origin;
   const paths = key === 'autobot' ? ['/', '/releases/', '/install/', '/privacy/', '/verify/', '/brand/']
     : key === 'invincible' ? ['/', '/releases/', '/install/', '/guides/', '/verify/', '/brand/']
     : ['/', '/brand/'];

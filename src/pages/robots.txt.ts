@@ -1,12 +1,7 @@
-const ORIGIN: Record<string, string> = {
-  autobot: 'https://autobot.sh',
-  invincible: 'https://invincible.sh',
-  sovware: 'https://sovware.io',
-};
+import { meta } from '../data/site';
 
 export const GET = () => {
-  const key = process.env.SITE_KEY || 'autobot';
-  const origin = ORIGIN[key] || ORIGIN.autobot;
+  const origin = meta.origin;
   const body = `# ${origin.replace('https://', '')}
 # Public pages only. No tracking, no crawling of anything private.
 User-agent: *
