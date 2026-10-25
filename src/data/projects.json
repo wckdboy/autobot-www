@@ -1,0 +1,91 @@
+[
+  {
+    "id": "autobot",
+    "name": "Autobot",
+    "kind": "AI on your devices",
+    "description": "Private AI for Android and iOS, with chat, agents, images and voice. On-device by default, with remote providers by choice.",
+    "site": "https://autobot.sh",
+    "repo": "autobot",
+    "status": "Android release · iOS TestFlight",
+    "brand": "autobot"
+  },
+  {
+    "id": "invincible",
+    "name": "Invincible",
+    "kind": "Your own AI node",
+    "description": "Run models and agents on hardware you own. Route remote calls by policy and connect your devices to one self-hosted endpoint.",
+    "site": "https://invincible.sh",
+    "repo": "invincible",
+    "status": "Self-hosted · macOS + Linux",
+    "brand": "invincible"
+  },
+  {
+    "id": "niobium",
+    "name": "Niobium",
+    "kind": "A home for your Pixels",
+    "description": "Connect to Hermes or run DSH locally. Give your agents distinct personas and companions, with their own chats and rooms. Full Hermes parity is still in development.",
+    "site": "https://niobium.sh",
+    "repo": "niobium",
+    "status": "Android beta · desktop preview",
+    "brand": "niobium"
+  },
+  {
+    "id": "omnie",
+    "name": "Omnie",
+    "kind": "Make things, anywhere",
+    "description": "A family of tools for coding, editing, learning and working with agents on iPhone and iPad. Each app has its own scope and development status.",
+    "site": "https://omnie.sh",
+    "repo": "omnie-dev",
+    "status": "Apps in development",
+    "brand": "omnie"
+  },
+  {
+    "id": "polykrom",
+    "name": "Polykrom",
+    "kind": "CAD for the physical world",
+    "description": "Parametric CAD in Rust with an AI companion and Nightfall stress analysis. A fork of SolidCraft, with shared fixes contributed upstream.",
+    "site": "https://polykrom.app",
+    "repo": "polykrom",
+    "status": "Source builds · browser preview",
+    "mark": "polykrom"
+  },
+  {
+    "id": "nightfall",
+    "name": "Nightfall",
+    "kind": "Geometry, measured",
+    "description": "CAD kernel work, modeling commands and engineering studies. Its kernel and verified study runner also support Polykrom.",
+    "site": "https://nightfall.sh",
+    "repo": "nightfall",
+    "status": "In development",
+    "brand": "nightfall"
+  },
+  {
+    "id": "axit",
+    "name": "Axit",
+    "kind": "Find it. Axit.",
+    "description": "Fast file search, storage maps and reviewed cleanup in a Rust TUI. Keyboard and mouse, application management, MCP and ACP.",
+    "site": "https://axit.sh",
+    "repo": "axit",
+    "status": "Released · macOS + Linux",
+    "mark": "axit"
+  },
+  {
+    "id": "openendo",
+    "name": "OpenEndo",
+    "kind": "Research in the open",
+    "description": "An open data hub for endometriosis research: clinical trials, papers, funding and policy, with a separate discovery engine.",
+    "site": "https://openendo.org",
+    "repo": "openendo",
+    "status": "Public research hub"
+  },
+  {
+    "id": "sovware",
+    "name": "Sovware",
+    "kind": "Keep it sovereign",
+    "description": "The organization, standards and infrastructure behind software and hardware you can own, inspect and run yourself.",
+    "site": "https://sovware.io",
+    "repo": "sovware",
+    "status": "Sovereign software + hardware",
+    "brand": "sovware"
+  }
+]

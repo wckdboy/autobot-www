@@ -39,6 +39,8 @@ jobs:
           pnpm sync:install
       - run: pnpm build:all
       - run: node scripts/check-links.mjs
+      - run: pnpm projects:check
+      - run: pnpm projects:browser
 
       - name: Deploy autobot.sh
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
@@ -52,7 +54,7 @@ jobs:
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
         run: npx --yes wrangler@4 deploy --config deploy/sovware.wrangler.jsonc
 
-      - name: Redirect wckd.ai
+      - name: Deploy wckd.ai
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
         run: npx --yes wrangler@4 deploy --config deploy/wckd.wrangler.jsonc
 

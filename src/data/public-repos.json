@@ -1,0 +1,310 @@
+{
+  "updated": "2026-10-25",
+  "owner": "wckdboy",
+  "repositories": [
+    {
+      "name": "13ft-coolify",
+      "url": "https://github.com/wckdboy/13ft-coolify",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "autobot",
+      "url": "https://github.com/wckdboy/autobot",
+      "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "autobot-www",
+      "url": "https://github.com/wckdboy/autobot-www",
+      "description": "The public sites for Autobot, Invincible Gateway and Sovware: autobot.sh, invincible.sh, sovware.io.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "axit",
+      "url": "https://github.com/wckdboy/axit",
+      "description": "Axit — fast Rust disk search and reviewed cleanup for macOS and Linux. Keyboard/mouse TUI, MCP and ACP by WCKD.ai.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "BEHOLD",
+      "url": "https://github.com/wckdboy/BEHOLD",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "coolify-matrix-docker",
+      "url": "https://github.com/wckdboy/coolify-matrix-docker",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "drivesearch",
+      "url": "https://github.com/wckdboy/drivesearch",
+      "description": "Instant offline search across Google Drive, OneDrive, Proton Drive, Dropbox, Nextcloud and S3 on iOS, built on FSearchKit",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "eidolon",
+      "url": "https://github.com/wckdboy/eidolon",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "enjin",
+      "url": "https://github.com/wckdboy/enjin",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "foolfuuka-searxng",
+      "url": "https://github.com/wckdboy/foolfuuka-searxng",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "fsearch",
+      "url": "https://github.com/wckdboy/fsearch",
+      "description": "Whole-disk file search for macOS: fuzzy names, typo tolerance, indexed content grep. ~1 ms over 8M files.",
+      "visibility": "public",
+      "isFork": true,
+      "isArchived": false
+    },
+    {
+      "name": "gmk-kiosk",
+      "url": "https://github.com/wckdboy/gmk-kiosk",
+      "description": "Linux Mint kiosk: weather + Microsoft Teams split view, auto-refresh, 08-17 CET schedule, rtcwake power management",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "hermes-agent",
+      "url": "https://github.com/wckdboy/hermes-agent",
+      "description": "The agent that grows with you",
+      "visibility": "public",
+      "isFork": true,
+      "isArchived": false
+    },
+    {
+      "name": "hermes-coolify",
+      "url": "https://github.com/wckdboy/hermes-coolify",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "hermes-webui-themes",
+      "url": "https://github.com/wckdboy/hermes-webui-themes",
+      "description": "Hermes WebUI themes (BLXMP) — fetched via the WebUI extension system",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "invincible",
+      "url": "https://github.com/wckdboy/invincible",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "Mosaic",
+      "url": "https://github.com/wckdboy/Mosaic",
+      "description": "Local-first file manager, photo library, and video player for iPhone. Private, on-device, built for iOS 26/27 Liquid Glass.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "n8n_docker-compose",
+      "url": "https://github.com/wckdboy/n8n_docker-compose",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "nextcloud-mcp",
+      "url": "https://github.com/wckdboy/nextcloud-mcp",
+      "description": "Production MCP server for Nextcloud (WebDAV + OCS): list/read/upload/share/search for Grok Bot and Cursor",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "nightfall",
+      "url": "https://github.com/wckdboy/nightfall",
+      "description": "Open-source, AI-native parametric CAD for macOS (NURBS, SMLib kernel)",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "nightfall-freecad",
+      "url": "https://github.com/wckdboy/nightfall-freecad",
+      "description": "Nightfall — a FreeCAD fork focused on speed, simplicity, stability, AI-native modeling and verification.",
+      "visibility": "public",
+      "isFork": true,
+      "isArchived": false
+    },
+    {
+      "name": "niobium",
+      "url": "https://github.com/wckdboy/niobium",
+      "description": "Niobium — a minimal iOS and Android command deck for Hermes Agent. Hermes profiles become Pixels, and the iOS 1.1 build can boot the full DeepSeek Harness locally in Alpine via iSH.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "niobium-companion",
+      "url": "https://github.com/wckdboy/niobium-companion",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "omnie-dev",
+      "url": "https://github.com/wckdboy/omnie-dev",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "omnie-dev-editor-engine",
+      "url": "https://github.com/wckdboy/omnie-dev-editor-engine",
+      "description": "Omnie-dev's code-editor engine: a fork of Runestone (Core Text, tree-sitter) for iPad",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "omnie-edit",
+      "url": "https://github.com/wckdboy/omnie-edit",
+      "description": "Clean iPhone text and code editor with optional git. No account, no cloud lock-in.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "omnie-edu",
+      "url": "https://github.com/wckdboy/omnie-edu",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "omnie-ios",
+      "url": "https://github.com/wckdboy/omnie-ios",
+      "description": "Omnie Agent — iOS client for self-hosted Hermes Agent gateways, with an on-device fallback agent. Not affiliated with Nous Research.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "openendo",
+      "url": "https://github.com/wckdboy/openendo",
+      "description": "Open data hub for endometriosis research — clinical trials, papers, funding & policy, refreshed weekly from ClinicalTrials.gov and PubMed. For the 190M women with endometriosis who deserve to be taken seriously.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "openendo-engine",
+      "url": "https://github.com/wckdboy/openendo-engine",
+      "description": "OpenEndo Discovery Engine — AI research-gap, conflict, repurposing and hypothesis discovery over the openendo data layer. Stage 4 of the OpenEndo mission. LangSmith-traced.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "openhuman-web",
+      "url": "https://github.com/wckdboy/openhuman-web",
+      "description": "OpenHuman web UI build container (Dockerfile)",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "polykrom",
+      "url": "https://github.com/wckdboy/polykrom",
+      "description": "Polykrom: open-source parametric CAD in pure Rust for physical-world engineering, with stress analysis and an AI companion. A fork of SolidCraft.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "qBittorrent-Search-Plugins",
+      "url": "https://github.com/wckdboy/qBittorrent-Search-Plugins",
+      "description": "BurningMop's qbittorrent search plugins collection",
+      "visibility": "public",
+      "isFork": true,
+      "isArchived": false
+    },
+    {
+      "name": "RoundTable",
+      "url": "https://github.com/wckdboy/RoundTable",
+      "description": "RoundTable — open, multi-agent mission workspace. Missions, tasks, artifacts & approvals; Hermes agents collaborate with visual feedback for the human orchestrator.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "solidcraft",
+      "url": "https://github.com/wckdboy/solidcraft",
+      "description": "SolidCraft: an open-source parametric 3D CAD application built in pure Rust. Desktop, web, and automation through MCP.",
+      "visibility": "public",
+      "isFork": true,
+      "isArchived": false
+    },
+    {
+      "name": "sovware",
+      "url": "https://github.com/wckdboy/sovware",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "wckd-gpu",
+      "url": "https://github.com/wckdboy/wckd-gpu",
+      "description": "One-button cloud GPU sessions: presets, multi-vendor price/perf, S3 sync, auto shut-down",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "wckdboy.github.io",
+      "url": "https://github.com/wckdboy/wckdboy.github.io",
+      "description": "wckdboy",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    }
+  ]
+}

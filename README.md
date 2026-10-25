@@ -7,13 +7,41 @@ The public sites for the WCKD lab and its brands, from one Astro codebase on one
 | [autobot.sh](https://autobot.sh) | Autobot | WCKD kit v4 |
 | [invincible.sh](https://invincible.sh) | Invincible | WCKD kit v4 |
 | [sovware.io](https://sovware.io) | Sovware | WCKD kit v4 · sovereign software and hardware |
-| [wckd.ai](https://wckd.ai) | WCKD | the master brand kit |
+| [wckd.ai](https://wckd.ai) | WCKD | project directory, public source index and master brand kit |
 | [nightfall.sh](https://nightfall.sh) | Nightfall | WCKD kit v4 · the FreeCAD fork's page |
 | omnie.sh | Omnie | builds its brand kit as the home page; not deployed |
 | [niobium.sh](https://niobium.sh) | Niobium | its own repo (`wckdboy/niobium`, `site/`); in the kit since v4 with the `n.` symbol |
 
 Brand kit: [BRAND.md](BRAND.md), source [`brand/kit.json`](brand/kit.json), assets drawn by
 `pnpm brand`, and every site's own version at `/brand/`.
+
+## WCKD project directory
+
+`wckd.ai` is the project homepage; the shared design guide remains at `/brand/`.
+The directory covers Autobot, Invincible, Niobium, Omnie, Polykrom, Nightfall, Axit,
+OpenEndo and Sovware, plus the Omnie apps and other lab tools. Product descriptions
+come from their public repositories and sites, with beta, preview and development
+status stated separately from release availability.
+
+`src/data/projects.json` holds the reviewed profiles. `src/data/public-repos.json`
+is a complete build-time snapshot of the public repositories, including components,
+integrations and forks. Fork attribution is preserved. The refresh script accepts
+only explicitly public records from the expected GitHub owner and atomically replaces
+the snapshot after every page succeeds. A fetch failure preserves the prior file.
+No tokens, private metadata or browser-side GitHub requests enter the directory.
+
+```sh
+pnpm projects:data       # refresh the public catalog; token optional
+pnpm build:wckd
+pnpm projects:check      # privacy/normalization cases + complete rendered directory
+pnpm verify:links       # all six built sites
+npx wrangler deploy --config deploy/wckd.wrangler.jsonc
+```
+
+The six-hour refresh workflow includes the public catalog. Deployment uses the
+existing Wrangler workflow; the date on the directory identifies its baked snapshot.
+The `wckd-redirect` Worker retains its historical name and now serves static WCKD
+assets on both `wckd.ai` and `www.wckd.ai`.
 
 ## The system
 
@@ -70,7 +98,7 @@ pnpm og                  # regenerate social cards
 
 ## Hosting
 
-Cloudflare Workers Static Assets, three site Workers plus two redirect Workers:
+Cloudflare Workers Static Assets, with site Workers and a separate `www` redirect:
 
 | Worker | Assets | Domains |
 | --- | --- | --- |
@@ -78,7 +106,7 @@ Cloudflare Workers Static Assets, three site Workers plus two redirect Workers:
 | `invincible-site` | `dist/invincible` | `invincible.sh` |
 | `sovware-site` | `dist/sovware` | `sovware.io` |
 | `www-redirect` | tiny Worker | all `www` hosts → apex |
-| `wckd-redirect` | tiny Worker | `wckd.ai` → sovware.io |
+| `wckd-redirect` | `dist/wckd` | `wckd.ai`, `www.wckd.ai` |
 
 Custom domains live in `deploy/*.wrangler.jsonc`. Deploy only Autobot while it is under review:
 

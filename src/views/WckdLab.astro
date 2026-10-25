@@ -1,0 +1,117 @@
+---
+import Lab from '../layouts/Lab.astro';
+import { kit, symbolSvg } from '../data/kit';
+import projects from '../data/projects.json';
+import source from '../data/public-repos.json';
+
+const omnie = [
+  ['Omnie Dev', 'omnie-dev', 'An offline-first IDE for agent-assisted coding on iPad and iPhone.'],
+  ['Omnie Edit', 'omnie-edit', 'A local text and code editor with optional Git.'],
+  ['Omnie Agent', 'omnie-ios', 'A client for self-hosted Hermes gateways, with an on-device fallback agent.'],
+  ['Omnie Edu', 'omnie-edu', 'A learning canvas and hints-first AI tutor. Pre-alpha.'],
+];
+const lab = [
+  ['Eidolon', 'eidolon', 'An Android camera with RAW capture, creative color and manual controls. Early testing releases.'],
+  ['Enjin', 'enjin', 'An iPad canvas for curious kids, with pencil ink and agent-created portals. In development.'],
+  ['Mosaic', 'Mosaic', 'A local file manager, photo library and video player for iPhone.'],
+  ['DriveSearch', 'drivesearch', 'Offline search across indexed cloud-drive metadata on iOS.'],
+  ['FSearch', 'fsearch', 'Whole-disk indexed file search for macOS.'],
+  ['RoundTable', 'RoundTable', 'A shared mission workspace for agents, tasks, artifacts and approvals.'],
+  ['WCKD GPU', 'wckd-gpu', 'Cloud GPU sessions with presets, storage sync and automatic shut-down.'],
+];
+const repoUrls = new Map(source.repositories.map((r) => [r.name.toLowerCase(), r.url]));
+const repoUrl = (name: string) => {
+  const url = repoUrls.get(name.toLowerCase());
+  if (!url) throw new Error(`Missing public source for project: ${name}`);
+  return url;
+};
+---
+<Lab path="/" current="" description="Explore the WCKD projects: AI agents, CAD, creative apps, local tools and open research. Project sites, public source and development status in one place.">
+  <p class="label">WCKD.AI / independent software</p>
+  <h1>ideas, made<br />into tools</h1>
+  <p class="lede">AI agents, CAD, creative apps and open research. The projects from one lab: what they do, where to find them, and which ones are in development.</p>
+  <div class="actions">
+    <a class="button button--primary" href="#projects">Explore the projects</a>
+    <a class="text-link" href="#source">Public source</a>
+    <a class="text-link" href="/brand/">The shared brand kit</a>
+  </div>
+
+  <section id="projects" aria-labelledby="projects-title">
+    <div class="section-head"><h2 id="projects-title">From the lab.</h2><p class="label">{projects.length} projects / one WCKD</p></div>
+    <ul class="projects">
+      {projects.map((p) => (
+        <li id={`project-${p.id}`} class="project">
+          <p class="label">{p.kind}</p>
+          <h3>
+            {'brand' in p && p.brand && <span class="project-symbol" style={`--project-paper:${kit.brands[p.brand].onPaper};--project-ink:${kit.brands[p.brand].onInk}`} set:html={symbolSvg(kit.brands[p.brand], 22)} />}
+            {'mark' in p && p.mark && <img class="project-symbol" src={`/projects/${p.mark}.svg`} width="24" height="24" alt="" loading="lazy" />}
+            <a href={p.site}>{p.name}</a>
+          </h3>
+          <p>{p.description}</p>
+          <p class="project-status">{p.status}</p>
+          <div class="project-links"><a href={p.site}>Visit {new URL(p.site).hostname} <span aria-hidden="true">↗</span></a><a href={repoUrl(p.repo)}>Source</a></div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="omnie" aria-labelledby="omnie-title">
+    <h2 id="omnie-title">The Omnie apps.</h2>
+    <p>A family, with a different workspace for each kind of work. Development status and setup live with each app.</p>
+    <ul class="small-projects">{omnie.map(([name, repo, description]) => (
+      <li><h3><a href={repoUrl(repo)}>{name} <span aria-hidden="true">↗</span></a></h3><p>{description}</p></li>
+    ))}</ul>
+  </section>
+
+  <section id="experiments" aria-labelledby="experiments-title">
+    <h2 id="experiments-title">More to explore.</h2>
+    <p>Creative tools, small utilities and experiments. These have their own release notes and limits; a source repository is a starting point, not a promise of a finished app.</p>
+    <ul class="small-projects">{lab.map(([name, repo, description]) => (
+      <li><h3><a href={repoUrl(repo)}>{name} <span aria-hidden="true">↗</span></a></h3><p>{description}</p></li>
+    ))}</ul>
+  </section>
+
+  <section id="source" aria-labelledby="source-title">
+    <h2 id="source-title">The whole workbench.</h2>
+    <p>The public code includes the apps, their components, research tools, integrations and forks. Forks retain their upstream credits and licenses.</p>
+    <details class="repository-index">
+      <summary>All {source.repositories.length} public repositories <span class="small">/ updated {source.updated}</span></summary>
+      <ul>{source.repositories.map((r) => (
+        <li><div class="repository-name"><a href={r.url}>{r.name}</a>{r.isFork && <span class="small">fork</span>}{r.isArchived && <span class="small">archived</span>}</div>{r.description && <p>{r.description}</p>}</li>
+      ))}</ul>
+    </details>
+    <p class="small">A static index of public repositories from <a href="https://github.com/wckdboy">github.com/wckdboy</a>. The page makes no GitHub requests in your browser.</p>
+  </section>
+</Lab>
+
+<style>
+  .projects, .small-projects, .repository-index ul { list-style: none; padding: 0; margin: 0; }
+  .projects, .small-projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; }
+  .project { padding: 30px 0; border-top: 1px solid var(--rule); min-width: 0; }
+  .project h3 { display: flex; align-items: center; gap: 12px; font-size: 24px; margin: 10px 0 12px; }
+  .project h3 a { text-decoration: none; }
+  .project h3 a:hover { text-decoration: underline; }
+  .project p { font-size: 14px; margin: 0 0 14px; }
+  .project p.label { font-size: 11px; }
+  .project-symbol { display: inline-block; flex: none; width: 26px; height: 24px; object-fit: contain; image-rendering: pixelated; color: var(--project-paper); }
+  .project-symbol :global(svg) { width: 26px; height: 24px; }
+  .project p.project-status { font-size: 12px; color: var(--muted); }
+  .project-links { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; }
+  .small-projects li { padding: 22px 0; border-top: 1px solid var(--rule); min-width: 0; }
+  .small-projects h3 { margin: 0 0 8px; font-size: 17px; }
+  .small-projects p { font-size: 14px; margin: 0; }
+  .repository-index { border-block: 1px solid var(--rule); margin-top: 22px; }
+  .repository-index summary { cursor: pointer; padding: 18px 0; font-weight: 600; }
+  .repository-index summary .small { font-weight: 400; white-space: nowrap; }
+  .repository-index li { padding: 16px 0; border-top: 1px solid var(--rule); break-inside: avoid; }
+  .repository-name { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; font-size: 14px; }
+  .repository-index p { font-size: 12px; margin: 6px 0 0; color: var(--muted); }
+  .repository-index a, .repository-index p { overflow-wrap: anywhere; }
+  @media (prefers-color-scheme: dark) { .project-symbol { color: var(--project-ink); } }
+  @media (max-width: 720px) {
+    .projects, .small-projects { grid-template-columns: minmax(0, 1fr); }
+    .section-head { align-items: start; flex-direction: column; gap: 8px; }
+    .project { padding: 24px 0; }
+    .project h3 { font-size: 22px; }
+  }
+</style>

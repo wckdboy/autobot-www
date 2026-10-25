@@ -99,7 +99,7 @@ const configs: Record<SiteKey, SiteMeta> = {
   },
   wckd: {
     key: 'wckd', name: 'WCKD', wordmark: 'wckd', domain: 'wckd.ai', origin: 'https://wckd.ai',
-    title: 'WCKD — one lab, one system', description: 'The WCKD lab and its brand kit: Sovware, Autobot, Invincible, Omnie, Nightfall and Niobium, each a lowercase letter in pixels and one color.',
+    title: 'WCKD — projects from the lab', description: 'AI agents, CAD, creative apps, local tools and open research. Explore Autobot, Invincible, Niobium, Omnie, Polykrom, Nightfall, Axit, OpenEndo and Sovware.',
     theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy', license: 'Apache-2.0 / MIT', tagline: 'One lab, one system.', og: '/og/sovware.png',
   },
   omnie: {
