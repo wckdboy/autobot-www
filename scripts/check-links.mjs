@@ -40,7 +40,9 @@ for (const site of SITES) {
     for (const match of html.matchAll(ATTR)) {
       const href = match[1];
       if (SKIP.test(href)) continue;
-      const [path, fragment] = href.split('#');
+      const hash = href.indexOf('#');
+      const path = hash < 0 ? href : href.slice(0, hash);
+      const fragment = hash < 0 ? '' : href.slice(hash + 1);
       const clean = path.split('?')[0];
       internal += 1;
       const target = !clean ? file : clean.startsWith('/') ? join(dist, clean) : resolve(dirname(file), clean);
@@ -49,7 +51,7 @@ for (const site of SITES) {
       if (!found) {
         missing.add(`${site}${file.slice(dist.length)} → ${href}`);
       } else if (fragment && found.endsWith('.html')) {
-        const ids = new Set([...(await readFile(found, 'utf8')).matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]));
+        const ids = new Set([...(await readFile(found, 'utf8')).matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
         let decoded = fragment;
         try { decoded = decodeURIComponent(fragment); } catch { /* A literal % may be an HTML id. */ }
         if (!ids.has(fragment) && !ids.has(decoded)) missing.add(`${site}${file.slice(dist.length)} → ${href} (missing anchor)`);

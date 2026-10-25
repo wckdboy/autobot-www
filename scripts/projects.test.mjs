@@ -82,15 +82,16 @@ test('the built-link checker handles literal percent IDs and reports every missi
     const dist = join(directory, 'dist/wckd');
     await mkdir(dist, { recursive:true });
     for (const name of ['404.html','apple-touch-icon.png','_headers','robots.txt','sitemap.xml','install.sh']) await writeFile(join(dist,name), 'fixture');
-    const html = '<main id="main"><p id="50%">half</p><a href="#50%">literal</a><a href="#50%25">encoded</a></main>';
+    const html = '<main id="main"><p id="50%">half</p><a href="#50%">literal</a><a href="#50%25">encoded</a><p id="C#">sharp</p><a href="#C#">hash</a><p data-id="ghost">data only</p></main>';
     await writeFile(join(dist,'index.html'),html);
     const script = fileURLToPath(new URL('./check-links.mjs',import.meta.url));
     assert.match(execFileSync(process.execPath,[script,directory],{encoding:'utf8'}), /all links resolve/);
-    await writeFile(join(dist,'index.html'),html+'<a href="#bad%">bad</a><a href="#missing">missing</a>');
+    await writeFile(join(dist,'index.html'),html+'<a href="#bad%">bad</a><a href="#missing">missing</a><a href="#ghost">not an id</a>');
     const result = spawnSync(process.execPath,[script,directory],{encoding:'utf8'});
     assert.equal(result.status,1);
     assert.match(result.stdout,/#bad% \(missing anchor\)/);
     assert.match(result.stdout,/#missing \(missing anchor\)/);
+    assert.match(result.stdout,/#ghost \(missing anchor\)/);
     assert(!result.stderr.includes('URIError'));
   } finally { await rm(directory,{recursive:true,force:true}); }
 });
