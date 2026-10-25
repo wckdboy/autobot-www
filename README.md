@@ -33,7 +33,8 @@ pnpm projects:data          # public catalog refresh; token optional
 pnpm data                   # release metadata refresh
 pnpm sync:install           # mirror Invincible's installer and its SHA-256
 pnpm build:all              # build all six sites
-pnpm verify:links           # links and fragments in all six built outputs
+pnpm verify:links           # links and fragments in all six built outputs, and that
+                            # invincible.sh/verify runs install.sh's signature check
 pnpm projects:check         # catalog/privacy/failure tests and rendered directory
 pnpm projects:browser       # desktop, tablet, mobile, dark mode and keyboard checks
 ```

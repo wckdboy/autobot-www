@@ -7,7 +7,7 @@ const a = releases.autobot.latest;
 const i = releases.invincible.latest;
 
 const sovereign = [
-  ['Runs on what you own', "the phone's NPU and GPU, a desktop, a GPU box, a server you rent. A cloud model is a choice you make per call, never a requirement."],
+  ['Runs on what you own', "the phone's NPU and GPU, a desktop, a GPU box. A server you rent runs the same software, but it is someone else's machine. A cloud model is a choice you make per call, never a requirement."],
   ['Offline by default', 'every app starts with the network off. A kill switch rejects a request before DNS or a socket; the route (direct, Tor, SOCKS5) is yours to set.'],
   ['No accounts, no telemetry', 'nothing phones home. Crash reports and analytics do not exist. The log of what left the device is on the device.'],
   ['Source you can read', 'free software, signed releases, published hashes. Build it yourself and compare.'],
@@ -63,7 +63,7 @@ const status = [
 
   <section id="sovereign">
     <h2>What sovereign means here</h2>
-    <p>A model you rent on someone else's machine is a service. It can change, be rate-limited, read your data or go away. Sovereign software runs on hardware you control, keeps its state in files you can read, and treats the network as a tool you switch on, not a condition of use. Sovereign hardware is the machine you already have: the phone in your pocket with its NPU, the desktop under the desk, the GPU box in the closet, the server you rent and can leave. And sovereign means it is still there tomorrow, whatever happens to a host, a company or a country.</p>
+    <p>A model you rent on someone else's machine is a service. It can change, be rate-limited, read your data or go away. Sovereign software runs on hardware you control, keeps its state in files you can read, and treats the network as a tool you switch on, not a condition of use. Sovereign hardware is the machine you already have: the phone in your pocket with its NPU, the desktop under the desk, the GPU box in the closet. A server you rent and can leave is useful, but it is someone else's hardware. And sovereign means it is still there tomorrow, whatever happens to a host, a company or a country.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Rule</th><th>In practice</th></tr></thead>
@@ -109,7 +109,7 @@ const status = [
         </tbody>
       </table>
     </div>
-    <p class="small">Autobot pairs with Invincible over Noise and runs the node's agent, approvals and receipts from the phone. Invincible routes the models, signs the receipts and absorbs wckd-gpu's elastic compute. Omnie is where the code is written and reviewed. Nightfall is the first CAD domain for the kernel. Niobium is the client for a Hermes agent you host.</p>
+    <p class="small">Autobot pairs with Invincible over Noise and runs the node's agent, approvals and receipts from the phone. Invincible routes the models and signs the receipts. Omnie is where the code is written and reviewed. Nightfall is the first CAD domain for the kernel. Niobium is the client for a Hermes agent you host.</p>
   </section>
 
   <section id="kernel">

@@ -20,7 +20,7 @@ const keyLine = 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq
     <pre><code>printf '%s\n' '{keyLine}' > allowed_signers
 curl -fsSLO https://github.com/wckdboy/invincible/releases/download/{tag}/SHA256SUMS
 curl -fsSLO https://github.com/wckdboy/invincible/releases/download/{tag}/SHA256SUMS.sig
-ssh-keygen -Y verify -f allowed_signers -I invincible-release -n file -s SHA256SUMS.sig &lt; SHA256SUMS</code></pre>
+ssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig &lt; SHA256SUMS</code></pre>
   </section>
 
   <section>

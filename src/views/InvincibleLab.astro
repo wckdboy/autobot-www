@@ -22,13 +22,13 @@ const cluster = [
   ['3 · resilience', 'planned', 'resume after a reshard, relaunch when a peer returns, micro-batched prefill'],
   ['4 · placement', 'planned', 'whole model on a peer, or split; the router picks head, peer or split per request'],
   ['5 · wired fast paths', 'planned', 'tensor parallel over 10 GbE and opt-in RDMA between machines you own'],
-  ['6 · phones as shards', 'planned', 'a charging phone on Wi-Fi lends its NPU; it drops out when it warms up'],
+  ['6 · phones as shards', 'deferred', 'phones and tablets are clients of a node, not nodes: iOS cannot start an engine process, and a phone could serve only while awake, plugged in and cool'],
 ];
 
 const training = [
   ['T1 · one device', 'planned', 'invincible train: LoRA fine-tuning on this node, datasets as files, adapters as models, an eval gate before an adapter is served'],
   ['T2 · across devices', 'planned', 'data-parallel LoRA on the machines you own, DiLoCo-style outer steps so a slow link does not stall the run'],
-  ['T3 · with phones', 'planned', 'federated LoRA: each phone trains on its own data and only the update leaves; the data stays on the device'],
+  ['T3 · with phones', 'deferred', 'federated LoRA, each phone training on its own data; phones and tablets are clients of a node, not nodes, so it has no device to run on for now'],
   ['T4 · larger runs', 'planned', 'pipeline-parallel training across machines, DeMo compression on the wire'],
 ];
 
@@ -48,7 +48,7 @@ const status = [
   ['Platforms', 'Linux, macOS', 'static, reproducible binaries with build attestations; Windows (x86_64, arm64) planned'],
   ['Auto-tune', 'planned', 'the node measures its own hardware and picks the layers, context and batch that run fastest; today the benchmarks run on demand'],
   ['Cluster', 'phase 1 in progress', 'see above'],
-  ['Training', 'planned', 'see above: LoRA on one device, then across devices, then federated with phones, then larger runs'],
+  ['Training', 'planned', 'see above: LoRA on one device, then across devices, then larger runs; federated training with phones is deferred'],
   ['Always on', 'working', 'launchd or systemd, health checks, self-update; Tor and SOCKS5 with the kill switch as a shared, tested rule; stopping leaves nothing running'],
   ['Agent', 'working', 'retries on provider errors, long turns kept within the context, loop detection, forgiving edits'],
   ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix, WhatsApp, Home Assistant'],
@@ -58,7 +58,7 @@ const status = [
 ---
 <Lab path="/" current="overview" nav={[...n.nav]} footerNote={n.footer} description="The node you own: one gateway for every model you run, on the hardware you have, across the machines you own, with frontier models only when you allow it and a signed receipt for every call.">
   <h1>invincible</h1>
-  <p class="lede">The node you own. One gateway for every model you run: text, speech and images today, video next, on the hardware you have, across the machines you own, with the training to make them yours. Frontier models only when you allow it, a signed receipt for every call, and the hard parts of AI made plain.</p>
+  <p class="lede">The node you own. One gateway for every model you run: text, speech and images today, video next, on the hardware you have, across the machines you own; training to make them yours is planned. Frontier models only when you allow it, a signed receipt for every call, and the hard parts of AI made plain.</p>
 
   <pre><code>curl -fsSL https://invincible.sh/install.sh | sh
 autobot setup</code></pre>
@@ -80,7 +80,7 @@ autobot setup</code></pre>
   <section id="why">
     <h2>What it is for</h2>
     <p>Capable AI is something you rent. The company, or the country it sits in, can change the price, the model or the terms, read what you send, or switch you off. Open-weight models and cheap accelerators make another path possible, but running them well is still a weekend of glue per machine, and nothing ties them into the tools people use.</p>
-    <p>Invincible is that glue, with sovereignty as the design rule. One node on a desktop, a GPU box or a server gives every device you own one endpoint for intelligence. It runs open models itself, reaches frontier models only by your policy, keeps working when they are gone, and is the backend Autobot, Niobium and the rest of the lab deploy against, from one phone to a rack.</p>
+    <p>Invincible is that glue, with sovereignty as the design rule. One node on a desktop, a GPU box or a server gives every device you own one endpoint for intelligence. It runs open models itself, reaches frontier models only by your policy, keeps working when they are gone, and is Autobot's backend: the phone pairs with it, and the terminal agent uses it as its only model provider.</p>
     <p class="small">Reference points: <a href="https://github.com/exo-explore/exo" rel="noopener">exo</a> pools Macs and workstations into one inference cluster over Thunderbolt and 10 GbE; <a href="https://github.com/deepseek-ai" rel="noopener">DeepInfer</a>, open-sourced by DeepSeek on 20 October 2026, is the engine behind its production API, for one model on data-centre GPUs. Invincible sits between them: llama.cpp on the machines people have, paired and receipted, growing into a cluster of the machines you own.</p>
   </section>
 
@@ -106,18 +106,18 @@ autobot setup</code></pre>
 
   <section id="cluster">
     <h2>Many nodes, one model</h2>
-    <p>A model too large for one machine runs across the machines you own: the desktop, the GPU box, the laptop, in time the phone. Pairing, receipts and the audit log already exist for one node; the cluster reuses them. The plan, in the order it ships:</p>
+    <p>A model too large for one machine runs across the machines you own: the desktop, the GPU box, the laptop. Pairing, receipts and the audit log already exist for one node; the cluster reuses them. The plan, in the order it ships:</p>
     <div class="table-wrap">
       <table>
         <tbody>{cluster.map(([part, state, note]) => (<tr><td><strong>{part}</strong></td><td>{state}</td><td class="small">{note}</td></tr>))}</tbody>
       </table>
     </div>
-    <p class="small">Nothing here is faster than one machine yet. Phase 1 is being built; the numbers will be published with it, from the same benchmarks the node runs every night.</p>
+    <p class="small">Nothing here is faster than one machine yet. Phase 1 is being built; the numbers will be published with it.</p>
   </section>
 
   <section id="training">
     <h2>Decentralized fine-tuning and training</h2>
-    <p>The same cluster that serves a model can train one. Fine-tuning starts on one node with your own data and an eval gate, grows across the machines you own, then to phones that keep their data and send only the update. Every stage is a LoRA adapter the node serves like any model, and every run is kept with its numbers.</p>
+    <p>The plan: the same cluster that serves a model trains one. Fine-tuning starts on one node with your own data and an eval gate, then grows across the machines you own. Every stage is a LoRA adapter the node serves like any model, and every run is kept with its numbers.</p>
     <div class="table-wrap">
       <table>
         <tbody>{training.map(([part, state, note]) => (<tr><td><strong>{part}</strong></td><td>{state}</td><td class="small">{note}</td></tr>))}</tbody>
@@ -130,7 +130,7 @@ autobot setup</code></pre>
     <h2>Security, speed, anonymity, stability</h2>
     <ul>
       <li><strong>Security.</strong> Devices pair over Noise; personal data is redacted before anything leaves; every request gets a signed receipt and a line in a hash-chained audit log; releases are reproducible, attested and signed with a pinned key. The independent review is still to come.</li>
-      <li><strong>Speed.</strong> One engine and one model format on every node, on the fastest backend the machine has; speculative decoding and the auto-tune are next. Benchmarks run every night and every run is kept.</li>
+      <li><strong>Speed.</strong> One engine and one model format on every node, on the fastest backend the machine has; speculative decoding and the auto-tune are next. Every night, benchmarks time the gateway and the agent against stand-in models and report binary sizes; the numbers are in that night's CI summary, not kept as a history.</li>
       <li><strong>Anonymity.</strong> Offline by default; Tor and SOCKS5 as routes with the kill switch as a shared, tested rule; no accounts, no telemetry, nothing phones home.</li>
       <li><strong>Stability.</strong> Always on under launchd or systemd with health checks and self-update; a ten-minute soak test every night; backups in one file; stopping leaves nothing running; it tells your chat when something breaks.</li>
     </ul>

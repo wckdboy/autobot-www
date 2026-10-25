@@ -59,7 +59,7 @@ const configs: Record<SiteKey, SiteMeta> = {
     origin: 'https://invincible.sh',
     title: 'Invincible — the node you own',
     description:
-      'The node you own: one gateway for every model you run, text, speech and images today, on the hardware you have and across the machines you own, with decentralized fine-tuning to make them yours, frontier models only by your policy, a signed receipt for every call, and the hard parts of AI made plain.',
+      'The node you own: one gateway for every model you run, text, speech and images today, on the hardware you have and across the machines you own, frontier models only by your policy, a signed receipt for every call, and the hard parts of AI made plain. Fine-tuning to make them yours is planned.',
     theme: 'paper',
     nav: [
       { label: 'Why', href: '/#why' },

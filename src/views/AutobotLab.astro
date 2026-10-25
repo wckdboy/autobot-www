@@ -30,7 +30,7 @@ const status = [
   <dl class="facts">
     <div><dt>Release</dt><dd>v{v(latest.tag)} · {fmtDate(latest.published)}</dd></div>
     <div><dt>Platforms</dt><dd>Android 14+, iOS 18+</dd></div>
-    <div><dt>License</dt><dd>Apache-2.0 · the iOS build GPL-3.0</dd></div>
+    <div><dt>License</dt><dd>Apache-2.0 · the iOS build GPL-3.0 · the Android build contains Qualcomm’s proprietary QNN runtime</dd></div>
     <div><dt>Network</dt><dd>Offline by default</dd></div>
     <div><dt>Telemetry</dt><dd>None</dd></div>
     <div><dt>Size</dt><dd>{apk ? fmtBytes(apk.size) : '—'}</dd></div>
@@ -38,7 +38,7 @@ const status = [
 
   <section id="terminal">
     <h2>On your machine</h2>
-    <p>The same agent in your terminal on macOS and Linux, through Invincible.</p>
+    <p>Autobot’s agent in your terminal on macOS and Linux, through Invincible.</p>
     <pre><code>curl -fsSL https://invincible.sh/install.sh | sh
 autobot code</code></pre>
     <AutobotTerm />
