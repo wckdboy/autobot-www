@@ -1,191 +1,114 @@
 # WCKD — public sites
 
-The public sites for the WCKD lab and its brands, from one Astro codebase on one brand kit.
-
-| Domain | Brand | State |
-| --- | --- | --- |
-| [autobot.sh](https://autobot.sh) | Autobot | WCKD kit v4 |
-| [invincible.sh](https://invincible.sh) | Invincible | WCKD kit v4 |
-| [sovware.io](https://sovware.io) | Sovware | WCKD kit v4 · sovereign software and hardware |
-| [wckd.ai](https://wckd.ai) | WCKD | project directory, public source index and master brand kit |
-| [nightfall.sh](https://nightfall.sh) | Nightfall | WCKD kit v4 · the FreeCAD fork's page |
-| omnie.sh | Omnie | builds its brand kit as the home page; not deployed |
-| [niobium.sh](https://niobium.sh) | Niobium | its own repo (`wckdboy/niobium`, `site/`); in the kit since v4 with the `n.` symbol |
-
-Brand kit: [BRAND.md](BRAND.md), source [`brand/kit.json`](brand/kit.json), assets drawn by
-`pnpm brand`, and every site's own version at `/brand/`.
+The public sites for the WCKD lab and its brands, built with Astro and a shared
+pixel brand kit. The repository builds `autobot`, `invincible`, `sovware`, `wckd`,
+`omnie` and `nightfall` into separate `dist/<site>` directories. Niobium, Axit and
+Polykrom maintain their product sites in their own repositories.
 
 ## WCKD project directory
 
-`wckd.ai` is the project homepage; the shared design guide remains at `/brand/`.
-The directory covers Autobot, Invincible, Niobium, Omnie, Polykrom, Nightfall, Axit,
-OpenEndo and Sovware, plus the Omnie apps and other lab tools. Product descriptions
-come from their public repositories and sites, with beta, preview and development
-status stated separately from release availability.
+[wckd.ai](https://wckd.ai) is the project homepage; the shared design guide remains
+at [/brand/](https://wckd.ai/brand/). The directory covers Autobot, Invincible,
+Niobium, Omnie, Polykrom, Nightfall, Axit, OpenEndo and Sovware, plus the four Omnie
+apps and other lab tools. Descriptions come from public repositories and product
+sites. Beta, preview and development status are stated separately from releases.
 
-`src/data/projects.json` holds the reviewed profiles. `src/data/public-repos.json`
-is a complete build-time snapshot of the public repositories, including components,
+`src/data/projects.json` holds reviewed profiles. `src/data/public-repos.json` is
+a complete build-time snapshot of the public repositories, including components,
 integrations and forks. Fork attribution is preserved. The refresh script accepts
-only explicitly public records from the expected GitHub owner and atomically replaces
-the snapshot after every page succeeds. A fetch failure preserves the prior file.
-No tokens, private metadata or browser-side GitHub requests enter the directory.
+only explicitly public records from the expected GitHub owner and atomically
+replaces the snapshot after every page succeeds. A fetch failure preserves the
+prior file. Tokens and private metadata never enter the catalog.
 
-```sh
-pnpm projects:data       # refresh the public catalog; token optional
-pnpm build:all           # create all six outputs before checking their links
-pnpm projects:check      # privacy/normalization cases + complete rendered directory
-pnpm verify:links       # all six built sites
-pnpm projects:browser   # desktop/mobile/dark and keyboard checks
-npx wrangler deploy --config deploy/wckd.wrangler.jsonc
-```
+The six-hour refresh workflow includes the public catalog. Deployment follows the
+Wrangler workflow below; the date on the directory identifies its baked snapshot.
+The browser makes no GitHub requests and the WCKD directory ships no client scripts.
 
-The six-hour refresh workflow includes the public catalog. Deployment uses the
-existing Wrangler workflow; the date on the directory identifies its baked snapshot.
-The `wckd-redirect` Worker retains its historical name and now serves static WCKD
-assets on both `wckd.ai` and `www.wckd.ai`.
-
-## The system
-
-Plain is the point. Static HTML, one stylesheet (`public/lab.css`), no client JavaScript, no
-third-party requests.
-
-- **Brands:** one lowercase pixel letter and one color each: Autobot purple `a` (`#7C5CFF`),
-  Invincible orange `i` (`#FF8A1E`), Omnie phthalo `o`, Nightfall rose `n`; WCKD `w` and Sovware `s` are neutral.
-- **Type:** JetBrains Mono for everything; lowercase headlines ending in the brand's square.
-- **Surface:** white page, ink `#111111`, 2 px rules framing header and footer; dark when the
-  system asks for it.
-- **The accent** marks the symbol, the headline's square, selection, focus and link underlines.
-  It is never text: text is ink.
-- **Layout:** one column, 1040 px page, 68-character measure, 1 px rules, no cards, shadows,
-  gradients or illustration.
-- **Voice:** write like a maintainer. State the limit as plainly as the feature.
-
-The full rules and component specimens are in the [brand guide](https://autobot.sh/brand/).
-
-## Develop
+## Develop and check
 
 ```sh
 pnpm install
-pnpm build:autobot       # → dist/autobot
-pnpm exec serve dist/autobot
+pnpm dev                    # Autobot development server
+pnpm projects:data          # public catalog refresh; token optional
+pnpm data                   # release metadata refresh
+pnpm sync:install           # mirror Invincible's installer and its SHA-256
+pnpm build:all              # build all six sites
+pnpm verify:links           # links and fragments in all six built outputs
+pnpm projects:check         # catalog/privacy/failure tests and rendered directory
+pnpm projects:browser       # desktop, tablet, mobile, dark mode and keyboard checks
 ```
 
-The Autobot output is deliberately small: plain HTML, `/lab.css`, three WOFF2 files, a favicon and
-an OG image. The build still uses Astro for templating and the release data, then `postbuild.mjs`
-strips the previous design system from the Autobot HTML and removes unused assets. The other two
-sites still use Astro and the old stylesheet.
+Individual builds use `pnpm build:<site>` (for example, `pnpm build:wckd`).
+Browser checks use an installed Chrome/Chromium and `playwright-core`; no browser
+download is required. `WCKD_QA_URL=https://wckd.ai/ pnpm projects:browser` checks the
+live directory; `WCKD_QA_SHOTS=/path/to/output` optionally saves screenshots.
 
-Other commands:
+The catalog tests cover private and unspecified visibility, malformed/duplicate
+records, incorrect owner URLs, fork attribution, multi-page failures, fetch limits,
+atomic replacement and percent/hash fragment handling. Browser checks cover
+1440, 768, 390 and 320 px layouts plus dark mode, loaded fonts/images, overflow,
+keyboard operation of the source catalog and first-party assets.
 
-```sh
-pnpm build:all           # Autobot + the two previous sites
-pnpm verify:links        # every internal href/src resolves
-pnpm data                # refresh releases.json (GITHUB_TOKEN recommended)
-pnpm sync:install        # mirror the installer and record its SHA-256
-pnpm og                  # regenerate social cards
-```
-
-## Content rules
-
-- Release history is baked at build time by `scripts/fetch-releases.mjs` into
-  `src/data/releases.json`. The browser never calls GitHub. A failed fetch keeps the committed
-  data (`--soft`), so a GitHub outage cannot block a deploy.
-- `scripts/sync-install.mjs` mirrors Invincible’s `install.sh` to `public/install.sh` and records
-  its SHA-256. The Autobot site links to the live copy at `invincible.sh/install.sh`.
-- Claims come from the product repositories. Where a path is not yet verified, such as the
-  independent security review, the page says so.
-- Refresh with `GITHUB_TOKEN=$(gh auth token) pnpm data && pnpm sync:install`. The scheduled
-  workflow does this every six hours.
+Both PR workflows run all six builds, link checks, catalog tests and browser
+checks. PRs do not deploy. CI on `main` can deploy Autobot, Invincible, Sovware and
+WCKD when the repository's Cloudflare secrets are configured; without them it
+reports a warning. Omnie and Nightfall have separate Wrangler configs for explicit
+local deployments. Refresh commits update source data; verify the deployed
+snapshot date after publishing.
 
 ## Hosting
 
-Cloudflare Workers Static Assets, with site Workers and a separate `www` redirect:
-
-| Worker | Assets | Domains |
-| --- | --- | --- |
-| `autobot-site` | `dist/autobot` | `autobot.sh` |
-| `invincible-site` | `dist/invincible` | `invincible.sh` |
-| `sovware-site` | `dist/sovware` | `sovware.io` |
-| `www-redirect` | tiny Worker | all `www` hosts → apex |
-| `wckd-redirect` | `dist/wckd` | `wckd.ai`, `www.wckd.ai` |
-
-Custom domains live in `deploy/*.wrangler.jsonc`. Deploy only Autobot while it is under review:
+Sites use Cloudflare Workers Static Assets. The configuration files in `deploy/`
+define each Worker's domains and output directory. The `wckd-redirect` Worker
+retains its historical name and now serves static WCKD assets on both `wckd.ai`
+and `www.wckd.ai`. The separate `www-redirect` Worker handles other configured
+`www` redirects.
 
 ```sh
-npx wrangler login        # once
-pnpm deploy:autobot
+npx wrangler login           # once, for local deployments
+pnpm build:wckd
+npx wrangler deploy --config deploy/wckd.wrangler.jsonc
 ```
 
-Deploy everything after the other sites are migrated:
+Use the matching `deploy/<site>.wrangler.jsonc` for each site that changed. Refresh
+release data and the installer before product-site releases. The root `AGENTS.md`
+requires matching product README and Plane updates alongside site changes.
 
-```sh
-pnpm deploy
-```
+## Brand and content
 
-`.github/workflows/deploy.yml` builds all three and deploys on push to `main` when
-`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are set. Without them it builds and runs the
-link check, then warns. `.github/workflows/refresh.yml` refreshes release data every six hours.
+The brand source is [`brand/kit.json`](brand/kit.json); `pnpm brand` generates the
+assets. See [BRAND.md](BRAND.md) and each site's `/brand/` guide. Keep product claims
+aligned with verified behavior, and state current limits explicitly.
 
-## Delivery
+The lab design uses lowercase pixel marks, monochrome type, brand accents, ruled
+sections, local fonts and system dark mode. There is no analytics or third-party
+font request. `public/_headers` supplies the security and caching headers. Builds
+include a real 404 page, sitemap, robots file, favicon and social image.
 
-`public/_headers` is copied to every build and enforces:
+## Latest WCKD deployment
 
-- a strict CSP (self only; inline styles because Astro emits a small style block),
-- HSTS, `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`,
-  `Permissions-Policy` and COOP,
-- one-year immutable caching for fonts and `/lab.css` for one hour,
-- revalidation for HTML.
+The complete directory shipped in [PR #2](https://github.com/wckdboy/autobot-www/pull/2),
+with the shared crawler-origin fix in [PR #3](https://github.com/wckdboy/autobot-www/pull/3).
+Production source: `c49252e74a3fc40a12618c684daa07e3d4b90c2b`.
+Wrangler deployment: `d09b279c-e94a-4a0a-bed7-71ed8ff4064d` (2026-10-25).
 
-The Autobot build contains no `<script>` elements. Fonts are self-hosted and preloaded. There is no
-analytics, cookie, localStorage or third-party request. A real `404.html`, `sitemap.xml`,
-`robots.txt`, favicon and OG image are included.
-
-## Checks
-
-Lighthouse on the built Autobot pages (local static server):
-
-| Page | Performance | Accessibility | Best practices | SEO |
-| --- | --- | --- | --- | --- |
-| `/` | 100 | 100 | 100 | 100 |
-| `/releases/` | 100 | 100 | 100 | 100 |
-| `/install/` | 100 | 100 | 100 | 100 |
-| `/privacy/` | 100 | 100 | 100 | 100 |
-| `/verify/` | 100 | 100 | 100 | 100 |
-| `/brand/` | 100 | 100 | 100 | 100 |
-
-`pnpm verify:links` checks every internal link in all three builds. `node scripts/shots.mjs`
-captures full-page screenshots at 390 / 768 / 1440.
+[Project CI](https://github.com/wckdboy/autobot-www/actions/runs/40204308600) and
+[crawler-fix CI](https://github.com/wckdboy/autobot-www/actions/runs/40204709443)
+passed. All six sites built, internal links and anchors resolved, six catalog/link
+tests passed, and the five browser variants passed locally and on production.
+Both production hosts matched the merged build byte-for-byte for the homepage,
+robots file, sitemap, brand guide and added project marks. CodeRabbit findings
+were fixed; the completed focused fragment review reported no remaining findings.
 
 ## Layout
 
+```text
+brand/kit.json             shared brand source
+public/                    styles, local fonts, brand marks, headers and assets
+src/data/                  reviewed profiles, public catalog, releases and installer metadata
+src/views/                 product pages, WCKD directory and shared brand guide
+src/layouts/               page shells
+src/pages/                 routes, sitemap and robots generation
+scripts/                   metadata refresh, build checks, browser QA and deployment helpers
+deploy/                    Worker configurations and redirect code
 ```
-public/
-  lab.css                  the one stylesheet
-  brand/index.html         brand and style guide
-  fonts/lab/               Inter + EB Garamond, self-hosted
-  _headers
-src/
-  layouts/Lab.astro        the lab shell (Autobot now; reusable for the next site)
-  views/Autobot*Lab.astro  Autobot pages
-  data/                    site config, baked releases.json, install.json
-  lib/format.ts            dates, bytes, release-note renderer
-  views/                   previous Invincible/Sovware pages (until migrated)
-  styles/riso.css          previous stylesheet (Invincible/Sovware only)
-scripts/
-  deploy-autobot.sh
-  fetch-releases.mjs
-  sync-install.mjs
-  postbuild.mjs            strips old CSS, builds icons, removes unused assets
-  check-links.mjs
-  og-lab.html / build-og.mjs
-deploy/                    Worker configs and redirect scripts
-```
-
-## Migration sequence
-
-1. Autobot — built, awaiting review.
-2. Invincible — after Autobot is confirmed.
-3. Sovware — after Invincible is confirmed.
-
-“Confirmed” means the page has been read on a phone and a desktop, the copy is accurate, and the
-owner is happy with the direction. No next site starts before then.
