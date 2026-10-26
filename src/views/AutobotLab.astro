@@ -13,7 +13,7 @@ const status = [
   ['Terminal', 'shipping', 'macOS and Linux, with Invincible'],
   ['Bots', 'shipping', 'your node\'s bots on the phone: channels, approvals, on/off'],
   ['Harness (iOS)', 'experimental', 'the DeepSeek Harness itself, in a Linux guest on the phone; Offline stops it, the audit log records it; boots in about a minute'],
-  ['Snapdragon NPU / GPU', 'verified', 'OnePlus 15, 8 Elite Gen 5'],
+  ['Snapdragon NPU / GPU', 'partly measured', 'OnePlus 15 (8 Elite Gen 5): chat on the CPU and NPU, SDXL on the NPU; the GPU, SD 1.5 on the NPU and the upscaler not shown yet'],
   ['Security review', 'not independent yet', 'signed, hashes published'],
 ];
 ---
@@ -30,7 +30,7 @@ const status = [
   <dl class="facts">
     <div><dt>Release</dt><dd>v{v(latest.tag)} · {fmtDate(latest.published)}</dd></div>
     <div><dt>Platforms</dt><dd>Android 14+, iOS 18+</dd></div>
-    <div><dt>License</dt><dd>Apache-2.0 · the iOS build GPL-3.0</dd></div>
+    <div><dt>License</dt><dd>the apps Apache-2.0 · the iOS build GPL-3.0 · the Android build contains Qualcomm’s proprietary QNN runtime · the agent MIT</dd></div>
     <div><dt>Network</dt><dd>Offline by default</dd></div>
     <div><dt>Telemetry</dt><dd>None</dd></div>
     <div><dt>Size</dt><dd>{apk ? fmtBytes(apk.size) : '—'}</dd></div>
@@ -38,7 +38,7 @@ const status = [
 
   <section id="terminal">
     <h2>On your machine</h2>
-    <p>The same agent in your terminal on macOS and Linux, through Invincible.</p>
+    <p>Autobot’s agent in your terminal on macOS and Linux, through Invincible.</p>
     <pre><code>curl -fsSL https://invincible.sh/install.sh | sh
 autobot code</code></pre>
     <AutobotTerm />

@@ -10,7 +10,7 @@ export const NAV = {
       { label: 'Releases', href: '/releases/' },
       { label: 'Source', href: 'https://github.com/wckdboy/autobot' },
     ],
-    footer: 'Autobot is free software under Apache-2.0. No accounts. No telemetry. Made by WCKD.',
+    footer: 'Autobot’s own code is free software: the apps Apache-2.0, the agent MIT. No accounts. No telemetry. Made by WCKD.',
     repo: 'https://github.com/wckdboy/autobot',
   },
   invincible: {

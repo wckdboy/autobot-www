@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Static link check for the built sites: every internal href/src must resolve to
- * a file in the same build. External URLs are listed but not fetched.
+ * a file in the same build. External URLs are listed but not fetched. Also checks
+ * that invincible.sh/verify gives the signature check install.sh runs.
  *   node scripts/check-links.mjs
  */
 import { readdir, readFile, stat } from 'node:fs/promises';
@@ -76,6 +77,36 @@ for (const site of SITES) {
       failures += 1;
       console.log(`✗ ${site}: missing ${file}`);
     }
+  }
+}
+
+// invincible.sh/verify must check the signature the way the installer it serves does: the same
+// signer line, identity and namespace. SSHSIG binds the namespace, so any other -n fails.
+const inv = join(ROOT, 'dist', 'invincible');
+if (existsSync(join(inv, 'install.sh'))) {
+  const sh = await readFile(join(inv, 'install.sh'), 'utf8');
+  const page = existsSync(join(inv, 'verify', 'index.html')) ? await readFile(join(inv, 'verify', 'index.html'), 'utf8') : '';
+  const text = page.replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+  // The words of `ssh-keygen -Y verify …` up to the end of its stdin redirect, without quotes or $WORK/.
+  const verify = (s) => {
+    const m = s.replace(/\\\n/g, ' ').match(/ssh-keygen -Y verify [^\n|]*?<\s*\S+/);
+    return m && m[0].replace(/<\s*/, '< ').split(/\s+/).map((w) => w.replace(/"/g, '').replace('$WORK/', '')).join(' ');
+  };
+  const key = sh.match(/^RELEASE_KEY="([^"]+)"$/m)?.[1];
+  const principal = sh.match(/printf '(\S+) %s\\n' "\$RELEASE_KEY" >"\$WORK\/allowed_signers"/)?.[1];
+  const signer = text.match(/printf '%s\\n' '([^']+)' > allowed_signers/)?.[1];
+  const want = verify(sh);
+  const got = verify(text);
+  const problems = [];
+  if (!key || !principal || !want) problems.push('install.sh: no release key, signer line or ssh-keygen -Y verify found');
+  else {
+    if (signer !== `${principal} ${key}`) problems.push(`verify page signer line ${JSON.stringify(signer)} is not install.sh's ${JSON.stringify(`${principal} ${key}`)}`);
+    if (got !== want) problems.push(`verify page runs ${JSON.stringify(got)}, install.sh runs ${JSON.stringify(want)}`);
+  }
+  console.log(`${problems.length ? '✗' : '✓'} invincible: /verify/ matches install.sh's signature check`);
+  for (const p of problems) {
+    failures += 1;
+    console.log(`  ${p}`);
   }
 }
 
