@@ -51,7 +51,7 @@ import Lab from '../layouts/Lab.astro';
     <p>Off by default. With it on, a plain chat on a cloud model or on your paired node is answered by the on-device model first. A small judge — rules plus one short self-check on the same model; rules only under Never — decides whether the answer is good enough.</p>
     <ul>
       <li><strong>Ask</strong> offers the cloud model after a weak local answer.</li>
-      <li><strong>Auto</strong> sends a weak answer’s prompt on its own, unless it looks personal.</li>
+      <li><strong>Auto</strong> sends a weak answer’s prompt to the cloud model on its own, unless it looks personal; with your paired node, personal prompts go too (below).</li>
       <li><strong>Never</strong> keeps everything on the phone, or, with your paired node as the chat’s model, on the phone and that node (below).</li>
     </ul>
     <p>Both answers stay on screen, the cloud request goes through redaction, and the receipt says why. With your paired node as the chat’s model, the prompt then goes to the node instead of a cloud model, marked private so the node keeps it on its own models: phone → my node, never on to the cloud. Ask offers it. Auto and Never send a weak answer’s prompt there on their own, a personal one included, and offer it when the judge is only unsure of the answer. Here “never” means never to a cloud model: the prompt stops at your node, on hardware you own or on a server you rent.</p>
