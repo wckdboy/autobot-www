@@ -53,10 +53,10 @@
     "id": "nightfall",
     "name": "Nightfall",
     "kind": "Geometry, measured",
-    "description": "Archived. Nightfall's kernel work, engineering studies and agent evaluation carry over into Polykrom, where development continues.",
+    "description": "Archived. The app continues as Polykrom; the kernel work continues in PolyCore, a new Rust kernel.",
     "site": "https://nightfall.sh",
     "repo": "nightfall",
-    "status": "Archived · continued in Polykrom",
+    "status": "Archived · now Polykrom and PolyCore",
     "brand": "nightfall",
     "next": { "name": "Polykrom", "site": "https://cad.polykrom.app", "source": "https://github.com/wckdboy/polykrom" }
   },
