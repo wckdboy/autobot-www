@@ -89,7 +89,7 @@ const stages = [
       <figcaption>Rendered in Polykrom, from the agent's design.</figcaption>
     </figure>
     <figure class="shot shot--walk">
-      <video src="/rex/walk.mp4" poster="/rex/walk-poster.jpg" width="480" height="600" autoplay muted loop playsinline preload="metadata" aria-label="TinyRex taking two steps in Polykrom's Walk study"></video>
+      <video src="/rex/walk.mp4" poster="/rex/walk-poster.jpg" width="480" height="600" autoplay muted loop playsinline controls preload="metadata" aria-label="TinyRex taking two steps in Polykrom's Walk study"></video>
       <figcaption>The Walk study: two 40 mm steps, the tail swinging to the stance side.</figcaption>
     </figure>
   </div>
@@ -159,10 +159,12 @@ const stages = [
   <script type="module" is:inline>
   import { mount } from "/rex/viewer.js";
   const $ = (id) => document.getElementById(id);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) document.querySelector(".shot--walk video")?.pause();
   // Every part keeps the colour the agent gave it in Polykrom (it travels in the URDF); printed
   // parts (lime, black, off-white) get a matte plastic finish, like the Polykrom showcases.
   async function printedLooks(url) {
-    const xml = new DOMParser().parseFromString(await (await fetch(url)).text(), "application/xml");
+    const xml = new DOMParser().parseFromString(await (await get(url)).text(), "application/xml");
+    if (xml.querySelector("parsererror") || !xml.querySelector("robot > link")) throw new Error(`${url}: not a robot description`);
     const matte = { "0.8 1 0": "#CCFF00", "0.067 0.067 0.067": "#111111", "0.929 0.929 0.929": "#EDEDED" };
     const looks = {};
     for (const link of xml.querySelectorAll("robot > link")) {
@@ -173,12 +175,20 @@ const stages = [
     }
     return looks;
   }
+  async function get(url, opts) {
+    const res = await fetch(url, opts);
+    if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
+    return res;
+  }
   async function gunzip(url) {
-    const res = await fetch(url);
+    const res = await get(url);
     return await new Response(res.body.pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
   }
   try {
-    const motion = await (await fetch("/rex/model/motion.json")).json();
+    // The viewer's own fetches don't check the status: check every file first, so a missing one
+  // shows the message below rather than an empty stage.
+  const motion = await (await get("/rex/model/motion.json")).json();
+  await get("/rex/model/meshes.json", { method: "HEAD" });
   const looks = await printedLooks("/rex/model/rex.urdf");
     const bin = await gunzip("/rex/model/meshes.bin.gz");
     let scrubbing = false;
@@ -192,6 +202,9 @@ const stages = [
       },
     });
     $("loading").remove();
+  // Horizontal drags turn the model; vertical swipes still scroll the page on a phone.
+  const canvas = $("stage").querySelector("canvas");
+  if (canvas) canvas.style.touchAction = "pan-y";
     $("scrub").max = v.steps;
     $("play").disabled = false;
     $("scrub").disabled = false;
@@ -200,7 +213,7 @@ const stages = [
     $("play").onclick = () => { v.play(!v.playing); label(); };
     $("scrub").oninput = (e) => { scrubbing = true; v.play(false); label(); v.seek(+e.target.value); scrubbing = false; };
   } catch (e) {
-    $("loading").textContent = "The 3D view needs WebGL. The render and the walk above show the same design.";
+    $("loading").textContent = "The 3D view couldn't load here (it needs WebGL and a current browser). The render and the walk above show the same design.";
     console.error(e);
   }
   </script>
