@@ -2,7 +2,7 @@
 
 The public sites for the WCKD lab and its brands, built with Astro and a shared
 pixel brand kit. The repository builds `autobot`, `invincible`, `sovware`, `wckd`,
-`omnie` and `nightfall` into separate `dist/<site>` directories. Niobium, Axit and
+`omnie`, `nightfall` and `tinyrex` into separate `dist/<site>` directories. Niobium, Axit and
 Polykrom maintain their product sites in their own repositories.
 
 ## WCKD project directory
@@ -50,11 +50,12 @@ atomic replacement and percent/hash fragment handling. Browser checks cover
 1440, 768, 390 and 320 px layouts plus dark mode, loaded fonts/images, overflow,
 keyboard operation of the source catalog and first-party assets.
 
-Both PR workflows run all six builds, link checks, catalog tests and browser
+Both PR workflows run all seven builds, link checks, catalog tests and browser
 checks. PRs do not deploy. CI on `main` can deploy Autobot, Invincible, Sovware and
 WCKD when the repository's Cloudflare secrets are configured; without them it
-reports a warning. Omnie and Nightfall have separate Wrangler configs for explicit
-local deployments. Refresh commits update source data; verify the deployed
+reports a warning. Omnie, Nightfall and TinyRex have separate Wrangler configs for explicit
+local deployments. TinyRex's media and 3D viewer live in `public/rex/` and ship only in its
+build (three.js 0.160.0 vendored there, MIT; the viewer is Polykrom's, MIT OR Apache-2.0). Refresh commits update source data; verify the deployed
 snapshot date after publishing.
 
 ## Hosting

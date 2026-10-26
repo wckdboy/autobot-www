@@ -9,6 +9,7 @@ const ORIGIN = {
   wckd: 'https://wckd.ai',
   omnie: 'https://omnie.sh',
   nightfall: 'https://nightfall.sh',
+  tinyrex: 'https://tinyrex.sh',
 };
 
 if (!ORIGIN[KEY]) {

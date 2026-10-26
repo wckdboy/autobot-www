@@ -19,6 +19,7 @@ version of the kit at `/brand/`; wckd.ai's home is the master kit.
 | Omnie | omnie.sh | An IDE for development on iOS and iPadOS | `o` | phthalo `#00B386` |
 | Nightfall | nightfall.sh | AI-native parametric CAD | `n` | rose `#FF3E8A` |
 | Niobium | niobium.sh | A pixel-art Hermes agent client for Android and iOS | `n.` (the n and its companion pixel) | pastel purple `#A78BFA` |
+| TinyRex | tinyrex.sh | A bipedal T-rex robot, designed by an AI agent in Polykrom | `t` | Polykrom lime `#CCFF00` on ink; ink on paper (lime is too pale for a mark on white) |
 
 Each signal is one vivid color (high saturation, high brightness) used the same on white and on
 ink. Because it is that bright, **color is for marks, never for text**: the symbol, the
