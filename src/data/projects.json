@@ -58,7 +58,7 @@
     "repo": "nightfall",
     "status": "Archived · now Polykrom and PolyCore",
     "brand": "nightfall",
-    "next": { "name": "Polykrom", "site": "https://cad.polykrom.app", "source": "https://github.com/wckdboy/polykrom" }
+    "next": { "name": "Polykrom", "site": "https://cad.polykrom.app", "source": "https://github.com/wckdboy/polykrom", "kernel": { "name": "PolyCore", "source": "https://github.com/wckdboy/polycore" } }
   },
   {
     "id": "axit",
