@@ -109,8 +109,8 @@ const configs: Record<SiteKey, SiteMeta> = {
   },
   nightfall: {
     key: 'nightfall', name: 'Nightfall', wordmark: 'nightfall', domain: 'nightfall.sh', origin: 'https://nightfall.sh',
-    title: 'Nightfall — AI-native CAD', description: 'AI-native CAD for macOS: exact NURBS geometry, a feature program as the source of truth, and an agent that edits the program, rebuilds and measures every change.',
-    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/nightfall', license: 'Apache-2.0', tagline: 'Every part is a program.', og: '/og/nightfall.png',
+    title: 'Nightfall — archived', description: 'Nightfall is archived. Development continues as Polykrom, the app, and PolyCore, the kernel.',
+    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/nightfall', license: 'Apache-2.0', tagline: 'Archived: continued as Polykrom and PolyCore.', og: '/og/nightfall.png',
   },
 };
 
