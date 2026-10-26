@@ -160,7 +160,7 @@
       "description": "Open-source, AI-native parametric CAD for macOS (NURBS, SMLib kernel)",
       "visibility": "public",
       "isFork": false,
-      "isArchived": false
+      "isArchived": true
     },
     {
       "name": "nightfall-freecad",
@@ -251,6 +251,14 @@
       "isArchived": false
     },
     {
+      "name": "polycore",
+      "url": "https://github.com/wckdboy/polycore",
+      "description": "PolyCore: an open-source Rust CAD kernel for Polykrom, built to rival the commercial kernels",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
       "name": "polykrom",
       "url": "https://github.com/wckdboy/polykrom",
       "description": "Polykrom: open-source parametric CAD in pure Rust for physical-world engineering, with stress analysis and an AI companion. A fork of SolidCraft.",
@@ -294,6 +302,14 @@
       "name": "sovware",
       "url": "https://github.com/wckdboy/sovware",
       "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "tinyrex",
+      "url": "https://github.com/wckdboy/tinyrex",
+      "description": "TinyRex: a small bipedal T-rex robot designed from scratch by an AI agent in Polykrom, verified standing and walking in MuJoCo",
       "visibility": "public",
       "isFork": false,
       "isArchived": false
