@@ -38,7 +38,7 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
       <table>
         <thead><tr><th>Use</th><th>Color</th><th>Where</th></tr></thead>
         <tbody>
-          <tr><td><strong>Signal</strong></td><td><code>{own.onPaper}</code></td><td>the symbol, the headline's square, focus, selection and link underlines, on white and on ink</td></tr>
+          <tr><td><strong>Signal</strong></td><td>{own.onPaper === own.onInk ? <code>{own.onPaper}</code> : <><code>{own.onPaper}</code> on paper, <code>{own.onInk}</code> on ink</>}</td><td>the symbol, the headline's square, focus, selection and link underlines{own.onPaper === own.onInk ? ', on white and on ink' : ''}</td></tr>
           <tr><td><strong>Text</strong></td><td><code>#111111</code></td><td>always ink (white on dark): color never carries text</td></tr>
         </tbody>
       </table>
@@ -57,7 +57,7 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
               <td><span class="kit-inline" style={`color:${b.onPaper}`} set:html={symbolSvg(b, 18, b.name)} /></td>
               <td><strong>{b.name}</strong><br /><span class="small"><a href={`https://${b.domain}`} rel="noopener">{b.domain}</a> · <a href={asset(k, 'icon.svg')}>files</a></span></td>
               <td>{b.role}</td>
-              <td><code>{b.onPaper}</code></td>
+              <td><code>{b.onPaper}</code>{b.onInk !== b.onPaper && <> · <code>{b.onInk}</code> on ink</>}</td>
             </tr>
           ))}
         </tbody>

@@ -1,7 +1,7 @@
 import releaseData from './releases.json';
 import installData from './install.json';
 
-export type SiteKey = 'autobot' | 'invincible' | 'sovware' | 'wckd' | 'omnie' | 'nightfall';
+export type SiteKey = 'autobot' | 'invincible' | 'sovware' | 'wckd' | 'omnie' | 'nightfall' | 'tinyrex';
 
 export interface NavItem {
   label: string;
@@ -111,6 +111,11 @@ const configs: Record<SiteKey, SiteMeta> = {
     key: 'nightfall', name: 'Nightfall', wordmark: 'nightfall', domain: 'nightfall.sh', origin: 'https://nightfall.sh',
     title: 'Nightfall — archived', description: 'Nightfall is archived. Development continues as Polykrom, the app, and PolyCore, the kernel.',
     theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/nightfall', license: 'Apache-2.0', tagline: 'Archived: continued as Polykrom and PolyCore.', og: '/og/nightfall.png',
+  },
+  tinyrex: {
+    key: 'tinyrex', name: 'TinyRex', wordmark: 'tinyrex', domain: 'tinyrex.sh', origin: 'https://tinyrex.sh',
+    title: 'TinyRex — a robot T-rex, designed by an AI agent', description: 'TinyRex is a small bipedal T-rex robot with 17 servos, designed from an empty file by an AI agent in Polykrom, then checked standing and walking in Polykrom and in MuJoCo.',
+    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/tinyrex', license: 'Apache-2.0 / CC-BY-4.0', tagline: 'Designed from an empty file by an AI agent.', og: '/og.png',
   },
 };
 

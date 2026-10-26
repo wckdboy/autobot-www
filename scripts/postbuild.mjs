@@ -14,9 +14,9 @@ const KEY = process.env.SITE_KEY || 'autobot';
 const DIST = resolve(ROOT, 'dist', KEY);
 
 // The touch icon is the brand's app icon from the kit (public/brand/<key>/icon.svg, brand/gen.py).
-const kitIcon = await readFile(resolve(ROOT, 'public', 'brand', KEY in { wckd: 1, sovware: 1, autobot: 1, invincible: 1, omnie: 1, nightfall: 1 } ? KEY : 'autobot', 'icon.svg'), 'utf8');
+const kitIcon = await readFile(resolve(ROOT, 'public', 'brand', KEY in { wckd: 1, sovware: 1, autobot: 1, invincible: 1, omnie: 1, nightfall: 1, tinyrex: 1 } ? KEY : 'autobot', 'icon.svg'), 'utf8');
 const iconSvg = kitIcon.replace(/width="1024" height="1024"/, 'width="180" height="180"');
-const ogSvg = await readFile(resolve(ROOT, 'public', 'brand', KEY in { wckd: 1, sovware: 1, autobot: 1, invincible: 1, omnie: 1, nightfall: 1 } ? KEY : 'autobot', 'og.svg'));
+const ogSvg = await readFile(resolve(ROOT, 'public', 'brand', KEY in { wckd: 1, sovware: 1, autobot: 1, invincible: 1, omnie: 1, nightfall: 1, tinyrex: 1 } ? KEY : 'autobot', 'og.svg'));
 
 try {
   await access(resolve(DIST, 'index.html'), constants.R_OK);
@@ -42,6 +42,9 @@ try {
 
 await sharp(Buffer.from(iconSvg)).resize(180, 180).png({ compressionLevel: 9 }).toFile(resolve(DIST, 'apple-touch-icon.png'));
 console.log('→ apple-touch-icon.png (180×180)');
+
+// TinyRex's media and 3D viewer (public/rex/) belong to tinyrex.sh alone.
+if (KEY !== 'tinyrex') await rm(resolve(DIST, 'rex'), { recursive: true, force: true });
 
 // A tiny 32px PNG for clients that dislike SVG favicons.
 await sharp(Buffer.from(iconSvg)).resize(32, 32).png({ compressionLevel: 9 }).toFile(resolve(DIST, 'favicon-32.png'));

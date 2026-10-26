@@ -1,6 +1,6 @@
 # Working on the WCKD sites
 
-These sites (wckd.ai, sovware.io, autobot.sh, invincible.sh, omnie.sh, nightfall.sh) describe
+These sites (wckd.ai, sovware.io, autobot.sh, invincible.sh, omnie.sh, nightfall.sh, tinyrex.sh) describe
 the products; they must never lag them.
 
 ## When a project updates, update the sites, the README and Plane

@@ -1,0 +1,1996 @@
+<?xml version="1.0"?>
+<!-- Exported by Polykrom; units: m, kg, rad -->
+<robot name="rex">
+  <link name="base_link">
+  </link>
+  <link name="ArmourPlate">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-ArmourPlate.stl"/></geometry>
+      <material name="ArmourPlate_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x10_Plate1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M3x10_Plate1.stl"/></geometry>
+      <material name="M3x10_Plate1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x10_Plate2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M3x10_Plate2.stl"/></geometry>
+      <material name="M3x10_Plate2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x10_Plate3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M3x10_Plate3.stl"/></geometry>
+      <material name="M3x10_Plate3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x10_Plate4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M3x10_Plate4.stl"/></geometry>
+      <material name="M3x10_Plate4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x10_Plate5">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M3x10_Plate5.stl"/></geometry>
+      <material name="M3x10_Plate5_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x10_Plate6">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M3x10_Plate6.stl"/></geometry>
+      <material name="M3x10_Plate6_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="Torso">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-Torso.stl"/></geometry>
+      <material name="Torso_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="PixelBadge">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-PixelBadge.stl"/></geometry>
+      <material name="PixelBadge_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="BatteryStrap">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-BatteryStrap.stl"/></geometry>
+      <material name="BatteryStrap_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="PiZero2W">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-PiZero2W.stl"/></geometry>
+      <material name="PiZero2W_color"><color rgba="0.11764705926179886 0.41960784792900085 0.20392157137393951 1"/></material>
+    </visual>
+  </link>
+  <link name="BNO085">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-BNO085.stl"/></geometry>
+      <material name="BNO085_color"><color rgba="0.35686275362968445 0.1725490242242813 0.5137255191802979 1"/></material>
+    </visual>
+  </link>
+  <link name="HipYawServo_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipYawServo_L.stl"/></geometry>
+      <material name="HipYawServo_L_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HipYawServo_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipYawServo_R.stl"/></geometry>
+      <material name="HipYawServo_R_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="NeckMount">
+    <visual>
+      <origin xyz="-0.40800000000000003 0 -0.065" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+      <geometry><mesh filename="rex-NeckMount.stl"/></geometry>
+      <material name="NeckMount_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x6_TailMount1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M3x6_TailMount1.stl"/></geometry>
+      <material name="M3x6_TailMount1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x6_TailMount2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M3x6_TailMount2.stl"/></geometry>
+      <material name="M3x6_TailMount2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="TailMount">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-TailMount.stl"/></geometry>
+      <material name="TailMount_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x10_HipL1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x10_HipL1.stl"/></geometry>
+      <material name="M2x10_HipL1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x10_HipL2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x10_HipL2.stl"/></geometry>
+      <material name="M2x10_HipL2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x10_HipL3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x10_HipL3.stl"/></geometry>
+      <material name="M2x10_HipL3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x10_HipL4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x10_HipL4.stl"/></geometry>
+      <material name="M2x10_HipL4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x10_HipR1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x10_HipR1.stl"/></geometry>
+      <material name="M2x10_HipR1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x10_HipR2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x10_HipR2.stl"/></geometry>
+      <material name="M2x10_HipR2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x10_HipR3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x10_HipR3.stl"/></geometry>
+      <material name="M2x10_HipR3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x10_HipR4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x10_HipR4.stl"/></geometry>
+      <material name="M2x10_HipR4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x10_ArmL">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M3x10_ArmL.stl"/></geometry>
+      <material name="M3x10_ArmL_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x10_ArmR">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M3x10_ArmR.stl"/></geometry>
+      <material name="M3x10_ArmR_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="TinyArm_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-TinyArm_L.stl"/></geometry>
+      <material name="TinyArm_L_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="TinyArm_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-TinyArm_R.stl"/></geometry>
+      <material name="TinyArm_R_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x6_NeckMount1">
+    <visual>
+      <origin xyz="0 4.796163466380676e-17 0" rpy="3.141592653589793 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M3x6_NeckMount1.stl"/></geometry>
+      <material name="M3x6_NeckMount1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x6_NeckMount2">
+    <visual>
+      <origin xyz="0 1.532107773982716e-17 0" rpy="3.141592653589793 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M3x6_NeckMount2.stl"/></geometry>
+      <material name="M3x6_NeckMount2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x6_Strap1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M3x6_Strap1.stl"/></geometry>
+      <material name="M3x6_Strap1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M3x6_Strap2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M3x6_Strap2.stl"/></geometry>
+      <material name="M3x6_Strap2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="LiPo2S">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-LiPo2S.stl"/></geometry>
+      <material name="LiPo2S_color"><color rgba="0.6039215922355652 0.6392157077789307 0.6784313917160034 1"/></material>
+    </visual>
+  </link>
+  <link name="M2_5x10_Pi1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2_5x10_Pi1.stl"/></geometry>
+      <material name="M2_5x10_Pi1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2_5x10_Pi2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2_5x10_Pi2.stl"/></geometry>
+      <material name="M2_5x10_Pi2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2_5x10_Pi3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2_5x10_Pi3.stl"/></geometry>
+      <material name="M2_5x10_Pi3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2_5x10_Pi4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2_5x10_Pi4.stl"/></geometry>
+      <material name="M2_5x10_Pi4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2_5x8_Imu1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2_5x8_Imu1.stl"/></geometry>
+      <material name="M2_5x8_Imu1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2_5x8_Imu2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2_5x8_Imu2.stl"/></geometry>
+      <material name="M2_5x8_Imu2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="HipRollBracket_L">
+    <visual>
+      <origin xyz="0.012000000000000002 -0.025 0.169875" rpy="3.141592653589793 0 3.141592653589793"/>
+      <geometry><mesh filename="rex-HipRollBracket_L.stl"/></geometry>
+      <material name="HipRollBracket_L_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="HipRollBracket_R">
+    <visual>
+      <origin xyz="-0.012 0.025 -0.169875" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipRollBracket_R.stl"/></geometry>
+      <material name="HipRollBracket_R_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_Neck1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_Neck1.stl"/></geometry>
+      <material name="M2x8_Neck1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_Neck2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_Neck2.stl"/></geometry>
+      <material name="M2x8_Neck2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_Neck3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_Neck3.stl"/></geometry>
+      <material name="M2x8_Neck3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_Neck4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_Neck4.stl"/></geometry>
+      <material name="M2x8_Neck4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="NeckPitchServo">
+    <visual>
+      <origin xyz="0.019 0 0" rpy="-3.141592653589793 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rex-NeckPitchServo.stl"/></geometry>
+      <material name="NeckPitchServo_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_TailYaw1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x8_TailYaw1.stl"/></geometry>
+      <material name="M2x8_TailYaw1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_TailYaw2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x8_TailYaw2.stl"/></geometry>
+      <material name="M2x8_TailYaw2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_TailYaw3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x8_TailYaw3.stl"/></geometry>
+      <material name="M2x8_TailYaw3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_TailYaw4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x8_TailYaw4.stl"/></geometry>
+      <material name="M2x8_TailYaw4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="TailYawServo">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-TailYawServo.stl"/></geometry>
+      <material name="TailYawServo_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="Claws_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-Claws_L.stl"/></geometry>
+      <material name="Claws_L_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="Claws_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-Claws_R.stl"/></geometry>
+      <material name="Claws_R_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_RollL1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x6_RollL1.stl"/></geometry>
+      <material name="M2x6_RollL1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_RollL2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x6_RollL2.stl"/></geometry>
+      <material name="M2x6_RollL2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_RollL3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x6_RollL3.stl"/></geometry>
+      <material name="M2x6_RollL3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_RollL4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x6_RollL4.stl"/></geometry>
+      <material name="M2x6_RollL4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="HipYawServo_L_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -9.654305461538043e-33 -6.037974890946223e-48"/>
+      <geometry><mesh filename="rex-HipYawServo_L_horn.stl"/></geometry>
+      <material name="HipYawServo_L_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HipRollServo_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipRollServo_L.stl"/></geometry>
+      <material name="HipRollServo_L_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HipYawServo_R_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -9.654305461538043e-33 -3.0189874454731115e-48"/>
+      <geometry><mesh filename="rex-HipYawServo_R_horn.stl"/></geometry>
+      <material name="HipYawServo_R_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HipRollServo_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipRollServo_R.stl"/></geometry>
+      <material name="HipRollServo_R_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_RollR1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_RollR1.stl"/></geometry>
+      <material name="M2x6_RollR1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_RollR2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_RollR2.stl"/></geometry>
+      <material name="M2x6_RollR2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_RollR3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_RollR3.stl"/></geometry>
+      <material name="M2x6_RollR3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_RollR4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_RollR4.stl"/></geometry>
+      <material name="M2x6_RollR4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="Neck">
+    <visual>
+      <origin xyz="0.425 0.08234999999999996 -0.01862500000000002" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rex-Neck.stl"/></geometry>
+      <material name="Neck_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="Tail">
+    <visual>
+      <origin xyz="-0.08 -4.898587196589413e-18 -0.412125" rpy="0 0 -3.141592653589793"/>
+      <geometry><mesh filename="rex-Tail.stl"/></geometry>
+      <material name="Tail_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="HipPitchBracket_L">
+    <visual>
+      <origin xyz="0.155 -0.02500000000000002 -0.030125" rpy="0 -1.5707963267948966 -1.2246467991473532e-16"/>
+      <geometry><mesh filename="rex-HipPitchBracket_L.stl"/></geometry>
+      <material name="HipPitchBracket_L_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="HipPitchBracket_R">
+    <visual>
+      <origin xyz="-0.155 0.025 0.030125" rpy="0 1.5707963267948966 0"/>
+      <geometry><mesh filename="rex-HipPitchBracket_R.stl"/></geometry>
+      <material name="HipPitchBracket_R_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="NeckPitchServo_horn">
+    <visual>
+      <origin xyz="0 0 -0.036125" rpy="0 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rex-NeckPitchServo_horn.stl"/></geometry>
+      <material name="NeckPitchServo_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HeadPitchServo">
+    <visual>
+      <origin xyz="0.01862999999999994 0 -3.552713678800501e-18" rpy="3.141592653589793 3.0814879110195774e-33 -1.5707963267948966"/>
+      <geometry><mesh filename="rex-HeadPitchServo.stl"/></geometry>
+      <material name="HeadPitchServo_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_HeadPitch1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 3.0814879110195774e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_HeadPitch1.stl"/></geometry>
+      <material name="M2x8_HeadPitch1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_HeadPitch2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 3.0814879110195774e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_HeadPitch2.stl"/></geometry>
+      <material name="M2x8_HeadPitch2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_HeadPitch3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 3.0814879110195774e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_HeadPitch3.stl"/></geometry>
+      <material name="M2x8_HeadPitch3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_HeadPitch4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 3.0814879110195774e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_HeadPitch4.stl"/></geometry>
+      <material name="M2x8_HeadPitch4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="TailYawServo_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-TailYawServo_horn.stl"/></geometry>
+      <material name="TailYawServo_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="TailSpikes">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-TailSpikes.stl"/></geometry>
+      <material name="TailSpikes_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_PitchL1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x6_PitchL1.stl"/></geometry>
+      <material name="M2x6_PitchL1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_PitchL2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x6_PitchL2.stl"/></geometry>
+      <material name="M2x6_PitchL2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_PitchL3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x6_PitchL3.stl"/></geometry>
+      <material name="M2x6_PitchL3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_PitchL4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x6_PitchL4.stl"/></geometry>
+      <material name="M2x6_PitchL4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="HipRollServo_L_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipRollServo_L_horn.stl"/></geometry>
+      <material name="HipRollServo_L_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HipPitchServo_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipPitchServo_L.stl"/></geometry>
+      <material name="HipPitchServo_L_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HipRollServo_R_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipRollServo_R_horn.stl"/></geometry>
+      <material name="HipRollServo_R_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HipPitchServo_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipPitchServo_R.stl"/></geometry>
+      <material name="HipPitchServo_R_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_PitchR1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_PitchR1.stl"/></geometry>
+      <material name="M2x6_PitchR1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_PitchR2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_PitchR2.stl"/></geometry>
+      <material name="M2x6_PitchR2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_PitchR3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_PitchR3.stl"/></geometry>
+      <material name="M2x6_PitchR3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_PitchR4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_PitchR4.stl"/></geometry>
+      <material name="M2x6_PitchR4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="HeadBracket">
+    <visual>
+      <origin xyz="0.11234999999999996 0.4769600000000001 -0.017499999999999995" rpy="-1.5707963267948966 6.123233995736767e-17 -3.141592653589793"/>
+      <geometry><mesh filename="rex-HeadBracket.stl"/></geometry>
+      <material name="HeadBracket_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="Thigh_L">
+    <visual>
+      <origin xyz="0.10000000000000002 0.012000000000000014 -0.048125" rpy="1.5707963267948966 6.162975822039155e-33 -1.5707963267948966"/>
+      <geometry><mesh filename="rex-Thigh_L.stl"/></geometry>
+      <material name="Thigh_L_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="Thigh_R">
+    <visual>
+      <origin xyz="-0.10000000000000002 -0.012000000000000014 0.048125" rpy="1.5707963267948966 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-Thigh_R.stl"/></geometry>
+      <material name="Thigh_R_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="HeadPitchServo_horn">
+    <visual>
+      <origin xyz="0 2.842170943040401e-17 -0.036125" rpy="1.232595164407831e-32 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rex-HeadPitchServo_horn.stl"/></geometry>
+      <material name="HeadPitchServo_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HeadYawServo">
+    <visual>
+      <origin xyz="0.0125 -7.654042494670947e-19 0" rpy="3.141592653589793 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rex-HeadYawServo.stl"/></geometry>
+      <material name="HeadYawServo_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_HeadYaw1">
+    <visual>
+      <origin xyz="0 0 0" rpy="7.703719777548943e-34 -5.551115123125783e-17 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x8_HeadYaw1.stl"/></geometry>
+      <material name="M2x8_HeadYaw1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_HeadYaw2">
+    <visual>
+      <origin xyz="0 0 0" rpy="7.703719777548943e-34 -5.551115123125783e-17 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x8_HeadYaw2.stl"/></geometry>
+      <material name="M2x8_HeadYaw2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_HeadYaw3">
+    <visual>
+      <origin xyz="0 0 0" rpy="7.703719777548943e-34 -5.551115123125783e-17 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x8_HeadYaw3.stl"/></geometry>
+      <material name="M2x8_HeadYaw3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_HeadYaw4">
+    <visual>
+      <origin xyz="0 0 0" rpy="7.703719777548943e-34 -5.551115123125783e-17 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x8_HeadYaw4.stl"/></geometry>
+      <material name="M2x8_HeadYaw4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_KneeL1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_KneeL1.stl"/></geometry>
+      <material name="M2x8_KneeL1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_KneeL2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_KneeL2.stl"/></geometry>
+      <material name="M2x8_KneeL2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_KneeL3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_KneeL3.stl"/></geometry>
+      <material name="M2x8_KneeL3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_KneeL4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_KneeL4.stl"/></geometry>
+      <material name="M2x8_KneeL4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="HipPitchServo_L_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 0"/>
+      <geometry><mesh filename="rex-HipPitchServo_L_horn.stl"/></geometry>
+      <material name="HipPitchServo_L_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="KneeServo_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -6.162975822039155e-33 0"/>
+      <geometry><mesh filename="rex-KneeServo_L.stl"/></geometry>
+      <material name="KneeServo_L_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="HipPitchServo_R_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-HipPitchServo_R_horn.stl"/></geometry>
+      <material name="HipPitchServo_R_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="KneeServo_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-KneeServo_R.stl"/></geometry>
+      <material name="KneeServo_R_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_KneeR1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x8_KneeR1.stl"/></geometry>
+      <material name="M2x8_KneeR1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_KneeR2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x8_KneeR2.stl"/></geometry>
+      <material name="M2x8_KneeR2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_KneeR3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x8_KneeR3.stl"/></geometry>
+      <material name="M2x8_KneeR3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_KneeR4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x8_KneeR4.stl"/></geometry>
+      <material name="M2x8_KneeR4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="Skull">
+    <visual>
+      <origin xyz="0.16499999999999995 1.010333609296567e-17 -0.4911250000000001" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.141592653589793"/>
+      <geometry><mesh filename="rex-Skull.stl"/></geometry>
+      <material name="Skull_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="Shin_L">
+    <visual>
+      <origin xyz="-0.02500000000000003 0.011999999999999997 0.012" rpy="-1.5707963267948966 6.162975822039155e-33 -1.5707963267948966"/>
+      <geometry><mesh filename="rex-Shin_L.stl"/></geometry>
+      <material name="Shin_L_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="Shin_R">
+    <visual>
+      <origin xyz="0.02500000000000003 -0.011999999999999997 -0.011999999999999974" rpy="-1.5707963267948968 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-Shin_R.stl"/></geometry>
+      <material name="Shin_R_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="HeadYawServo_horn">
+    <visual>
+      <origin xyz="1.8932661725304284e-32 5.684341886080802e-17 5.684341886080802e-17" rpy="-5.551115123125783e-17 -6.162975822039155e-33 -1.232595164407831e-32"/>
+      <geometry><mesh filename="rex-HeadYawServo_horn.stl"/></geometry>
+      <material name="HeadYawServo_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="JawServo">
+    <visual>
+      <origin xyz="0 0 0" rpy="-6.162975822039155e-33 6.162975822039155e-33 -5.551115123125783e-17"/>
+      <geometry><mesh filename="rex-JawServo.stl"/></geometry>
+      <material name="JawServo_color"><color rgba="0.14901961386203766 0.3607843220233917 0.7686274647712708 1"/></material>
+    </visual>
+  </link>
+  <link name="UpperTeeth">
+    <visual>
+      <origin xyz="0 0 0" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.0814879110195774e-33"/>
+      <geometry><mesh filename="rex-UpperTeeth.stl"/></geometry>
+      <material name="UpperTeeth_color"><color rgba="0.929411768913269 0.929411768913269 0.929411768913269 1"/></material>
+    </visual>
+  </link>
+  <link name="EyeSocket_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.0814879110195774e-33"/>
+      <geometry><mesh filename="rex-EyeSocket_R.stl"/></geometry>
+      <material name="EyeSocket_R_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="EyeSocket_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.0814879110195774e-33"/>
+      <geometry><mesh filename="rex-EyeSocket_L.stl"/></geometry>
+      <material name="EyeSocket_L_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="BrowRidge_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.0814879110195774e-33"/>
+      <geometry><mesh filename="rex-BrowRidge_R.stl"/></geometry>
+      <material name="BrowRidge_R_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="BrowRidge_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.0814879110195774e-33"/>
+      <geometry><mesh filename="rex-BrowRidge_L.stl"/></geometry>
+      <material name="BrowRidge_L_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_AnkleL1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_AnkleL1.stl"/></geometry>
+      <material name="M2x8_AnkleL1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_AnkleL2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_AnkleL2.stl"/></geometry>
+      <material name="M2x8_AnkleL2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_AnkleL3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_AnkleL3.stl"/></geometry>
+      <material name="M2x8_AnkleL3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_AnkleL4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-M2x8_AnkleL4.stl"/></geometry>
+      <material name="M2x8_AnkleL4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="KneeServo_L_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="2.465190328815662e-32 1.2325951644078307e-32 -5.5511151231257815e-17"/>
+      <geometry><mesh filename="rex-KneeServo_L_horn.stl"/></geometry>
+      <material name="KneeServo_L_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="AnklePitchServo_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 6.162975822039155e-33 0"/>
+      <geometry><mesh filename="rex-AnklePitchServo_L.stl"/></geometry>
+      <material name="AnklePitchServo_L_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="KneeServo_R_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 5.5511151231257815e-17"/>
+      <geometry><mesh filename="rex-KneeServo_R_horn.stl"/></geometry>
+      <material name="KneeServo_R_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="AnklePitchServo_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-AnklePitchServo_R.stl"/></geometry>
+      <material name="AnklePitchServo_R_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_AnkleR1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x8_AnkleR1.stl"/></geometry>
+      <material name="M2x8_AnkleR1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_AnkleR2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x8_AnkleR2.stl"/></geometry>
+      <material name="M2x8_AnkleR2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_AnkleR3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x8_AnkleR3.stl"/></geometry>
+      <material name="M2x8_AnkleR3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x8_AnkleR4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x8_AnkleR4.stl"/></geometry>
+      <material name="M2x8_AnkleR4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="Jaw">
+    <visual>
+      <origin xyz="0.185 -0.49999999999999994 -0.02130000000000001" rpy="1.5707963267948966 -6.123233995736767e-17 3.141592653589793"/>
+      <geometry><mesh filename="rex-Jaw.stl"/></geometry>
+      <material name="Jaw_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="AnkleRollBracket_L">
+    <visual>
+      <origin xyz="0.05 -0.012000000000000007 -0.048124999999999994" rpy="1.5707963267948966 -5.527796276843854e-33 1.5707963267948966"/>
+      <geometry><mesh filename="rex-AnkleRollBracket_L.stl"/></geometry>
+      <material name="AnkleRollBracket_L_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="AnkleRollBracket_R">
+    <visual>
+      <origin xyz="-0.05000000000000003 0.012000000000000004 0.04812499999999999" rpy="1.5707963267948966 -1.4997597826618576e-32 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-AnkleRollBracket_R.stl"/></geometry>
+      <material name="AnkleRollBracket_R_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="JawServo_horn">
+    <visual>
+      <origin xyz="5.684341886080802e-17 -5.684341886080802e-17 7.105427357601002e-18" rpy="-5.334274688628683e-17 6.162975822039156e-33 0"/>
+      <geometry><mesh filename="rex-JawServo_horn.stl"/></geometry>
+      <material name="JawServo_horn_color"><color rgba="0.14901961386203766 0.3607843220233917 0.7686274647712708 1"/></material>
+    </visual>
+  </link>
+  <link name="LowerTeeth">
+    <visual>
+      <origin xyz="0 0 0" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.0814879110195774e-33"/>
+      <geometry><mesh filename="rex-LowerTeeth.stl"/></geometry>
+      <material name="LowerTeeth_color"><color rgba="0.929411768913269 0.929411768913269 0.929411768913269 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_ARollL1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x6_ARollL1.stl"/></geometry>
+      <material name="M2x6_ARollL1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_ARollL2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x6_ARollL2.stl"/></geometry>
+      <material name="M2x6_ARollL2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_ARollL3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x6_ARollL3.stl"/></geometry>
+      <material name="M2x6_ARollL3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_ARollL4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707963267948966"/>
+      <geometry><mesh filename="rex-M2x6_ARollL4.stl"/></geometry>
+      <material name="M2x6_ARollL4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="AnklePitchServo_L_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -6.351795451953019e-34 0"/>
+      <geometry><mesh filename="rex-AnklePitchServo_L_horn.stl"/></geometry>
+      <material name="AnklePitchServo_L_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="AnkleRollServo_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-AnkleRollServo_L.stl"/></geometry>
+      <material name="AnkleRollServo_L_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="AnklePitchServo_R_horn">
+    <visual>
+      <origin xyz="5.3290705182007515e-18 0 0" rpy="0 0 1.1442377452219667e-17"/>
+      <geometry><mesh filename="rex-AnklePitchServo_R_horn.stl"/></geometry>
+      <material name="AnklePitchServo_R_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="AnkleRollServo_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-AnkleRollServo_R.stl"/></geometry>
+      <material name="AnkleRollServo_R_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_ARollR1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_ARollR1.stl"/></geometry>
+      <material name="M2x6_ARollR1_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_ARollR2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_ARollR2.stl"/></geometry>
+      <material name="M2x6_ARollR2_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_ARollR3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_ARollR3.stl"/></geometry>
+      <material name="M2x6_ARollR3_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="M2x6_ARollR4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-M2x6_ARollR4.stl"/></geometry>
+      <material name="M2x6_ARollR4_color"><color rgba="0.6196078658103943 0.6431372761726379 0.6745098233222961 1"/></material>
+    </visual>
+  </link>
+  <link name="Foot_L">
+    <visual>
+      <origin xyz="-0.03399999999999997 0.10149999999999998 -0.030125" rpy="0 -1.5707963267948966 -1.5707963267948968"/>
+      <geometry><mesh filename="rex-Foot_L.stl"/></geometry>
+      <material name="Foot_L_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="Foot_R">
+    <visual>
+      <origin xyz="0.034 0.037 0.030125" rpy="0 1.5707963267948966 -1.5707963267948966"/>
+      <geometry><mesh filename="rex-Foot_R.stl"/></geometry>
+      <material name="Foot_R_color"><color rgba="0.800000011920929 1 0 1"/></material>
+    </visual>
+  </link>
+  <link name="AnkleRollServo_L_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-AnkleRollServo_L_horn.stl"/></geometry>
+      <material name="AnkleRollServo_L_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="SolePad_L">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-SolePad_L.stl"/></geometry>
+      <material name="SolePad_L_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="Claw_L1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-Claw_L1.stl"/></geometry>
+      <material name="Claw_L1_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="Claw_L2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-Claw_L2.stl"/></geometry>
+      <material name="Claw_L2_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="Claw_L3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-Claw_L3.stl"/></geometry>
+      <material name="Claw_L3_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="AnkleRollServo_R_horn">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rex-AnkleRollServo_R_horn.stl"/></geometry>
+      <material name="AnkleRollServo_R_horn_color"><color rgba="0.10980392247438431 0.10980392247438431 0.11764705926179886 1"/></material>
+    </visual>
+  </link>
+  <link name="SolePad_R">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.3684555315672042e-48"/>
+      <geometry><mesh filename="rex-SolePad_R.stl"/></geometry>
+      <material name="SolePad_R_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="Claw_R1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.3684555315672042e-48"/>
+      <geometry><mesh filename="rex-Claw_R1.stl"/></geometry>
+      <material name="Claw_R1_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="Claw_R2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.3684555315672042e-48"/>
+      <geometry><mesh filename="rex-Claw_R2.stl"/></geometry>
+      <material name="Claw_R2_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <link name="Claw_R3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.3684555315672042e-48"/>
+      <geometry><mesh filename="rex-Claw_R3.stl"/></geometry>
+      <material name="Claw_R3_color"><color rgba="0.06666667014360428 0.06666667014360428 0.06666667014360428 1"/></material>
+    </visual>
+  </link>
+  <joint name="ArmourPlate_fixed" type="fixed">
+    <parent link="base_link"/>
+    <child link="ArmourPlate"/>
+    <origin xyz="0 0 0.1294538931178863" rpy="0 0 0"/>
+  </joint>
+  <joint name="M3x10_Plate1_seat" type="fixed">
+    <parent link="ArmourPlate"/>
+    <child link="M3x10_Plate1"/>
+    <origin xyz="-0.04 0.041000000000000016 0.29000000000000015" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M3x10_Plate2_seat" type="fixed">
+    <parent link="ArmourPlate"/>
+    <child link="M3x10_Plate2"/>
+    <origin xyz="7.105427357601002e-18 0.041 0.29000000000000004" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M3x10_Plate3_seat" type="fixed">
+    <parent link="ArmourPlate"/>
+    <child link="M3x10_Plate3"/>
+    <origin xyz="0.039999999999999994 0.04100000000000001 0.29000000000000004" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M3x10_Plate4_seat" type="fixed">
+    <parent link="ArmourPlate"/>
+    <child link="M3x10_Plate4"/>
+    <origin xyz="-0.04000000000000001 -0.040999999999999995 0.29000000000000015" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M3x10_Plate5_seat" type="fixed">
+    <parent link="ArmourPlate"/>
+    <child link="M3x10_Plate5"/>
+    <origin xyz="3.552713678800501e-18 -0.041 0.29000000000000015" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M3x10_Plate6_seat" type="fixed">
+    <parent link="ArmourPlate"/>
+    <child link="M3x10_Plate6"/>
+    <origin xyz="0.04 -0.04099999999999998 0.29000000000000015" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="Plate_on_shell_rim__6x_M3_" type="fixed">
+    <parent link="ArmourPlate"/>
+    <child link="Torso"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Badge_seated_in_flank_pockets" type="fixed">
+    <parent link="Torso"/>
+    <child link="PixelBadge"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Strap_on_floor_bosses__2x_M3_" type="fixed">
+    <parent link="Torso"/>
+    <child link="BatteryStrap"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Pi_on_4_standoffs__4x_M2_5_" type="fixed">
+    <parent link="Torso"/>
+    <child link="PiZero2W"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="IMU_on_2_standoffs__2x_M2_5_" type="fixed">
+    <parent link="Torso"/>
+    <child link="BNO085"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Hip_servo_L_on_pad__4x_M2_" type="fixed">
+    <parent link="Torso"/>
+    <child link="HipYawServo_L"/>
+    <origin xyz="0.012 0.025 0.20600000000000002" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="Hip_servo_R_on_pad__4x_M2_" type="fixed">
+    <parent link="Torso"/>
+    <child link="HipYawServo_R"/>
+    <origin xyz="0.012 -0.025 0.20600000000000002" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="NeckMount_on_chest__2x_M3_" type="fixed">
+    <parent link="Torso"/>
+    <child link="NeckMount"/>
+    <origin xyz="0.065 0 0.2695" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="M3x6_TailMount1_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M3x6_TailMount1"/>
+    <origin xyz="-0.06179999999999999 4.5741188614556453e-17 0.2565" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="M3x6_TailMount2_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M3x6_TailMount2"/>
+    <origin xyz="-0.061799999999999994 4.551914400963142e-17 0.2665" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="TailMount_on_back_wall__2x_M3_" type="fixed">
+    <parent link="Torso"/>
+    <child link="TailMount"/>
+    <origin xyz="0 0 -0.1385" rpy="0 0 0"/>
+  </joint>
+  <joint name="M2x10_HipL1_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M2x10_HipL1"/>
+    <origin xyz="0.0037200000000000015 0.014750000000000003 0.2125000000000042" rpy="0 0 -1.2246467991473532e-16"/>
+  </joint>
+  <joint name="M2x10_HipL2_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M2x10_HipL2"/>
+    <origin xyz="0.0037199999999999993 0.03525 0.21250000000000416" rpy="0 0 -1.2246467991473532e-16"/>
+  </joint>
+  <joint name="M2x10_HipL3_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M2x10_HipL3"/>
+    <origin xyz="-0.01698 0.014750000000000001 0.21250000000000716" rpy="0 0 -1.2246467991473532e-16"/>
+  </joint>
+  <joint name="M2x10_HipL4_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M2x10_HipL4"/>
+    <origin xyz="-0.016980000000000002 0.03525 0.21250000000000716" rpy="0 0 -1.2246467991473532e-16"/>
+  </joint>
+  <joint name="M2x10_HipR1_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M2x10_HipR1"/>
+    <origin xyz="0.003720000000000002 -0.014750000000000001 0.2125000000000041" rpy="0 0 -1.2246467991473532e-16"/>
+  </joint>
+  <joint name="M2x10_HipR2_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M2x10_HipR2"/>
+    <origin xyz="0.0037200000000000006 -0.035250000000000004 0.2125000000000041" rpy="0 0 -1.2246467991473532e-16"/>
+  </joint>
+  <joint name="M2x10_HipR3_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M2x10_HipR3"/>
+    <origin xyz="-0.01698 -0.014750000000000003 0.2125000000000071" rpy="0 0 -1.2246467991473532e-16"/>
+  </joint>
+  <joint name="M2x10_HipR4_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M2x10_HipR4"/>
+    <origin xyz="-0.016980000000000006 -0.03525 0.2125000000000071" rpy="0 0 -1.2246467991473532e-16"/>
+  </joint>
+  <joint name="M3x10_ArmL_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M3x10_ArmL"/>
+    <origin xyz="0.05889999999999999 0.029999999999999985 0.2565" rpy="0 1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="M3x10_ArmR_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M3x10_ArmR"/>
+    <origin xyz="0.058899999999858815 -0.02999999999999999 0.2565" rpy="0 1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="Arm_L_on_chest__1x_M3_" type="fixed">
+    <parent link="Torso"/>
+    <child link="TinyArm_L"/>
+    <origin xyz="0 0 -0.1385" rpy="0 0 0"/>
+  </joint>
+  <joint name="Arm_R_on_chest__1x_M3_" type="fixed">
+    <parent link="Torso"/>
+    <child link="TinyArm_R"/>
+    <origin xyz="0 0 -0.1385" rpy="0 0 0"/>
+  </joint>
+  <joint name="M3x6_NeckMount1_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M3x6_NeckMount1"/>
+    <origin xyz="0.06169 0 0.2615" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="M3x6_NeckMount2_seat" type="fixed">
+    <parent link="Torso"/>
+    <child link="M3x6_NeckMount2"/>
+    <origin xyz="0.0619 0 0.27749999999999997" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="M3x6_Strap1_seat" type="fixed">
+    <parent link="BatteryStrap"/>
+    <child link="M3x6_Strap1"/>
+    <origin xyz="-0.007999999999999988 -0.035 0.21950000000000006" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M3x6_Strap2_seat" type="fixed">
+    <parent link="BatteryStrap"/>
+    <child link="M3x6_Strap2"/>
+    <origin xyz="-0.008 0.009999999999999997 0.21950000000000006" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="LiPo_clamped_by_strap_on_ribs" type="fixed">
+    <parent link="BatteryStrap"/>
+    <child link="LiPo2S"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="M2_5x10_Pi1_seat" type="fixed">
+    <parent link="PiZero2W"/>
+    <child link="M2_5x10_Pi1"/>
+    <origin xyz="-0.030999999999999993 0.011499999999999984 0.22950000000000007" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M2_5x10_Pi2_seat" type="fixed">
+    <parent link="PiZero2W"/>
+    <child link="M2_5x10_Pi2"/>
+    <origin xyz="0.027 0.011499999999999984 0.2295" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M2_5x10_Pi3_seat" type="fixed">
+    <parent link="PiZero2W"/>
+    <child link="M2_5x10_Pi3"/>
+    <origin xyz="-0.031 0.034499999999999996 0.2295" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M2_5x10_Pi4_seat" type="fixed">
+    <parent link="PiZero2W"/>
+    <child link="M2_5x10_Pi4"/>
+    <origin xyz="0.026999999999999986 0.0345 0.2295" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M2_5x8_Imu1_seat" type="fixed">
+    <parent link="BNO085"/>
+    <child link="M2_5x8_Imu1"/>
+    <origin xyz="-0.009499999999999998 0.019499999999999997 0.2205" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M2_5x8_Imu2_seat" type="fixed">
+    <parent link="BNO085"/>
+    <child link="M2_5x8_Imu2"/>
+    <origin xyz="0.010500000000000006 0.03249999999999999 0.22050000000000006" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="L_hip_yaw" type="revolute">
+    <parent link="HipYawServo_L"/>
+    <child link="HipRollBracket_L"/>
+    <origin xyz="0 -3.552713678800501e-18 0.036125" rpy="0 -1.2246467991473532e-16 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.4363323129985824" upper="0.4363323129985824" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="R_hip_yaw" type="revolute">
+    <parent link="HipYawServo_R"/>
+    <child link="HipRollBracket_R"/>
+    <origin xyz="0 -5.3290705182007515e-18 0.036125" rpy="3.141592653589793 1.2246467991473532e-16 -1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.4363323129985824" upper="0.4363323129985824" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="M2x8_Neck1_seat" type="fixed">
+    <parent link="NeckMount"/>
+    <child link="M2x8_Neck1"/>
+    <origin xyz="0.00872000000000014 0.02150000000000001 0.0070999999999999805" rpy="-1.5707963267948966 0 0"/>
+  </joint>
+  <joint name="M2x8_Neck2_seat" type="fixed">
+    <parent link="NeckMount"/>
+    <child link="M2x8_Neck2"/>
+    <origin xyz="-0.011980000000000076 0.021500000000000012 0.007100000000000108" rpy="-1.5707963267948966 0 0"/>
+  </joint>
+  <joint name="M2x8_Neck3_seat" type="fixed">
+    <parent link="NeckMount"/>
+    <child link="M2x8_Neck3"/>
+    <origin xyz="0.00871999999999997 0.02150000000000001 0.027600000000000024" rpy="-1.5707963267948966 0 0"/>
+  </joint>
+  <joint name="M2x8_Neck4_seat" type="fixed">
+    <parent link="NeckMount"/>
+    <child link="M2x8_Neck4"/>
+    <origin xyz="-0.011980000000000018 0.021500000000000012 0.027600000000000024" rpy="-1.5707963267948966 0 0"/>
+  </joint>
+  <joint name="Neck_pitch_servo_on_NeckMount_cheek__4x_M2_" type="fixed">
+    <parent link="NeckMount"/>
+    <child link="NeckPitchServo"/>
+    <origin xyz="-0.002 0.0175 0.017349999999999994" rpy="-1.5707963267948966 0 0"/>
+  </joint>
+  <joint name="M2x8_TailYaw1_seat" type="fixed">
+    <parent link="TailMount"/>
+    <child link="M2x8_TailYaw1"/>
+    <origin xyz="-0.08828 0.010249999999999999 0.3719999999999999" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_TailYaw2_seat" type="fixed">
+    <parent link="TailMount"/>
+    <child link="M2x8_TailYaw2"/>
+    <origin xyz="-0.08828 -0.010250000000000028 0.37199999999999983" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_TailYaw3_seat" type="fixed">
+    <parent link="TailMount"/>
+    <child link="M2x8_TailYaw3"/>
+    <origin xyz="-0.10898 0.010249999999999971 0.3719999999999999" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_TailYaw4_seat" type="fixed">
+    <parent link="TailMount"/>
+    <child link="M2x8_TailYaw4"/>
+    <origin xyz="-0.10898000000000002 -0.010250000000000028 0.37199999999999983" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="Tail_yaw_servo_on_TailMount_floor__4x_M2_" type="fixed">
+    <parent link="TailMount"/>
+    <child link="TailYawServo"/>
+    <origin xyz="-0.08 0 0.376" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="Claws_L_glued_in_hand" type="fixed">
+    <parent link="TinyArm_L"/>
+    <child link="Claws_L"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Claws_R_glued_in_hand" type="fixed">
+    <parent link="TinyArm_R"/>
+    <child link="Claws_R"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="M2x6_RollL1_seat" type="fixed">
+    <parent link="HipRollBracket_L"/>
+    <child link="M2x6_RollL1"/>
+    <origin xyz="0.021000000000000036 -0.010250000000000046 0.023155000000000085" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_RollL2_seat" type="fixed">
+    <parent link="HipRollBracket_L"/>
+    <child link="M2x6_RollL2"/>
+    <origin xyz="0.021000000000000008 0.01025 0.023154999999999974" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_RollL3_seat" type="fixed">
+    <parent link="HipRollBracket_L"/>
+    <child link="M2x6_RollL3"/>
+    <origin xyz="0.021000000000000008 -0.010249999999999978 0.04385499999999996" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_RollL4_seat" type="fixed">
+    <parent link="HipRollBracket_L"/>
+    <child link="M2x6_RollL4"/>
+    <origin xyz="0.021000000000000022 0.010249999999999993 0.04385500000000002" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+  </joint>
+  <joint name="HipYaw_L_horn_to_roll_bracket" type="fixed">
+    <parent link="HipRollBracket_L"/>
+    <child link="HipYawServo_L_horn"/>
+    <origin xyz="0 0 -0.036125" rpy="-1.2246467991473532e-16 -3.9649501114775195e-32 -6.123233995736766e-17"/>
+  </joint>
+  <joint name="Hip_roll_servo_L_on_bracket__4x_M2_" type="fixed">
+    <parent link="HipRollBracket_L"/>
+    <child link="HipRollServo_L"/>
+    <origin xyz="0.018000000000000002 0 0.014875000000000001" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="HipYaw_R_horn_to_roll_bracket" type="fixed">
+    <parent link="HipRollBracket_R"/>
+    <child link="HipYawServo_R_horn"/>
+    <origin xyz="1.7763568394002505e-18 0 0.036125" rpy="3.141592653589793 1.4997597826618576e-32 -3.141592653589793"/>
+  </joint>
+  <joint name="Hip_roll_servo_R_on_bracket__4x_M2_" type="fixed">
+    <parent link="HipRollBracket_R"/>
+    <child link="HipRollServo_R"/>
+    <origin xyz="-0.018000000000000002 0 -0.014875000000000001" rpy="-1.5707963267948966 0 -1.5707963267948968"/>
+  </joint>
+  <joint name="M2x6_RollR1_seat" type="fixed">
+    <parent link="HipRollBracket_R"/>
+    <child link="M2x6_RollR1"/>
+    <origin xyz="-0.021 0.01025 -0.023154999999999974" rpy="1.5707963267948966 0 -1.5707963267948968"/>
+  </joint>
+  <joint name="M2x6_RollR2_seat" type="fixed">
+    <parent link="HipRollBracket_R"/>
+    <child link="M2x6_RollR2"/>
+    <origin xyz="-0.021 -0.01025 -0.023154999999999974" rpy="1.5707963267948966 0 -1.5707963267948968"/>
+  </joint>
+  <joint name="M2x6_RollR3_seat" type="fixed">
+    <parent link="HipRollBracket_R"/>
+    <child link="M2x6_RollR3"/>
+    <origin xyz="-0.021 0.01025 -0.04385500000000002" rpy="1.5707963267948966 0 -1.5707963267948968"/>
+  </joint>
+  <joint name="M2x6_RollR4_seat" type="fixed">
+    <parent link="HipRollBracket_R"/>
+    <child link="M2x6_RollR4"/>
+    <origin xyz="-0.021 -0.01025 -0.04385500000000002" rpy="1.5707963267948966 0 -1.5707963267948968"/>
+  </joint>
+  <joint name="neck_pitch" type="revolute">
+    <parent link="NeckPitchServo"/>
+    <child link="Neck"/>
+    <origin xyz="0.019 0 -0.036125" rpy="3.141592653589793 6.123233995736766e-17 3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.6981317007977318" upper="0.6981317007977318" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="tail_yaw" type="revolute">
+    <parent link="TailYawServo"/>
+    <child link="Tail"/>
+    <origin xyz="0 0 0.036125" rpy="0 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.6981317007977318" upper="0.6981317007977318" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="L_hip_roll" type="revolute">
+    <parent link="HipRollServo_L"/>
+    <child link="HipPitchBracket_L"/>
+    <origin xyz="0 0 0.036125" rpy="0 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.20943951023931956" upper="0.4363323129985824" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="R_hip_roll" type="revolute">
+    <parent link="HipRollServo_R"/>
+    <child link="HipPitchBracket_R"/>
+    <origin xyz="0 0 0.036125" rpy="3.141592653589793 0 -1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.20943951023931956" upper="0.4363323129985824" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="NeckPitch_horn_to_neck" type="fixed">
+    <parent link="Neck"/>
+    <child link="NeckPitchServo_horn"/>
+    <origin xyz="0 0 3.552713678800501e-18" rpy="0 0 5.551115123125783e-17"/>
+  </joint>
+  <joint name="Head_pitch_servo_on_neck__4x_M2_" type="fixed">
+    <parent link="Neck"/>
+    <child link="HeadPitchServo"/>
+    <origin xyz="-0.05196000000000004 -0.011370000000000062 7.105427357601002e-18" rpy="-6.123233995736766e-17 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_HeadPitch1_seat" type="fixed">
+    <parent link="Neck"/>
+    <child link="M2x8_HeadPitch1"/>
+    <origin xyz="-0.06221000000000009 -0.021720000000000312 0.004000000000000014" rpy="0 6.123233995736766e-17 5.551115123125783e-17"/>
+  </joint>
+  <joint name="M2x8_HeadPitch2_seat" type="fixed">
+    <parent link="Neck"/>
+    <child link="M2x8_HeadPitch2"/>
+    <origin xyz="-0.041709999999999865 -0.021720000000000027 0.004000000000000007" rpy="0 6.123233995736766e-17 5.551115123125783e-17"/>
+  </joint>
+  <joint name="M2x8_HeadPitch3_seat" type="fixed">
+    <parent link="Neck"/>
+    <child link="M2x8_HeadPitch3"/>
+    <origin xyz="-0.06221000000000009 -0.001020000000000209 0.0040000000000000105" rpy="0 6.123233995736766e-17 5.551115123125783e-17"/>
+  </joint>
+  <joint name="M2x8_HeadPitch4_seat" type="fixed">
+    <parent link="Neck"/>
+    <child link="M2x8_HeadPitch4"/>
+    <origin xyz="-0.04170999999999998 -0.0010200000000000387 0.004000000000000014" rpy="0 6.123233995736766e-17 5.551115123125783e-17"/>
+  </joint>
+  <joint name="TailYaw_horn_to_tail" type="fixed">
+    <parent link="Tail"/>
+    <child link="TailYawServo_horn"/>
+    <origin xyz="0 0 -0.036125" rpy="0 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="Tail_spikes_glued_in_slot" type="fixed">
+    <parent link="Tail"/>
+    <child link="TailSpikes"/>
+    <origin xyz="-0.08 -4.898587196589413e-18 -0.412125" rpy="0 0 -3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_PitchL1_seat" type="fixed">
+    <parent link="HipPitchBracket_L"/>
+    <child link="M2x6_PitchL1"/>
+    <origin xyz="0.06328 -0.01600000000000002 -0.02837500000000001" rpy="-1.5707963267948966 0 3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_PitchL2_seat" type="fixed">
+    <parent link="HipPitchBracket_L"/>
+    <child link="M2x6_PitchL2"/>
+    <origin xyz="0.06328 -0.016000000000000018 -0.007875000000000014" rpy="-1.5707963267948966 0 3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_PitchL3_seat" type="fixed">
+    <parent link="HipPitchBracket_L"/>
+    <child link="M2x6_PitchL3"/>
+    <origin xyz="0.08398000000000003 -0.01600000000000002 -0.028374999999999997" rpy="-1.5707963267948966 0 3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_PitchL4_seat" type="fixed">
+    <parent link="HipPitchBracket_L"/>
+    <child link="M2x6_PitchL4"/>
+    <origin xyz="0.08397999999999996 -0.01600000000000002 -0.007875000000000031" rpy="-1.5707963267948966 0 3.141592653589793"/>
+  </joint>
+  <joint name="HipRoll_L_horn_to_pitch_bracket" type="fixed">
+    <parent link="HipPitchBracket_L"/>
+    <child link="HipRollServo_L_horn"/>
+    <origin xyz="0 0 -0.036125" rpy="0 0 -1.5707963267948968"/>
+  </joint>
+  <joint name="Hip_pitch_servo_L_on_bracket__4x_M2_" type="fixed">
+    <parent link="HipPitchBracket_L"/>
+    <child link="HipPitchServo_L"/>
+    <origin xyz="0.055 -0.013000000000000006 -0.018125" rpy="0 -1.5707963267948966 -1.5707963267948968"/>
+  </joint>
+  <joint name="HipRoll_R_horn_to_pitch_bracket" type="fixed">
+    <parent link="HipPitchBracket_R"/>
+    <child link="HipRollServo_R_horn"/>
+    <origin xyz="0 0 0.036125" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="Hip_pitch_servo_R_on_bracket__4x_M2_" type="fixed">
+    <parent link="HipPitchBracket_R"/>
+    <child link="HipPitchServo_R"/>
+    <origin xyz="-0.055 0.013000000000000001 0.018125" rpy="0 -1.5707963267948966 1.5707963267948966"/>
+  </joint>
+  <joint name="M2x6_PitchR1_seat" type="fixed">
+    <parent link="HipPitchBracket_R"/>
+    <child link="M2x6_PitchR1"/>
+    <origin xyz="-0.06328 0.016 0.028375" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x6_PitchR2_seat" type="fixed">
+    <parent link="HipPitchBracket_R"/>
+    <child link="M2x6_PitchR2"/>
+    <origin xyz="-0.06328 0.016 0.007875" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x6_PitchR3_seat" type="fixed">
+    <parent link="HipPitchBracket_R"/>
+    <child link="M2x6_PitchR3"/>
+    <origin xyz="-0.08397999999999999 0.016 0.028375" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x6_PitchR4_seat" type="fixed">
+    <parent link="HipPitchBracket_R"/>
+    <child link="M2x6_PitchR4"/>
+    <origin xyz="-0.08397999999999999 0.016 0.007875" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="head_pitch" type="revolute">
+    <parent link="HeadPitchServo"/>
+    <child link="HeadBracket"/>
+    <origin xyz="0.01862999999999994 0 -0.036125" rpy="3.141592653589793 -6.123233995736766e-17 -3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.7853981633974483" upper="0.7853981633974483" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="L_hip_pitch" type="revolute">
+    <parent link="HipPitchServo_L"/>
+    <child link="Thigh_L"/>
+    <origin xyz="0 0 0.036125" rpy="0 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="R_hip_pitch" type="revolute">
+    <parent link="HipPitchServo_R"/>
+    <child link="Thigh_R"/>
+    <origin xyz="0 0 0.036125" rpy="-3.141592653589793 0 -1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="HeadPitch_horn_to_head_bracket" type="fixed">
+    <parent link="HeadBracket"/>
+    <child link="HeadPitchServo_horn"/>
+    <origin xyz="0 -2.842170943040401e-17 0" rpy="-6.162975822039155e-33 -1.232595164407831e-32 1.1102230246251565e-16"/>
+  </joint>
+  <joint name="Head_yaw_servo_on_bracket_floor__4x_M2_" type="fixed">
+    <parent link="HeadBracket"/>
+    <child link="HeadYawServo"/>
+    <origin xyz="-0.04015000000000003 0.021960000000000007 -0.017500000000000005" rpy="1.5707963267948966 1.232595164407831e-32 -3.141592653589793"/>
+  </joint>
+  <joint name="M2x8_HeadYaw1_seat" type="fixed">
+    <parent link="HeadBracket"/>
+    <child link="M2x8_HeadYaw1"/>
+    <origin xyz="-0.04437000000000006 0.02596000000000021 -0.027750000000000004" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_HeadYaw2_seat" type="fixed">
+    <parent link="HeadBracket"/>
+    <child link="M2x8_HeadYaw2"/>
+    <origin xyz="-0.04437000000000001 0.02596000000000021 -0.007249999999999992" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_HeadYaw3_seat" type="fixed">
+    <parent link="HeadBracket"/>
+    <child link="M2x8_HeadYaw3"/>
+    <origin xyz="-0.023670000000000017 0.02596000000000015 -0.02774999999999998" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_HeadYaw4_seat" type="fixed">
+    <parent link="HeadBracket"/>
+    <child link="M2x8_HeadYaw4"/>
+    <origin xyz="-0.023670000000000017 0.02596000000000015 -0.007249999999999972" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_KneeL1_seat" type="fixed">
+    <parent link="Thigh_L"/>
+    <child link="M2x8_KneeL1"/>
+    <origin xyz="0.06672 0.010250000000000014 0.005000000000000022" rpy="6.162975822039155e-33 0 0"/>
+  </joint>
+  <joint name="M2x8_KneeL2_seat" type="fixed">
+    <parent link="Thigh_L"/>
+    <child link="M2x8_KneeL2"/>
+    <origin xyz="0.06672000000000003 -0.010249999999999987 0.005000000000000029" rpy="6.162975822039155e-33 0 0"/>
+  </joint>
+  <joint name="M2x8_KneeL3_seat" type="fixed">
+    <parent link="Thigh_L"/>
+    <child link="M2x8_KneeL3"/>
+    <origin xyz="0.04602000000000004 0.010250000000000014 0.005000000000000022" rpy="6.162975822039155e-33 0 0"/>
+  </joint>
+  <joint name="M2x8_KneeL4_seat" type="fixed">
+    <parent link="Thigh_L"/>
+    <child link="M2x8_KneeL4"/>
+    <origin xyz="0.04602000000000001 -0.010249999999999987 0.005000000000000014" rpy="6.162975822039155e-33 0 0"/>
+  </joint>
+  <joint name="HipPitch_L_horn_to_thigh" type="fixed">
+    <parent link="Thigh_L"/>
+    <child link="HipPitchServo_L_horn"/>
+    <origin xyz="0 0 -0.036125" rpy="0 6.162975822039155e-33 -1.5707963267948966"/>
+  </joint>
+  <joint name="Knee_servo_L_on_thigh__4x_M2_" type="fixed">
+    <parent link="Thigh_L"/>
+    <child link="KneeServo_L"/>
+    <origin xyz="0.075 1.4210854715202004e-17 -7.105427357601002e-18" rpy="3.141592653589793 6.162975822039155e-33 -1.5707963267948966"/>
+  </joint>
+  <joint name="HipPitch_R_horn_to_thigh" type="fixed">
+    <parent link="Thigh_R"/>
+    <child link="HipPitchServo_R_horn"/>
+    <origin xyz="0 0 0.036125" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="Knee_servo_R_on_thigh__4x_M2_" type="fixed">
+    <parent link="Thigh_R"/>
+    <child link="KneeServo_R"/>
+    <origin xyz="-0.075 -1.4210854715202004e-17 0" rpy="0 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_KneeR1_seat" type="fixed">
+    <parent link="Thigh_R"/>
+    <child link="M2x8_KneeR1"/>
+    <origin xyz="-0.06672000000000003 -0.010250000000000014 -0.005" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_KneeR2_seat" type="fixed">
+    <parent link="Thigh_R"/>
+    <child link="M2x8_KneeR2"/>
+    <origin xyz="-0.06672 0.01025 -0.005" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_KneeR3_seat" type="fixed">
+    <parent link="Thigh_R"/>
+    <child link="M2x8_KneeR3"/>
+    <origin xyz="-0.04602000000000001 -0.01025 -0.005" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_KneeR4_seat" type="fixed">
+    <parent link="Thigh_R"/>
+    <child link="M2x8_KneeR4"/>
+    <origin xyz="-0.04602000000000001 0.010249999999999987 -0.005" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="head_yaw" type="revolute">
+    <parent link="HeadYawServo"/>
+    <child link="Skull"/>
+    <origin xyz="0.012499999999999943 -7.654042494670947e-19 -0.03612500000000003" rpy="3.141592653589793 -5.551115123125783e-17 3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.0471975511965976" upper="1.0471975511965976" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="L_knee" type="revolute">
+    <parent link="KneeServo_L"/>
+    <child link="Shin_L"/>
+    <origin xyz="0 0 0.036125" rpy="-6.162975822039155e-33 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.2689280275926285" upper="0" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="R_knee" type="revolute">
+    <parent link="KneeServo_R"/>
+    <child link="Shin_R"/>
+    <origin xyz="0 0 0.036125" rpy="3.141592653589793 0 -1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.2689280275926285" upper="0" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="HeadYaw_horn_to_skull" type="fixed">
+    <parent link="Skull"/>
+    <child link="HeadYawServo_horn"/>
+    <origin xyz="-5.684341886080802e-17 0 -0.036125" rpy="-5.551115123125783e-17 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="Jaw_servo_seated_in_skull_pocket" type="fixed">
+    <parent link="Skull"/>
+    <child link="JawServo"/>
+    <origin xyz="-0.020000000000000056 -0.008 0.008875000000000001" rpy="0 1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="Upper_teeth_glued_in_snout" type="fixed">
+    <parent link="Skull"/>
+    <child link="UpperTeeth"/>
+    <origin xyz="0.16499999999999995 1.010333609296567e-17 -0.4911250000000001" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.141592653589793"/>
+  </joint>
+  <joint name="Eye_socket_R_glued_in_skull" type="fixed">
+    <parent link="Skull"/>
+    <child link="EyeSocket_R"/>
+    <origin xyz="0.16499999999999995 1.010333609296567e-17 -0.4911250000000001" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.141592653589793"/>
+  </joint>
+  <joint name="Eye_socket_L_glued_in_skull" type="fixed">
+    <parent link="Skull"/>
+    <child link="EyeSocket_L"/>
+    <origin xyz="0.16499999999999995 1.010333609296567e-17 -0.4911250000000001" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.141592653589793"/>
+  </joint>
+  <joint name="Brow_ridge_R_glued_in_skull" type="fixed">
+    <parent link="Skull"/>
+    <child link="BrowRidge_R"/>
+    <origin xyz="0.16499999999999995 1.010333609296567e-17 -0.4911250000000001" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.141592653589793"/>
+  </joint>
+  <joint name="Brow_ridge_L_glued_in_skull" type="fixed">
+    <parent link="Skull"/>
+    <child link="BrowRidge_L"/>
+    <origin xyz="0.16499999999999995 1.010333609296567e-17 -0.4911250000000001" rpy="-7.703719777548943e-34 -5.551115123125783e-17 -3.141592653589793"/>
+  </joint>
+  <joint name="M2x8_AnkleL1_seat" type="fixed">
+    <parent link="Shin_L"/>
+    <child link="M2x8_AnkleL1"/>
+    <origin xyz="-0.06672 0.010249999999999993 0.005000000000000039" rpy="6.162975822039155e-33 0 0"/>
+  </joint>
+  <joint name="M2x8_AnkleL2_seat" type="fixed">
+    <parent link="Shin_L"/>
+    <child link="M2x8_AnkleL2"/>
+    <origin xyz="-0.06672 -0.01025 0.005000000000000023" rpy="6.162975822039155e-33 0 0"/>
+  </joint>
+  <joint name="M2x8_AnkleL3_seat" type="fixed">
+    <parent link="Shin_L"/>
+    <child link="M2x8_AnkleL3"/>
+    <origin xyz="-0.04602000000000001 0.01025 0.005000000000000012" rpy="6.162975822039155e-33 0 0"/>
+  </joint>
+  <joint name="M2x8_AnkleL4_seat" type="fixed">
+    <parent link="Shin_L"/>
+    <child link="M2x8_AnkleL4"/>
+    <origin xyz="-0.04602000000000001 -0.01024999999999999 0.005000000000000003" rpy="6.162975822039155e-33 0 0"/>
+  </joint>
+  <joint name="Knee_L_horn_to_shin" type="fixed">
+    <parent link="Shin_L"/>
+    <child link="KneeServo_L_horn"/>
+    <origin xyz="2.842170943040401e-17 0 -0.036125" rpy="0 6.162975822039155e-33 -1.5707963267948966"/>
+  </joint>
+  <joint name="Ankle_pitch_servo_L_on_shin__4x_M2_" type="fixed">
+    <parent link="Shin_L"/>
+    <child link="AnklePitchServo_L"/>
+    <origin xyz="-0.075 0 -1.7763568394002505e-18" rpy="3.141592653589793 -6.162975822039155e-33 1.5707963267948966"/>
+  </joint>
+  <joint name="Knee_R_horn_to_shin" type="fixed">
+    <parent link="Shin_R"/>
+    <child link="KneeServo_R_horn"/>
+    <origin xyz="0 0 0.03612500000000001" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="Ankle_pitch_servo_R_on_shin__4x_M2_" type="fixed">
+    <parent link="Shin_R"/>
+    <child link="AnklePitchServo_R"/>
+    <origin xyz="0.075 0 0" rpy="0 0 1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_AnkleR1_seat" type="fixed">
+    <parent link="Shin_R"/>
+    <child link="M2x8_AnkleR1"/>
+    <origin xyz="0.06672 -0.01025 -0.004999999999999998" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_AnkleR2_seat" type="fixed">
+    <parent link="Shin_R"/>
+    <child link="M2x8_AnkleR2"/>
+    <origin xyz="0.06672000000000002 0.010250000000000004 -0.004999999999999998" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_AnkleR3_seat" type="fixed">
+    <parent link="Shin_R"/>
+    <child link="M2x8_AnkleR3"/>
+    <origin xyz="0.04602000000000001 -0.010249999999999997 -0.004999999999999998" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="M2x8_AnkleR4_seat" type="fixed">
+    <parent link="Shin_R"/>
+    <child link="M2x8_AnkleR4"/>
+    <origin xyz="0.04602 0.01025 -0.004999999999999998" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="jaw" type="revolute">
+    <parent link="JawServo"/>
+    <child link="Jaw"/>
+    <origin xyz="0 0 0.013299999999999998" rpy="6.162975822039155e-33 6.162975822039155e-33 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="0.6108652381980153" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="L_ankle_pitch" type="revolute">
+    <parent link="AnklePitchServo_L"/>
+    <child link="AnkleRollBracket_L"/>
+    <origin xyz="0 0 0.036125" rpy="6.162975822039155e-33 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.0471975511965976" upper="1.0471975511965976" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="R_ankle_pitch" type="revolute">
+    <parent link="AnklePitchServo_R"/>
+    <child link="AnkleRollBracket_R"/>
+    <origin xyz="0 0 0.036125" rpy="3.141592653589793 0 -1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.0471975511965976" upper="1.0471975511965976" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="Jaw_horn_to_jaw_arm" type="fixed">
+    <parent link="Jaw"/>
+    <child link="JawServo_horn"/>
+    <origin xyz="5.684341886080802e-17 5.684341886080802e-17 -0.013299999999999998" rpy="-6.162975822039155e-33 6.162975822039155e-33 -1.5707963267948968"/>
+  </joint>
+  <joint name="Lower_teeth_glued_in_jaw" type="fixed">
+    <parent link="Jaw"/>
+    <child link="LowerTeeth"/>
+    <origin xyz="0.185 -0.49999999999999994 -0.02130000000000001" rpy="1.5707963267948966 -6.123233995736767e-17 3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_ARollL1_seat" type="fixed">
+    <parent link="AnkleRollBracket_L"/>
+    <child link="M2x6_ARollL1"/>
+    <origin xyz="-0.041249999999999995 -0.02100000000000003 -0.0058450000000000064" rpy="-1.5707963267948966 0 3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_ARollL2_seat" type="fixed">
+    <parent link="AnkleRollBracket_L"/>
+    <child link="M2x6_ARollL2"/>
+    <origin xyz="-0.04125000000000002 -0.02100000000000003 0.014854999999999976" rpy="-1.5707963267948966 0 3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_ARollL3_seat" type="fixed">
+    <parent link="AnkleRollBracket_L"/>
+    <child link="M2x6_ARollL3"/>
+    <origin xyz="-0.06175000000000003 -0.021000000000000022 -0.00584500000000002" rpy="-1.5707963267948966 0 3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_ARollL4_seat" type="fixed">
+    <parent link="AnkleRollBracket_L"/>
+    <child link="M2x6_ARollL4"/>
+    <origin xyz="-0.06174999999999999 -0.021000000000000022 0.014855000000000004" rpy="-1.5707963267948966 0 3.141592653589793"/>
+  </joint>
+  <joint name="AnklePitch_L_horn_to_roll_bracket" type="fixed">
+    <parent link="AnkleRollBracket_L"/>
+    <child link="AnklePitchServo_L_horn"/>
+    <origin xyz="0 -3.552713678800501e-18 -0.03612499999999999" rpy="0 5.527796276843854e-33 -1.5707963267948968"/>
+  </joint>
+  <joint name="Ankle_roll_servo_L_on_bracket__4x_M2_" type="fixed">
+    <parent link="AnkleRollBracket_L"/>
+    <child link="AnkleRollServo_L"/>
+    <origin xyz="-0.0515 -0.018000000000000002 -0.014125" rpy="1.5707963267948966 0 3.141592653589793"/>
+  </joint>
+  <joint name="AnklePitch_R_horn_to_roll_bracket" type="fixed">
+    <parent link="AnkleRollBracket_R"/>
+    <child link="AnklePitchServo_R_horn"/>
+    <origin xyz="-2.842170943040401e-17 1.7763568394002505e-18 0.03612500000000001" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="Ankle_roll_servo_R_on_bracket__4x_M2_" type="fixed">
+    <parent link="AnkleRollBracket_R"/>
+    <child link="AnkleRollServo_R"/>
+    <origin xyz="0.05149999999999997 0.01800000000000001 0.014125" rpy="-1.5707963267948966 0 -3.141592653589793"/>
+  </joint>
+  <joint name="M2x6_ARollR1_seat" type="fixed">
+    <parent link="AnkleRollBracket_R"/>
+    <child link="M2x6_ARollR1"/>
+    <origin xyz="0.041249999999999974 0.021000000000000008 0.005844999999999999" rpy="0 1.5707963267948966 1.5707963267948968"/>
+  </joint>
+  <joint name="M2x6_ARollR2_seat" type="fixed">
+    <parent link="AnkleRollBracket_R"/>
+    <child link="M2x6_ARollR2"/>
+    <origin xyz="0.04124999999999996 0.021000000000000008 -0.014854999999999997" rpy="0 1.5707963267948966 1.5707963267948968"/>
+  </joint>
+  <joint name="M2x6_ARollR3_seat" type="fixed">
+    <parent link="AnkleRollBracket_R"/>
+    <child link="M2x6_ARollR3"/>
+    <origin xyz="0.06174999999999997 0.021000000000000008 0.0058450000000000064" rpy="0 1.5707963267948966 1.5707963267948968"/>
+  </joint>
+  <joint name="M2x6_ARollR4_seat" type="fixed">
+    <parent link="AnkleRollBracket_R"/>
+    <child link="M2x6_ARollR4"/>
+    <origin xyz="0.06174999999999996 0.021000000000000008 -0.01485499999999999" rpy="0 1.5707963267948966 1.5707963267948968"/>
+  </joint>
+  <joint name="L_ankle_roll" type="revolute">
+    <parent link="AnkleRollServo_L"/>
+    <child link="Foot_L"/>
+    <origin xyz="7.105427357601002e-18 0 0.036125" rpy="0 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.4363323129985824" upper="0.4363323129985824" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="R_ankle_roll" type="revolute">
+    <parent link="AnkleRollServo_R"/>
+    <child link="Foot_R"/>
+    <origin xyz="0 0 0.036125" rpy="3.141592653589793 0 -1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.4363323129985824" upper="0.4363323129985824" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="AnkleRoll_L_horn_to_foot" type="fixed">
+    <parent link="Foot_L"/>
+    <child link="AnkleRollServo_L_horn"/>
+    <origin xyz="7.105427357601002e-18 -7.105427357601002e-18 -0.036125" rpy="-6.798155367234455e-33 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="TPU_pad_bonded_under_sole_L" type="fixed">
+    <parent link="Foot_L"/>
+    <child link="SolePad_L"/>
+    <origin xyz="-0.033999999999999996 0.1015 -0.030125000000000002" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="Claw_L1_glued_in_toe_socket" type="fixed">
+    <parent link="Foot_L"/>
+    <child link="Claw_L1"/>
+    <origin xyz="-0.033999999999999996 0.1015 -0.030125000000000002" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="Claw_L2_glued_in_toe_socket" type="fixed">
+    <parent link="Foot_L"/>
+    <child link="Claw_L2"/>
+    <origin xyz="-0.033999999999999996 0.1015 -0.030125000000000002" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="Claw_L3_glued_in_toe_socket" type="fixed">
+    <parent link="Foot_L"/>
+    <child link="Claw_L3"/>
+    <origin xyz="-0.033999999999999996 0.1015 -0.030125000000000002" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="AnkleRoll_R_horn_to_foot" type="fixed">
+    <parent link="Foot_R"/>
+    <child link="AnkleRollServo_R_horn"/>
+    <origin xyz="0 0 0.036125" rpy="3.141592653589793 0 -1.5707963267948966"/>
+  </joint>
+  <joint name="TPU_pad_bonded_under_sole_R" type="fixed">
+    <parent link="Foot_R"/>
+    <child link="SolePad_R"/>
+    <origin xyz="0.03399999999999998 -0.1015 0.030125000000000002" rpy="0 1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="Claw_R1_glued_in_toe_socket" type="fixed">
+    <parent link="Foot_R"/>
+    <child link="Claw_R1"/>
+    <origin xyz="0.03399999999999998 -0.1015 0.030125000000000002" rpy="0 1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="Claw_R2_glued_in_toe_socket" type="fixed">
+    <parent link="Foot_R"/>
+    <child link="Claw_R2"/>
+    <origin xyz="0.03399999999999998 -0.1015 0.030125000000000002" rpy="0 1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+  <joint name="Claw_R3_glued_in_toe_socket" type="fixed">
+    <parent link="Foot_R"/>
+    <child link="Claw_R3"/>
+    <origin xyz="0.03399999999999998 -0.1015 0.030125000000000002" rpy="0 1.5707963267948966 -1.5707963267948966"/>
+  </joint>
+</robot>

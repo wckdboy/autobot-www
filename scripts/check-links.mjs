@@ -11,7 +11,7 @@ import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(process.argv[2] || resolve(dirname(fileURLToPath(import.meta.url)), '..'));
-const SITES = ['autobot', 'invincible', 'sovware', 'wckd', 'omnie', 'nightfall'];
+const SITES = ['autobot', 'invincible', 'sovware', 'wckd', 'omnie', 'nightfall', 'tinyrex'];
 const ATTR = /(?:href|src)="([^"]+)"/g;
 const SKIP = /^(https?:|mailto:|tel:|data:)/;
 

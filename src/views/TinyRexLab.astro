@@ -1,0 +1,491 @@
+---
+import Lab from '../layouts/Lab.astro';
+
+// "tinyrex" in the kit's lettering: lowercase, six cells tall, two-cell strokes, one cell apart.
+const LETTERS: Record<string, string[]> = {
+  t: ['##....', '#####.', '##....', '##....', '##..##', '.####.'],
+  i: ['##', '..', '##', '##', '##', '##'],
+  n: ['#####.', '##..##', '##..##', '##..##', '##..##', '##..##'],
+  y: ['##..##', '##..##', '##..##', '.#####', '....##', '#####.'],
+  r: ['#####.', '##..##', '##....', '##....', '##....', '##....'],
+  e: ['.####.', '##..##', '######', '##....', '##....', '.#####'],
+  x: ['##..##', '##..##', '.####.', '.####.', '##..##', '##..##'],
+};
+function pixelWord(word: string) {
+  const rects: string[] = [];
+  let ox = 0;
+  for (const ch of word) {
+    const g = LETTERS[ch];
+    g.forEach((row, y) => {
+      for (let x = 0; x < row.length; x++) if (row[x] === '#') rects.push(`<rect x="${ox + x}" y="${y}" width="1" height="1"/>`);
+    });
+    ox += g[0].length + 1;
+  }
+  const w = ox - 1;
+  return { w, svg: `<svg viewBox="0 0 ${w + 2} 6" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">${rects.join('')}<rect class="dot" x="${w + 1}" y="5" width="1" height="1"/></svg>` };
+}
+const word = pixelWord('tinyrex');
+
+const REPO = 'https://github.com/wckdboy/tinyrex';
+
+const stats = [
+  ['17', 'servo joints'],
+  ['163', 'parts'],
+  ['1.68 kg', 'all in'],
+  ['78.7 mm', 'walked in MuJoCo, no fall'],
+];
+
+const specs = [
+  ['Joints', '17 revolute: six per leg (hip yaw, roll and pitch, knee, ankle pitch and roll), neck pitch, head pitch, head yaw, jaw and tail yaw'],
+  ['Actuators', '16 Feetech STS3215 serial servos, and an SG90 micro servo for the jaw'],
+  ['Parts', '163, including 84 socket-head screws'],
+  ['Mass', '1.68 kg (1.676 kg measured in Polykrom)'],
+  ['Compute', 'Raspberry Pi Zero 2 W'],
+  ['IMU', 'BNO085'],
+  ['Power', '2S 1000 mAh LiPo'],
+  ['Shells', 'printed PLA in lime, with a black armour plate, dorsal spikes and claws, off-white teeth and TPU foot pads'],
+];
+
+const results = [
+  ['24.7 mm', 'smallest stability margin through the whole walk, against 5 mm required (Polykrom statics)'],
+  ['78.7 mm', 'walked forward in MuJoCo with the body free: two cycles at 0.08 s per step, no fall, no drift, at most 0.41° of tilt'],
+  ['60%', 'peak knee torque of its 1.91 N·m rating in that walk; nothing else in the legs above 36%'],
+  ['48.4 mm', 'standing stability margin, the hardest-working servo at 2.4% of stall'],
+];
+
+const stages = [
+  ['1. Torso', 'lofted chest shell, armour plate and spikes, Pi, IMU and battery on standoffs and a strap, two hip yaw servos', '91', '5.30'],
+  ['2. Left leg', 'six servos on printed brackets, thigh, shin and a three-toed clawed foot; swept every joint for collisions', '68', '6.75'],
+  ['3. Right leg', 'mirrored the leg with real, unmirrored servos turned to match; checked joint isolation and interference', '89', '5.47'],
+  ['4. Head, tail, arms', 'neck and head servos, a skull with teeth and an SG90 jaw, a tapering tail, tiny arms', '219', '≥ 3.89'],
+  ['5. Stand', 'standing pose, statics on two feet and on one, and four faults left by earlier stages fixed', '93', '4.90'],
+  ['6. Walk', 'a 272-step gait worked out from the leg geometry, statics over the gait, interference, MuJoCo', '42', '1.68'],
+  ['7. Export', 'MJCF, the render, the bill of materials and a MuJoCo standing check', '63', '2.56'],
+];
+---
+
+<Lab
+  path="/"
+  current="overview"
+  description="TinyRex is a small bipedal T-rex robot with 17 servos, designed from an empty file by an AI agent in Polykrom, then checked standing and walking in Polykrom and in MuJoCo."
+>
+  <section class="hero" aria-labelledby="rex-title">
+    <p class="kicker">flagship demo · designed in polykrom</p>
+    <h1 id="rex-title" class="word" aria-label="TinyRex"><Fragment set:html={word.svg} /></h1>
+    <p class="pitch">A small bipedal T-rex robot, designed from an empty file by an AI agent working in Polykrom, then checked standing and walking in Polykrom and in MuJoCo.</p>
+    <dl class="stats">
+      {stats.map(([n, t]) => (<div><dt>{t}</dt><dd>{n}</dd></div>))}
+    </dl>
+    <div class="hero-actions">
+      <a class="cta" href="#model">Turn it around in 3D</a>
+      <a href={REPO} rel="noopener">Source and design</a>
+      <a href={`${REPO}/blob/main/results/rex-bom.csv`} rel="noopener">Bill of materials</a>
+    </div>
+  </section>
+
+  <div class="media">
+    <figure class="shot">
+      <img src="/rex/render.png" width="800" height="1000" alt="TinyRex standing, rendered in Polykrom: lime printed shells, black servos, an open jaw full of teeth and a spiked tail." />
+      <figcaption>Rendered in Polykrom, from the agent's design.</figcaption>
+    </figure>
+    <figure class="shot shot--walk">
+      <video src="/rex/walk.mp4" poster="/rex/walk-poster.jpg" width="480" height="600" autoplay muted loop playsinline controls preload="metadata" aria-label="TinyRex taking two steps in Polykrom's Walk study"></video>
+      <figcaption>The Walk study: two 40 mm steps, the tail swinging to the stance side.</figcaption>
+    </figure>
+  </div>
+
+  <p class="status"><span class="sq" aria-hidden="true"></span><strong>Status.</strong> A design polish pass and the rebuild on <a href="https://github.com/wckdboy/polycore" rel="noopener">PolyCore</a> are in progress; the design and the numbers here will change.</p>
+
+  <section id="model" aria-labelledby="model-title">
+    <div class="section-head"><h2 id="model-title">the model</h2><p class="label">drag to turn</p></div>
+    <div class="stage-frame">
+      <div id="stage" class="stage"><p id="loading" class="loading">Loading the 3D model…</p></div>
+      <div class="controls">
+        <button id="play" type="button" disabled>Pause</button>
+        <input id="scrub" type="range" min="0" max="272" step="0.1" value="0" aria-label="Walk study step" disabled />
+        <span class="step">step <span id="r-step">0</span></span>
+      </div>
+    </div>
+    <p class="small">The agent's design, exported from Polykrom, playing its Walk study: 272 steps keyed only on the 17 joints. A motion study can't move a free body, so here the body is held still and the legs step under it; the walk with the body free is MuJoCo's, in the results below.</p>
+  </section>
+
+  <section id="specs" aria-labelledby="specs-title">
+    <h2 id="specs-title">what it is</h2>
+    <div class="table-wrap">
+      <table class="spec">
+        <tbody>
+          {specs.map(([k, v]) => (<tr><th scope="row">{k}</th><td>{v}</td></tr>))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="results" aria-labelledby="results-title">
+    <h2 id="results-title">what was verified</h2>
+    <div class="tiles">
+      {results.map(([n, t]) => (<div class="tile"><p class="n">{n}</p><p class="t">{t}</p></div>))}
+    </div>
+    <p class="note">The MuJoCo walk is being re-run with the corrected mass (<a href="https://github.com/wckdboy/polykrom/issues/238" rel="noopener">Polykrom #238</a>). The model it walked on was about 413 g light, because some printed parts exported as meshes with gaps (<a href="https://github.com/wckdboy/polykrom/issues/216" rel="noopener">#216</a>), so its servo loads read low. The Polykrom statics above use the full 1.68 kg.</p>
+  </section>
+
+  <section id="build" aria-labelledby="build-title">
+    <h2 id="build-title">how it was built</h2>
+    <p>An AI agent built TinyRex through Polykrom's MCP server, with Polykrom's tools as its only tools: no shell, no file access, no hand edits. The work was split into staged briefs. Each stage is a fresh headless Claude Code session that opens the design the stage before saved, does one job, verifies it and reports back. The briefs, the harness and every stage's report are <a href={REPO} rel="noopener">in the repository</a>.</p>
+    <div class="table-wrap">
+      <table class="stages">
+        <thead><tr><th>Stage</th><th>What the agent did</th><th class="num">Tool calls</th><th class="num">Cost, USD</th></tr></thead>
+        <tbody>
+          {stages.map(([s, what, calls, cost]) => (<tr><td><strong>{s}</strong></td><td class="small">{what}</td><td class="num">{calls}</td><td class="num">{cost}</td></tr>))}
+        </tbody>
+      </table>
+    </div>
+    <p class="small">Stage 4 ran in two sessions (69 and 150 tool calls): the first hit a usage limit, the second the harness's three-hour timeout after saving its work, so only the first session's cost was recorded. Stage 5 checked what it left and repaired it.</p>
+  </section>
+
+  <section id="get" aria-labelledby="get-title">
+    <h2 id="get-title">get it</h2>
+    <ul class="links">
+      <li><a href={`${REPO}/blob/main/results/rex-bom.csv`} rel="noopener">Bill of materials</a><span>CSV: 71 rows covering all 163 parts</span></li>
+      <li><a href={REPO} rel="noopener">github.com/wckdboy/tinyrex</a><span>the design, the briefs, the harness and the stage reports</span></li>
+      <li><a href="https://cad.polykrom.app" rel="noopener">Polykrom</a><span>the CAD it was built in, in the browser (<a href="https://github.com/wckdboy/polykrom" rel="noopener">source</a>)</span></li>
+      <li><a href="https://github.com/wckdboy/polycore" rel="noopener">PolyCore</a><span>the Rust geometry kernel TinyRex will be rebuilt on</span></li>
+    </ul>
+    <p class="small">Code is Apache-2.0; the design, renders and animation are CC-BY-4.0. Feetech, Raspberry Pi and MuJoCo are named for what they are; none of them is affiliated with TinyRex.</p>
+  </section>
+
+  <script type="importmap" is:inline>
+  {"imports": {"three": "/rex/vendor/three.module.min.js", "three/addons/": "/rex/vendor/"}}
+  </script>
+  <script type="module" is:inline>
+  import { mount } from "/rex/viewer.js";
+  const $ = (id) => document.getElementById(id);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) document.querySelector(".shot--walk video")?.pause();
+  // Every part keeps the colour the agent gave it in Polykrom (it travels in the URDF); printed
+  // parts (lime, black, off-white) get a matte plastic finish, like the Polykrom showcases.
+  async function printedLooks(url) {
+    const xml = new DOMParser().parseFromString(await (await get(url)).text(), "application/xml");
+    if (xml.querySelector("parsererror") || !xml.querySelector("robot > link")) throw new Error(`${url}: not a robot description`);
+    const matte = { "0.8 1 0": "#CCFF00", "0.067 0.067 0.067": "#111111", "0.929 0.929 0.929": "#EDEDED" };
+    const looks = {};
+    for (const link of xml.querySelectorAll("robot > link")) {
+      const c = link.querySelector("visual material color");
+      if (!c) continue;
+      const key = c.getAttribute("rgba").trim().split(/\s+/).slice(0, 3).map((v) => +(+v).toFixed(3)).join(" ");
+      if (matte[key]) looks[link.getAttribute("name")] = { color: matte[key], metalness: 0.05, roughness: 0.55 };
+    }
+    return looks;
+  }
+  async function get(url, opts) {
+    const res = await fetch(url, opts);
+    if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
+    return res;
+  }
+  async function gunzip(url) {
+    const res = await get(url);
+    return await new Response(res.body.pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
+  }
+  try {
+    // The viewer's own fetches don't check the status: check every file first, so a missing one
+  // shows the message below rather than an empty stage.
+  const motion = await (await get("/rex/model/motion.json")).json();
+  await get("/rex/model/meshes.json", { method: "HEAD" });
+  const looks = await printedLooks("/rex/model/rex.urdf");
+    const bin = await gunzip("/rex/model/meshes.bin.gz");
+    let scrubbing = false;
+    const narrow = $("stage").clientWidth < 1.1 * $("stage").clientHeight;
+    const v = await mount($("stage"), {
+      urdf: "/rex/model/rex.urdf", motion, pack: { bin, json: "/rex/model/meshes.json" }, colors: looks, theme: "ink",
+      camera: { position: [0.95, -1.1, 0.58].map((c) => c * (narrow ? 1.2 : 1)), target: [0.02, 0, 0.25] },
+      onStep(s) {
+        if (!scrubbing) $("scrub").value = s;
+        $("r-step").textContent = Math.round(s);
+      },
+    });
+    $("loading").remove();
+  // Horizontal drags turn the model; vertical swipes still scroll the page on a phone.
+  const canvas = $("stage").querySelector("canvas");
+  if (canvas) canvas.style.touchAction = "pan-y";
+    $("scrub").max = v.steps;
+    $("play").disabled = false;
+    $("scrub").disabled = false;
+    const label = () => { $("play").textContent = v.playing ? "Pause" : "Play"; };
+    label();
+    $("play").onclick = () => { v.play(!v.playing); label(); };
+    $("scrub").oninput = (e) => { scrubbing = true; v.play(false); label(); v.seek(+e.target.value); scrubbing = false; };
+  } catch (e) {
+    $("loading").textContent = "The 3D view couldn't load here (it needs WebGL and a current browser). The render and the walk above show the same design.";
+    console.error(e);
+  }
+  </script>
+</Lab>
+
+
+<style>
+  .hero {
+    --lime: #ccff00;
+    --bone: #efeae2;
+    --ash: #8e8a84;
+    --ink-rule: #2f2d2a;
+    background: #111111;
+    color: var(--bone);
+    padding: 44px 44px 36px;
+    margin: 0 0 18px;
+    border: 1px solid #111111;
+  }
+  .kicker {
+    font-size: 12px;
+    color: var(--ash);
+    margin: 0 0 22px;
+  }
+  .word {
+    margin: 0 0 26px;
+    color: var(--lime);
+    line-height: 0;
+  }
+  .word::after { display: none; }
+  .word :global(svg) {
+    display: block;
+    width: min(100%, 620px);
+    height: auto;
+  }
+  .pitch {
+    font-size: 18px;
+    line-height: 1.55;
+    max-width: 46ch;
+    margin: 0 0 30px;
+    color: var(--bone);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--ink-rule);
+    border-bottom: 1px solid var(--ink-rule);
+    margin: 0 0 26px;
+  }
+  .stats > div {
+    padding: 14px 16px 14px 0;
+    border-right: 1px solid var(--ink-rule);
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+  }
+  .stats > div:last-child { border-right: 0; }
+  .stats dd {
+    margin: 0 0 4px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--bone);
+  }
+  .stats dt {
+    font-size: 12px;
+    color: var(--ash);
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 24px;
+    font-size: 14px;
+  }
+  .hero-actions a {
+    color: var(--bone);
+    text-decoration: underline;
+    text-decoration-color: var(--lime);
+    text-underline-offset: 4px;
+  }
+  .hero-actions a.cta {
+    background: var(--lime);
+    color: #111111;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 11px 16px;
+  }
+  .hero-actions a.cta:hover { background: var(--bone); }
+  .hero :focus-visible { outline-color: var(--lime); }
+
+  .media {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 18px;
+    margin: 0 0 18px;
+  }
+  .shot { margin: 0; }
+  .shot img,
+  .shot video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: #e9eef4;
+    border: 1px solid var(--rule);
+  }
+  .shot figcaption {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .status {
+    max-width: none;
+    font-size: 14px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 0 0 8px;
+  }
+  .sq {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    background: var(--mark);
+    margin-right: 10px;
+    vertical-align: 1px;
+  }
+
+  .stage-frame {
+    background: #111111;
+    border: 1px solid #111111;
+  }
+  .stage {
+    position: relative;
+    height: min(64vh, 620px);
+    min-height: 380px;
+    cursor: grab;
+  }
+  .stage :global(canvas) { display: block; width: 100%; height: 100%; }
+  .stage-frame + .small { margin-top: 12px; }
+  .loading {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    color: #8e8a84;
+    font-size: 13px;
+    padding: 0 18px;
+    text-align: center;
+  }
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-top: 1px solid #2f2d2a;
+    color: #8e8a84;
+    font-size: 12px;
+  }
+  .controls button {
+    font: inherit;
+    font-weight: 700;
+    min-width: 74px;
+    padding: 7px 12px;
+    background: #ccff00;
+    color: #111111;
+    border: 0;
+    cursor: pointer;
+  }
+  .controls button:disabled { opacity: 0.4; cursor: default; }
+  .controls input { flex: 1; min-width: 0; accent-color: #ccff00; }
+  .controls .step { min-width: 8ch; text-align: right; font-variant-numeric: tabular-nums; }
+
+  .spec th {
+    width: 9rem;
+    font-size: inherit;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .spec td { padding-top: 10px; padding-bottom: 10px; }
+  .spec tr:last-child th { border-bottom: 0; }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 2px solid var(--ink);
+    margin: 18px 0 14px;
+  }
+  .tile {
+    padding: 16px 16px 18px 0;
+    border-right: 1px solid var(--rule);
+  }
+  .tile:last-child { border-right: 0; }
+  .tile .n {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+  }
+  .tile .t {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .stages .num { white-space: nowrap; }
+
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 18px;
+    border-top: 1px solid var(--rule);
+  }
+  .links li {
+    display: grid;
+    grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+    gap: 4px 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .links li > a { font-weight: 700; }
+  .links span { color: var(--muted); font-size: 14px; }
+
+  @media (prefers-color-scheme: dark) {
+    .hero,
+    .stage-frame {
+      background: #1c1b19;
+      border-color: #2f2d2a;
+    }
+    .shot img,
+    .shot video { border-color: #2f2d2a; }
+  }
+
+  @media (min-width: 761px) {
+    .stats > div + div,
+    .tile + .tile { padding-left: 16px; }
+  }
+
+  @media (max-width: 760px) {
+    .hero { padding: 26px var(--gutter) 22px; margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); border-left: 0; border-right: 0; }
+    .pitch { font-size: 16px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stats > div:nth-child(2n) { border-right: 0; padding-left: 14px; }
+    .stats > div:nth-child(-n + 2) { border-bottom: 1px solid var(--ink-rule); }
+    .stats dd { font-size: 22px; }
+    .media { grid-template-columns: 1fr; }
+    .stage { height: 120vw; max-height: 560px; min-height: 0; }
+    .stage-frame { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); border-left: 0; border-right: 0; }
+    .tiles { grid-template-columns: 1fr 1fr; }
+    .tile:nth-child(2n) { border-right: 0; }
+    .tile:nth-child(2n) { padding-left: 14px; }
+    .tile:nth-child(-n + 2) { border-bottom: 1px solid var(--rule); }
+    .tile .n { font-size: 24px; }
+    .links li { grid-template-columns: 1fr; }
+    .stages thead { display: none; }
+    .stages, .stages tbody, .stages tr, .stages td { display: block; }
+    .stages tr { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+    .stages td { border: 0; padding: 0; }
+    .stages td.small { margin: 4px 0 6px; }
+    .stages td.num { display: inline; color: var(--muted); font-size: 13px; }
+    .stages td.num:nth-of-type(3)::after { content: ' tool calls · '; }
+    .stages td.num:nth-of-type(4)::after { content: ' USD'; }
+    .spec th { width: 6.5rem; }
+  }
+</style>

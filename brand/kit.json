@@ -138,6 +138,22 @@
       "onInk": "#A78BFA",
       "onPaper": "#A78BFA",
       "text": "#A78BFA"
+    },
+    "tinyrex": {
+      "name": "TinyRex",
+      "domain": "tinyrex.sh",
+      "role": "A bipedal T-rex robot, designed by an AI agent in Polykrom",
+      "glyph": [
+        "##....",
+        "#####.",
+        "##....",
+        "##....",
+        "##..##",
+        ".####."
+      ],
+      "onInk": "#CCFF00",
+      "onPaper": "#111111",
+      "text": "#111111"
     }
   }
 }
