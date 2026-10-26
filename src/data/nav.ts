@@ -61,13 +61,13 @@ export const NAV = {
   nightfall: {
     nav: [
       { label: 'Overview', href: '/' },
-      { label: 'Work', href: '/#work' },
-      { label: 'Status', href: '/#status' },
+      { label: 'Polykrom', href: 'https://polykrom.app' },
+      { label: 'PolyCore', href: 'https://github.com/wckdboy/polycore' },
       { label: 'Brand', href: '/brand/' },
       { label: 'Source', href: 'https://github.com/wckdboy/nightfall' },
       { label: 'WCKD', href: 'https://wckd.ai' },
     ],
-    footer: 'Nightfall is AI-native CAD: every part is a program. Made by WCKD.',
+    footer: 'Nightfall is archived; it continues as Polykrom and PolyCore. Made by WCKD.',
     repo: 'https://github.com/wckdboy/nightfall',
   },
 } as const;

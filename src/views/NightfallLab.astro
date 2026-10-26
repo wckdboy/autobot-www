@@ -1,26 +1,16 @@
 ---
 import Lab from '../layouts/Lab.astro';
 
-const work = [
-  ['SolidCraft', 'the app Nightfall now builds on: SolidCraft, an open-source Rust CAD with a parametric timeline and AI tools, in a fork that adds what Nightfall does best. Its weak operations can run on Nightfall\'s OpenCASCADE kernel; on 100 generated designs it builds 92 against 83 on its own. Static stress analysis runs on Nightfall\'s verified solver: pick the held and loaded faces and read the stress, the deflection and the safety factor. An AI agent designed a steel arm to carry 500 N at a safety factor of two and passed an independent check. Crash fixes go back to SolidCraft itself', 'in review'],
-  ['Agent surface', '`nf mcp`: a stdio MCP server over the headless engine. Read the part and its faces by name, set parameters or patch the program with JSON Patch, measure exact volume, area, centroid and bounds, export STEP and meshes. Every edit is rebuilt; a failed feature rolls back; every error carries a JSON Pointer into the document', 'in review'],
-  ['Agent evaluation', 'every reference part built from its description, edited and repaired by an agent through `nf mcp`, then measured against the exact part. First run: 60 of 60 within 1e-6 in volume and area, median 7 turns per task', 'in review'],
-  ['Feature program', 'a JSON feature list with named parameters and units, selectors instead of face indices, content hashes so one parameter change rebuilds only what it touches', 'shipped'],
-  ['Kernel', 'OpenCASCADE 7.9.3 behind an XPC service with a watchdog; Rust owns the math, the ownership rules and the policy; exact STEP AP242 out', 'shipped'],
-  ['Sketcher', 'sketch constraints now solve: draw roughly, add relations and dimensions, and the geometry follows; conflicts are named, never guessed. The solver was chosen by a measured spike and vendored with no extra dependencies', 'in review'],
-  ['Assemblies', 'components, occurrences and joints in the same document. Joint frames come from named faces, so they follow parameter edits; the solver places real solids, and a four-bar and a slider-crank close at their textbook positions within 1e-9 mm. Agents read the solve and drive joints through `nf mcp`; a conflict rolls the edit back. The showcase is Theo Jansen\'s Strandbeest: 26 parts, 37 joints and 12 closed loops, with every toe on Jansen\'s closed-form path within 1e-9 mm over a full crank turn. Agents can check interference and clearance and run motion studies; the first study caught the walker\'s crank links crossing a hip pin, now fixed. Mass, centre of mass and inertia come from exact volume integrals, and a solved assembly exports to URDF: a six-joint arm reproduces the solver within 4e-15 m in MuJoCo', 'in review'],
-  ['Studies', 'structural and thermal studies as objects in the document (RFC 0014, accepted): selectors pick faces, every value carries its unit, and `nf study run` and the `run_study` agent tool solve them out of process. Netgen meshes the exact solids and MFEM solves with second-order elements. A cantilever lands within 0.5% of beam theory at three refinements with its reactions balancing to 1e-9, and a heated slab carries its 16.7 kW exactly; laminar flow is next', 'in review'],
-  ['Kernel for other apps', '`nf kernel serve` (RFC 0015) lends the kernel to other CAD programs one operation at a time: solids go in as STEP, and each result face comes back with its history in the caller\'s own numbering. First client: a SolidCraft fork whose joins, cuts, fillets, chamfers and shells now run on OpenCASCADE, keeping its own agent tools and naming. On 100 fuzzed designs it builds 92 against 83 on its own kernel, with no timeouts', 'in review'],
-  ['macOS app', 'SwiftUI and a Metal viewport: parameters, history, rollback and exact measures; assemblies open in the app, and editing a joint parameter re-solves and redraws the mechanism. Interactive sketching is next', 'preview'],
+const next = [
+  ['Polykrom', 'the app: open-source parametric CAD in Rust, a fork of SolidCraft, with stress analysis and an AI companion. It runs in the browser at cad.polykrom.app', 'https://polykrom.app'],
+  ['PolyCore', 'the kernel: an Apache-2.0 geometry kernel in Rust, carrying on Nightfall\'s kernel work', 'https://github.com/wckdboy/polycore'],
 ];
 
-const status = [
-  ['Direction', 'SolidCraft', 'from October 2026, improving SolidCraft instead of a second CAD from scratch: Nightfall supplies its kernel, its analysis and the fixes'],
-  ['Platforms', 'macOS 15+', 'Apple Silicon; the headless engine and `nf` CLI build without the app'],
-  ['License', 'Apache-2.0', 'OpenCASCADE is LGPL-2.1 and dynamically linked; no GPL code is linked'],
-  ['Kernel decision', 'RFC 0001', 'bake-off on a 20-part corpus and 200 ABC models: OCCT 77.4 vs SMLib 50.7; SMLib stays buildable for re-evaluation'],
-  ['Evidence', '970 tests', 'the occt gate, including the agent evaluation\'s reference run; every headless build returns a factual record: volumes, areas, digests, cache activity, timings'],
-  ['FreeCAD', 'oracle', 'an earlier fork direction was retired; FreeCAD runs as a separate program to compute reference values for tests'],
+const carried = [
+  ['NURBS math', 'Nightfall\'s Rust NURBS curves and surfaces, with their derivatives'],
+  ['Studies', 'the structural and thermal study pipeline and its reference cases, checked against theory'],
+  ['Kernel rubric', 'the bake-off rubric that chose Nightfall\'s kernel on a 20-part corpus and 200 ABC models, to judge PolyCore by'],
+  ['Agent evaluation', 'the harness in which an agent builds, edits and repairs every reference part, measured against the exact part'],
 ];
 ---
 
@@ -28,56 +18,47 @@ const status = [
   path="/"
   current="overview"
   og="/og/nightfall.png"
-  description="Nightfall is AI-native CAD for macOS: exact NURBS geometry, a feature program as the source of truth, and an agent that edits the program, rebuilds and measures every change."
+  description="Nightfall is archived. Development continues as Polykrom, the app, and PolyCore, the kernel."
 >
   <h1>nightfall</h1>
-  <p class="lede">AI-native CAD. Every part is a program; the agent edits the program, never the geometry, and every edit is rebuilt and measured.</p>
+  <p class="lede">Nightfall is archived. Development continues as <a href="https://polykrom.app" rel="noopener">Polykrom</a>, the app, and <a href="https://github.com/wckdboy/polycore" rel="noopener">PolyCore</a>, the kernel.</p>
 
   <div class="actions">
-    <a class="button button--primary" href="https://github.com/wckdboy/nightfall" rel="noopener">Source</a>
-    <a class="text-link" href="/#work">The work</a>
-    <a class="text-link" href="/brand/">Brand</a>
+    <a class="button button--primary" href="https://polykrom.app" rel="noopener">Polykrom</a>
+    <a class="text-link" href="https://github.com/wckdboy/polycore" rel="noopener">PolyCore</a>
+    <a class="text-link" href="https://github.com/wckdboy/nightfall" rel="noopener">Nightfall source (archived)</a>
   </div>
 
   <dl class="facts">
-    <div><dt>Geometry</dt><dd>exact NURBS</dd></div>
-    <div><dt>Kernel</dt><dd>OpenCASCADE</dd></div>
-    <div><dt>State</dt><dd>preview</dd></div>
-    <div><dt>Telemetry</dt><dd>none</dd></div>
+    <div><dt>State</dt><dd>archived</dd></div>
+    <div><dt>App</dt><dd>Polykrom</dd></div>
+    <div><dt>Kernel</dt><dd>PolyCore</dd></div>
   </dl>
 
-  <section id="why">
-    <h2>Why a program, not a mesh</h2>
-    <p>Text-to-3D gives you a mesh nobody can edit. Nightfall gives the agent the same thing a good engineer keeps: a feature program with named parameters, units and references that survive edits. The agent reads it, changes it, and gets back what actually happened: which bodies changed, their exact volume and area, and a pointer to the field that failed. That loop, write then run then measure then revise, is what makes an AI a useful co-worker in CAD, and it is the part most tools leave out.</p>
-    <p>The rules do not change. Math is the source of truth and meshes are derived. Every part is a program: a feature list with named parameters, geometry as a cache. The agent edits the program, never the geometry. Built for making real things: millimetres, explicit tolerances, STEP, 3MF and SVG out. Rebuild status is never the verdict; measured geometry is.</p>
-  </section>
-
-  <section id="work">
-    <h2>The work</h2>
+  <section id="next">
+    <h2>Where it went</h2>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Area</th><th>What</th><th>State</th></tr></thead>
         <tbody>
-          {work.map(([area, what, state]) => (
-            <tr><td><strong>{area}</strong></td><td>{what}</td><td class="small">{state}</td></tr>
+          {next.map(([name, what, href]) => (
+            <tr><td><strong><a href={href} rel="noopener">{name}</a></strong></td><td class="small">{what}</td></tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p class="small">Order of work: the agent loop first, with an evaluation suite over the reference parts, then the sketch solver, then assemblies and studies. The kernel keeps improving behind them; it is never the thing the loop waits on.</p>
   </section>
 
-  <section id="status">
-    <h2>Status</h2>
+  <section id="carried">
+    <h2>What carries over</h2>
     <div class="table-wrap">
       <table>
         <tbody>
-          {status.map(([part, state, note]) => (
-            <tr><td><strong>{part}</strong></td><td>{state}</td><td class="small">{note}</td></tr>
+          {carried.map(([area, what]) => (
+            <tr><td><strong>{area}</strong></td><td class="small">{what}</td></tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p class="small">The headless engine, the `nf` CLI and the macOS preview exist and are tested; the agent surface, sketch solving and assemblies are in review; studies are a plan with written gates. The state column says what exists.</p>
+    <p class="small">The Nightfall repository stays public as a record and is no longer developed.</p>
   </section>
 </Lab>
