@@ -291,14 +291,6 @@
       "isArchived": false
     },
     {
-      "name": "tinyrex",
-      "url": "https://github.com/wckdboy/tinyrex",
-      "description": "TinyRex: a small bipedal T-rex robot designed from scratch by an AI agent in Polykrom, verified standing and walking in MuJoCo",
-      "visibility": "public",
-      "isFork": false,
-      "isArchived": false
-    },
-    {
       "name": "wckd-gpu",
       "url": "https://github.com/wckdboy/wckd-gpu",
       "description": "One-button cloud GPU sessions: presets, multi-vendor price/perf, S3 sync, auto shut-down",
