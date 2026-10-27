@@ -55,7 +55,9 @@ checks. PRs do not deploy. CI on `main` can deploy Autobot, Invincible, Sovware 
 WCKD when the repository's Cloudflare secrets are configured; without them it
 reports a warning. Omnie, Nightfall and TinyRex have separate Wrangler configs for explicit
 local deployments. TinyRex's media and 3D viewer live in `public/rex/` and ship only in its
-build (three.js 0.160.0 vendored there, MIT; the viewer is Polykrom's, MIT OR Apache-2.0). Refresh commits update source data; verify the deployed
+build (three.js 0.160.0 vendored there, MIT; the viewer is Polykrom's, MIT OR Apache-2.0).
+TinyRex's concept art (`public/rex/concept/`) is WCKD's own, credited on the page; it is not
+part of the tinyrex repository's CC-BY-4.0 media. Refresh commits update source data; verify the deployed
 snapshot date after publishing.
 
 ## Hosting

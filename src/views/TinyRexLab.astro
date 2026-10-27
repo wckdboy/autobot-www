@@ -53,6 +53,21 @@ const results = [
   ['48.4 mm', 'standing stability margin, the hardest-working servo at 2.4% of stall'],
 ];
 
+// The concept TinyRex is being built toward (WCKD's concept art): product views and earlier boards.
+const views = [
+  ['left', 'Left side', 1536, 1024],
+  ['front', 'Front', 1024, 1536],
+  ['right', 'Right side', 1536, 1024],
+  ['rear', 'Rear', 1024, 1536],
+  ['top', 'From above', 1774, 887],
+];
+const boards = [
+  ['board-mascot', 'TinyREX as the Polykrom mascot, with pixel state icons'],
+  ['board-questions', 'Small body, big questions: design, simulate, experiment'],
+  ['board-experiments', 'Small machine, big experiments'],
+  ['board-arms', 'Articulated, expressive arms'],
+];
+
 const stages = [
   ['1. Torso', 'lofted chest shell, armour plate and spikes, Pi, IMU and battery on standoffs and a strap, two hip yaw servos', '91', '5.30'],
   ['2. Left leg', 'six servos on printed brackets, thigh, shin and a three-toed clawed foot; swept every joint for collisions', '68', '6.75'],
@@ -73,28 +88,66 @@ const stages = [
     <p class="kicker">flagship demo · designed in polykrom</p>
     <h1 id="rex-title" class="word" aria-label="TinyRex"><Fragment set:html={word.svg} /></h1>
     <p class="pitch">A small bipedal T-rex robot, designed from an empty file by an AI agent working in Polykrom, then checked standing and walking in Polykrom and in MuJoCo.</p>
+    <p class="stats-label">the current build, verified</p>
     <dl class="stats">
       {stats.map(([n, t]) => (<div><dt>{t}</dt><dd>{n}</dd></div>))}
     </dl>
     <div class="hero-actions">
-      <a class="cta" href="#model">Turn it around in 3D</a>
+      <a class="cta" href="#model">Turn the current build in 3D</a>
       <a href={REPO} rel="noopener">Source and design</a>
       <a href={`${REPO}/blob/main/results/rex-bom.csv`} rel="noopener">Bill of materials</a>
     </div>
+    <figure class="concept-hero">
+      <a href="/rex/concept/hero.webp"><img src="/rex/concept/hero.webp" srcset="/rex/concept/hero-768.webp 768w, /rex/concept/hero.webp 1536w" sizes="(max-width: 760px) 100vw, 1120px" width="1536" height="1024" fetchpriority="high" decoding="async" alt="Concept art of TinyRex: a small robot T-rex with faceted cream, lime and black shells, a lime head with a camera in each eye, a long segmented tail and articulated legs." /></a>
+      <figcaption>Concept art: where TinyRex is going. <a href="#concept">More views</a></figcaption>
+    </figure>
   </section>
+
+  <section id="concept" aria-labelledby="concept-title">
+    <h2 id="concept-title">where it's going</h2>
+    <p>This is the concept TinyRex is being built toward. The agent is restyling the CAD model to it now: cream, lime and black faceted shells, a Raspberry Pi 5 with the AI HAT+, a removable battery, and stereo cameras in the eyes. The 3D model and renders further down are the current build; they will update when the restyle lands.</p>
+    <ul class="views">
+      {views.map(([k, label, w, h]) => (
+        <li class={`view view--${k}`}>
+          <a href={`/rex/concept/${k}.webp`}>
+            <img src={`/rex/concept/${k}-480.webp`} srcset={`/rex/concept/${k}-480.webp 480w, /rex/concept/${k}.webp ${w}w`} sizes="(max-width: 760px) 50vw, 210px" width={480} height={Math.round(480 * h / w)} loading="lazy" decoding="async" alt={`TinyRex concept, ${label.toLowerCase()} view`} />
+          </a>
+          <span>{label}</span>
+        </li>
+      ))}
+    </ul>
+    <h3 class="boards-title">earlier concept directions</h3>
+    <p class="small">Boards from the exploration that led to the concept above: directions, not specifications.</p>
+    <ul class="boards">
+      {boards.map(([k, label]) => (
+        <li>
+          <a href={`/rex/concept/${k}.webp`}>
+            <img src={`/rex/concept/${k}-640.webp`} srcset={`/rex/concept/${k}-640.webp 640w, /rex/concept/${k}.webp 1536w`} sizes="(max-width: 760px) 50vw, 270px" width="640" height="427" loading="lazy" decoding="async" alt={`Earlier TinyRex concept board: ${label}`} />
+          </a>
+          <span>{label}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="credit">Concept art: WCKD. Select any image for full size.</p>
+  </section>
+
+  <section id="current" aria-labelledby="current-title">
+    <h2 id="current-title">the current build</h2>
+    <p>What the agent has designed and verified so far, in Polykrom's lime and black: the design in the repository, the model you can turn below, and every number on this page.</p>
 
   <div class="media">
     <figure class="shot">
-      <img src="/rex/render.png" width="800" height="1000" alt="TinyRex standing, rendered in Polykrom: lime printed shells, black servos, an open jaw full of teeth and a spiked tail." />
+      <img src="/rex/render.png" width="800" height="1000" loading="lazy" decoding="async" alt="TinyRex standing, rendered in Polykrom: lime printed shells, black servos, an open jaw full of teeth and a spiked tail." />
       <figcaption>Rendered in Polykrom, from the agent's design.</figcaption>
     </figure>
     <figure class="shot shot--walk">
-      <video src="/rex/walk.mp4" poster="/rex/walk-poster.jpg" width="480" height="600" autoplay muted loop playsinline controls preload="metadata" aria-label="TinyRex taking two steps in Polykrom's Walk study"></video>
+      <video src="/rex/walk.mp4" poster="/rex/walk-poster.jpg" width="480" height="600" autoplay muted loop playsinline controls preload="none" aria-label="TinyRex taking two steps in Polykrom's Walk study"></video>
       <figcaption>The Walk study: two 40 mm steps, the tail swinging to the stance side.</figcaption>
     </figure>
   </div>
 
-  <p class="status"><span class="sq" aria-hidden="true"></span><strong>Status.</strong> A design polish pass and the rebuild on <a href="https://github.com/wckdboy/polycore" rel="noopener">PolyCore</a> are in progress; the design and the numbers here will change.</p>
+  <p class="status"><span class="sq" aria-hidden="true"></span><strong>Status.</strong> The agent is restyling the CAD model to the concept above, and the rebuild on <a href="https://github.com/wckdboy/polycore" rel="noopener">PolyCore</a> is in progress; the design and the numbers here will change.</p>
+  </section>
 
   <section id="model" aria-labelledby="model-title">
     <div class="section-head"><h2 id="model-title">the model</h2><p class="label">drag to turn</p></div>
@@ -110,7 +163,7 @@ const stages = [
   </section>
 
   <section id="specs" aria-labelledby="specs-title">
-    <h2 id="specs-title">what it is</h2>
+    <h2 id="specs-title">what it is today</h2>
     <div class="table-wrap">
       <table class="spec">
         <tbody>
@@ -150,7 +203,7 @@ const stages = [
       <li><a href="https://cad.polykrom.app" rel="noopener">Polykrom</a><span>the CAD it was built in, in the browser (<a href="https://github.com/wckdboy/polykrom" rel="noopener">source</a>)</span></li>
       <li><a href="https://github.com/wckdboy/polycore" rel="noopener">PolyCore</a><span>the Rust geometry kernel TinyRex will be rebuilt on</span></li>
     </ul>
-    <p class="small">Code is Apache-2.0; the design, renders and animation are CC-BY-4.0. Feetech, Raspberry Pi and MuJoCo are named for what they are; none of them is affiliated with TinyRex.</p>
+    <p class="small">Code is Apache-2.0; the CAD design, its renders and animation are CC-BY-4.0. Concept art: WCKD. Feetech, Raspberry Pi and MuJoCo are named for what they are; none of them is affiliated with TinyRex.</p>
   </section>
 
   <script type="importmap" is:inline>
@@ -303,6 +356,79 @@ const stages = [
   }
   .hero-actions a.cta:hover { background: var(--bone); }
   .hero :focus-visible { outline-color: var(--lime); }
+
+  .stats-label {
+    font-size: 12px;
+    color: var(--ash);
+    margin: 0 0 8px;
+  }
+  .concept-hero {
+    margin: 30px -44px -36px;
+  }
+  .concept-hero > a {
+    display: block;
+    background: #f7f2ec;
+  }
+  .concept-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .concept-hero figcaption {
+    background: transparent;
+    color: var(--ash);
+    font-size: 12px;
+    padding: 10px 44px 12px;
+    border-top: 1px solid var(--ink-rule);
+  }
+  .concept-hero figcaption a { color: var(--bone); text-decoration-color: var(--lime); }
+
+  .views,
+  .boards {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+    display: grid;
+    gap: 12px;
+  }
+  .views { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .boards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .views li,
+  .boards li { margin: 0; min-width: 0; }
+  .views a,
+  .boards a { display: block; border: 1px solid var(--rule); }
+  .views a {
+    position: relative;
+    background: #fefdfb;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+  .views img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .boards img { display: block; width: 100%; height: auto; }
+  .views span,
+  .boards span {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .views a:hover,
+  .boards a:hover { border-color: var(--ink); }
+  .boards-title {
+    margin-top: 34px;
+    font-size: 16px;
+  }
+  .credit {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+  }
 
   .media {
     display: grid;
@@ -463,6 +589,12 @@ const stages = [
   }
 
   @media (max-width: 760px) {
+    .concept-hero { margin: 24px calc(-1 * var(--gutter)) -22px; }
+    .concept-hero figcaption { padding: 10px var(--gutter) 12px; }
+    .views { grid-template-columns: 1fr 1fr; }
+    .views .view--top { grid-column: 1 / -1; }
+    .views .view--top a { aspect-ratio: 2 / 1; }
+    .boards { grid-template-columns: 1fr 1fr; }
     .hero { padding: 26px var(--gutter) 22px; margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); border-left: 0; border-right: 0; }
     .pitch { font-size: 16px; }
     .stats { grid-template-columns: 1fr 1fr; }
