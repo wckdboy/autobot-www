@@ -251,22 +251,6 @@
       "isArchived": false
     },
     {
-      "name": "polycore",
-      "url": "https://github.com/wckdboy/polycore",
-      "description": "PolyCore: an open-source Rust CAD kernel for Polykrom, built to rival the commercial kernels",
-      "visibility": "public",
-      "isFork": false,
-      "isArchived": false
-    },
-    {
-      "name": "polykrom",
-      "url": "https://github.com/wckdboy/polykrom",
-      "description": "Polykrom: open-source parametric CAD in pure Rust for physical-world engineering, with stress analysis and an AI companion. A fork of SolidCraft.",
-      "visibility": "public",
-      "isFork": false,
-      "isArchived": false
-    },
-    {
       "name": "qBittorrent-Search-Plugins",
       "url": "https://github.com/wckdboy/qBittorrent-Search-Plugins",
       "description": "BurningMop's qbittorrent search plugins collection",
