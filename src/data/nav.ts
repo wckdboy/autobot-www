@@ -73,13 +73,14 @@ export const NAV = {
   tinyrex: {
     nav: [
       { label: 'Overview', href: '/' },
+      { label: 'Concept', href: '/#concept' },
       { label: '3D', href: '/#model' },
       { label: 'Results', href: '/#results' },
       { label: 'How', href: '/#build' },
       { label: 'Source', href: 'https://github.com/wckdboy/tinyrex' },
       { label: 'WCKD', href: 'https://wckd.ai' },
     ],
-    footer: 'TinyRex was designed by an AI agent in Polykrom. Code Apache-2.0; design and media CC-BY-4.0. Made by WCKD.',
+    footer: 'TinyRex was designed by an AI agent in Polykrom. Code Apache-2.0; the CAD design and its renders CC-BY-4.0; concept art by WCKD. Made by WCKD.',
     repo: 'https://github.com/wckdboy/tinyrex',
   },
 } as const;
