@@ -53,6 +53,7 @@ const status = [
   ['Agent', 'working', 'retries on provider errors, long turns kept within the context, loop detection, forgiving edits'],
   ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix, WhatsApp, Home Assistant'],
   ['Backups and alerts', 'working', 'one-file backups with checksums, scheduled; crashes, outages and failed tasks sent to your chat'],
+  ['Control panel', 'working (alpha)', 'one authenticated surface for the node and agent: sessions, approvals, streamed tasks, history and receipts; scrypt, signed sessions, CSRF, CSP; no provider keys in the browser'],
   ['Security review', 'not independent yet', 'fixes from an internal review are in'],
 ];
 ---
@@ -170,6 +171,12 @@ autobot skills install pdf      # shows the source and SKILL.md, then asks
 autobot skills check            # updates, and skills edited locally
 autobot skills audit pdf        # risky scripts, and how far the source is trusted</code></pre>
     <p class="small">In a chat, <code>/recall</code> searches every earlier conversation and <code>/context</code> lists the instructions in play, from AGENTS.md, CLAUDE.md and the rest. A file that looks like a prompt injection is quoted to the model as data, with a warning.</p>
+  </section>
+
+  <section id="panel">
+    <h2>The control panel</h2>
+    <p>The node and the agent share one operator surface: a zero-dependency Node panel with a scrypt password, signed HttpOnly SameSite=Strict sessions, CSRF tokens, login rate limiting and a strict CSP. It shows gateway health, models, sessions, approvals and the audit log; a task streams as text, tool calls and gateway receipts, and the history stays readable after the turn.</p>
+    <p class="small">The panel never holds provider keys. The browser talks only to the panel; the panel proxies the gateway and agent calls it needs with the node's token, and the node keeps every key, policy decision and receipt. The alpha stack runs the panel, the agent and a cloud-only gateway on one host behind Coolify's Traefik; the same services ship as a Docker Compose with Caddy on a host that runs Invincible. The panel is password-protected; the <a href="https://github.com/WCKDai/platform/tree/main/services/agent" rel="noopener">deployment runbook and security model</a> are public.</p>
   </section>
 
   <section id="status">
