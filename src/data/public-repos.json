@@ -243,6 +243,14 @@
       "isArchived": false
     },
     {
+      "name": "openendo-www",
+      "url": "https://github.com/wckdboy/openendo-www",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
       "name": "openhuman-web",
       "url": "https://github.com/wckdboy/openhuman-web",
       "description": "OpenHuman web UI build container (Dockerfile)",
@@ -256,6 +264,14 @@
       "description": "BurningMop's qbittorrent search plugins collection",
       "visibility": "public",
       "isFork": true,
+      "isArchived": false
+    },
+    {
+      "name": "Quantimation",
+      "url": "https://github.com/wckdboy/Quantimation",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
       "isArchived": false
     },
     {
@@ -285,6 +301,14 @@
     {
       "name": "sovware",
       "url": "https://github.com/wckdboy/sovware",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "walkietalkie",
+      "url": "https://github.com/wckdboy/walkietalkie",
       "description": "",
       "visibility": "public",
       "isFork": false,
