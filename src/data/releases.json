@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T18:40:08.133Z",
+  "generatedAt": "2026-10-28T21:09:47.819Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
@@ -36,7 +36,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 91,
+          "downloads": 95,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
         }
       ]
@@ -71,7 +71,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 91,
+            "downloads": 95,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
           }
         ]
@@ -520,7 +520,7 @@
       }
     ],
     "checksums": "27783c50bc79a7fe605bd9d2ffcc2ca4c369d181d11c7fe6c3c6613630066e98 *autobot-1.14.0-debug.apk\n7c2113e62d9ab369429f5763c33b25f7cbaf9ed3a54032ffac5ea32bcd2043bd *autobot-1.14.0-release.apk\n1cff2386af2be28a8330b9d0444fd58493e4692a9dc3fb72f7d9955b41291c71 *autobot-1.14.0-mapping.txt",
-    "totalDownloads": 261
+    "totalDownloads": 265
   },
   "invincible": {
     "name": "invincible",
@@ -528,54 +528,100 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-28T18:24:28Z",
+    "pushed": "2026-10-28T20:51:29Z",
     "latest": {
-      "tag": "v0.0.22",
-      "name": "v0.0.22",
-      "published": "2026-10-28T18:36:51Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.22",
+      "tag": "v0.0.23",
+      "name": "v0.0.23",
+      "published": "2026-10-28T21:01:46Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.23",
       "prerelease": false,
-      "body": "Invincible 0.0.22 — Autobot and the node, together.\n\n## Autobot\n\n- `autobot run` now starts a fresh conversation for every one-shot task. `--session NAME` continues one on purpose, so a task never inherits the last task's context. This was found by the harness comparing agents.\n- Coding turns use a measured tight loop: read what is needed in one pass, make the smallest change, run the relevant test once, and stop when it passes. On the hard `spec-implementation` task this took a 450-second timeout to a pass in 267.5 seconds; a generated project profile reached 156.8 seconds.\n- `autobot review` sends the current diff to a separate read-only reviewer; `autobot map` shows the compact project map a coding session starts with; `--approvals auto` lets commands and project changes run in the project while network and outside reads still ask.\n- The agent suite covers the project map, the reviewer, autonomous approvals and the new session rules.\n\n## Gateway\n\n- `POST /v1/embeddings` serves an embedding model the node owns; `POST /v1/audio/transcriptions` passes multipart audio to a speech-to-text backend on the same machine. Both are bounded, receipted and audited, and neither leaves the node.\n- The merge with `main` brings cluster, discovery and dispatch, per-engine keys and clean engine environments, the installer lock and supervisor fixes.\n- Reproducible static Linux (x86_64, arm64) and macOS (Apple silicon) binaries; SHA256SUMS signed with the pinned release key; build-provenance attestations.\n\n## Upgrade\n\n```sh\ninvincible update\n# or\ncurl -fsSL https://invincible.sh/install.sh | sh\n```\n\nThe installed service reports `invincible 0.0.22` and `autobot 0.0.22`.",
+      "body": "Invincible 0.0.23 — a thread is a checkout.\n\n## Threads\n\n- `autobot thread start` creates a conversation with a git worktree and a branch of its own, from the project the bot works in. `thread list`, `show`, `diff`, `pr` and `remove` finish the job. Two agents can work in parallel without touching each other's files.\n- The agent API exposes `/v1/agent/threads`: create, list, diff and remove, plus `/pr` for one-click pull requests. A turn in a thread's session uses its worktree and its project map.\n- `thread pr` stages and commits with a fixed Autobot identity, pushes (an HTTPS GitHub remote uses `GH_TOKEN` through a one-shot credential helper, so the token is not in the URL or the command line), and opens the pull request with `gh`, the GitHub API and `GH_TOKEN`/`GITHUB_TOKEN`, or returns the compare link after the push.\n- A removed thread leaves a tombstone: an old session cannot silently fall back to the main checkout.\n\n## Control plane\n\nThe panel in [`platform/services/agent`](https://github.com/WCKDai/platform/tree/main/services/agent) is now the full operator surface:\n\n- **Overview** — gateway, agent, today's tokens and cost, approvals.\n- **Chat** — transcript, streamed turns, a new conversation.\n- **Workspaces** — start a thread, use it, read its diff, open its PR, remove it.\n- **Bots** — list, add, enable, disable, reload.\n- **Integrations** — the channel matrix, write-only token files (`0600`), configured MCP servers.\n- **Usage** — tokens, cost, models, tools, failures, the gateway audit.\n- **Settings** — the models the gateway serves (provider keys stay in the gateway), the bot's model, approvals, tool groups, any advanced dotted key.\n\nThe agent API gained validated settings, model selection, tool groups, write-only secret files in the bot home, and bot creation. The panel proxies only the routes it needs; the browser never sees a provider key.\n\nThe alpha runs it at **https://agent.invincible.sh**.\n\n## Upgrade\n\n```sh\ninvincible update\n# or\ncurl -fsSL https://invincible.sh/install.sh | sh\n```\n\nThe installed service reports `invincible 0.0.23` and `autobot 0.0.23`.",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 11692630,
+          "size": 11850734,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-linux-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 12823164,
+          "size": 12981248,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-linux-x64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 11228909,
+          "size": 11376151,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-macos-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 360,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/SHA256SUMS"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/SHA256SUMS.sig"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/SHA256SUMS.sig"
         },
         {
           "name": "VERSION",
           "size": 7,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/VERSION"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/VERSION"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.23",
+        "name": "v0.0.23",
+        "published": "2026-10-28T21:01:46Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.23",
+        "prerelease": false,
+        "body": "Invincible 0.0.23 — a thread is a checkout.\n\n## Threads\n\n- `autobot thread start` creates a conversation with a git worktree and a branch of its own, from the project the bot works in. `thread list`, `show`, `diff`, `pr` and `remove` finish the job. Two agents can work in parallel without touching each other's files.\n- The agent API exposes `/v1/agent/threads`: create, list, diff and remove, plus `/pr` for one-click pull requests. A turn in a thread's session uses its worktree and its project map.\n- `thread pr` stages and commits with a fixed Autobot identity, pushes (an HTTPS GitHub remote uses `GH_TOKEN` through a one-shot credential helper, so the token is not in the URL or the command line), and opens the pull request with `gh`, the GitHub API and `GH_TOKEN`/`GITHUB_TOKEN`, or returns the compare link after the push.\n- A removed thread leaves a tombstone: an old session cannot silently fall back to the main checkout.\n\n## Control plane\n\nThe panel in [`platform/services/agent`](https://github.com/WCKDai/platform/tree/main/services/agent) is now the full operator surface:\n\n- **Overview** — gateway, agent, today's tokens and cost, approvals.\n- **Chat** — transcript, streamed turns, a new conversation.\n- **Workspaces** — start a thread, use it, read its diff, open its PR, remove it.\n- **Bots** — list, add, enable, disable, reload.\n- **Integrations** — the channel matrix, write-only token files (`0600`), configured MCP servers.\n- **Usage** — tokens, cost, models, tools, failures, the gateway audit.\n- **Settings** — the models the gateway serves (provider keys stay in the gateway), the bot's model, approvals, tool groups, any advanced dotted key.\n\nThe agent API gained validated settings, model selection, tool groups, write-only secret files in the bot home, and bot creation. The panel proxies only the routes it needs; the browser never sees a provider key.\n\nThe alpha runs it at **https://agent.invincible.sh**.\n\n## Upgrade\n\n```sh\ninvincible update\n# or\ncurl -fsSL https://invincible.sh/install.sh | sh\n```\n\nThe installed service reports `invincible 0.0.23` and `autobot 0.0.23`.",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 11850734,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 12981248,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 11376151,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 360,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/SHA256SUMS.sig"
+          },
+          {
+            "name": "VERSION",
+            "size": 7,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.23/VERSION"
+          }
+        ]
+      },
       {
         "tag": "v0.0.22",
         "name": "v0.0.22",
@@ -587,64 +633,64 @@
           {
             "name": "invincible-linux-arm64.tar.gz",
             "size": 11692630,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-linux-arm64.tar.gz"
           },
           {
             "name": "invincible-linux-x64.tar.gz",
             "size": 12823164,
-            "downloads": 0,
+            "downloads": 22,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-linux-x64.tar.gz"
           },
           {
             "name": "invincible-macos-arm64.tar.gz",
             "size": 11228909,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-macos-arm64.tar.gz"
           },
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 0,
+            "downloads": 6,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/SHA256SUMS.sig"
           },
           {
             "name": "VERSION",
             "size": 7,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/VERSION"
           }
         ]
       },
       {
         "tag": "edge",
-        "name": "edge (0.0.21-edge.1547f1d)",
+        "name": "edge (0.0.22-edge.f88f4b7)",
         "published": "2026-10-20T10:17:13Z",
         "url": "https://github.com/wckdboy/invincible/releases/tag/edge",
         "prerelease": true,
-        "body": "Built from 1547f1da50af335c03122b7f2949886199b40df5 on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
+        "body": "Built from f88f4b75c3a88b275ed8acf34c45261904a73fdf on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
         "assets": [
           {
             "name": "invincible-linux-arm64.tar.gz",
-            "size": 11692343,
+            "size": 11693880,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-arm64.tar.gz"
           },
           {
             "name": "invincible-linux-x64.tar.gz",
-            "size": 12814005,
+            "size": 12822775,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-x64.tar.gz"
           },
           {
             "name": "invincible-macos-arm64.tar.gz",
-            "size": 11229248,
+            "size": 11229550,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-macos-arm64.tar.gz"
           },
@@ -1161,49 +1207,9 @@
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.11/SHA256SUMS.sig"
           }
         ]
-      },
-      {
-        "tag": "v0.0.10",
-        "name": "v0.0.10",
-        "published": "2026-10-20T01:15:51Z",
-        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.10",
-        "prerelease": false,
-        "body": "A new terminal for the agent, and the brand's vivid colors.\n\n**Autobot in the terminal (`autobot chat`, `autobot code`)**\n- **It stays in your scrollback.** Only the bottom of the screen redraws, and only the rows that changed. Nothing flickers.\n- **A real composer.** It takes several lines (Alt+Enter, Ctrl+J or a trailing `\\`) and keeps your history. Long pastes fold into `[pasted N lines]` and still go out in full. The usual editing keys work (Ctrl+A/E/W/U/K/Y, Alt+B/F/D).\n- **A status line:** the model (`auto → qwen (node)` once a receipt says which model auto picked), your approvals mode, the project and branch, how much of the context is used, and tokens. The hints on the right follow what you can do now.\n- **`/` opens a palette** of commands, your own included, each with a one-line description. **`@` completes file paths** in the project and respects `.gitignore`.\n- **Live steps.** A spinner shows the running step and its seconds. Esc or Ctrl+C interrupts, and typing while the agent works steers it.\n- **Answers render properly:** headings, lists with hanging indents, quotes, aligned tables, and framed code blocks with a light syntax tint.\n- **Tool output is short.** Command output shows its last lines and the exit code. Diffs show line numbers in green and red.\n- **Approvals are a card** you answer with one key: y, a (always, this session) or n.\n- **Scripts still work.** Without a terminal it falls back to plain lines. `NO_COLOR` is respected. The terminal is restored on exit, on a crash, and on SIGTERM and SIGHUP.\n- **Smaller:** rustyline is gone, taking 10 dependencies with it.\n\n**Brand**\n- Vivid colors: Invincible orange `#FF8A1E` (256-color 208) and Autobot purple `#7C5CFF` (99), for the symbols, the prompt and what is running, never for text.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
-        "assets": [
-          {
-            "name": "invincible-linux-arm64.tar.gz",
-            "size": 7654505,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/invincible-linux-arm64.tar.gz"
-          },
-          {
-            "name": "invincible-linux-x64.tar.gz",
-            "size": 8409119,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/invincible-linux-x64.tar.gz"
-          },
-          {
-            "name": "invincible-macos-arm64.tar.gz",
-            "size": 7273596,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/invincible-macos-arm64.tar.gz"
-          },
-          {
-            "name": "SHA256SUMS",
-            "size": 286,
-            "downloads": 6,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS"
-          },
-          {
-            "name": "SHA256SUMS.sig",
-            "size": 314,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS.sig"
-          }
-        ]
       }
     ],
-    "checksums": "386e6ebf9e050266261f313298a7269c73db4b6f87afc59da471c308a15df105  invincible-linux-arm64.tar.gz\ndc6ae799b05e2b3c217fd19332130fe27dee36680b7c0f93627dc94059b91228  invincible-linux-x64.tar.gz\n049491dd206da153d1119c50259749070dd7ab752ba201ce4ae8dca2986bff45  invincible-macos-arm64.tar.gz\n56ff76b2e9ee565dd72770eee62bb1b1407f77c82ef8eb2aaf6bd5487b96d028  VERSION",
-    "totalDownloads": 203
+    "checksums": "8d30d64ebaa83b9c406f62e57454ec0bb9c4e723c4f9b446f98fadd294495270  invincible-linux-arm64.tar.gz\n7114a1042932dfc7d81f862a815de158c0d7954771b067de2516c647b990b66c  invincible-linux-x64.tar.gz\nda9cd53c5f8601cc4349c89ee681c9126747db709b2e94d5340aafa5682b9679  invincible-macos-arm64.tar.gz\nf068779e0494295597aa26e6d873a9d5585a5f7056773e056bb2f89247505326  VERSION",
+    "totalDownloads": 233
   }
 }
