@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T12:54:40.864Z",
+  "generatedAt": "2026-10-28T18:40:08.133Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
@@ -36,7 +36,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 89,
+          "downloads": 91,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
         }
       ]
@@ -71,7 +71,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 89,
+            "downloads": 91,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
           }
         ]
@@ -520,7 +520,7 @@
       }
     ],
     "checksums": "27783c50bc79a7fe605bd9d2ffcc2ca4c369d181d11c7fe6c3c6613630066e98 *autobot-1.14.0-debug.apk\n7c2113e62d9ab369429f5763c33b25f7cbaf9ed3a54032ffac5ea32bcd2043bd *autobot-1.14.0-release.apk\n1cff2386af2be28a8330b9d0444fd58493e4692a9dc3fb72f7d9955b41291c71 *autobot-1.14.0-mapping.txt",
-    "totalDownloads": 259
+    "totalDownloads": 261
   },
   "invincible": {
     "name": "invincible",
@@ -528,54 +528,100 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-28T03:48:38Z",
+    "pushed": "2026-10-28T18:24:28Z",
     "latest": {
-      "tag": "v0.0.21",
-      "name": "v0.0.21",
-      "published": "2026-10-21T20:26:34Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.21",
+      "tag": "v0.0.22",
+      "name": "v0.0.22",
+      "published": "2026-10-28T18:36:51Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.22",
       "prerelease": false,
-      "body": "## What's Changed\n* Agent harness: steadier, faster, and better at handling a model that misbehaves by @wckdboy in https://github.com/wckdboy/invincible/pull/15\n* Hardening: soak at rest, browser cold start (INV-55), deadlines, no orphans by @wckdboy in https://github.com/wckdboy/invincible/pull/16\n\n\n**Full Changelog**: https://github.com/wckdboy/invincible/compare/v0.0.20...v0.0.21",
+      "body": "Invincible 0.0.22 — Autobot and the node, together.\n\n## Autobot\n\n- `autobot run` now starts a fresh conversation for every one-shot task. `--session NAME` continues one on purpose, so a task never inherits the last task's context. This was found by the harness comparing agents.\n- Coding turns use a measured tight loop: read what is needed in one pass, make the smallest change, run the relevant test once, and stop when it passes. On the hard `spec-implementation` task this took a 450-second timeout to a pass in 267.5 seconds; a generated project profile reached 156.8 seconds.\n- `autobot review` sends the current diff to a separate read-only reviewer; `autobot map` shows the compact project map a coding session starts with; `--approvals auto` lets commands and project changes run in the project while network and outside reads still ask.\n- The agent suite covers the project map, the reviewer, autonomous approvals and the new session rules.\n\n## Gateway\n\n- `POST /v1/embeddings` serves an embedding model the node owns; `POST /v1/audio/transcriptions` passes multipart audio to a speech-to-text backend on the same machine. Both are bounded, receipted and audited, and neither leaves the node.\n- The merge with `main` brings cluster, discovery and dispatch, per-engine keys and clean engine environments, the installer lock and supervisor fixes.\n- Reproducible static Linux (x86_64, arm64) and macOS (Apple silicon) binaries; SHA256SUMS signed with the pinned release key; build-provenance attestations.\n\n## Upgrade\n\n```sh\ninvincible update\n# or\ncurl -fsSL https://invincible.sh/install.sh | sh\n```\n\nThe installed service reports `invincible 0.0.22` and `autobot 0.0.22`.",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 10667894,
-          "downloads": 2,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/invincible-linux-arm64.tar.gz"
+          "size": 11692630,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 11712593,
-          "downloads": 3,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/invincible-linux-x64.tar.gz"
+          "size": 12823164,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 10187601,
-          "downloads": 2,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/invincible-macos-arm64.tar.gz"
+          "size": 11228909,
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 360,
-          "downloads": 106,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
-          "downloads": 12,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS.sig"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/SHA256SUMS.sig"
         },
         {
           "name": "VERSION",
           "size": 7,
-          "downloads": 2,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/VERSION"
+          "downloads": 0,
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/VERSION"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.22",
+        "name": "v0.0.22",
+        "published": "2026-10-28T18:36:51Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.22",
+        "prerelease": false,
+        "body": "Invincible 0.0.22 — Autobot and the node, together.\n\n## Autobot\n\n- `autobot run` now starts a fresh conversation for every one-shot task. `--session NAME` continues one on purpose, so a task never inherits the last task's context. This was found by the harness comparing agents.\n- Coding turns use a measured tight loop: read what is needed in one pass, make the smallest change, run the relevant test once, and stop when it passes. On the hard `spec-implementation` task this took a 450-second timeout to a pass in 267.5 seconds; a generated project profile reached 156.8 seconds.\n- `autobot review` sends the current diff to a separate read-only reviewer; `autobot map` shows the compact project map a coding session starts with; `--approvals auto` lets commands and project changes run in the project while network and outside reads still ask.\n- The agent suite covers the project map, the reviewer, autonomous approvals and the new session rules.\n\n## Gateway\n\n- `POST /v1/embeddings` serves an embedding model the node owns; `POST /v1/audio/transcriptions` passes multipart audio to a speech-to-text backend on the same machine. Both are bounded, receipted and audited, and neither leaves the node.\n- The merge with `main` brings cluster, discovery and dispatch, per-engine keys and clean engine environments, the installer lock and supervisor fixes.\n- Reproducible static Linux (x86_64, arm64) and macOS (Apple silicon) binaries; SHA256SUMS signed with the pinned release key; build-provenance attestations.\n\n## Upgrade\n\n```sh\ninvincible update\n# or\ncurl -fsSL https://invincible.sh/install.sh | sh\n```\n\nThe installed service reports `invincible 0.0.22` and `autobot 0.0.22`.",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 11692630,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 12823164,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 11228909,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 360,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/SHA256SUMS.sig"
+          },
+          {
+            "name": "VERSION",
+            "size": 7,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.22/VERSION"
+          }
+        ]
+      },
       {
         "tag": "edge",
         "name": "edge (0.0.21-edge.1547f1d)",
@@ -639,7 +685,7 @@
           {
             "name": "invincible-linux-x64.tar.gz",
             "size": 11712593,
-            "downloads": 3,
+            "downloads": 10,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/invincible-linux-x64.tar.gz"
           },
           {
@@ -651,19 +697,19 @@
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 106,
+            "downloads": 110,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 12,
+            "downloads": 14,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/SHA256SUMS.sig"
           },
           {
             "name": "VERSION",
             "size": 7,
-            "downloads": 2,
+            "downloads": 4,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.21/VERSION"
           }
         ]
@@ -1155,49 +1201,9 @@
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.10/SHA256SUMS.sig"
           }
         ]
-      },
-      {
-        "tag": "v0.0.9",
-        "name": "v0.0.9",
-        "published": "2026-10-19T23:45:35Z",
-        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.9",
-        "prerelease": false,
-        "body": "The agent grows into a full harness, and the node gets its brand.\n\n**Agent (Autobot)**\n- Background processes: `terminal` with `background: true` leaves a dev server or watcher running; `process` reads its output, waits for it or stops it. `/ps` in the TUI.\n- Your own slash commands from `.autobot/commands`, `.claude/commands` and `~/.autobot/commands` (`$ARGUMENTS`); `/init` writes AGENTS.md; `/compact` folds the conversation.\n- `[agent.docker]`: commands in a per-project container.\n- Webhooks: `[hooks]` and `POST /hooks/<name>`, signed like GitHub; the body is fenced as data. `autobot hooks`, `autobot hooks new`.\n- Discord: direct messages and mentions, pairing codes, approval buttons, steering. `autobot discord approve|users|revoke`.\n- `allow = [\"cloud\"]` lets unattended turns use a cloud model that keeps prompts.\n\n**Brand**\n- Invincible is orange, Autobot lilac. Each has a pixel symbol: an `i` and an `a`. Warnings are yellow, errors red.\n- Both CLIs share one terminal palette and grammar; `autobot` shows its symbol beside the header, and the installer shows Invincible's.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed_signers -I invincible-release -n invincible-release -s SHA256SUMS.sig < SHA256SUMS\nshasum -a 256 -c SHA256SUMS\n```",
-        "assets": [
-          {
-            "name": "invincible-linux-arm64.tar.gz",
-            "size": 7745633,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.9/invincible-linux-arm64.tar.gz"
-          },
-          {
-            "name": "invincible-linux-x64.tar.gz",
-            "size": 8506577,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.9/invincible-linux-x64.tar.gz"
-          },
-          {
-            "name": "invincible-macos-arm64.tar.gz",
-            "size": 7369374,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.9/invincible-macos-arm64.tar.gz"
-          },
-          {
-            "name": "SHA256SUMS",
-            "size": 286,
-            "downloads": 4,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.9/SHA256SUMS"
-          },
-          {
-            "name": "SHA256SUMS.sig",
-            "size": 314,
-            "downloads": 0,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.9/SHA256SUMS.sig"
-          }
-        ]
       }
     ],
-    "checksums": "9e1077b50d4e4890b4b4f0eb2fa7dda1a55b161361778f7bf7b29206e59361c9  invincible-linux-arm64.tar.gz\n55a8bb06a1dd1f5f280c2e58e449500366811fdfe61b1a01f7223f4ebfd4b35c  invincible-linux-x64.tar.gz\n808f90e564011498497ae770100d1c11fc01bae9595b82665eb7c8b30ce8ce11  invincible-macos-arm64.tar.gz\n374c2ee0c45e53453feeea1e53ed7bacea934f7658b6b2c4ff1f1226379f99cf  VERSION",
-    "totalDownloads": 192
+    "checksums": "386e6ebf9e050266261f313298a7269c73db4b6f87afc59da471c308a15df105  invincible-linux-arm64.tar.gz\ndc6ae799b05e2b3c217fd19332130fe27dee36680b7c0f93627dc94059b91228  invincible-linux-x64.tar.gz\n049491dd206da153d1119c50259749070dd7ab752ba201ce4ae8dca2986bff45  invincible-macos-arm64.tar.gz\n56ff76b2e9ee565dd72770eee62bb1b1407f77c82ef8eb2aaf6bd5487b96d028  VERSION",
+    "totalDownloads": 203
   }
 }
