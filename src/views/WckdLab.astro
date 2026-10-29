@@ -46,7 +46,7 @@ const sourceUrl = (p: { repo: string; source?: string }) => p.source ?? repoUrl(
           </h3>
           <p>{p.description}</p>
           <p class="project-status">{p.status}</p>
-          <div class="project-links"><a href={p.site}>Visit {new URL(p.site).hostname} <span aria-hidden="true">↗</span></a>{repoUrl(p.repo) && <a href={sourceUrl(p)}>Source</a>}{'next' in p && p.next && <><a href={p.next.site}>Open {p.next.name} <span aria-hidden="true">↗</span></a><a href={p.next.source}>{p.next.name} source</a>{p.next.kernel && <a href={p.next.kernel.source}>{p.next.kernel.name} source</a>}</>}</div>
+          <div class="project-links"><a href={p.site}>Visit {new URL(p.site).hostname} <span aria-hidden="true">↗</span></a>{sourceUrl(p) && <a href={sourceUrl(p)}>Source</a>}{'next' in p && p.next && <><a href={p.next.site}>Open {p.next.name} <span aria-hidden="true">↗</span></a><a href={p.next.source}>{p.next.name} source</a>{p.next.kernel && <a href={p.next.kernel.source}>{p.next.kernel.name} source</a>}</>}</div>
         </li>
       ))}
     </ul>
