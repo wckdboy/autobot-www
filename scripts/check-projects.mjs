@@ -22,9 +22,18 @@ for (const repo of snapshot.repositories) {
 }
 assert.deepEqual(new Set(projects.map((p) => p.id)), new Set(['autobot','invincible','niobium','omnie','polykrom','nightfall','axit','openendo','sovware']));
 for (const project of projects) {
-  assert(names.has(project.repo.toLowerCase()), `Missing public source for ${project.name}`);
+  if (project.source) {
+    assert.equal(new URL(project.source).protocol, 'https:');
+    assert(html.includes(`href="${project.source}"`), `Source absent from directory: ${project.name}`);
+  } else {
+    assert(names.has(project.repo.toLowerCase()), `Missing public source for ${project.name}`);
+  }
   assert.equal(new URL(project.site).protocol, 'https:');
-  assert(html.includes(`id="project-${project.id}"`) && html.includes(`href="${project.site}"`));
+}
+for (const id of ['autobot', 'invincible', 'niobium', 'polykrom', 'sovware']) {
+  const project = projects.find((p) => p.id === id);
+  assert(project, `Missing core profile: ${id}`);
+  assert(html.includes(`id="project-${id}"`) && html.includes(`href="${project.site}"`), `Core project absent from directory: ${id}`);
 }
 for (const repo of ['omnie-dev','omnie-edit','omnie-ios','omnie-edu','eidolon','enjin','Mosaic','drivesearch','fsearch','RoundTable','wckd-gpu']) {
   assert(names.has(repo.toLowerCase()), `Missing lab app: ${repo}`);

@@ -21,6 +21,7 @@ const lab = [
 ];
 const repoUrls = new Map(source.repositories.map((r) => [r.name.toLowerCase(), r.url]));
 const repoUrl = (name: string) => repoUrls.get(name.toLowerCase());
+const sourceUrl = (p: { repo: string; source?: string }) => p.source ?? repoUrl(p.repo);
 ---
 <Lab path="/" current="" description="Explore the WCKD projects: AI agents, CAD, creative apps, local tools and open research. Project sites, public source and development status in one place.">
   <p class="label">WCKD.AI / independent software</p>
@@ -45,7 +46,7 @@ const repoUrl = (name: string) => repoUrls.get(name.toLowerCase());
           </h3>
           <p>{p.description}</p>
           <p class="project-status">{p.status}</p>
-          <div class="project-links"><a href={p.site}>Visit {new URL(p.site).hostname} <span aria-hidden="true">↗</span></a>{repoUrl(p.repo) && <a href={repoUrl(p.repo)}>Source</a>}{'next' in p && p.next && <><a href={p.next.site}>Open {p.next.name} <span aria-hidden="true">↗</span></a><a href={p.next.source}>{p.next.name} source</a>{p.next.kernel && <a href={p.next.kernel.source}>{p.next.kernel.name} source</a>}</>}</div>
+          <div class="project-links"><a href={p.site}>Visit {new URL(p.site).hostname} <span aria-hidden="true">↗</span></a>{repoUrl(p.repo) && <a href={sourceUrl(p)}>Source</a>}{'next' in p && p.next && <><a href={p.next.site}>Open {p.next.name} <span aria-hidden="true">↗</span></a><a href={p.next.source}>{p.next.name} source</a>{p.next.kernel && <a href={p.next.kernel.source}>{p.next.kernel.name} source</a>}</>}</div>
         </li>
       ))}
     </ul>

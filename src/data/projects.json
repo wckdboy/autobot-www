@@ -46,6 +46,7 @@
     "description": "Parametric CAD in Rust with an AI companion and Nightfall stress analysis. A fork of SolidCraft, with shared fixes contributed upstream.",
     "site": "https://polykrom.app",
     "repo": "polykrom",
+    "source": "https://github.com/WCKDai/polykrom",
     "status": "Source builds · browser preview",
     "mark": "polykrom"
   },
