@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T12:00:10.369Z",
+  "generatedAt": "2026-10-29T13:00:12.003Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
@@ -36,7 +36,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 112,
+          "downloads": 114,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
         }
       ]
@@ -71,7 +71,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 112,
+            "downloads": 114,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
           }
         ]
@@ -520,7 +520,7 @@
       }
     ],
     "checksums": "27783c50bc79a7fe605bd9d2ffcc2ca4c369d181d11c7fe6c3c6613630066e98 *autobot-1.14.0-debug.apk\n7c2113e62d9ab369429f5763c33b25f7cbaf9ed3a54032ffac5ea32bcd2043bd *autobot-1.14.0-release.apk\n1cff2386af2be28a8330b9d0444fd58493e4692a9dc3fb72f7d9955b41291c71 *autobot-1.14.0-mapping.txt",
-    "totalDownloads": 282
+    "totalDownloads": 284
   },
   "invincible": {
     "name": "invincible",
@@ -528,7 +528,7 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-29T11:38:09Z",
+    "pushed": "2026-10-29T12:36:37Z",
     "latest": {
       "tag": "v0.0.30",
       "name": "v0.0.30",
@@ -546,31 +546,31 @@
         {
           "name": "invincible-linux-x64.tar.gz",
           "size": 13380802,
-          "downloads": 0,
+          "downloads": 3,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
           "size": 11751087,
-          "downloads": 0,
+          "downloads": 1,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 360,
-          "downloads": 0,
+          "downloads": 3,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
-          "downloads": 0,
+          "downloads": 2,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/SHA256SUMS.sig"
         },
         {
           "name": "VERSION",
           "size": 7,
-          "downloads": 0,
+          "downloads": 2,
           "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/VERSION"
         }
       ]
@@ -593,31 +593,31 @@
           {
             "name": "invincible-linux-x64.tar.gz",
             "size": 13380802,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/invincible-linux-x64.tar.gz"
           },
           {
             "name": "invincible-macos-arm64.tar.gz",
             "size": 11751087,
-            "downloads": 0,
+            "downloads": 1,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/invincible-macos-arm64.tar.gz"
           },
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 0,
+            "downloads": 2,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/SHA256SUMS.sig"
           },
           {
             "name": "VERSION",
             "size": 7,
-            "downloads": 0,
+            "downloads": 2,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.30/VERSION"
           }
         ]
@@ -731,7 +731,7 @@
           {
             "name": "invincible-linux-x64.tar.gz",
             "size": 13170144,
-            "downloads": 13,
+            "downloads": 14,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/invincible-linux-x64.tar.gz"
           },
           {
@@ -854,27 +854,27 @@
       },
       {
         "tag": "edge",
-        "name": "edge (0.0.29-edge.3b45517)",
+        "name": "edge (0.0.30-edge.4aa36b9)",
         "published": "2026-10-20T10:17:13Z",
         "url": "https://github.com/wckdboy/invincible/releases/tag/edge",
         "prerelease": true,
-        "body": "Built from 3b4551719cfa32a700ed7abc13a6aed367933ea4 on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
+        "body": "Built from 4aa36b98449cf856b82b63819a80f418cfef7f82 on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
         "assets": [
           {
             "name": "invincible-linux-arm64.tar.gz",
-            "size": 12185327,
+            "size": 12224274,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-arm64.tar.gz"
           },
           {
             "name": "invincible-linux-x64.tar.gz",
-            "size": 13337032,
+            "size": 13382288,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-x64.tar.gz"
           },
           {
             "name": "invincible-macos-arm64.tar.gz",
-            "size": 11707366,
+            "size": 11751975,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-macos-arm64.tar.gz"
           },
@@ -1222,6 +1222,6 @@
       }
     ],
     "checksums": "af93d3af8870dc6cdf5a50f9f4ecaac4a06321e8aa4900c9d3ec1cbd8a2003e9  invincible-linux-arm64.tar.gz\n04bf881367e95b6eaf6fe01834d43822d976379af3d1b6e0a747e803b1647bf9  invincible-linux-x64.tar.gz\n857bfe3efe33a05625fdd55f5cf323b4dcbfcab307839dd283af3f79e62d231e  invincible-macos-arm64.tar.gz\n804b565add0bd73e65c5ae169970e4bcefee729d2fff44193ddbe46d253e6cdb  VERSION",
-    "totalDownloads": 421
+    "totalDownloads": 433
   }
 }
