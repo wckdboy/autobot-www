@@ -50,10 +50,10 @@ const status = [
   ['Cluster', 'phase 1 in progress', 'see above'],
   ['Training', 'planned', 'see above: LoRA on one device, then across devices, then larger runs; federated training with phones is deferred'],
   ['Always on', 'working', 'launchd or systemd, health checks, self-update; Tor and SOCKS5 with the kill switch as a shared, tested rule; stopping leaves nothing running'],
-  ['Agent', 'working', 'retries on provider errors, long turns kept within the context, loop detection, forgiving edits'],
+  ['Agent', 'working', 'retries on provider errors, long turns kept within the context, loop detection, forgiving edits, and a configured build/test gate before a coding turn may finish'],
   ['Bots and channels', 'working', 'Telegram, Discord, Slack, Email, Signal, Matrix, WhatsApp, Home Assistant'],
   ['Backups and alerts', 'working', 'one-file backups with checksums, scheduled; crashes, outages and failed tasks sent to your chat'],
-  ['Control panel', 'working (alpha)', 'a versioned live turn (text, reasoning, tools, diffs, approvals), delegated runs with bounded nudges and declined approvals, workspaces with a worktree per thread, bots, connectors, usage and settings in one authenticated surface; scrypt, signed sessions, CSRF, CSP; no provider keys in the browser'],
+  ['Control panel', 'working (alpha)', 'a sidebar control surface with command palette: a versioned live turn, delegated runs, workspaces with a worktree per thread, agents, gateway providers, installed coding CLIs, secrets, variables, subscriptions, usage and settings; scrypt, signed sessions, CSRF, CSP; no provider keys in the browser'],
   ['Security review', 'not independent yet', 'fixes from an internal review are in'],
 ];
 ---
@@ -179,7 +179,7 @@ autobot skills audit pdf        # risky scripts, and how far the source is trust
 
   <section id="panel">
     <h2>The control panel</h2>
-    <p>The node and the agent share one operator surface: a zero-dependency Node panel with a scrypt password, signed HttpOnly SameSite=Strict sessions, CSRF tokens, login rate limiting and a strict CSP. Its rooms are Overview, Chat, Workspaces, Bots, Integrations, Usage and Settings: gateway health, a versioned live turn that streams text, reasoning, tool output, diffs and approval cards as they happen, delegated runs that report every nudge and declined approval, a thread's worktree, diff and pull request, bots to add and switch on, a connector matrix with write-only token files, today's tokens and cost, the gateway audit, and the model, approvals and tool groups with any advanced key.</p>
+    <p>The node and the agent share one operator surface: a zero-dependency Node panel with a scrypt password, signed HttpOnly SameSite=Strict sessions, CSRF tokens, login rate limiting and a strict CSP. Its rooms are Overview, Chat, Workspaces, Agents, Providers, Secrets, Variables, Subscriptions, Integrations, Usage and Settings: gateway health, a versioned live turn that streams text, reasoning, tool output, diffs and approval cards as they happen, delegated runs that report every nudge and declined approval, a thread's worktree, diff and pull request, agents to add and switch on, the gateway models and installed coding CLIs, write-only secrets, variables injected into every turn, a subscription and renewal ledger, a connector matrix, today's tokens and cost, the gateway audit, and the model, approvals, verification check and tool groups with any advanced key.</p>
     <p class="small">The panel never holds provider keys. The browser talks only to the panel; the panel proxies the gateway and agent calls it needs with the node's token, and the node keeps every key, policy decision and receipt. The alpha stack runs the panel, the agent and a cloud-only gateway on one host behind Coolify's Traefik; the same services ship as a Docker Compose with Caddy on a host that runs Invincible. The panel is password-protected; the <a href="https://github.com/WCKDai/platform/tree/main/services/agent" rel="noopener">deployment runbook and security model</a> are public.</p>
   </section>
 
