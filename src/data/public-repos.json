@@ -11,6 +11,22 @@
       "isArchived": false
     },
     {
+      "name": "afterimage",
+      "url": "https://github.com/wckdboy/afterimage",
+      "description": "A lightweight Windows screen recorder with automatic workflow annotations.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "agent-engineering",
+      "url": "https://github.com/wckdboy/agent-engineering",
+      "description": "ADAMANT — agent engineering portal: skills, controls, evidence and build paths for AI coding agents",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
       "name": "autobot",
       "url": "https://github.com/wckdboy/autobot",
       "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
@@ -88,6 +104,14 @@
       "description": "Whole-disk file search for macOS: fuzzy names, typo tolerance, indexed content grep. ~1 ms over 8M files.",
       "visibility": "public",
       "isFork": true,
+      "isArchived": false
+    },
+    {
+      "name": "galahadbot",
+      "url": "https://github.com/wckdboy/galahadbot",
+      "description": "Open-source tracked desktop companion robot: CAD, rig, URDF and engineering docs",
+      "visibility": "public",
+      "isFork": false,
       "isArchived": false
     },
     {
@@ -222,6 +246,14 @@
       "name": "omnie-ios",
       "url": "https://github.com/wckdboy/omnie-ios",
       "description": "Omnie Agent — iOS client for self-hosted Hermes Agent gateways, with an on-device fallback agent. Not affiliated with Nous Research.",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
+      "name": "OPENARCH",
+      "url": "https://github.com/wckdboy/OPENARCH",
+      "description": "Local-first PDF and image intake for parametric facade and balcony models, drawings, IFC and renders. Synthetic examples only.",
       "visibility": "public",
       "isFork": false,
       "isArchived": false
