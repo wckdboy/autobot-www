@@ -9,3 +9,5 @@ dist/
 
 .shots/
 .wrangler/
+.agents/evidence/
+.worktrees/

@@ -1,0 +1,69 @@
+{
+  "schema": "eng-config/v1",
+  "project": "autobot-www",
+  "commands": {
+    "fast": [
+      {
+        "name": "build-all",
+        "run": "pnpm build:all",
+        "timeout": 900
+      },
+      {
+        "name": "projects-check",
+        "run": "pnpm projects:check",
+        "timeout": 300
+      }
+    ],
+    "full": [
+      {
+        "name": "install",
+        "run": "pnpm install --frozen-lockfile",
+        "timeout": 600
+      },
+      {
+        "name": "build-all",
+        "run": "pnpm build:all",
+        "timeout": 900
+      },
+      {
+        "name": "links",
+        "run": "node scripts/check-links.mjs",
+        "timeout": 300
+      },
+      {
+        "name": "projects-check",
+        "run": "pnpm projects:check",
+        "timeout": 300
+      },
+      {
+        "name": "projects-browser",
+        "run": "pnpm projects:browser",
+        "timeout": 600
+      }
+    ]
+  },
+  "security": {
+    "required": [
+      "gitleaks",
+      "semgrep"
+    ],
+    "optional": [
+      "osv-scanner",
+      "actionlint"
+    ],
+    "gitleaks_config": ".agents/config/gitleaks.toml",
+    "semgrep_config": ".agents/config/semgrep.yml",
+    "gitleaks_history": false,
+    "timeout": 600
+  },
+  "budgets": {
+    "fast_seconds": 1200,
+    "full_seconds": 3000
+  },
+  "parallel": {
+    "max_worktrees": 4
+  },
+  "impact": {
+    "base": "origin/main"
+  }
+}
