@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T03:22:08.711Z",
+  "generatedAt": "2026-10-29T04:58:25.706Z",
   "autobot": {
     "name": "autobot",
     "description": "Private AI agent for Android and iOS that runs on the phone's NPU/GPU: chat, agent, image generation and voice, with opt-in cloud, redaction and privacy receipts.",
@@ -36,7 +36,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 277,
-          "downloads": 102,
+          "downloads": 104,
           "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
         }
       ]
@@ -71,7 +71,7 @@
           {
             "name": "SHA256SUMS.txt",
             "size": 277,
-            "downloads": 102,
+            "downloads": 104,
             "url": "https://github.com/wckdboy/autobot/releases/download/v1.14.0/SHA256SUMS.txt"
           }
         ]
@@ -520,7 +520,7 @@
       }
     ],
     "checksums": "27783c50bc79a7fe605bd9d2ffcc2ca4c369d181d11c7fe6c3c6613630066e98 *autobot-1.14.0-debug.apk\n7c2113e62d9ab369429f5763c33b25f7cbaf9ed3a54032ffac5ea32bcd2043bd *autobot-1.14.0-release.apk\n1cff2386af2be28a8330b9d0444fd58493e4692a9dc3fb72f7d9955b41291c71 *autobot-1.14.0-mapping.txt",
-    "totalDownloads": 272
+    "totalDownloads": 274
   },
   "invincible": {
     "name": "invincible",
@@ -528,54 +528,146 @@
     "stars": 0,
     "forks": 0,
     "license": "MIT",
-    "pushed": "2026-10-29T03:20:18Z",
+    "pushed": "2026-10-29T04:49:32Z",
     "latest": {
-      "tag": "v0.0.27",
-      "name": "v0.0.27",
-      "published": "2026-10-29T03:14:31Z",
-      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.27",
+      "tag": "v0.0.29",
+      "name": "v0.0.29",
+      "published": "2026-10-29T04:46:00Z",
+      "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.29",
       "prerelease": false,
-      "body": "Invincible 0.0.27 — a control surface, and a harness that checks its work.\n\n## The panel is now a real control surface\n\n- A persistent sidebar, clear page hierarchy, responsive tables and forms, and a **command palette**\n  (`⌘ K`) for navigation and actions.\n- **Overview:** gateway and agent health, tasks, today's tokens and cost, the monthly subscription\n  total and next renewal, approvals, and recent conversations.\n- **Chat:** a conversation rail, the transcript, a composer, and **Keep going**. The session id,\n  saved state, tools, receipts and delegated events stay in one place.\n- **Agents:** bots, models, approvals, channels, add/enable/disable.\n- **Providers:** the gateway models and this agent's model, plus every external coding CLI\n  detected on the machine (`codex`, `claude`, `opencode`, `cursor-agent`, `hermes`, `pi`) with\n  version, path, auth kind and login hint. Provider keys stay in the gateway; the page shows the\n  node-side command for adding a gateway provider.\n- **Secrets:** every secret file in the agent's home, with kind, size and update time; add or\n  rotate one (write-only, mode 0600), or remove one. Values are never returned.\n- **Variables:** non-secret context added to every turn (`project.name`, `deploy.host`, …), with\n  description and update time.\n- **Subscriptions:** a ledger of plans, providers, status, monthly cost and currency, renewal date\n  and seats, with totals per currency and the next 30 days' renewals.\n- **Integrations:** the channel matrix, MCP servers and incoming webhook guidance.\n- **Usage:** tokens, cost, models, tools, failures and the gateway audit.\n- **Settings:** model, approvals, tool groups, workdir/sandbox, the verification check, and any\n  advanced dotted key.\n\nAssets carry a content hash, so a deploy is visible immediately through the CDN.\n\n## The harness checks its work\n\nSet `[agent] check = \"cargo test\"` (or `make check`, `npm test`). A turn that changed files runs\nthat command before it may finish:\n\n- a failure goes back to the model as a user message with the output;\n- after one retry the turn stops with the failure in the answer instead of claiming success;\n- the command is trusted because the owner wrote it, runs where commands run (the worktree, the\n  container or the SSH machine), and has at least ten minutes.\n\nThis is the deterministic half of “run the build, linter and tests and fix what you broke.",
+      "body": "Invincible 0.0.29 — a harness with project memory, and adapters that run.\n\n## Adapters you can run, not just detect\n\nCodex, Claude Code, OpenCode, Cursor Agent, Hermes and Pi are now executable behind one protocol.\nAn adapter runs only on request, in a thread's worktree, with the CLI's own account:\n\n- its login is checked first where the CLI has a status command;\n- the environment is rebuilt from a short allowlist, so this node's gateway, provider, GitHub\n  and Autobot tokens are never inherited;\n- the task is one argument, never a shell; one run per worktree is allowed;\n- output streams line by line (`adapter.started`, `adapter.output`, `adapter.finished`), and the\n  panel shows it live.\n\nThe CLI talks to its own provider, so Invincible cannot receipt those model calls; the panel and\nthe API say so. The run's answer is its stdout and stderr.\n\n## Delegated runs survive a usage limit\n\nA delegated task that meets a long provider usage limit is no longer lost. It is saved in\n`$AUTOBOT_HOME/delegations.json` with its conversation, scope and retry time, and `autobot serve`\nresumes it in the same conversation and worktree, without a client, up to five automatic resumes.\nA restart turns running jobs back into paused jobs and tries them again. The panel's\n**Delegations** page shows the queue, the resume count and the retry time, and can resume or cancel\na paused run. A newer request in one conversation replaces an older paused one.\n\n## A project brief for large repositories\n\nThe owner's standing context — stack, architecture, commands, conventions, invariants, traps —\nis stored per canonical project root, so every thread worktree of a repository shares it even\nbefore it is committed. It is capped at 64 KiB, carried in the system prompt of every step, and\nedited from the panel's **Project** page. The repository's `AGENTS.md` and its siblings are still\nread; the brief is additional, owner-authored context.\n\n## The plan is state, not a message\n\nThe `todo` tool now writes the latest plan to `$AUTOBOT_HOME/sessions/<id>.plan.json`. The plan is\ncarried in the system prompt on every step, so it survives compaction, a restart and a resumed\ndelegated run; the panel shows it above the conversation with a done count. Resetting a\nconversation clears it; forking copies it.\n\n## Verification\n\n- `cargo test --workspace`: 726 passed; `cargo clippy --workspace --all-targets -D warnin",
       "assets": [
         {
           "name": "invincible-linux-arm64.tar.gz",
-          "size": 12026777,
+          "size": 12186456,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/invincible-linux-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/invincible-linux-arm64.tar.gz"
         },
         {
           "name": "invincible-linux-x64.tar.gz",
-          "size": 13170144,
+          "size": 13336526,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/invincible-linux-x64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/invincible-linux-x64.tar.gz"
         },
         {
           "name": "invincible-macos-arm64.tar.gz",
-          "size": 11547741,
+          "size": 11707907,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/invincible-macos-arm64.tar.gz"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/invincible-macos-arm64.tar.gz"
         },
         {
           "name": "SHA256SUMS",
           "size": 360,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/SHA256SUMS"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/SHA256SUMS"
         },
         {
           "name": "SHA256SUMS.sig",
           "size": 314,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/SHA256SUMS.sig"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/SHA256SUMS.sig"
         },
         {
           "name": "VERSION",
           "size": 7,
           "downloads": 0,
-          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/VERSION"
+          "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/VERSION"
         }
       ]
     },
     "releases": [
+      {
+        "tag": "v0.0.29",
+        "name": "v0.0.29",
+        "published": "2026-10-29T04:46:00Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.29",
+        "prerelease": false,
+        "body": "Invincible 0.0.29 — a harness with project memory, and adapters that run.\n\n## Adapters you can run, not just detect\n\nCodex, Claude Code, OpenCode, Cursor Agent, Hermes and Pi are now executable behind one protocol.\nAn adapter runs only on request, in a thread's worktree, with the CLI's own account:\n\n- its login is checked first where the CLI has a status command;\n- the environment is rebuilt from a short allowlist, so this node's gateway, provider, GitHub\n  and Autobot tokens are never inherited;\n- the task is one argument, never a shell; one run per worktree is allowed;\n- output streams line by line (`adapter.started`, `adapter.output`, `adapter.finished`), and the\n  panel shows it live.\n\nThe CLI talks to its own provider, so Invincible cannot receipt those model calls; the panel and\nthe API say so. The run's answer is its stdout and stderr.\n\n## Delegated runs survive a usage limit\n\nA delegated task that meets a long provider usage limit is no longer lost. It is saved in\n`$AUTOBOT_HOME/delegations.json` with its conversation, scope and retry time, and `autobot serve`\nresumes it in the same conversation and worktree, without a client, up to five automatic resumes.\nA restart turns running jobs back into paused jobs and tries them again. The panel's\n**Delegations** page shows the queue, the resume count and the retry time, and can resume or cancel\na paused run. A newer request in one conversation replaces an older paused one.\n\n## A project brief for large repositories\n\nThe owner's standing context — stack, architecture, commands, conventions, invariants, traps —\nis stored per canonical project root, so every thread worktree of a repository shares it even\nbefore it is committed. It is capped at 64 KiB, carried in the system prompt of every step, and\nedited from the panel's **Project** page. The repository's `AGENTS.md` and its siblings are still\nread; the brief is additional, owner-authored context.\n\n## The plan is state, not a message\n\nThe `todo` tool now writes the latest plan to `$AUTOBOT_HOME/sessions/<id>.plan.json`. The plan is\ncarried in the system prompt on every step, so it survives compaction, a restart and a resumed\ndelegated run; the panel shows it above the conversation with a done count. Resetting a\nconversation clears it; forking copies it.\n\n## Verification\n\n- `cargo test --workspace`: 726 passed; `cargo clippy --workspace --all-targets -D warnin",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 12186456,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 13336526,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 11707907,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 360,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/SHA256SUMS.sig"
+          },
+          {
+            "name": "VERSION",
+            "size": 7,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.29/VERSION"
+          }
+        ]
+      },
+      {
+        "tag": "v0.0.28",
+        "name": "v0.0.28",
+        "published": "2026-10-29T04:29:07Z",
+        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.28",
+        "prerelease": false,
+        "body": "Invincible 0.0.28 — adapter runtime and persistent delegated resume.\n\n- The adapter registry runs Codex, Claude Code, OpenCode, Cursor Agent, Hermes and Pi behind one\n  protocol, in a thread's worktree, with its own account, a scrubbed environment, a login check\n  and streamed output. Invincible does not receipt the CLI's own model calls.\n- A delegated run that meets a long usage limit is saved in\n  `$AUTOBOT_HOME/delegations.json` and resumed by `autobot serve` at its retry time, in the same\n  conversation and worktree, up to five times; a restart recovers running jobs. The panel gains a\n  **Delegations** page to resume or cancel a paused run.\n\nThe project brief and persisted plan follow in 0.0.29.",
+        "assets": [
+          {
+            "name": "invincible-linux-arm64.tar.gz",
+            "size": 12148928,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.28/invincible-linux-arm64.tar.gz"
+          },
+          {
+            "name": "invincible-linux-x64.tar.gz",
+            "size": 13294851,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.28/invincible-linux-x64.tar.gz"
+          },
+          {
+            "name": "invincible-macos-arm64.tar.gz",
+            "size": 11668292,
+            "downloads": 0,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.28/invincible-macos-arm64.tar.gz"
+          },
+          {
+            "name": "SHA256SUMS",
+            "size": 360,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.28/SHA256SUMS"
+          },
+          {
+            "name": "SHA256SUMS.sig",
+            "size": 314,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.28/SHA256SUMS.sig"
+          },
+          {
+            "name": "VERSION",
+            "size": 7,
+            "downloads": 1,
+            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.28/VERSION"
+          }
+        ]
+      },
       {
         "tag": "v0.0.27",
         "name": "v0.0.27",
@@ -587,37 +679,37 @@
           {
             "name": "invincible-linux-arm64.tar.gz",
             "size": 12026777,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/invincible-linux-arm64.tar.gz"
           },
           {
             "name": "invincible-linux-x64.tar.gz",
             "size": 13170144,
-            "downloads": 0,
+            "downloads": 11,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/invincible-linux-x64.tar.gz"
           },
           {
             "name": "invincible-macos-arm64.tar.gz",
             "size": 11547741,
-            "downloads": 0,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/invincible-macos-arm64.tar.gz"
           },
           {
             "name": "SHA256SUMS",
             "size": 360,
-            "downloads": 0,
+            "downloads": 7,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/SHA256SUMS"
           },
           {
             "name": "SHA256SUMS.sig",
             "size": 314,
-            "downloads": 0,
+            "downloads": 6,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/SHA256SUMS.sig"
           },
           {
             "name": "VERSION",
             "size": 7,
-            "downloads": 0,
+            "downloads": 5,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.27/VERSION"
           }
         ]
@@ -633,7 +725,7 @@
           {
             "name": "invincible-linux-arm64.tar.gz",
             "size": 11909250,
-            "downloads": 2,
+            "downloads": 3,
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.26/invincible-linux-arm64.tar.gz"
           },
           {
@@ -716,27 +808,27 @@
       },
       {
         "tag": "edge",
-        "name": "edge (0.0.27-edge.db4be6d)",
+        "name": "edge (0.0.29-edge.0d7a313)",
         "published": "2026-10-20T10:17:13Z",
         "url": "https://github.com/wckdboy/invincible/releases/tag/edge",
         "prerelease": true,
-        "body": "Built from db4be6d7e184e9f295045779ceca3bd0490f6bf9 on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
+        "body": "Built from 0d7a3136fe765c5265b31bcb82bc9fcb47206d85 on main after CI passed. Not a release: `curl -fsSL https://invincible.sh/install.sh | sh -s -- --channel edge` or `invincible update --channel edge` installs it.",
         "assets": [
           {
             "name": "invincible-linux-arm64.tar.gz",
-            "size": 12025189,
+            "size": 12187237,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-arm64.tar.gz"
           },
           {
             "name": "invincible-linux-x64.tar.gz",
-            "size": 13170133,
+            "size": 13336796,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-linux-x64.tar.gz"
           },
           {
             "name": "invincible-macos-arm64.tar.gz",
-            "size": 11547994,
+            "size": 11708039,
             "downloads": 0,
             "url": "https://github.com/wckdboy/invincible/releases/download/edge/invincible-macos-arm64.tar.gz"
           },
@@ -1127,101 +1219,9 @@
             "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.17/VERSION"
           }
         ]
-      },
-      {
-        "tag": "v0.0.16",
-        "name": "v0.0.16",
-        "published": "2026-10-20T17:13:53Z",
-        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.16",
-        "prerelease": false,
-        "body": "Faster everywhere, Autobot in your editor, files delivered on every channel, a safer skills hub, and project files checked for prompt injection.\n\n**Faster**\n- **`autobot` starts in about 6 ms, down from about 105 ms.** Connections to your own machine no longer load the system's certificate store.\n- **`autobot serve` handles about twice as many turns per second**, and long conversations need about half as many model calls per turn.\n- **Both services use less memory.** `autobot serve` keeps at most 64 idle conversations per bot in memory; the rest stay on disk.\n\n**Autobot in your editor**\n- **`autobot acp`** speaks the Agent Client Protocol, so Zed and other ACP editors can use Autobot as their agent. Edits arrive as diffs, approvals as the editor's permission prompts, and reads and writes go through the editor's open buffers. The README shows how to add it to Zed.\n\n**Files on every channel**\n- **Speech and images now arrive as real files** on Slack, Signal, Matrix, WhatsApp and email, as they already did on Telegram and Discord.\n- **The agent API takes photos** in a turn, so the app's photos reach the node agent.\n\n**Skills hub**\n- **`autobot skills check`** tells you which installed skills have updates, are gone from their source, or were edited locally.\n- **`autobot skills update`** shows exactly what changes, with a risk scan, and asks before replacing anything. It restores the old skill if the update fails.\n- **`autobot skills audit`** scans a skill for risky scripts and shows how far its source is trusted. **`uninstall`** removes one.\n\n**Safer project files**\n- **AGENTS.md, CLAUDE.md and the others are checked for prompt injection.** A suspicious file is not dropped: the model gets it quoted as data under a warning, and `/context` marks it.\n- **A restart no longer repeats a subfolder's instructions** that a conversation already had.\n\n**Smaller things**\n- **`autobot config get`** shows the value in effect, and whether it is a default.\n- **`autobot sessions prune --days N`** removes conversations untouched that long.\n- **Property tests and a nightly soak test** found and fixed five bugs, including an unbounded allocation from a malformed tool call and a hang when splitting long Markdown.\n\n**Verify**\n```\necho 'invincible-release ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/0fXPq1j51BcfGY0Jp9QfPGy6kHVQQ+W282VFPR/Qo' > allowed_signers\nssh-keygen -Y verify -f allowed",
-        "assets": [
-          {
-            "name": "invincible-linux-arm64.tar.gz",
-            "size": 10127565,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/invincible-linux-arm64.tar.gz"
-          },
-          {
-            "name": "invincible-linux-x64.tar.gz",
-            "size": 11104298,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/invincible-linux-x64.tar.gz"
-          },
-          {
-            "name": "invincible-macos-arm64.tar.gz",
-            "size": 9663708,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/invincible-macos-arm64.tar.gz"
-          },
-          {
-            "name": "SHA256SUMS",
-            "size": 360,
-            "downloads": 4,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/SHA256SUMS"
-          },
-          {
-            "name": "SHA256SUMS.sig",
-            "size": 314,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/SHA256SUMS.sig"
-          },
-          {
-            "name": "VERSION",
-            "size": 7,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.16/VERSION"
-          }
-        ]
-      },
-      {
-        "tag": "v0.0.15",
-        "name": "v0.0.15",
-        "published": "2026-10-20T14:37:09Z",
-        "url": "https://github.com/wckdboy/invincible/releases/tag/v0.0.15",
-        "prerelease": false,
-        "body": "Settings from the command line, recall across conversations, speech and images through your node, a skills hub, and project instructions.\n\n**Tools, config and model**\n- **`autobot tools`** shows each tool group and tool as on or off, per bot with `--bot`. `autobot tools enable|disable <group|tool>` changes them. The new groups are `schedule` and `media`.\n- **`autobot config get|set|unset <key>`** edits `config.toml` or a bot's `bot.toml` and keeps your comments. A change is checked before it is written; a bad one is refused and the file stays as it was.\n- **`autobot model`** picks the model from your node's list.\n\n**Recall**\n- **Each conversation gets a small search index**, so finding an old conversation no longer reads every transcript.\n- **The best matches are summarized** for what they say about your question, and the summary is cached until the conversation changes. `[agent] recall_model` picks the model; `off` turns summaries off.\n- **`/recall <query>`** works in the terminal, and on chat channels for the owner.\n\n**Speech and images through the node**\n- **The gateway has two new endpoints**, `POST /v1/audio/speech` and `POST /v1/images/generations`, served by the `[[speech]]` and `[[images]]` backends in your config.\n  - A backend on the machine is local. Any other backend follows the same rules as cloud chat: private and offline requests never leave the machine.\n  - The text that leaves is redacted, and every request gets a signed receipt.\n- **The agent has `speak` and `generate_image` tools** when your node has those backends. It asks first before using one off the machine.\n- **Telegram sends the results as a voice message or a photo, and Discord as a file.** Other channels get the file's path.\n\n**Skills hub**\n- **`autobot skills search <words>`** searches the public skills directory at skills.sh, falling back to GitHub.\n- **`autobot skills install <name>`** shows where the skill comes from, its files and the whole SKILL.md, and installs it only when you say yes. It is pinned to one commit and size-limited. Scripts are never made executable.\n\n**Project instructions**\n- **The agent reads `AGENTS.md`, `CLAUDE.md`, `.hermes.md`/`HERMES.md` and `.autobot/AGENTS.md`** from the repository root down to where you work. It reads `.cursorrules` only when none of those exist.\n- **A subfolder's own `AGENTS.md` arrives before the agent's first edit there.**\n- **`",
-        "assets": [
-          {
-            "name": "invincible-linux-arm64.tar.gz",
-            "size": 9870974,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-linux-arm64.tar.gz"
-          },
-          {
-            "name": "invincible-linux-x64.tar.gz",
-            "size": 10840836,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-linux-x64.tar.gz"
-          },
-          {
-            "name": "invincible-macos-arm64.tar.gz",
-            "size": 9447462,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/invincible-macos-arm64.tar.gz"
-          },
-          {
-            "name": "SHA256SUMS",
-            "size": 360,
-            "downloads": 5,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/SHA256SUMS"
-          },
-          {
-            "name": "SHA256SUMS.sig",
-            "size": 314,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/SHA256SUMS.sig"
-          },
-          {
-            "name": "VERSION",
-            "size": 7,
-            "downloads": 2,
-            "url": "https://github.com/wckdboy/invincible/releases/download/v0.0.15/VERSION"
-          }
-        ]
       }
     ],
-    "checksums": "90386c4fc9996a2b314d10b61d74da0646de3d482334d1d0555b6817494c21c1  invincible-linux-arm64.tar.gz\n637500aab1a8936a4f8c587520cf3d38f9d47d6fc72775f8e558db66d70059e5  invincible-linux-x64.tar.gz\n39a24bfafd81fa25ad7e9523b16a0a185e6bdd82b21003084b9ec8d056aea9f4  invincible-macos-arm64.tar.gz\ne1169a569a1c3d167300ee0eb9eba17e77d460d5fcfab368546a805ebe588a3e  VERSION",
-    "totalDownloads": 387
+    "checksums": "a074fabb08af662e4ac6e68d6fe5f9e450d34d1495afccae802b9586f3d631a3  invincible-linux-arm64.tar.gz\n00a0c5545004fdb9f784c24623608205396bc16203ac8f9c4097bb65383d3708  invincible-linux-x64.tar.gz\n783f97d51ade3f01a1591badff8e4e82465277a1e8df55b8e629be50b448c554  invincible-macos-arm64.tar.gz\n8e9875f8cec66e7573b4caaa60e1a5a1ae99247156f6f1275a9d0d4df8a5bdf9  VERSION",
+    "totalDownloads": 397
   }
 }
