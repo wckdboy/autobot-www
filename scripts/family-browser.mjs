@@ -8,8 +8,9 @@ import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
+const sharedKeys = ['autobot', 'invincible', 'sovware', 'wckd', 'omnie', 'nightfall', 'tinyrex'];
 const sites = process.argv[2] ? JSON.parse(await readFile(process.argv[2], 'utf8'))
-  : ['autobot', 'invincible', 'sovware', 'wckd', 'omnie', 'nightfall', 'tinyrex'].map(name => ({
+  : sharedKeys.map(name => ({
     name, brandKey: name, directory: fileURLToPath(new URL(`../dist/${name}/`, import.meta.url)),
   }));
 const kit = JSON.parse(await readFile(new URL('../brand/kit.json', import.meta.url), 'utf8'));
@@ -22,7 +23,10 @@ const browser = await chromium.launch({ executablePath, headless: true });
 const shots = process.env.WCKD_QA_SHOTS;
 if (shots) await mkdir(shots, { recursive: true });
 try {
-  for (const site of sites) {
+  for (const entry of sites) {
+    const site = { ...entry, brandKey: entry.brandKey ?? (sharedKeys.includes(entry.name) ? entry.name : undefined) };
+    assert(!site.brandKey || Object.hasOwn(kit.brands, site.brandKey), `Unknown brandKey: ${site.brandKey}`);
+    if (!site.brandKey) console.log(`LAYOUT ONLY ${site.name}: independent site; shared brand-page/manifest checks do not apply`);
     const root = resolve(site.directory);
     const missing = new Set();
     const server = createServer(async (request, response) => {
@@ -30,7 +34,7 @@ try {
         let file = resolve(root, '.' + decodeURIComponent(new URL(request.url, 'http://localhost').pathname));
         assert(file === root || file.startsWith(root + sep));
         if ((await stat(file)).isDirectory()) file = resolve(file, 'index.html');
-        const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png' };
+        const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png' };
         response.writeHead(200, { 'Content-Type': types[extname(file)] || 'application/octet-stream' });
         response.end(await readFile(file));
       } catch { missing.add(request.url); response.writeHead(404); response.end('Not found'); }
@@ -46,6 +50,8 @@ try {
           const page = await context.newPage();
           const errors = [];
           page.on('pageerror', (error) => errors.push(error.message));
+          page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+          page.on('requestfailed', request => errors.push(`${request.url()}: ${request.failure()?.errorText}`));
           const response = await page.goto(`http://127.0.0.1:${server.address().port}/`, { waitUntil: 'networkidle' });
           assert(response.ok(), `${site.name}/${name}: failed homepage`);
           await page.evaluate(() => document.fonts.ready);
@@ -64,6 +70,12 @@ try {
           if (metrics.scroll !== width) console.error(await page.evaluate(() => [...document.querySelectorAll('.path-layout,.path-menu,.verify-layout,.verify-layout > *,.handoff,.terminal,.section,.machine-grid,.section-head,.hero,.skill-toolbar,.phase-grid')].map((element) => ({ node: element.className, width: element.getBoundingClientRect().width, right: element.getBoundingClientRect().right, overflow: getComputedStyle(element).overflowX })).filter((value) => value.right > innerWidth)));
           assert.equal(metrics.scroll, width, `${site.name}/${name}: horizontal overflow ${JSON.stringify(metrics.overflow)}`);
           assert(metrics.font.includes('JetBrains Mono'), `${site.name}: wrong family typography`);
+          if (site.brandKey === 'tinyrex') {
+            await page.locator('[data-balance-challenge]').click();
+            assert.equal(await page.locator('[data-balance-status]').innerText(), 'Outside', 'Tinyrex teaching module initialized');
+            await page.locator('[data-balance-reset]').click();
+            assert.equal(await page.locator('#balance-stance').inputValue(), 'double');
+          }
           if (site.name === 'creed') {
             await page.locator('.skill-card').first().click();
             assert(await page.locator('#skill-drawer').isVisible());
@@ -102,6 +114,7 @@ try {
             if (shots) await page.screenshot({ path: resolve(shots, `${site.name}-brand-${name}.png`) });
             console.log(`PASS ${site.name}/brand/${name}: both canonical shades and dark-surface symbol`);
           }
+          assert.deepEqual(errors, [], `${site.name}/${name}: page, module or resource errors`);
         } finally { await context.close(); }
       }
       assert.deepEqual([...missing], [], `${site.name}: missing assets`);

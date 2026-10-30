@@ -43,7 +43,7 @@ jobs:
       - run: pnpm projects:check
       - run: pnpm projects:browser
       - run: python3 -m unittest discover -s brand -p 'test_*.py'
-      - run: node --test scripts/tinyrex-models.test.mjs
+      - run: node --test scripts/tinyrex-models.test.mjs scripts/browser-tools.test.mjs
       - run: node scripts/tinyrex-browser.mjs
       - run: node scripts/family-browser.mjs
 

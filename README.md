@@ -18,6 +18,10 @@ explicit array of `{ "name": "wckd", "directory": "/absolute/path/to/dist/wckd" 
 desktop/mobile/narrow/dark layouts, and exercises the Creed skill dialog. Existing project-directory
 privacy, keyboard and first-party-resource checks remain in `scripts/projects-browser.mjs`.
 
+The seven shared-site names also select their canonical brand-page and install-manifest checks.
+An explicit `brandKey` preserves that selection when a shared-site preview uses another name.
+Independent sibling sites without this guide/manifest contract are explicitly reported as layout-only.
+
 The public sites for the WCKD lab and its brands, built with Astro and a shared
 pixel brand kit. The repository builds `autobot`, `invincible`, `sovware`, `wckd`,
 `omnie`, `nightfall` and `tinyrex` into separate `dist/<site>` directories. Niobium, Axit and
@@ -84,7 +88,7 @@ After building, run the learning and family regressions:
 
 ```sh
 python3 -m unittest discover -s brand -p 'test_*.py'
-node --test scripts/tinyrex-models.test.mjs
+node --test scripts/tinyrex-models.test.mjs scripts/browser-tools.test.mjs
 node scripts/tinyrex-browser.mjs
 node scripts/family-browser.mjs
 ```

@@ -25,7 +25,8 @@ were clean relative to HEAD; `CREDITS.md` was a locally modified, read-only sour
 - `CREDITS.md`: Microduck MJCF/layout lineage and Open Duck Mini inspiration, with upstream links.
 
 The old 17-joint / Feetech / 1.68 kg design is only linked under an explicitly historical archive.
-No native repository files, old public/rex assets, shared layout or brand kit were changed.
+The learning unit changed no native repository files, old public/rex assets or shared layout.
+The wider PR updates the shared brand kit; metadata/navigation/manifest integration is listed below.
 
 ## Educational models
 
@@ -64,7 +65,7 @@ External source-link availability is not checked; the static link checker delibe
 fetch external URLs. Native engineering gates and physical validation are outside this website unit.
 
 Verification on 2026-10-30: baseline Tinyrex build, postbuild and links passed. The final versions
-of all commands above passed: 13 Node tests; 8 built pages / 135 internal links; all eight
+of all commands above passed: 15 Node tests; 8 built pages / 135 internal links; all eight
 viewport/theme browser combinations, plus no-JS fallback and a normal-motion keyboard-play /
 motion-preference-change check. All 18 joint ranges are exercised with Home/End in each browser
 combination. Playback is also checked to stop offscreen. Full-page and section screenshots were
@@ -93,6 +94,12 @@ unavailable Axit sibling in isolation; the same terminal-mask check was separate
 real workspace and passed. Metadata/provenance and manifest identity regressions were observed
 failing before their fixes. The checks now run in both CI workflows; browser paths support macOS
 and Linux and screenshots remain outside git.
+
+QA-tool regression checks (`node --test scripts/browser-tools.test.mjs`) add three cases: startup
+failure exits promptly, name-only manifests reject a wrong identity, and the family server actually
+loads/exercises Tinyrex modules. The latter two failed before the fixes. Family QA now serves `.mjs`
+as JavaScript and rejects console/network errors as well as checking layout; its earlier layout pass
+alone did not prove module initialization. The dedicated Tinyrex interaction check did exercise it.
 
 Security review boundary: only local native control values enter the math; finite values and enums
 are validated, values are bounded, DOM text uses textContent and SVG attributes are numeric. No

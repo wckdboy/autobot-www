@@ -21,8 +21,6 @@ const server = createServer(async (req, res) => {
     res.end(await readFile(path));
   } catch { res.writeHead(404).end(); }
 });
-await new Promise(done => server.listen(0, '127.0.0.1', done));
-const base = `http://127.0.0.1:${server.address().port}`;
 const executablePath = process.env.CHROME_BIN || [
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   '/usr/bin/google-chrome', '/usr/bin/chromium',
@@ -31,6 +29,11 @@ assert(executablePath, 'Set CHROME_BIN to an installed browser');
 const browser = await chromium.launch({ executablePath, headless: true });
 let checks = 0;
 try {
+  await new Promise((done, reject) => {
+    server.once('error', reject);
+    server.listen(0, '127.0.0.1', done);
+  });
+  const base = `http://127.0.0.1:${server.address().port}`;
   for (const width of [1440, 768, 390, 320]) for (const colorScheme of ['light', 'dark']) {
     const page = await browser.newPage({ viewport: { width, height: 1000 }, colorScheme, reducedMotion: 'reduce' });
     const errors = [], external = [], missing = [];
@@ -134,4 +137,7 @@ try {
   assert.doesNotMatch(await normal.locator('footer').innerText(), /was designed by an AI agent/);
   await normal.close();
   console.log(`✓ ${checks} viewport/theme combinations + no-JS fallback; screenshots: ${shots}`);
-} finally { await browser.close(); await new Promise(done => server.close(done)); }
+} finally {
+  try { await browser.close(); }
+  finally { if (server.listening) await new Promise(done => server.close(done)); }
+}
