@@ -1,0 +1,16 @@
+{
+  "name": "Polykrom",
+  "domain": "polykrom.app",
+  "role": "Parametric CAD for people and agents",
+  "glyph": [
+    "#####.",
+    "##..##",
+    "##..##",
+    "#####.",
+    "##....",
+    "##...."
+  ],
+  "onInk": "#CCFF00",
+  "onPaper": "#6E8600",
+  "text": "#111111"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Tinyrex",
+  "domain": "tinyrex.sh",
+  "role": "A WCKD lab project",
+  "glyph": [
+    "##....",
+    "#####.",
+    "##....",
+    "##....",
+    "##..##",
+    ".####."
+  ],
+  "onInk": "#E4C563",
+  "onPaper": "#A78020",
+  "text": "#111111"
+}

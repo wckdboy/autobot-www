@@ -1,0 +1,16 @@
+{
+  "name": "Sovware",
+  "domain": "sovware.io",
+  "role": "The production arm for the stack",
+  "glyph": [
+    ".#####",
+    "##....",
+    "####..",
+    "..####",
+    "....##",
+    "#####."
+  ],
+  "onInk": "#B7C5D4",
+  "onPaper": "#637282",
+  "text": "#111111"
+}

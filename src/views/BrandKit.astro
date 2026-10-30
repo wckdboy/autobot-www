@@ -38,7 +38,8 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
       <table>
         <thead><tr><th>Use</th><th>Color</th><th>Where</th></tr></thead>
         <tbody>
-          <tr><td><strong>Signal</strong></td><td>{own.onPaper === own.onInk ? <code>{own.onPaper}</code> : <><code>{own.onPaper}</code> on paper, <code>{own.onInk}</code> on ink</>}</td><td>the symbol, the headline's square, focus, selection and link underlines{own.onPaper === own.onInk ? ', on white and on ink' : ''}</td></tr>
+          <tr><td><strong>Signal on paper</strong></td><td><code>{own.onPaper}</code></td><td>the symbol, the headline's square, focus, selection and link underlines on light surfaces</td></tr>
+          <tr><td><strong>Signal on ink</strong></td><td><code>{own.onInk}</code></td><td>switch to this shade on dark surfaces; use the on-ink assets</td></tr>
           <tr><td><strong>Text</strong></td><td><code>#111111</code></td><td>always ink (white on dark): color never carries text</td></tr>
         </tbody>
       </table>
@@ -50,14 +51,15 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
     <h2>The family</h2>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Symbol</th><th>Brand</th><th>Role</th><th>Signal</th></tr></thead>
+        <thead><tr><th>Symbol</th><th>Brand</th><th>Role</th><th>On paper</th><th>On ink</th></tr></thead>
         <tbody>
           {family.map(([k, b]) => (
             <tr>
-              <td><span class="kit-inline" style={`color:${b.onPaper}`} set:html={symbolSvg(b, 18, b.name)} /></td>
+              <td><span class="kit-inline" style={`--signal-paper:${b.onPaper};--signal-ink:${b.onInk}`} set:html={symbolSvg(b, 18, b.name)} /></td>
               <td><strong>{b.name}</strong><br /><span class="small"><a href={`https://${b.domain}`} rel="noopener">{b.domain}</a> · <a href={asset(k, 'icon.svg')}>files</a></span></td>
               <td>{b.role}</td>
-              <td><code>{b.onPaper}</code>{b.onInk !== b.onPaper && <> · <code>{b.onInk}</code> on ink</>}</td>
+              <td><code>{b.onPaper}</code></td>
+              <td><code>{b.onInk}</code></td>
             </tr>
           ))}
         </tbody>
@@ -73,7 +75,7 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
 
   <section>
     <h2>Type</h2>
-    <div class="specimen"><p class="label">JetBrains Mono 700 · headlines · lowercase, ending in the brand's square</p><p style="font-size:30px;font-weight:700;margin:0;line-height:1.2">the node you own<span style={`display:inline-block;width:.3em;height:.3em;margin-left:.12em;background:${own.onPaper}`}></span></p></div>
+    <div class="specimen"><p class="label">JetBrains Mono 700 · headlines · lowercase, ending in the brand's square</p><p style="font-size:30px;font-weight:700;margin:0;line-height:1.2">the node you own<span class="kit-square" style={`--signal-paper:${own.onPaper};--signal-ink:${own.onInk}`}></span></p></div>
     <div class="specimen"><p class="label">JetBrains Mono 400 · reading · 16/1.6</p><p>Autobot runs chat, agents, images and voice on the device. The network is an opt-in tool, never a requirement.</p></div>
     <div class="specimen"><p class="label">JetBrains Mono · code</p><pre><code>curl -fsSL https://invincible.sh/install.sh | sh</code></pre></div>
   </section>
@@ -81,8 +83,8 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
   <section>
     <h2>Layout and surface</h2>
     <div class="table-wrap"><table><tbody>
-      <tr><td><strong>Page</strong></td><td>one column, 1120 px, 40 px gutters, a 72-character measure for prose; white</td></tr>
-      <tr><td><strong>Frame</strong></td><td>a 2 px rule under the header and over the footer; nav links split by thin vertical rules</td></tr>
+      <tr><td><strong>Page</strong></td><td>one column, 1120 px, fluid 22–48 px gutters, a 68-character measure for prose; white</td></tr>
+      <tr><td><strong>Frame</strong></td><td>quiet hairlines under the header and over the footer; generous spacing and visible keyboard focus</td></tr>
       <tr><td><strong>Sections</strong></td><td>a single hairline between them; no cards, boxes or shadows</td></tr>
       <tr><td><strong>Corners</strong></td><td>none on the web; 4–8 px in apps</td></tr>
       <tr><td><strong>Actions</strong></td><td>one primary per page, solid ink; everything else a text link or an outline</td></tr>
@@ -108,13 +110,20 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
   <p class="small">Source: <code>brand/kit.json</code></p>
 </Lab>
 
-<style>
+<!-- Autobot intentionally removes bundled Astro CSS; keep the kit's namespaced rules inline. -->
+<style is:inline>
   .kit-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 8px 0 12px; }
   .kit-row--marks { grid-template-columns: repeat(2, 1fr); }
   .kit-tile { margin: 0; border: 1px solid var(--rule); padding: 22px 16px 12px; display: grid; justify-items: center; gap: 10px; background: #ffffff; }
   .kit-tile--ink { background: #111111; border-color: #111111; }
   .kit-tile figcaption { font: 11px var(--mono); color: #8e8a84; }
   .kit-tile img { max-width: 100%; height: auto; image-rendering: pixelated; }
-  .kit-symbol :global(svg), .kit-inline :global(svg) { display: block; }
+  .kit-symbol svg, .kit-inline svg { display: block; }
+  .kit-inline { color: var(--signal-paper); }
+  .kit-square { display: inline-block; width: .3em; height: .3em; margin-left: .12em; background: var(--signal-paper); }
+  @media (prefers-color-scheme: dark) {
+    .kit-inline { color: var(--signal-ink); }
+    .kit-square { background: var(--signal-ink); }
+  }
   @media (max-width: 760px) { .kit-row { grid-template-columns: 1fr; } .kit-row--marks { grid-template-columns: 1fr; } }
 </style>

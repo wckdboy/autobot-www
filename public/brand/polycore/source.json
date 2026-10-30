@@ -1,0 +1,16 @@
+{
+  "name": "PolyCore",
+  "domain": "polycore.dev",
+  "role": "The 3D geometry kernel",
+  "glyph": [
+    "#####.",
+    "##..##",
+    "##..##",
+    "#####.",
+    "##....",
+    "##...."
+  ],
+  "onInk": "#91B9ED",
+  "onPaper": "#436A9D",
+  "text": "#111111"
+}

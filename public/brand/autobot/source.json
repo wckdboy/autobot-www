@@ -1,0 +1,16 @@
+{
+  "name": "Autobot",
+  "domain": "autobot.sh",
+  "role": "Private AI on your phone and your machine",
+  "glyph": [
+    ".####.",
+    "....##",
+    ".#####",
+    "##..##",
+    "##..##",
+    ".#####"
+  ],
+  "onInk": "#7C5CFF",
+  "onPaper": "#7C5CFF",
+  "text": "#7C5CFF"
+}

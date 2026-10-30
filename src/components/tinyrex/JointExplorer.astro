@@ -1,0 +1,40 @@
+---
+import Quiz from './Quiz.astro';
+import { JOINTS } from '../../../public/tinyrex/models.mjs';
+const groups = ['Left leg', 'Right leg', 'Head & neck', 'Expression'];
+---
+<section id="joints" class="rex-section" aria-labelledby="joints-title" data-joint-lab>
+  <div class="rex-section-heading"><p class="rex-eyebrow">01 / Anatomy instrument</p><h2 id="joints-title">Eighteen ways to change a pose.</h2><p>A degree of freedom is one independent motion. Pick a joint, inspect its axis, and turn the sketch through its documented model range.</p></div>
+  <div class="rex-instrument">
+    <div class="rex-instrument-bar"><span>JOINT EXPLORER</span><span>SIMPLIFIED EDUCATIONAL MODEL</span></div>
+    <div class="rex-joint-layout">
+      <div class="rex-joint-index" role="group" aria-label="Choose a joint">
+        {groups.map(group => <div><h3>{group}</h3><div>{JOINTS.filter(j => j.group === group).map(joint => <button type="button" data-joint={joint.id} aria-pressed={joint.id === 'left_hip_pitch' ? 'true' : 'false'}><span>{String(JOINTS.indexOf(joint) + 1).padStart(2, '0')}</span>{joint.label}</button>)}</div></div>)}
+      </div>
+      <div class="rex-joint-visual">
+        <svg viewBox="0 0 480 380" role="img" aria-labelledby="joint-map-title">
+          <title id="joint-map-title">Joint locations on a schematic robot; selected joint is ringed</title>
+          <g class="rex-map-body" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M171 180l-79 24-47 36 72-20 80-7M185 159l72-22 59 31-16 62-69 23-57-37zM257 150l3-45 33-1 13 51M251 68l44-32 93 11 32 29-10 52-98 14-54-25zM310 104l95-7M319 123l78-9-5 22-69 14z" />
+            <path d="M204 229l-13 48 25 48-7 14-43 4-7-10 28-14-25-44 10-56M271 231l18 44-5 43 27 17-4 11-48-4-4-14 7-52-19-39M208 183l-4 31 15 12M298 181l19 28-8 18" />
+            <path d="M320 67l58 4 18 14-76-3z" class="rex-map-visor" />
+          </g>
+          {JOINTS.map((joint, index) => <g data-joint-marker={joint.id} class={joint.id === 'left_hip_pitch' ? 'is-selected' : ''}><circle cx={joint.point[0]} cy={joint.point[1]} r="11" /><text x={joint.point[0]} y={joint.point[1] + 3.5} text-anchor="middle">{index + 1}</text></g>)}
+          <text x="20" y="372" class="rex-svg-label">LOCATION MAP / NOT TO SCALE</text>
+        </svg>
+        <p class="rex-caption">Numbers match the joint index. Projection separates the two legs for clarity.</p>
+      </div>
+      <div class="rex-joint-detail">
+        <p class="rex-eyebrow" data-joint-axis>Pitch / forward & back</p><h3 data-joint-name>Left hip pitch</h3><p data-joint-description>Swings the leg forward and back at the body.</p>
+        <svg class="rex-axis-sketch" viewBox="0 0 240 160" role="img" aria-labelledby="axis-title"><title id="axis-title">An abstract joint rotating a link in its own axis plane</title><path d="M120 16V144M24 112H216" stroke="currentColor" opacity=".2" stroke-dasharray="3 5" /><path d="M53 48A88 88 0 0 1 207 111" fill="none" stroke="var(--rex-accent)" stroke-width="1" /><g data-axis-link transform="rotate(0 120 112)"><path d="M120 112V35" stroke="currentColor" stroke-width="10" /><circle cx="120" cy="35" r="8" fill="var(--rex-accent)" /></g><circle cx="120" cy="112" r="13" fill="var(--paper)" stroke="currentColor" stroke-width="2" /><circle cx="120" cy="112" r="3" fill="var(--rex-accent)" /><text x="20" y="155" class="rex-svg-label">LOCAL AXIS PLANE / ABSTRACT LINK</text></svg>
+        <label class="rex-slider-label" for="joint-angle">Joint angle <output id="joint-angle-value" for="joint-angle">0°</output></label>
+        <input id="joint-angle" type="range" min="-90" max="53" value="0" step="1" />
+        <div class="rex-range-ends"><span data-joint-min>−90°</span><span data-joint-max>53°</span></div>
+        <button type="button" data-joint-reset>Reset joint to 0°</button>
+        <p class="rex-caption">Range: native model’s single-joint collision sweep, not a safe combined pose or a calibrated servo command. Axis sketch is abstract, not the CAD linkage.</p>
+      </div>
+    </div>
+  </div>
+  <div class="rex-teaching"><p><strong>Pitch</strong> tips forward/back. <strong>Roll</strong> tips sideways. <strong>Yaw</strong> turns left/right. The legs have yaw, roll and pitch at the hip, a knee, and an ankle. Head, neck, jaw, tail and shoulders account for the other eight joints.</p><p><strong>Try this:</strong> compare left and right hip-yaw ranges. Mirrored joints can have opposite sign conventions. A negative angle does not mean “backward” for every joint.</p></div>
+  <Quiz id="joint-quiz" question="Does a safe single-joint range prove every combined pose is safe?" choices={['Yes — every angle is inside a limit.', 'No — two moving parts can still collide.']} answer={1} explanation="A single-joint sweep holds other parts in a reference pose. Combined poses need their own collision and load checks." />
+</section>

@@ -1,5 +1,26 @@
 # WCKD brand kit
 
+## Web refinement — v5
+
+Keep the essence: monochrome surfaces, JetBrains Mono, lowercase headlines and the original pixel
+marks. The accent is a signature, not a background treatment. Use quiet hairlines, generous spacing,
+one clear primary action, a readable measure and explicit development or archive status.
+
+`brand/kit.json` owns the tokens. `brand/web.css` owns the shared web refinement; generate it with
+`uv run --with fonttools --with brotli python brand/gen.py` (or the documented Python environment).
+Every family site loads `public/brand/web.css`. Sync the public stylesheet to independent sites with
+`python3 scripts/sync-brand.py axit niobium polykrom --write`; omit `--write` to check for drift.
+Do not overwrite app themes or icon masters when syncing a website refresh.
+
+- **Polykrom / polykrom.app:** keep the electric lime `#CCFF00` signature on ink; ink text on paper.
+- **PolyCore / polycore.dev:** the current 3D-kernel project. Do not present archived Nightfall as it.
+- **Creed / creed.sh:** WCKD's engineering values, skills and tools. Agent handoff: `https://creed.sh/creed.md`.
+- **Nightfall / nightfall.sh:** an archive, not an actively supported CAD product.
+
+Text and primary actions remain neutral and high-contrast. Focus must be visible without relying on
+the accent. Navigation and primary actions have generous touch targets. No gradients, glows,
+decorative cards, auto-playing brand effects, new font families or unmeasured quality claims.
+
 One lab, one system. WCKD is the lab; each brand is **one lowercase letter in pixels and one
 color**. Everything else is shared: neutrals, type, layout, voice, the terminal grammar.
 
@@ -12,19 +33,26 @@ version of the kit at `/brand/`; wckd.ai's home is the master kit.
 
 | Brand | Domain | Role | Symbol | Signal |
 | --- | --- | --- | --- | --- |
-| WCKD | wckd.ai | The lab | `w` | ink `#111111` (white on ink) |
-| Sovware | sovware.io | The non-profit that keeps it sovereign | `s` | ink `#111111` (white on ink) |
+| WCKD | wckd.ai | The lab and company | `w` | ink `#111111` (white on ink) |
+| WCKD World | wckd.world | The first place | `w` | moss `#4F6A45` (light `#A7C99A` on ink) |
+| Sovware | sovware.io | The production arm for the stack | `s` | slate `#637282` (light `#B7C5D4` on ink) |
 | Autobot | autobot.sh | Private AI on your phone and your machine | `a` | purple `#7C5CFF` |
 | Invincible | invincible.sh | AI gateway and decentralized compute | `i` | signal orange `#FF8A1E` |
 | Omnie | omnie.sh | An IDE for development on iOS and iPadOS | `o` | phthalo `#00B386` |
-| Nightfall | nightfall.sh | AI-native parametric CAD | `n` | rose `#FF3E8A` |
-| Niobium | niobium.sh | A pixel-art Hermes agent client for Android and iOS | `n.` (the n and its companion pixel) | pastel purple `#A78BFA` |
-| TinyRex | tinyrex.sh | A bipedal T-rex robot, designed by an AI agent in Polykrom | `t` | Polykrom lime `#CCFF00` on ink; ink on paper (lime is too pale for a mark on white) |
+| Nightfall | nightfall.sh | Archived CAD research; reference for PolyCore | `n` | rose `#FF3E8A` |
+| Niobium | niobium.sh | A pixel-art home for your AI team | `n.` (the n and its companion pixel) | pastel purple `#A78BFA` |
+| Polykrom | polykrom.app | Parametric CAD | `p` | electric lime `#CCFF00` (olive `#6E8600` on paper) |
+| PolyCore | polycore.dev | The 3D geometry kernel | `p` | blue `#436A9D` (light `#91B9ED` on ink) |
+| Creed | creed.sh | Engineering for agents | `c` | sage `#6D8053` (light `#C1CE9B` on ink) |
+| Axit | axit.sh | File search and reviewed cleanup | `a` | copper `#B3633D` (light `#D9966B` on ink) |
+| OpenEndo | openendo.org | Open research | `o` | mauve `#A64D79` (light `#E4A1C3` on ink) |
+| Tinyrex | tinyrex.sh | Lab project | `t` | ochre `#A78020` (light `#E4C563` on ink) |
 
-Each signal is one vivid color (high saturation, high brightness) used the same on white and on
-ink. Because it is that bright, **color is for marks, never for text**: the symbol, the
+Each signal is one color identity with surface-specific shades: use `onPaper` on light surfaces
+and `onInk` on dark surfaces, as defined in `brand/kit.json`. Use the matching paper or ink
+asset rather than recoloring it. **Color is for marks, never for body text**: the symbol, the
 headline's square, focus rings, selection and link underlines. Text is always ink (white on
-dark). The lab and the studio are neutral; the four products spread around the wheel (purple,
+dark). The lab is neutral; the products spread around the wheel (purple,
 rose, orange, phthalo), so any two sit well side by side. Autobot and Invincible, the pair that
 ships together, are complements.
 

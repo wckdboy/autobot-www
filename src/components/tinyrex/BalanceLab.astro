@@ -1,0 +1,26 @@
+---
+import Quiz from './Quiz.astro';
+---
+<section id="balance" class="rex-section" aria-labelledby="balance-title" data-balance-lab>
+  <div class="rex-section-heading"><p class="rex-eyebrow">02 / Balance instrument</p><h2 id="balance-title">A little geometry. A lot of gravity.</h2><p>Look down at the feet. Their contacts form a support polygon. In this static model, the centre of mass must project inside that polygon to avoid tipping.</p></div>
+  <div class="rex-instrument">
+    <div class="rex-instrument-bar"><span>SUPPORT POLYGON</span><span>SIMPLIFIED EDUCATIONAL MODEL</span></div>
+    <div class="rex-lab-layout">
+      <div class="rex-plot">
+        <svg viewBox="0 0 500 380" role="img" aria-labelledby="balance-svg-title balance-svg-desc"><title id="balance-svg-title">Top view of the support polygon and centre of mass</title><desc id="balance-svg-desc">Use the labelled sliders to move the centre of mass; the readouts report whether it is inside or outside the contacts.</desc><defs><pattern id="balance-grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="currentColor" stroke-width=".5" opacity=".15" /></pattern></defs><rect x="20" y="20" width="460" height="320" fill="url(#balance-grid)" /><path d="M250 30V340M30 190H470" stroke="currentColor" opacity=".3" stroke-dasharray="4 5" /><polygon data-support-polygon class="rex-support" points="" /><g data-balance-feet></g><line data-margin-line stroke="var(--rex-accent)" stroke-width="1.5" stroke-dasharray="4 4" /><g data-com-dot><circle r="13" fill="var(--paper)" stroke="currentColor" stroke-width="2" /><path d="M-19 0H19M0-19V19" stroke="currentColor" /><circle r="4" fill="var(--rex-accent)" /></g><text x="263" y="38" class="rex-svg-label">FORWARD ↑</text><text x="28" y="365" class="rex-svg-label">TOP VIEW / ILLUSTRATIVE DIMENSIONS</text></svg>
+        <div class="rex-plot-legend"><span><i class="rex-key-polygon"></i>support polygon</span><span>⊕ projected centre of mass</span></div>
+        <div class="rex-readouts"><div><span>Static test</span><strong data-balance-status>Inside</strong></div><div><span>Signed edge margin</span><strong data-balance-margin>+0 mm</strong></div></div>
+      </div>
+      <div class="rex-control-panel">
+        <label for="balance-stance">Ground contacts</label><select id="balance-stance"><option value="double">Both feet</option><option value="left">Left foot only</option><option value="right">Right foot only</option></select>
+        <label class="rex-slider-label" for="balance-spread">Foot-centre spacing <output for="balance-spread" data-spread-value>70 mm</output></label><input id="balance-spread" type="range" min="35" max="120" value="70" step="1" />
+        <label class="rex-slider-label" for="balance-lateral">CoM left / right <output for="balance-lateral" data-lateral-value>0 mm</output></label><input id="balance-lateral" type="range" min="-100" max="100" value="0" step="1" />
+        <label class="rex-slider-label" for="balance-forward">CoM back / forward <output for="balance-forward" data-forward-value>0 mm</output></label><input id="balance-forward" type="range" min="-85" max="85" value="0" step="1" />
+        <div class="rex-control-actions"><button type="button" data-balance-challenge>Try single support</button><button type="button" data-balance-reset>Reset balance</button></div>
+        <p class="rex-caption">Fixed, rectangular 28 × 65 mm lesson feet. Spacing and CoM are independent inputs, not a physical Tinyrex pose. Positive margin = inside; zero = boundary; negative = outside. No friction, acceleration or contact compliance.</p>
+      </div>
+    </div>
+  </div>
+  <div class="rex-teaching"><p><strong>Try this:</strong> switch from two feet to the left foot. Can you restore a positive margin using only the left/right slider? Then move forward until the margin reaches zero.</p><p><strong>Why the tail matters:</strong> moving mass changes the combined centre of mass. A tail can also exchange angular momentum during motion — an effect this static playground deliberately does not simulate.</p></div>
+  <Quiz id="balance-quiz" question="In this model, does spreading the feet sideways increase the forward tipping margin?" choices={['Yes — a wider stance improves every direction.', 'No — the front edge has not moved.']} answer={1} explanation="A wider stance extends lateral support. The front and back edges stay put, so the forward margin at the centre does not grow." />
+</section>

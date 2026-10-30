@@ -1,5 +1,28 @@
 # WCKD — public sites
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="public/brand/wckd/wordmark-ink.svg"><img src="public/brand/wckd/wordmark-paper.svg" height="44" alt="wckd"></picture>
+
+WCKD web v5 keeps the monochrome frame, mono type and lowercase pixel marks, with a distinct
+signal for every product. The authority is `brand/kit.json` and `brand/web.css`; regenerate with
+`uv run --with fonttools --with brotli python brand/gen.py`. Run `python3 -m unittest discover -s brand`.
+
+[Creed](https://creed.sh) is the engineering guide; [creed.md](https://creed.sh/creed.md) is the
+agent handoff. [PolyCore](https://polycore.dev) is the current 3D-kernel project. Nightfall is archived.
+
+Sync public styles and README wordmarks to explicitly selected sibling repos with
+`python3 scripts/sync-brand.py <projects> --logos --write`; omit `--write` for a drift check.
+This does not regenerate native app-icon formats or change application themes.
+
+Browser QA: `WCKD_QA_SHOTS=<directory> node scripts/family-browser.mjs <manifest.json>` takes an
+explicit array of `{ "name": "wckd", "directory": "/absolute/path/to/dist/wckd" }` sites, checks
+desktop/mobile/narrow/dark layouts, and exercises the Creed skill dialog. Existing project-directory
+privacy, keyboard and first-party-resource checks remain in `scripts/projects-browser.mjs`.
+
+The seven shared-site names also select their canonical brand-page and install-manifest checks.
+An explicit `brandKey` preserves that selection when a shared-site preview uses another name.
+Explicit empty, unknown or non-string keys are errors, never an opt-out from verification.
+Independent sibling sites without this guide/manifest contract are explicitly reported as layout-only.
+
 The public sites for the WCKD lab and its brands, built with Astro and a shared
 pixel brand kit. The repository builds `autobot`, `invincible`, `sovware`, `wckd`,
 `omnie`, `nightfall` and `tinyrex` into separate `dist/<site>` directories. Niobium, Axit and
@@ -54,11 +77,27 @@ Both PR workflows run all seven builds, link checks, catalog tests and browser
 checks. PRs do not deploy. CI on `main` can deploy Autobot, Invincible, Sovware and
 WCKD when the repository's Cloudflare secrets are configured; without them it
 reports a warning. Omnie, Nightfall and TinyRex have separate Wrangler configs for explicit
-local deployments. TinyRex's media and 3D viewer live in `public/rex/` and ship only in its
-build (three.js 0.160.0 vendored there, MIT; the viewer is Polykrom's, MIT OR Apache-2.0).
-TinyRex's concept art (`public/rex/concept/`) is WCKD's own, credited on the page; it is not
-part of the tinyrex repository's CC-BY-4.0 media. Refresh commits update source data; verify the deployed
-snapshot date after publishing.
+local deployments. Tinyrex is now a robotics learning lab: an original robot schematic, an
+18-joint explorer, a support-polygon playground, a gait/IK workbench and three short quizzes.
+Its models are explicitly simplified lessons, not validated robot controllers. Current design
+citations pin a public source revision; Microduck and Open Duck Mini receive explicit credit.
+The new instruments use first-party SVG and vanilla JavaScript in `public/tinyrex/`, with no new
+dependencies, tracking or hardware connection. The earlier `public/rex/` media/viewer and WCKD
+concept art remain historical assets, not the current homepage or current-design validation.
+
+After building, run the learning and family regressions:
+
+```sh
+python3 -m unittest discover -s brand -p 'test_*.py'
+node --test scripts/tinyrex-models.test.mjs scripts/browser-tools.test.mjs
+node scripts/tinyrex-browser.mjs
+node scripts/family-browser.mjs
+```
+
+Both workflows also run these checks. Browser checks use an installed Chrome/Chromium (or
+`CHROME_BIN`); `TINYREX_SHOTS` sets the learning screenshots directory. The family check verifies
+all seven homepages, brand pages and manifest identities at desktop/mobile/320px/dark profiles.
+See [`docs/tinyrex-learning.md`](docs/tinyrex-learning.md) for sources, math and limitations.
 
 ## Hosting
 

@@ -3,7 +3,7 @@ symbol (on paper, on ink), wordmark (on paper, on ink), app icon (1024), favicon
 
     python brand/gen.py          (needs fonttools and brotli: pip install fonttools brotli)
 """
-import json, os
+import json, os, shutil
 from fontTools.ttLib import TTFont
 from fontTools.varLib import instancer
 from fontTools.pens.svgPathPen import SVGPathPen
@@ -43,6 +43,8 @@ def svg(w, h, body, label, view=None):
 for key, b in kit["brands"].items():
     out = os.path.join(ROOT, "public/brand", key)
     os.makedirs(out, exist_ok=True)
+    open(f"{out}/source.json", "w").write(json.dumps(b, indent=2) + "\n")
+    open(f"{out}/mask.txt", "w").write("\n".join(b["glyph"]) + "\n")
     g, w = b["glyph"], len(b["glyph"][0])
     name = b["name"].lower()
     for mode, col, ink in (("paper", b["onPaper"], N["ink"]), ("ink", b["onInk"], N["bone"])):
@@ -71,3 +73,11 @@ for key, b in kit["brands"].items():
     og += f'<path d="{dd}" fill="{N["muted"]}" shape-rendering="geometricPrecision"/>'
     open(f"{out}/og.svg", "w").write(svg(1200, 630, og, b["name"]))
 print("brand assets:", ", ".join(kit["brands"]))
+for key in ("polykrom", "axit"):
+    shutil.copyfile(os.path.join(ROOT, "public/brand", key, "favicon.svg"), os.path.join(ROOT, "public/projects", key + ".svg"))
+web = open(os.path.join(ROOT, "brand/web.css")).read()
+for key, value in kit["web"].items():
+    web = web.replace("{{" + key + "}}", value)
+if "{{" in web:
+    raise ValueError("unresolved web token")
+open(os.path.join(ROOT, "public/brand/web.css"), "w").write(web)

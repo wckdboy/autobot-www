@@ -1,0 +1,16 @@
+{
+  "name": "Niobium",
+  "domain": "niobium.sh",
+  "role": "A pixel-art home for your AI team",
+  "glyph": [
+    "#####...",
+    "##..##..",
+    "##..##..",
+    "##..##..",
+    "##..##..",
+    "##..##.#"
+  ],
+  "onInk": "#A78BFA",
+  "onPaper": "#A78BFA",
+  "text": "#A78BFA"
+}

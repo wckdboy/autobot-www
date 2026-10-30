@@ -72,15 +72,15 @@ export const NAV = {
   },
   tinyrex: {
     nav: [
-      { label: 'Overview', href: '/' },
-      { label: 'Concept', href: '/#concept' },
-      { label: '3D', href: '/#model' },
-      { label: 'Results', href: '/#results' },
-      { label: 'How', href: '/#build' },
-      { label: 'Source', href: 'https://github.com/wckdboy/tinyrex' },
+      { label: 'Learn', href: '/#learn' },
+      { label: 'Joints', href: '/#joints' },
+      { label: 'Balance', href: '/#balance' },
+      { label: 'Gait', href: '/#gait' },
+      { label: 'Build', href: '/#build' },
+      { label: 'Source', href: 'https://github.com/WCKDai/tinyrex' },
       { label: 'WCKD', href: 'https://wckd.ai' },
     ],
-    footer: 'TinyRex was designed by an AI agent in Polykrom. Code Apache-2.0; the CAD design and its renders CC-BY-4.0; concept art by WCKD. Made by WCKD.',
-    repo: 'https://github.com/wckdboy/tinyrex',
+    footer: 'Tinyrex / a WCKD robotics experiment inspired by Microduck and Open Duck Mini. Simplified browser lessons, not validated robot controllers.',
+    repo: 'https://github.com/WCKDai/tinyrex',
   },
 } as const;

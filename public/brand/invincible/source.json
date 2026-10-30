@@ -1,0 +1,16 @@
+{
+  "name": "Invincible",
+  "domain": "invincible.sh",
+  "role": "AI gateway and decentralized compute",
+  "glyph": [
+    "##",
+    "..",
+    "##",
+    "##",
+    "##",
+    "##"
+  ],
+  "onInk": "#FF8A1E",
+  "onPaper": "#FF8A1E",
+  "text": "#FF8A1E"
+}
