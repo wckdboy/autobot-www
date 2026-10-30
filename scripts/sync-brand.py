@@ -24,6 +24,7 @@ LOGOS = {
     "axit": ("axit", "axit/assets/brand", "axit"),
     "niobium": ("niobium", "niobium/brand", "niobium"),
     "polykrom": ("polykrom", "polykrom/site/shared/brand", "polykrom"),
+    "tinyrex": ("tinyrex", "tinyrex/assets/brand", "tinyrex"),
 }
 
 

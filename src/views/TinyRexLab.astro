@@ -1,31 +1,6 @@
 ---
 import Lab from '../layouts/Lab.astro';
 
-// "tinyrex" in the kit's lettering: lowercase, six cells tall, two-cell strokes, one cell apart.
-const LETTERS: Record<string, string[]> = {
-  t: ['##....', '#####.', '##....', '##....', '##..##', '.####.'],
-  i: ['##', '..', '##', '##', '##', '##'],
-  n: ['#####.', '##..##', '##..##', '##..##', '##..##', '##..##'],
-  y: ['##..##', '##..##', '##..##', '.#####', '....##', '#####.'],
-  r: ['#####.', '##..##', '##....', '##....', '##....', '##....'],
-  e: ['.####.', '##..##', '######', '##....', '##....', '.#####'],
-  x: ['##..##', '##..##', '.####.', '.####.', '##..##', '##..##'],
-};
-function pixelWord(word: string) {
-  const rects: string[] = [];
-  let ox = 0;
-  for (const ch of word) {
-    const g = LETTERS[ch];
-    g.forEach((row, y) => {
-      for (let x = 0; x < row.length; x++) if (row[x] === '#') rects.push(`<rect x="${ox + x}" y="${y}" width="1" height="1"/>`);
-    });
-    ox += g[0].length + 1;
-  }
-  const w = ox - 1;
-  return { w, svg: `<svg viewBox="0 0 ${w + 2} 6" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">${rects.join('')}<rect class="dot" x="${w + 1}" y="5" width="1" height="1"/></svg>` };
-}
-const word = pixelWord('tinyrex');
-
 const REPO = 'https://github.com/wckdboy/tinyrex';
 
 const stats = [
@@ -86,7 +61,7 @@ const stages = [
 >
   <section class="hero" aria-labelledby="rex-title">
     <p class="kicker">flagship demo · designed in polykrom</p>
-    <h1 id="rex-title" class="word" aria-label="TinyRex"><Fragment set:html={word.svg} /></h1>
+    <h1 id="rex-title" class="word"><img src="/brand/tinyrex/wordmark-ink.svg" width="280" height="58" alt="tinyrex" /></h1>
     <p class="pitch">A small bipedal T-rex robot, designed from an empty file by an AI agent working in Polykrom, then checked standing and walking in Polykrom and in MuJoCo.</p>
     <p class="stats-label">the current build, verified</p>
     <dl class="stats">
@@ -296,9 +271,9 @@ const stages = [
     line-height: 0;
   }
   .word::after { display: none; }
-  .word :global(svg) {
+  .word img {
     display: block;
-    width: min(100%, 620px);
+    width: min(100%, 360px);
     height: auto;
   }
   .pitch {
