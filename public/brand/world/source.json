@@ -1,0 +1,16 @@
+{
+  "name": "WCKD World",
+  "domain": "wckd.world",
+  "role": "The first place",
+  "glyph": [
+    "##....##",
+    "##....##",
+    "##.##.##",
+    "##.##.##",
+    "########",
+    ".##..##."
+  ],
+  "onInk": "#A7C99A",
+  "onPaper": "#4F6A45",
+  "text": "#4F6A45"
+}

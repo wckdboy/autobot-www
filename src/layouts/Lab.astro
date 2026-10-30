@@ -67,6 +67,7 @@ const ogImage = new URL(og, Astro.site).href;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" href="/fonts/lab/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/lab.css" />
+    <link rel="stylesheet" href="/brand/web.css" />
     <style is:inline set:html={`:root{--accent:${accentPaper};--accent-paper:${accentPaper};--accent-ink:${accentInk};--mark:${b.onPaper};--mark-paper:${b.onPaper};--mark-ink:${b.onInk}}@media (prefers-color-scheme: dark){:root{--accent:${accentInk};--mark:${b.onInk}}}`} />
   </head>
   <body>
@@ -98,6 +99,8 @@ const ogImage = new URL(og, Astro.site).href;
           {meta.key === 'autobot' && <a href="/privacy/">Privacy</a>}
           {(meta.key === 'autobot' || meta.key === 'invincible') && <a href="/verify/">Verify</a>}
           <a href="/brand/">Brand</a>
+          <a href="https://creed.sh" rel="noopener">Creed / engineering</a>
+          <a href="https://polycore.dev" rel="noopener">PolyCore / 3D kernel</a>
           {meta.key !== 'autobot' && <a href="https://autobot.sh" rel="noopener">Autobot</a>}
           {meta.key !== 'invincible' && <a href="https://invincible.sh" rel="noopener">Invincible</a>}
           {meta.key !== 'wckd' && <a href="https://wckd.ai" rel="noopener">WCKD</a>}

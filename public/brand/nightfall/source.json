@@ -1,0 +1,16 @@
+{
+  "name": "Nightfall",
+  "domain": "nightfall.sh",
+  "role": "Archived CAD research",
+  "glyph": [
+    "#####.",
+    "##..##",
+    "##..##",
+    "##..##",
+    "##..##",
+    "##..##"
+  ],
+  "onInk": "#FF3E8A",
+  "onPaper": "#FF3E8A",
+  "text": "#FF3E8A"
+}

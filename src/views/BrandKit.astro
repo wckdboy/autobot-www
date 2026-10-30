@@ -38,7 +38,7 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
       <table>
         <thead><tr><th>Use</th><th>Color</th><th>Where</th></tr></thead>
         <tbody>
-          <tr><td><strong>Signal</strong></td><td>{own.onPaper === own.onInk ? <code>{own.onPaper}</code> : <><code>{own.onPaper}</code> on paper, <code>{own.onInk}</code> on ink</>}</td><td>the symbol, the headline's square, focus, selection and link underlines{own.onPaper === own.onInk ? ', on white and on ink' : ''}</td></tr>
+          <tr><td><strong>Signal</strong></td><td><code>{own.onPaper}</code></td><td>the symbol, the headline's square, focus, selection and link underlines, on white and on ink</td></tr>
           <tr><td><strong>Text</strong></td><td><code>#111111</code></td><td>always ink (white on dark): color never carries text</td></tr>
         </tbody>
       </table>
@@ -57,7 +57,7 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
               <td><span class="kit-inline" style={`color:${b.onPaper}`} set:html={symbolSvg(b, 18, b.name)} /></td>
               <td><strong>{b.name}</strong><br /><span class="small"><a href={`https://${b.domain}`} rel="noopener">{b.domain}</a> · <a href={asset(k, 'icon.svg')}>files</a></span></td>
               <td>{b.role}</td>
-              <td><code>{b.onPaper}</code>{b.onInk !== b.onPaper && <> · <code>{b.onInk}</code> on ink</>}</td>
+              <td><code>{b.onPaper}</code></td>
             </tr>
           ))}
         </tbody>
@@ -81,8 +81,8 @@ const states = [['ok', kit.states.ok, '✓ quiet, in ash'], ['warn', kit.states.
   <section>
     <h2>Layout and surface</h2>
     <div class="table-wrap"><table><tbody>
-      <tr><td><strong>Page</strong></td><td>one column, 1120 px, 40 px gutters, a 72-character measure for prose; white</td></tr>
-      <tr><td><strong>Frame</strong></td><td>a 2 px rule under the header and over the footer; nav links split by thin vertical rules</td></tr>
+      <tr><td><strong>Page</strong></td><td>one column, 1120 px, fluid 22–48 px gutters, a 68-character measure for prose; white</td></tr>
+      <tr><td><strong>Frame</strong></td><td>quiet hairlines under the header and over the footer; generous spacing and visible keyboard focus</td></tr>
       <tr><td><strong>Sections</strong></td><td>a single hairline between them; no cards, boxes or shadows</td></tr>
       <tr><td><strong>Corners</strong></td><td>none on the web; 4–8 px in apps</td></tr>
       <tr><td><strong>Actions</strong></td><td>one primary per page, solid ink; everything else a text link or an outline</td></tr>

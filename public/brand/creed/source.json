@@ -1,0 +1,16 @@
+{
+  "name": "Creed",
+  "domain": "creed.sh",
+  "role": "Engineering values, skills and tools for agents",
+  "glyph": [
+    ".#####",
+    "##....",
+    "##....",
+    "##....",
+    "##....",
+    ".#####"
+  ],
+  "onInk": "#C1CE9B",
+  "onPaper": "#6D8053",
+  "text": "#111111"
+}

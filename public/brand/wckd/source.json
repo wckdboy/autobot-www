@@ -1,0 +1,16 @@
+{
+  "name": "WCKD",
+  "domain": "wckd.ai",
+  "role": "The lab and company",
+  "glyph": [
+    "##....##",
+    "##....##",
+    "##.##.##",
+    "##.##.##",
+    "########",
+    ".##..##."
+  ],
+  "onInk": "#FFFFFF",
+  "onPaper": "#111111",
+  "text": "#111111"
+}

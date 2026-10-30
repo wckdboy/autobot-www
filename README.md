@@ -1,5 +1,23 @@
 # WCKD — public sites
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="public/brand/wckd/wordmark-ink.svg"><img src="public/brand/wckd/wordmark-paper.svg" height="44" alt="wckd"></picture>
+
+WCKD web v5 keeps the monochrome frame, mono type and lowercase pixel marks, with a distinct
+signal for every product. The authority is `brand/kit.json` and `brand/web.css`; regenerate with
+`uv run --with fonttools --with brotli python brand/gen.py`. Run `python3 -m unittest discover -s brand`.
+
+[Creed](https://creed.sh) is the engineering guide; [creed.md](https://creed.sh/creed.md) is the
+agent handoff. [PolyCore](https://polycore.dev) is the current 3D-kernel project. Nightfall is archived.
+
+Sync public styles and README wordmarks to explicitly selected sibling repos with
+`python3 scripts/sync-brand.py <projects> --logos --write`; omit `--write` for a drift check.
+This does not regenerate native app-icon formats or change application themes.
+
+Browser QA: `WCKD_QA_SHOTS=<directory> node scripts/family-browser.mjs <manifest.json>` takes an
+explicit array of `{ "name": "wckd", "directory": "/absolute/path/to/dist/wckd" }` sites, checks
+desktop/mobile/narrow/dark layouts, and exercises the Creed skill dialog. Existing project-directory
+privacy, keyboard and first-party-resource checks remain in `scripts/projects-browser.mjs`.
+
 The public sites for the WCKD lab and its brands, built with Astro and a shared
 pixel brand kit. The repository builds `autobot`, `invincible`, `sovware`, `wckd`,
 `omnie`, `nightfall` and `tinyrex` into separate `dist/<site>` directories. Niobium, Axit and

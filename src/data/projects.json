@@ -43,17 +43,39 @@
     "id": "polykrom",
     "name": "Polykrom",
     "kind": "CAD for the physical world",
-    "description": "Parametric CAD in Rust with an AI companion and Nightfall stress analysis. A fork of SolidCraft, with shared fixes contributed upstream.",
+    "description": "Parametric CAD in Rust with an AI companion. A fork of SolidCraft, with shared fixes contributed upstream. Current 3D-kernel development is PolyCore; Nightfall is archived research.",
     "site": "https://polykrom.app",
     "repo": "polykrom",
     "source": "https://github.com/WCKDai/polykrom",
     "status": "Source builds · browser preview",
-    "mark": "polykrom"
+    "brand": "polykrom"
+  },
+  {
+    "id": "polycore",
+    "name": "PolyCore",
+    "kind": "The 3D geometry kernel",
+    "description": "The current 3D-kernel project. Geometry development for Polykrom; Nightfall is archived research, not the active kernel.",
+    "site": "https://polycore.dev",
+    "repo": "polycore",
+    "source": "https://github.com/WCKDai/PolyCore",
+    "status": "In development · not production-ready",
+    "brand": "polycore"
+  },
+  {
+    "id": "creed",
+    "name": "Creed",
+    "kind": "Engineering for agents",
+    "description": "Engineering values, ten task skills and verification tools. A practical guide for agents: evidence over assertion, reversible changes and contracts kept.",
+    "site": "https://creed.sh",
+    "repo": "agent-engineering",
+    "source": "https://github.com/wckdboy/agent-engineering",
+    "status": "Guide + portable engineering kit",
+    "brand": "creed"
   },
   {
     "id": "nightfall",
     "name": "Nightfall",
-    "kind": "Geometry, measured",
+    "kind": "Archived CAD research",
     "description": "Archived. The app continues as Polykrom; the kernel work continues in PolyCore, a new Rust kernel.",
     "site": "https://nightfall.sh",
     "repo": "nightfall",
@@ -69,7 +91,7 @@
     "site": "https://axit.sh",
     "repo": "axit",
     "status": "Released · macOS + Linux",
-    "mark": "axit"
+    "brand": "axit"
   },
   {
     "id": "openendo",
@@ -78,7 +100,8 @@
     "description": "An open data hub for endometriosis research: clinical trials, papers, funding and policy, with a separate discovery engine.",
     "site": "https://openendo.org",
     "repo": "openendo",
-    "status": "Public research hub"
+    "status": "Public research hub",
+    "brand": "openendo"
   },
   {
     "id": "sovware",

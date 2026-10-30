@@ -1,0 +1,16 @@
+{
+  "name": "Axit",
+  "domain": "axit.sh",
+  "role": "File search and reviewed cleanup",
+  "glyph": [
+    ".####.",
+    "....##",
+    ".#####",
+    "##..##",
+    "##..##",
+    ".#####"
+  ],
+  "onInk": "#D9966B",
+  "onPaper": "#B3633D",
+  "text": "#111111"
+}

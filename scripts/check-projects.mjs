@@ -20,7 +20,7 @@ for (const repo of snapshot.repositories) {
   names.add(repo.name.toLowerCase());
   assert(html.includes(`href="${repo.url}"`), `Repository absent from directory: ${repo.name}`);
 }
-assert.deepEqual(new Set(projects.map((p) => p.id)), new Set(['autobot','invincible','niobium','omnie','polykrom','nightfall','axit','openendo','sovware']));
+assert.deepEqual(new Set(projects.map((p) => p.id)), new Set(['autobot','invincible','niobium','omnie','polykrom','polycore','creed','nightfall','axit','openendo','sovware']));
 for (const project of projects) {
   if (project.source) {
     assert.equal(new URL(project.source).protocol, 'https:');
@@ -30,7 +30,7 @@ for (const project of projects) {
   }
   assert.equal(new URL(project.site).protocol, 'https:');
 }
-for (const id of ['autobot', 'invincible', 'niobium', 'polykrom', 'sovware']) {
+for (const id of ['autobot', 'invincible', 'niobium', 'polykrom', 'polycore', 'creed', 'sovware']) {
   const project = projects.find((p) => p.id === id);
   assert(project, `Missing core profile: ${id}`);
   assert(html.includes(`id="project-${id}"`) && html.includes(`href="${project.site}"`), `Core project absent from directory: ${id}`);
@@ -39,6 +39,10 @@ for (const repo of ['omnie-dev','omnie-edit','omnie-ios','omnie-edu','eidolon','
   assert(names.has(repo.toLowerCase()), `Missing lab app: ${repo}`);
 }
 assert(!/<script\b/i.test(html), 'Project directory must have zero client JavaScript');
+assert(html.includes('https://creed.sh/creed.md'), 'Missing direct agent handoff');
+assert(html.includes('href="/brand/web.css"'), 'Missing shared WCKD style');
+assert.match(projects.find((p) => p.id === 'nightfall').status, /archived/i);
+assert.equal(projects.find((p) => p.id === 'polycore').site, 'https://polycore.dev');
 assert(html.includes('href="https://wckd.ai/"'), 'Incorrect canonical URL');
 assert(html.includes('href="/brand/"') && html.includes('id="source"'));
 assert(robots.includes('Sitemap: https://wckd.ai/sitemap.xml') && !robots.includes('https://autobot.sh/'));

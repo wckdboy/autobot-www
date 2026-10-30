@@ -1,0 +1,16 @@
+{
+  "name": "OpenEndo",
+  "domain": "openendo.org",
+  "role": "Open endometriosis research",
+  "glyph": [
+    ".#####.",
+    "##...##",
+    "##...##",
+    "##...##",
+    "##...##",
+    ".#####."
+  ],
+  "onInk": "#E4A1C3",
+  "onPaper": "#A64D79",
+  "text": "#111111"
+}

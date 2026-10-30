@@ -1,0 +1,16 @@
+{
+  "name": "Omnie",
+  "domain": "omnie.sh",
+  "role": "An IDE for development on iOS and iPadOS",
+  "glyph": [
+    ".#####.",
+    "##...##",
+    "##...##",
+    "##...##",
+    "##...##",
+    ".#####."
+  ],
+  "onInk": "#00B386",
+  "onPaper": "#00B386",
+  "text": "#00B386"
+}

@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "name": "WCKD",
   "about": "One lab, one system. Each brand is a lowercase letter in pixels and one vivid color; the color is for marks, never for text.",
   "neutrals": {
@@ -26,11 +26,19 @@
     "apps": "the platform's sans for reading in apps; JetBrains Mono for machine text and labels",
     "rules": "Lowercase headlines that end in the brand's pixel square. Sentence case elsewhere. No uppercase labels."
   },
+  "web": {
+    "pageWidth": "1120px",
+    "measure": "68ch",
+    "gutter": "clamp(22px, 4vw, 48px)",
+    "sectionSpace": "clamp(36px, 6vw, 72px)",
+    "headline": "clamp(32px, 5vw, 60px)",
+    "principle": "Quiet structure, readable evidence. One pixel mark, one restrained accent; no gradients, glows or decorative cards."
+  },
   "brands": {
     "wckd": {
       "name": "WCKD",
       "domain": "wckd.ai",
-      "role": "The lab",
+      "role": "The lab and company",
       "glyph": [
         "##....##",
         "##....##",
@@ -43,10 +51,19 @@
       "onPaper": "#111111",
       "text": "#111111"
     },
+    "world": {
+      "name": "WCKD World",
+      "domain": "wckd.world",
+      "role": "The first place",
+      "glyph": ["##....##", "##....##", "##.##.##", "##.##.##", "########", ".##..##."],
+      "onInk": "#A7C99A",
+      "onPaper": "#4F6A45",
+      "text": "#4F6A45"
+    },
     "sovware": {
       "name": "Sovware",
       "domain": "sovware.io",
-      "role": "The non-profit that keeps it sovereign",
+      "role": "The production arm for the stack",
       "glyph": [
         ".#####",
         "##....",
@@ -55,8 +72,8 @@
         "....##",
         "#####."
       ],
-      "onInk": "#FFFFFF",
-      "onPaper": "#111111",
+      "onInk": "#B7C5D4",
+      "onPaper": "#637282",
       "text": "#111111"
     },
     "autobot": {
@@ -110,7 +127,7 @@
     "nightfall": {
       "name": "Nightfall",
       "domain": "nightfall.sh",
-      "role": "AI-native parametric CAD",
+      "role": "Archived CAD research",
       "glyph": [
         "#####.",
         "##..##",
@@ -123,10 +140,64 @@
       "onPaper": "#FF3E8A",
       "text": "#FF3E8A"
     },
+    "polykrom": {
+      "name": "Polykrom",
+      "domain": "polykrom.app",
+      "role": "Parametric CAD for people and agents",
+      "glyph": ["#####.", "##..##", "##..##", "#####.", "##....", "##...."],
+      "onInk": "#CCFF00",
+      "onPaper": "#6E8600",
+      "text": "#111111"
+    },
+    "polycore": {
+      "name": "PolyCore",
+      "domain": "polycore.dev",
+      "role": "The 3D geometry kernel",
+      "glyph": ["#####.", "##..##", "##..##", "#####.", "##....", "##...."],
+      "onInk": "#91B9ED",
+      "onPaper": "#436A9D",
+      "text": "#111111"
+    },
+    "creed": {
+      "name": "Creed",
+      "domain": "creed.sh",
+      "role": "Engineering values, skills and tools for agents",
+      "glyph": [".#####", "##....", "##....", "##....", "##....", ".#####"],
+      "onInk": "#C1CE9B",
+      "onPaper": "#6D8053",
+      "text": "#111111"
+    },
+    "openendo": {
+      "name": "OpenEndo",
+      "domain": "openendo.org",
+      "role": "Open endometriosis research",
+      "glyph": [".#####.", "##...##", "##...##", "##...##", "##...##", ".#####."],
+      "onInk": "#E4A1C3",
+      "onPaper": "#A64D79",
+      "text": "#111111"
+    },
+    "tinyrex": {
+      "name": "Tinyrex",
+      "domain": "tinyrex.sh",
+      "role": "A WCKD lab project",
+      "glyph": ["##....", "#####.", "##....", "##....", "##..##", ".####."],
+      "onInk": "#E4C563",
+      "onPaper": "#A78020",
+      "text": "#111111"
+    },
+    "axit": {
+      "name": "Axit",
+      "domain": "axit.sh",
+      "role": "File search and reviewed cleanup",
+      "glyph": [".####.", "....##", ".#####", "##..##", "##..##", ".#####"],
+      "onInk": "#D9966B",
+      "onPaper": "#B3633D",
+      "text": "#111111"
+    },
     "niobium": {
       "name": "Niobium",
       "domain": "niobium.sh",
-      "role": "A pixel-art Hermes agent client for Android and iOS",
+      "role": "A pixel-art home for your AI team",
       "glyph": [
         "#####...",
         "##..##..",
@@ -138,22 +209,6 @@
       "onInk": "#A78BFA",
       "onPaper": "#A78BFA",
       "text": "#A78BFA"
-    },
-    "tinyrex": {
-      "name": "TinyRex",
-      "domain": "tinyrex.sh",
-      "role": "A bipedal T-rex robot, designed by an AI agent in Polykrom",
-      "glyph": [
-        "##....",
-        "#####.",
-        "##....",
-        "##....",
-        "##..##",
-        ".####."
-      ],
-      "onInk": "#CCFF00",
-      "onPaper": "#111111",
-      "text": "#111111"
     }
   }
 }
