@@ -291,6 +291,14 @@
       "isArchived": false
     },
     {
+      "name": "percival",
+      "url": "https://github.com/wckdboy/percival",
+      "description": "",
+      "visibility": "public",
+      "isFork": false,
+      "isArchived": false
+    },
+    {
       "name": "qBittorrent-Search-Plugins",
       "url": "https://github.com/wckdboy/qBittorrent-Search-Plugins",
       "description": "BurningMop's qbittorrent search plugins collection",
