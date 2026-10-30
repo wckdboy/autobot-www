@@ -1,0 +1,11 @@
+---
+interface Props { id: string; question: string; choices: string[]; answer: number; explanation: string; }
+const { id, question, choices, answer, explanation } = Astro.props;
+---
+<form class="rex-quiz" data-quiz data-answer={answer} data-explanation={explanation}>
+  <fieldset><legend><span>CHECK YOUR INTUITION</span>{question}</legend>
+    <div class="rex-quiz-options">{choices.map((choice, index) => <label><input type="radio" name={id} value={index} required />{choice}</label>)}</div>
+  </fieldset>
+  <div class="rex-quiz-actions"><button type="submit">Check answer</button><button type="reset">Clear</button></div>
+  <p class="rex-quiz-feedback" aria-live="polite">Choose an answer, then check it. No score is stored.</p>
+</form>
