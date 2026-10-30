@@ -77,15 +77,13 @@ Both PR workflows run all seven builds, link checks, catalog tests and browser
 checks. PRs do not deploy. CI on `main` can deploy Autobot, Invincible, Sovware and
 WCKD when the repository's Cloudflare secrets are configured; without them it
 reports a warning. Omnie, Nightfall and TinyRex have separate Wrangler configs for explicit
-local deployments. Tinyrex is now a robotics learning lab: an original robot schematic, an
-18-joint explorer, a support-polygon playground, a gait/IK workbench and three short quizzes.
-Its models are explicitly simplified lessons, not validated robot controllers. Current design
-citations pin a public source revision; Microduck and Open Duck Mini receive explicit credit.
-The new instruments use first-party SVG and vanilla JavaScript in `public/tinyrex/`, with no new
-dependencies, tracking or hardware connection. The earlier `public/rex/` media/viewer and WCKD
-concept art remain historical assets, not the current homepage or current-design validation.
+local deployments. Tinyrex is intentionally a hyper-minimal holding page: its pixel mark/name,
+one short description, and source/WCKD links. No scripts, illustrations, simulations, quizzes,
+marketing sections or shared family footer are rendered. The previous learning prototype is
+withdrawn; its source is retained but not imported by the homepage. Its lesson modules and historical
+robot media are excluded from the Tinyrex deployment by postbuild.
 
-After building, run the learning and family regressions:
+After building, run the site and family regressions:
 
 ```sh
 python3 -m unittest discover -s brand -p 'test_*.py'
@@ -97,7 +95,7 @@ node scripts/family-browser.mjs
 Both workflows also run these checks. Browser checks use an installed Chrome/Chromium (or
 `CHROME_BIN`); `TINYREX_SHOTS` sets the learning screenshots directory. The family check verifies
 all seven homepages, brand pages and manifest identities at desktop/mobile/320px/dark profiles.
-See [`docs/tinyrex-learning.md`](docs/tinyrex-learning.md) for sources, math and limitations.
+The previous implementation is recorded in [`docs/tinyrex-learning.md`](docs/tinyrex-learning.md).
 
 ## Hosting
 

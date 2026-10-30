@@ -1,100 +1,43 @@
 ---
-import Lab from '../layouts/Lab.astro';
-import HeroRobot from '../components/tinyrex/HeroRobot.astro';
-import JointExplorer from '../components/tinyrex/JointExplorer.astro';
-import BalanceLab from '../components/tinyrex/BalanceLab.astro';
-import GaitLab from '../components/tinyrex/GaitLab.astro';
-import '../components/tinyrex/learning.css';
-
-const REPO = 'https://github.com/WCKDai/tinyrex';
-// The default branch still describes the historical robot; cite this public design snapshot.
-const REV = 'a40e994a88fd3abd71caf972dc9267e8a7fef1ad';
-const blob = `${REPO}/blob/${REV}`;
-const source = `${REPO}/tree/${REV}/design`;
-const nav = [
-  { label: 'Learn', href: '/#learn' },
-  { label: 'Joints', href: '/#joints' },
-  { label: 'Balance', href: '/#balance' },
-  { label: 'Gait', href: '/#gait' },
-  { label: 'Build', href: '/#build' },
-  { label: 'Source ↗', href: REPO },
-];
+import { meta } from '../data/site';
+import { kit, symbolSvg } from '../data/kit';
+const brand = kit.brands.tinyrex;
 ---
-
-<Lab path="/" nav={nav} title="Robotics learning lab"
-  description="Learn robotics with Tinyrex, an 18-joint T-rex design. Explore joints, balance and leg kinematics in three interactive, simplified educational models."
-  footerNote="Tinyrex / a WCKD robotics experiment. Original browser lessons; no tracking, accounts or hardware connection."
->
-  <div class="tinyrex-learning">
-    <section id="concept" class="rex-hero" aria-labelledby="rex-title">
-      <div class="rex-hero-copy">
-        <p class="rex-eyebrow"><span class="rex-pixel" aria-hidden="true"></span> tinyrex / open robotics notebook</p>
-        <h1 id="rex-title">Small robot.<br />Big <em>learning</em><br />energy.</h1>
-        <p class="rex-intro">Meet Tinyrex: a bipedal T-rex design with 18 joints, a very useful tail, and a lot to teach us about moving through the world.</p>
-        <div class="rex-actions"><a class="rex-primary" href="#joints">Enter the learning lab <span aria-hidden="true">↗</span></a><a href="#build">Follow the engineering ↓</a></div>
-        <p class="rex-caption">No robot required. Just curiosity.<br />Browser models, not hardware controllers.</p>
-      </div>
-      <figure class="rex-hero-figure">
-        <div class="rex-stage-label"><span>FIG. 001 / TINYREX</span><span>DESIGN STUDY</span></div>
-        <HeroRobot />
-        <figcaption>Original schematic illustration · not a CAD render · not to scale</figcaption>
-      </figure>
-    </section>
-
-    <dl class="rex-facts" aria-label="Current design facts">
-      <div><dt>actuated joints</dt><dd>18 <span>XL330</span></dd></div>
-      <div><dt>leg architecture</dt><dd>5 <span>per leg</span></dd></div>
-      <div><dt>design → simulation</dt><dd>CAD <span>→ MuJoCo</span></dd></div>
-      <div><dt>project status</dt><dd>Prototype <span>design</span></dd></div>
-    </dl>
-    <p class="rex-source-note">Current v4 design snapshot, 30 Oct 2026. <a href={`${blob}/design/BOM.md`}>Design BOM ↗</a> · Simulation is not proof of physical readiness.</p>
-
-    <section id="learn" class="rex-section" aria-labelledby="learn-title">
-      <div class="rex-section-heading"><p class="rex-eyebrow">Your route through the lab</p><h2 id="learn-title">From a joint to a first step.</h2><p>Change one thing. Predict what happens. Then test your intuition.</p></div>
-      <ol class="rex-path">
-        <li><a href="#joints"><span>01 / DISCOVER</span><strong>Give it a degree of freedom.</strong><p>Find the joints. Read an axis. Respect a limit.</p><b aria-hidden="true">↘</b></a></li>
-        <li><a href="#balance"><span>02 / REASON</span><strong>Keep gravity on your side.</strong><p>Move the centre of mass. Find the edge of support.</p><b aria-hidden="true">↘</b></a></li>
-        <li><a href="#gait"><span>03 / EXPERIMENT</span><strong>Turn a path into joint angles.</strong><p>Edit a foot trajectory. See kinematics do the work.</p><b aria-hidden="true">↘</b></a></li>
-      </ol>
-    </section>
-
-    <JointExplorer />
-    <BalanceLab />
-    <GaitLab />
-
-    <section id="build" class="rex-section" aria-labelledby="build-title">
-      <div class="rex-section-heading"><p class="rex-eyebrow">04 / From lesson to engineering</p><h2 id="build-title">The robot is a whole system.</h2><p>A moving sketch is the beginning, not the finish line. Here is how the current Tinyrex design connects geometry, electronics and simulation.</p></div>
-      <div class="rex-build-grid">
-        <ol class="rex-pipeline">
-          <li><span>01</span><div><h3>Shape & assemble / Blender</h3><p>Model the shells, brackets and joints. Check fixings, clearances and assembly access.</p><a href={`${source}/blender`}>Design scripts ↗</a></div></li>
-          <li><span>02</span><div><h3>Convert & inspect / PolyCore + Polykrom</h3><p>Convert to STEP with PolyCore; review the assembly in Polykrom. Exact geometry and mesh geometry are different representations.</p><a href={`${source}/step`}>STEP export reports ↗</a></div></li>
-          <li><span>03</span><div><h3>Model & rehearse / MuJoCo</h3><p>Geometry, inertias, contacts and joint limits become a physics model. Test behaviours before any supervised hardware work.</p><a href={`${source}/sim`}>Simulation & runtime ↗</a></div></li>
-        </ol>
-        <div class="rex-engineering-notes">
-          <h3>Inside the current design</h3>
-          <dl class="rex-spec-list">
-            <div><dt>Actuation</dt><dd>18 ROBOTIS Dynamixel XL330-M288-T servos on a TTL bus.</dd></div>
-            <div><dt>Sensing & compute</dt><dd>Pi Zero 2 W, camera, ToF sensor and head IMU in the design BOM.</dd></div>
-            <div><dt>Structure</dt><dd>PETG shells, TPU contact parts, a carbon tail spine and slip-clutch designs.</dd></div>
-          </dl>
-          <p class="rex-callout"><strong>Read the open items.</strong> The design audit still lists open mesh seams, bracket ribs and STEP-export issues. These lessons do not certify assembly, durability or walking.</p>
-           <a href={`${blob}/design/AUDIT.md`}>Read the design audit ↗</a>
-        </div>
-      </div>
-      <details class="rex-details"><summary>Want to build? Start with a safe, reproducible model.</summary><div><p>Read the native repository’s current instructions, BOM, joint limits and generated audit together. Inspect how a part is fastened before printing it. Re-run simulation after geometry, mass or limit changes; do not treat a browser sketch as a calibrated controller.</p><p>Hardware needs an experienced human present, mechanical support, correct power and bus configuration, and a deliberate safety review. This site sends no commands and offers no connection to a robot. Servo IDs in the native configuration are placeholders, not an assembly guarantee.</p></div></details>
-    </section>
-
-    <section id="sources" class="rex-section" aria-labelledby="sources-title">
-      <div class="rex-section-heading"><p class="rex-eyebrow">Open notebook / honest boundaries</p><h2 id="sources-title">Learn from the work. Credit the roots.</h2></div>
-      <div class="rex-reading-grid">
-        <div><h3>What these instruments leave out</h3><p>Every instrument here is a <strong>simplified educational model</strong>, written for this site. No rigid-body physics engine runs here. No measured speed, payload, stability or real-world readiness is claimed.</p><p>Joint sketches omit coupled collisions. The balance test is quasi-static, on flat ground with fixed contacts. Gait uses a two-link planar leg, not Tinyrex’s full geometry, actuator limits, inertia, torque or contact dynamics. A plausible motion can still fall over.</p></div>
-        <div><h3>Primary sources</h3><ul class="rex-reading-list"><li><a href={`${blob}/AGENTS.md`}>Current architecture & safety boundaries ↗</a></li><li><a href={`${blob}/design/BOM.md`}>v4 prototype bill of materials ↗</a></li><li><a href={`${blob}/design/blender/joint_limits.json`}>Model-swept joint ranges ↗</a></li><li><a href={`${blob}/design/MASS.md`}>Computed mass & balance, not a scale measurement ↗</a></li><li><a href={`${blob}/design/sim/servos.json`}>Simulation / runtime joint mapping ↗</a></li></ul></div>
-        <div><h3>Small-biped inspiration</h3><p><a href="https://github.com/pollen-robotics/microduck">Microduck / Pollen Robotics ↗</a> informs the current joint layout and MJCF lineage. <a href="https://github.com/apirrone/Open_Duck_Mini">Open Duck Mini / Antoine Pirrone & contributors ↗</a> helped establish the small, expressive biped direction.</p><p>No upstream meshes are shipped by these lessons. Microduck’s 3D models are CC BY-NC-SA 4.0; its software and the cited MJCF lineage are Apache-2.0. Read <a href={`${blob}/CREDITS.md`}>Tinyrex’s full credits ↗</a>. Attribution is not endorsement.</p></div>
-      </div>
-      <div id="model"><span id="results" aria-hidden="true"></span><details class="rex-details" id="archive"><summary>Archive / the earlier 17-joint Polykrom-agent design</summary><div><p>The earlier Feetech-based prototype and its reported 1.68 kg mass belong to a different design. Its motion studies and reports are historical artifacts, not current XL330 specifications or validation. Legacy model and results links lead here so the earlier design cannot be mistaken for the current robot.</p><p><a href={`${REPO}/tree/main/results`}>Earlier results & reports ↗</a> · <a href={`${REPO}/tree/main/harness`}>Original agent-build harness ↗</a></p></div></details></div>
-      <p class="rex-local-note">Local by design. Controls and quiz answers live only in this page’s memory. No tracking, storage, external browser requests or hardware connection. Source links leave the site only when you follow them.</p>
-    </section>
-    <noscript><p class="rex-callout">The explanations and source links work without JavaScript. Enable JavaScript for the three local learning instruments and quizzes.</p></noscript>
-  </div>
-  <script type="module" src="/tinyrex/learning.mjs" is:inline></script>
-</Lab>
+<!doctype html>
+<html lang="en" style={`--signal:${brand.onPaper};--signal-ink:${brand.onInk}`}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={meta.description} />
+    <meta name="color-scheme" content="light dark" />
+    <title>tinyrex</title>
+    <link rel="canonical" href="https://tinyrex.sh/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/lab/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<style is:inline>
+  @font-face { font-family: 'JetBrains Mono'; src: url('/fonts/lab/jetbrains-mono-latin.woff2') format('woff2'); font-weight: 400 700; font-display: swap; }
+  * { box-sizing: border-box; }
+  html { color-scheme: light dark; }
+  body { margin: 0; background: #fff; color: #111; font: 14px/1.7 'JetBrains Mono', ui-monospace, monospace; }
+  main { max-width: 640px; min-height: 100svh; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+  h1 { display: flex; align-items: center; gap: 14px; margin: 0; font-size: 28px; line-height: 1.3; letter-spacing: -.04em; }
+  .mark { display: flex; color: var(--signal); }
+  p { margin: 18px 0 22px; }
+  nav { display: flex; gap: 24px; }
+  a { color: inherit; text-underline-offset: 4px; }
+  a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+  @media (prefers-color-scheme: dark) { body { background: #111; color: #eeebe5; } .mark { color: var(--signal-ink); } }
+</style>
+  </head>
+  <body>
+    <main>
+      <h1><span class="mark" set:html={symbolSvg(brand, 18)} />tinyrex</h1>
+      <p>a small, open-source bipedal robot.</p>
+      <nav aria-label="Links">
+        <a href="https://github.com/WCKDai/tinyrex">source</a>
+        <a href="https://wckd.ai">wckd</a>
+      </nav>
+    </main>
+  </body>
+</html>
