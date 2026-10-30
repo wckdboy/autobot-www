@@ -20,6 +20,7 @@ privacy, keyboard and first-party-resource checks remain in `scripts/projects-br
 
 The seven shared-site names also select their canonical brand-page and install-manifest checks.
 An explicit `brandKey` preserves that selection when a shared-site preview uses another name.
+Explicit empty, unknown or non-string keys are errors, never an opt-out from verification.
 Independent sibling sites without this guide/manifest contract are explicitly reported as layout-only.
 
 The public sites for the WCKD lab and its brands, built with Astro and a shared

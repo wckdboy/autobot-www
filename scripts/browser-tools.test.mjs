@@ -31,11 +31,13 @@ test('documented name-only entries reject the wrong manifest identity', async ()
     manifest.short_name = 'Autobot';
     await writeFile(resolve(directory, 'site.webmanifest'), JSON.stringify(manifest));
     const entries = resolve(temp, 'sites.json');
-    await writeFile(entries, JSON.stringify([{ name: 'wckd', directory }]));
-    const result = run('scripts/family-browser.mjs', [entries]);
-    assert.equal(result.error, undefined, result.error?.message);
-    assert.notEqual(result.status, 0, 'name-only entries must not skip identity checks');
-    assert.match(result.stderr, /manifest identity/);
+    for (const brandKey of [undefined, '', null, false, 0, ' ', 'unknown', {}, []]) {
+      await writeFile(entries, JSON.stringify([{ name: 'wckd', directory, brandKey }]));
+      const result = run('scripts/family-browser.mjs', [entries]);
+      assert.equal(result.error, undefined, result.error?.message);
+      assert.notEqual(result.status, 0, `brandKey=${JSON.stringify(brandKey)} must not skip identity checks`);
+      assert.match(result.stderr, /manifest identity|Unknown brandKey/);
+    }
   } finally { await rm(temp, { recursive: true }); }
 });
 

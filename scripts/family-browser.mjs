@@ -24,8 +24,8 @@ const shots = process.env.WCKD_QA_SHOTS;
 if (shots) await mkdir(shots, { recursive: true });
 try {
   for (const entry of sites) {
+    assert(entry.brandKey === undefined || (typeof entry.brandKey === 'string' && Object.hasOwn(kit.brands, entry.brandKey)), `Unknown brandKey: ${entry.brandKey}`);
     const site = { ...entry, brandKey: entry.brandKey ?? (sharedKeys.includes(entry.name) ? entry.name : undefined) };
-    assert(!site.brandKey || Object.hasOwn(kit.brands, site.brandKey), `Unknown brandKey: ${site.brandKey}`);
     if (!site.brandKey) console.log(`LAYOUT ONLY ${site.name}: independent site; shared brand-page/manifest checks do not apply`);
     const root = resolve(site.directory);
     const missing = new Set();
