@@ -39,6 +39,7 @@ try {
     const response = await page.goto(base, { waitUntil: 'networkidle' });
     assert(response.ok());
     assert.equal(await page.locator('h1').innerText(), 'tinyrex');
+    assert.equal(await page.locator('.mark').evaluate(el => getComputedStyle(el).color), 'rgb(204, 255, 0)', 'Polykrom electric lime');
     assert.equal(await page.locator('script, canvas, img, video, button, input, select, form, details, section').count(), 0);
     assert.deepEqual(await page.locator('nav a').allTextContents(), ['source', 'wckd']);
     assert.equal(await page.locator('a[href="https://github.com/WCKDai/tinyrex"]').count(), 1);

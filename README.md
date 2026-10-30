@@ -82,6 +82,8 @@ one short description, and source/WCKD links. No scripts, illustrations, simulat
 marketing sections or shared family footer are rendered. The previous learning prototype is
 withdrawn; its source is retained but not imported by the homepage. Its lesson modules and historical
 robot media are excluded from the Tinyrex deployment by postbuild.
+Tinyrex shares Polykrom's electric lime (`#CCFF00`) because it is Polykrom's flagship demo; the
+holding-page layout and neutral text are unchanged.
 
 After building, run the site and family regressions:
 

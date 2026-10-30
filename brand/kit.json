@@ -179,10 +179,10 @@
     "tinyrex": {
       "name": "Tinyrex",
       "domain": "tinyrex.sh",
-      "role": "A WCKD lab project",
+      "role": "Polykrom's flagship robotics demo",
       "glyph": ["##....", "#####.", "##....", "##....", "##..##", ".####."],
-      "onInk": "#E4C563",
-      "onPaper": "#A78020",
+      "onInk": "#CCFF00",
+      "onPaper": "#CCFF00",
       "text": "#111111"
     },
     "axit": {
