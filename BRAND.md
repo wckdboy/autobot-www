@@ -48,8 +48,9 @@ version of the kit at `/brand/`; wckd.ai's home is the master kit.
 | OpenEndo | openendo.org | Open research | `o` | mauve `#A64D79` (light `#E4A1C3` on ink) |
 | Tinyrex | tinyrex.sh | Lab project | `t` | ochre `#A78020` (light `#E4C563` on ink) |
 
-Each signal is one vivid color (high saturation, high brightness) used the same on white and on
-ink. Because it is that bright, **color is for marks, never for text**: the symbol, the
+Each signal is one color identity with surface-specific shades: use `onPaper` on light surfaces
+and `onInk` on dark surfaces, as defined in `brand/kit.json`. Use the matching paper or ink
+asset rather than recoloring it. **Color is for marks, never for body text**: the symbol, the
 headline's square, focus rings, selection and link underlines. Text is always ink (white on
 dark). The lab is neutral; the products spread around the wheel (purple,
 rose, orange, phthalo), so any two sit well side by side. Autobot and Invincible, the pair that

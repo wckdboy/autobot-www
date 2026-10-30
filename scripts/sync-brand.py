@@ -6,6 +6,7 @@ No product code, application icons, configuration or credentials are copied.
 """
 import argparse
 from pathlib import Path
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGETS = {
@@ -34,6 +35,18 @@ def main():
     parser.add_argument("--write", action="store_true")
     parser.add_argument("--logos", action="store_true", help="sync the canonical light/dark repository wordmarks")
     args = parser.parse_args()
+    # Validate every selected checkout before the first write (including stylesheet-only sync).
+    for project in args.projects:
+        if project not in TARGETS and not args.logos:
+            raise SystemExit(f"No selected assets for {project}; use --logos for repository wordmarks")
+        directory = TARGETS[project] if project in TARGETS else LOGOS[project][1]
+        repository = ROOT.parent / directory.split('/')[0]
+        if not repository.is_dir():
+            raise SystemExit(f"Missing project repository: {project}")
+        result = subprocess.run(["git", "-C", str(repository), "rev-parse", "--show-toplevel"],
+                                capture_output=True, text=True, check=False)
+        if result.returncode or Path(result.stdout.strip()).resolve() != repository.resolve():
+            raise SystemExit(f"Missing project repository checkout: {project}")
     source = (ROOT / "public/brand/web.css").read_bytes()
     failed = False
     for project in args.projects:
@@ -42,8 +55,6 @@ def main():
             copies.append((source, ROOT.parent / TARGETS[project]))
         if args.logos and project in LOGOS:
             key, directory, name = LOGOS[project]
-            if not (ROOT.parent / directory.split('/')[0]).is_dir():
-                raise SystemExit(f"Missing project repository: {project}")
             for mode, variant in (("paper", "light"), ("ink", "dark")):
                 data = (ROOT / 'public/brand' / key / f'wordmark-{mode}.svg').read_bytes()
                 copies.append((data, ROOT.parent / directory / f'{name}-{variant}.svg'))

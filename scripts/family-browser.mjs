@@ -8,6 +8,7 @@ import { resolve, extname, sep } from 'node:path';
 import { chromium } from 'playwright-core';
 
 const sites = JSON.parse(await readFile(process.argv[2], 'utf8'));
+const kit = JSON.parse(await readFile(new URL('../brand/kit.json', import.meta.url), 'utf8'));
 const executablePath = process.env.CHROME_BIN || [
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   '/usr/bin/google-chrome', '/usr/bin/chromium',
@@ -69,6 +70,24 @@ try {
           await page.evaluate(() => scrollTo(0, 0));
           if (shots) await page.screenshot({ path: resolve(shots, `${site.name}-${name}.png`) });
           console.log(`PASS ${site.name}/${name}: ${width}px, ${metrics.background}, no overflow or client errors`);
+          if (site.brandKey) {
+            await page.goto(`http://127.0.0.1:${server.address().port}/brand/`, { waitUntil: 'networkidle' });
+            const own = kit.brands[site.brandKey];
+            assert.equal(await page.getByRole('row').filter({ hasText: 'Signal on paper' }).locator('code').textContent(), own.onPaper);
+            assert.equal(await page.getByRole('row').filter({ hasText: 'Signal on ink' }).locator('code').textContent(), own.onInk);
+            const family = page.locator('table').filter({ has: page.getByRole('columnheader', { name: 'Brand', exact: true }) });
+            for (const brand of Object.values(kit.brands)) {
+              const row = family.getByRole('row').filter({ has: page.getByText(brand.name, { exact: true }) });
+              assert.deepEqual(await row.locator('code').allTextContents(), [brand.onPaper, brand.onInk]);
+            }
+            const expected = colorScheme === 'dark' ? kit.brands.wckd.onInk : kit.brands.wckd.onPaper;
+            const actual = await page.locator('.kit-inline').first().evaluate(el => getComputedStyle(el).color);
+            const rgb = expected.slice(1).match(/../g).map(v => parseInt(v, 16));
+            assert.equal(actual, `rgb(${rgb.join(', ')})`, `${site.name}/${name}: surface-specific family symbol`);
+            assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, `${site.name}/${name}: brand overflow`);
+            if (shots) await page.screenshot({ path: resolve(shots, `${site.name}-brand-${name}.png`) });
+            console.log(`PASS ${site.name}/brand/${name}: both canonical shades and dark-surface symbol`);
+          }
         } finally { await context.close(); }
       }
       assert.deepEqual([...missing], [], `${site.name}: missing assets`);
