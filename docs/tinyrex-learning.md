@@ -73,15 +73,32 @@ assertion failed with 7 labels, then passed after the contained CSS fix. The lin
 caught 21 missing legacy navigation targets during implementation; preserving the anchors fixed
 them without editing shared navigation. No check was weakened.
 
-Integration follow-up outside this unit: `src/data/site.ts` still has the earlier 17-servo metadata,
-and `src/data/nav.ts` still has the old Tinyrex navigation/footer on other pages. This homepage
-overrides title, description, navigation and footer, and retains compatible historical anchors.
-The parent should reconcile those shared Tinyrex entries separately. No wordmark image is used in
-the replacement homepage, so it does not retain the previous 280 × 58 image-ratio mismatch.
+Integration: `src/data/site.ts` and `src/data/nav.ts` now describe the current 18-joint learning lab
+on supporting pages too; browser checks cover their metadata/navigation. Source links pin the public
+`a40e994a88fd3abd71caf972dc9267e8a7fef1ad` design revision: GitHub's default branch is the earlier
+robot, and its current-design paths returned 404. The pinned BOM, joint ranges, audit, mass report,
+servo map, AGENTS and credits were checked over HTTP (200), as were both inspiration repositories.
+No wordmark image is used in the replacement homepage, so it does not retain the previous
+280 × 58 image-ratio mismatch. Legacy homepage anchors remain compatible.
+
+The install manifest now derives descriptive identity from the shared site metadata instead of
+falling back to Autobot for Tinyrex, WCKD, Omnie and Nightfall. Its fields, start URL, display mode
+and icon paths are unchanged; browser fixtures assert those compatibility properties for all seven
+sites. These corrections require rebuilding/deploying the whole shared family.
+
+Integration verification: 15 learning/model/source tests and 6 catalog tests pass. All seven builds,
+internal links, eight Tinyrex viewport/theme combinations plus no-JS/motion checks, and all 28
+homepage + 28 brand-page profiles pass. The brand suite passes 10 checks and explicitly skips the
+unavailable Axit sibling in isolation; the same terminal-mask check was separately run against the
+real workspace and passed. Metadata/provenance and manifest identity regressions were observed
+failing before their fixes. The checks now run in both CI workflows; browser paths support macOS
+and Linux and screenshots remain outside git.
 
 Security review boundary: only local native control values enter the math; finite values and enums
 are validated, values are bounded, DOM text uses textContent and SVG attributes are numeric. No
 credentials, persistence, dynamic HTML, eval, production calls or new dependencies. This repository
-has no `.agents/` kit, so its security scanner is unavailable, not passed.
+has no installed `.agents/` gate. Integration separately ran Gitleaks against the PR diff, the
+engineering kit's Semgrep rules against the changed scripts/model/manifest, and actionlint against
+both workflows: zero findings. These limited scans are not a full application security audit.
 
 Rollback: revert the focused learning-site commit; there are no schema, storage or dependency changes.

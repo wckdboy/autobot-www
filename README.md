@@ -72,11 +72,27 @@ Both PR workflows run all seven builds, link checks, catalog tests and browser
 checks. PRs do not deploy. CI on `main` can deploy Autobot, Invincible, Sovware and
 WCKD when the repository's Cloudflare secrets are configured; without them it
 reports a warning. Omnie, Nightfall and TinyRex have separate Wrangler configs for explicit
-local deployments. TinyRex's media and 3D viewer live in `public/rex/` and ship only in its
-build (three.js 0.160.0 vendored there, MIT; the viewer is Polykrom's, MIT OR Apache-2.0).
-TinyRex's concept art (`public/rex/concept/`) is WCKD's own, credited on the page; it is not
-part of the tinyrex repository's CC-BY-4.0 media. Refresh commits update source data; verify the deployed
-snapshot date after publishing.
+local deployments. Tinyrex is now a robotics learning lab: an original robot schematic, an
+18-joint explorer, a support-polygon playground, a gait/IK workbench and three short quizzes.
+Its models are explicitly simplified lessons, not validated robot controllers. Current design
+citations pin a public source revision; Microduck and Open Duck Mini receive explicit credit.
+The new instruments use first-party SVG and vanilla JavaScript in `public/tinyrex/`, with no new
+dependencies, tracking or hardware connection. The earlier `public/rex/` media/viewer and WCKD
+concept art remain historical assets, not the current homepage or current-design validation.
+
+After building, run the learning and family regressions:
+
+```sh
+python3 -m unittest discover -s brand -p 'test_*.py'
+node --test scripts/tinyrex-models.test.mjs
+node scripts/tinyrex-browser.mjs
+node scripts/family-browser.mjs
+```
+
+Both workflows also run these checks. Browser checks use an installed Chrome/Chromium (or
+`CHROME_BIN`); `TINYREX_SHOTS` sets the learning screenshots directory. The family check verifies
+all seven homepages, brand pages and manifest identities at desktop/mobile/320px/dark profiles.
+See [`docs/tinyrex-learning.md`](docs/tinyrex-learning.md) for sources, math and limitations.
 
 ## Hosting
 

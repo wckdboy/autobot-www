@@ -3,11 +3,13 @@
 import { chromium } from 'playwright-core';
 import { createServer } from 'node:http';
 import { readFile, stat, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { resolve, extname, sep } from 'node:path';
 import assert from 'node:assert/strict';
 
 const dist = resolve('dist/tinyrex');
-const shots = process.env.TINYREX_SHOTS || '/private/var/folders/8l/ffkzfjvx0s1f57t7400j1npm0000gn/T/opencode/tinyrex-learning-shots';
+const shots = process.env.TINYREX_SHOTS || resolve(process.env.RUNNER_TEMP || tmpdir(), 'opencode/tinyrex-learning-shots');
 await mkdir(shots, { recursive: true });
 const types = { '.html': 'text/html', '.css': 'text/css', '.mjs': 'text/javascript', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' };
 const server = createServer(async (req, res) => {
@@ -21,7 +23,12 @@ const server = createServer(async (req, res) => {
 });
 await new Promise(done => server.listen(0, '127.0.0.1', done));
 const base = `http://127.0.0.1:${server.address().port}`;
-const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
+const executablePath = process.env.CHROME_BIN || [
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  '/usr/bin/google-chrome', '/usr/bin/chromium',
+].find(existsSync);
+assert(executablePath, 'Set CHROME_BIN to an installed browser');
+const browser = await chromium.launch({ executablePath, headless: true });
 let checks = 0;
 try {
   for (const width of [1440, 768, 390, 320]) for (const colorScheme of ['light', 'dark']) {
@@ -116,6 +123,15 @@ try {
   await normal.waitForFunction(() => Number(document.querySelector('#gait-phase').value) > 2);
   await normal.emulateMedia({ reducedMotion: 'reduce' });
   await normal.waitForFunction(() => document.querySelector('[data-gait-play]').getAttribute('aria-pressed') === 'false');
+  await normal.goto(`${base}/brand/`);
+  assert.match(await normal.locator('meta[name="description"]').getAttribute('content'), /Tinyrex brand kit/);
+  const manifest = await (await normal.request.get(`${base}/site.webmanifest`)).json();
+  assert.match(manifest.description, /18-joint/);
+  assert.equal(manifest.short_name.toLowerCase(), 'tinyrex');
+  for (const anchor of ['learn', 'joints', 'balance', 'gait', 'build']) {
+    assert.ok(await normal.locator(`.nav a[href="/#${anchor}"]`).count(), `supporting-page navigation: ${anchor}`);
+  }
+  assert.doesNotMatch(await normal.locator('footer').innerText(), /was designed by an AI agent/);
   await normal.close();
   console.log(`✓ ${checks} viewport/theme combinations + no-JS fallback; screenshots: ${shots}`);
 } finally { await browser.close(); await new Promise(done => server.close(done)); }

@@ -5,9 +5,13 @@ import { createServer } from 'node:http';
 import { readFile, stat, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
-const sites = JSON.parse(await readFile(process.argv[2], 'utf8'));
+const sites = process.argv[2] ? JSON.parse(await readFile(process.argv[2], 'utf8'))
+  : ['autobot', 'invincible', 'sovware', 'wckd', 'omnie', 'nightfall', 'tinyrex'].map(name => ({
+    name, brandKey: name, directory: fileURLToPath(new URL(`../dist/${name}/`, import.meta.url)),
+  }));
 const kit = JSON.parse(await readFile(new URL('../brand/kit.json', import.meta.url), 'utf8'));
 const executablePath = process.env.CHROME_BIN || [
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
@@ -71,6 +75,16 @@ try {
           if (shots) await page.screenshot({ path: resolve(shots, `${site.name}-${name}.png`) });
           console.log(`PASS ${site.name}/${name}: ${width}px, ${metrics.background}, no overflow or client errors`);
           if (site.brandKey) {
+            const manifest = await (await page.request.get(`http://127.0.0.1:${server.address().port}/site.webmanifest`)).json();
+            assert.equal(manifest.short_name.toLowerCase(), kit.brands[site.brandKey].name.toLowerCase(), `${site.name}: manifest identity`);
+            // Descriptive branding changes must preserve install identity, fields and icon paths.
+            assert.deepEqual(Object.keys(manifest).sort(), ['name', 'short_name', 'description', 'start_url', 'display', 'background_color', 'theme_color', 'icons'].sort());
+            assert.equal(manifest.start_url, '/');
+            assert.equal(manifest.display, 'minimal-ui');
+            assert.deepEqual(manifest.icons, [
+              { src: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+              { src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' },
+            ]);
             await page.goto(`http://127.0.0.1:${server.address().port}/brand/`, { waitUntil: 'networkidle' });
             const own = kit.brands[site.brandKey];
             assert.equal(await page.getByRole('row').filter({ hasText: 'Signal on paper' }).locator('code').textContent(), own.onPaper);

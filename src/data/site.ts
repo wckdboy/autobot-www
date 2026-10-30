@@ -114,8 +114,8 @@ const configs: Record<SiteKey, SiteMeta> = {
   },
   tinyrex: {
     key: 'tinyrex', name: 'TinyRex', wordmark: 'tinyrex', domain: 'tinyrex.sh', origin: 'https://tinyrex.sh',
-    title: 'TinyRex — a robot T-rex, designed by an AI agent', description: 'TinyRex is a small bipedal T-rex robot with 17 servos, designed from an empty file by an AI agent in Polykrom, then checked standing and walking in Polykrom and in MuJoCo.',
-    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/tinyrex', license: 'Apache-2.0 / CC-BY-4.0', tagline: 'Designed from an empty file by an AI agent.', og: '/og.png',
+    title: 'Tinyrex — robotics learning lab', description: 'Learn robotics with Tinyrex, an 18-joint T-rex design inspired by Microduck and Open Duck Mini. Explore joints, balance and leg kinematics with simplified educational models.',
+    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/WCKDai/tinyrex', license: 'Apache-2.0 / CC-BY-4.0', tagline: 'Learn robotics, one experiment at a time.', og: '/og.png',
   },
 };
 

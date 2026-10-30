@@ -1,8 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { JOINTS, finite, clamp, jointAngle, convexHull, supportMargin, balanceModel, footTarget, inverseKinematics } from '../public/tinyrex/models.mjs';
 
 const near = (actual, expected, epsilon = 1e-8) => assert.ok(Math.abs(actual - expected) < epsilon, `${actual} ≈ ${expected}`);
+
+test('shared Tinyrex metadata and navigation describe the current learning lab', async () => {
+  const meta = (await readFile(new URL('../src/data/site.ts', import.meta.url), 'utf8')).split('  tinyrex: {')[1];
+  assert.match(meta, /18-joint/);
+  assert.doesNotMatch(meta, /17 servos|designed from an empty file/i);
+  const nav = (await readFile(new URL('../src/data/nav.ts', import.meta.url), 'utf8')).split('  tinyrex: {')[1];
+  for (const anchor of ['learn', 'joints', 'balance', 'gait', 'build']) assert.ok(nav.includes(`/#${anchor}`));
+  assert.doesNotMatch(nav, /was designed by an AI agent/);
+});
+
+test('current design citations pin a public revision, not the historical default branch', async () => {
+  const page = await readFile(new URL('../src/views/TinyRexLab.astro', import.meta.url), 'utf8');
+  assert.ok(page.includes('a40e994a88fd3abd71caf972dc9267e8a7fef1ad'));
+  assert.doesNotMatch(page, /blob\/main\/(?:design|AGENTS|CREDITS)/);
+});
 
 test('joint snapshot: 18 unique joints, five per leg, all ranges include zero', () => {
   assert.equal(JOINTS.length, 18);

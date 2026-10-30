@@ -6,8 +6,11 @@ import BalanceLab from '../components/tinyrex/BalanceLab.astro';
 import GaitLab from '../components/tinyrex/GaitLab.astro';
 import '../components/tinyrex/learning.css';
 
-const REPO = 'https://github.com/wckdboy/tinyrex';
-const source = `${REPO}/tree/main/design`;
+const REPO = 'https://github.com/WCKDai/tinyrex';
+// The default branch still describes the historical robot; cite this public design snapshot.
+const REV = 'a40e994a88fd3abd71caf972dc9267e8a7fef1ad';
+const blob = `${REPO}/blob/${REV}`;
+const source = `${REPO}/tree/${REV}/design`;
 const nav = [
   { label: 'Learn', href: '/#learn' },
   { label: 'Joints', href: '/#joints' },
@@ -44,7 +47,7 @@ const nav = [
       <div><dt>design → simulation</dt><dd>CAD <span>→ MuJoCo</span></dd></div>
       <div><dt>project status</dt><dd>Prototype <span>design</span></dd></div>
     </dl>
-    <p class="rex-source-note">Current v4 design snapshot, 30 Oct 2026. <a href={`${REPO}/blob/main/design/BOM.md`}>Design BOM ↗</a> · Simulation is not proof of physical readiness.</p>
+    <p class="rex-source-note">Current v4 design snapshot, 30 Oct 2026. <a href={`${blob}/design/BOM.md`}>Design BOM ↗</a> · Simulation is not proof of physical readiness.</p>
 
     <section id="learn" class="rex-section" aria-labelledby="learn-title">
       <div class="rex-section-heading"><p class="rex-eyebrow">Your route through the lab</p><h2 id="learn-title">From a joint to a first step.</h2><p>Change one thing. Predict what happens. Then test your intuition.</p></div>
@@ -75,7 +78,7 @@ const nav = [
             <div><dt>Structure</dt><dd>PETG shells, TPU contact parts, a carbon tail spine and slip-clutch designs.</dd></div>
           </dl>
           <p class="rex-callout"><strong>Read the open items.</strong> The design audit still lists open mesh seams, bracket ribs and STEP-export issues. These lessons do not certify assembly, durability or walking.</p>
-          <a href={`${REPO}/blob/main/design/AUDIT.md`}>Read the design audit ↗</a>
+           <a href={`${blob}/design/AUDIT.md`}>Read the design audit ↗</a>
         </div>
       </div>
       <details class="rex-details"><summary>Want to build? Start with a safe, reproducible model.</summary><div><p>Read the native repository’s current instructions, BOM, joint limits and generated audit together. Inspect how a part is fastened before printing it. Re-run simulation after geometry, mass or limit changes; do not treat a browser sketch as a calibrated controller.</p><p>Hardware needs an experienced human present, mechanical support, correct power and bus configuration, and a deliberate safety review. This site sends no commands and offers no connection to a robot. Servo IDs in the native configuration are placeholders, not an assembly guarantee.</p></div></details>
@@ -85,8 +88,8 @@ const nav = [
       <div class="rex-section-heading"><p class="rex-eyebrow">Open notebook / honest boundaries</p><h2 id="sources-title">Learn from the work. Credit the roots.</h2></div>
       <div class="rex-reading-grid">
         <div><h3>What these instruments leave out</h3><p>Every instrument here is a <strong>simplified educational model</strong>, written for this site. No rigid-body physics engine runs here. No measured speed, payload, stability or real-world readiness is claimed.</p><p>Joint sketches omit coupled collisions. The balance test is quasi-static, on flat ground with fixed contacts. Gait uses a two-link planar leg, not Tinyrex’s full geometry, actuator limits, inertia, torque or contact dynamics. A plausible motion can still fall over.</p></div>
-        <div><h3>Primary sources</h3><ul class="rex-reading-list"><li><a href={`${REPO}/blob/main/AGENTS.md`}>Current architecture & safety boundaries ↗</a></li><li><a href={`${REPO}/blob/main/design/BOM.md`}>v4 prototype bill of materials ↗</a></li><li><a href={`${REPO}/blob/main/design/blender/joint_limits.json`}>Model-swept joint ranges ↗</a></li><li><a href={`${REPO}/blob/main/design/MASS.md`}>Computed mass & balance, not a scale measurement ↗</a></li><li><a href={`${REPO}/blob/main/design/sim/servos.json`}>Simulation / runtime joint mapping ↗</a></li></ul></div>
-        <div><h3>Small-biped inspiration</h3><p><a href="https://github.com/pollen-robotics/microduck">Microduck / Pollen Robotics ↗</a> informs the current joint layout and MJCF lineage. <a href="https://github.com/apirrone/Open_Duck_Mini">Open Duck Mini / Antoine Pirrone & contributors ↗</a> helped establish the small, expressive biped direction.</p><p>No upstream meshes are shipped by these lessons. Microduck’s 3D models are CC BY-NC-SA 4.0; its software and the cited MJCF lineage are Apache-2.0. Read <a href={`${REPO}/blob/main/CREDITS.md`}>Tinyrex’s full credits ↗</a>. Attribution is not endorsement.</p></div>
+        <div><h3>Primary sources</h3><ul class="rex-reading-list"><li><a href={`${blob}/AGENTS.md`}>Current architecture & safety boundaries ↗</a></li><li><a href={`${blob}/design/BOM.md`}>v4 prototype bill of materials ↗</a></li><li><a href={`${blob}/design/blender/joint_limits.json`}>Model-swept joint ranges ↗</a></li><li><a href={`${blob}/design/MASS.md`}>Computed mass & balance, not a scale measurement ↗</a></li><li><a href={`${blob}/design/sim/servos.json`}>Simulation / runtime joint mapping ↗</a></li></ul></div>
+        <div><h3>Small-biped inspiration</h3><p><a href="https://github.com/pollen-robotics/microduck">Microduck / Pollen Robotics ↗</a> informs the current joint layout and MJCF lineage. <a href="https://github.com/apirrone/Open_Duck_Mini">Open Duck Mini / Antoine Pirrone & contributors ↗</a> helped establish the small, expressive biped direction.</p><p>No upstream meshes are shipped by these lessons. Microduck’s 3D models are CC BY-NC-SA 4.0; its software and the cited MJCF lineage are Apache-2.0. Read <a href={`${blob}/CREDITS.md`}>Tinyrex’s full credits ↗</a>. Attribution is not endorsement.</p></div>
       </div>
       <div id="model"><span id="results" aria-hidden="true"></span><details class="rex-details" id="archive"><summary>Archive / the earlier 17-joint Polykrom-agent design</summary><div><p>The earlier Feetech-based prototype and its reported 1.68 kg mass belong to a different design. Its motion studies and reports are historical artifacts, not current XL330 specifications or validation. Legacy model and results links lead here so the earlier design cannot be mistaken for the current robot.</p><p><a href={`${REPO}/tree/main/results`}>Earlier results & reports ↗</a> · <a href={`${REPO}/tree/main/harness`}>Original agent-build harness ↗</a></p></div></details></div>
       <p class="rex-local-note">Local by design. Controls and quiz answers live only in this page’s memory. No tracking, storage, external browser requests or hardware connection. Source links leave the site only when you follow them.</p>
