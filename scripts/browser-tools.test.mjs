@@ -41,11 +41,17 @@ test('documented name-only entries reject the wrong manifest identity', async ()
   } finally { await rm(temp, { recursive: true }); }
 });
 
-test('family QA loads and exercises Tinyrex ES modules', async () => {
+test('family QA loads ES modules with JavaScript MIME types', async () => {
   const temp = await mkdtemp(resolve(scratch, 'wckd-module-fixture-'));
   try {
     const entries = resolve(temp, 'sites.json');
-    await writeFile(entries, JSON.stringify([{ name: 'rex-preview', brandKey: 'tinyrex', directory: resolve(root, 'dist/tinyrex') }]));
+    const directory = resolve(temp, 'site');
+    await cp(resolve(root, 'dist/wckd'), directory, { recursive: true });
+    const html = await readFile(resolve(directory, 'index.html'), 'utf8');
+    await writeFile(resolve(directory, 'index.html'), html.replace('</body>', '<script type="module" src="/fixture.mjs"></script></body>'));
+    await writeFile(resolve(directory, 'fixture.mjs'), "import { value } from './value.mjs'; if (value !== 42) throw new Error('Module fixture failed');");
+    await writeFile(resolve(directory, 'value.mjs'), 'export const value = 42;');
+    await writeFile(entries, JSON.stringify([{ name: 'module-preview', brandKey: 'wckd', directory }]));
     const result = run('scripts/family-browser.mjs', [entries]);
     assert.equal(result.error, undefined, result.error?.message);
     assert.equal(result.status, 0, result.stdout + result.stderr);

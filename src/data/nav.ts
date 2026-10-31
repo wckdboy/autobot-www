@@ -72,15 +72,11 @@ export const NAV = {
   },
   tinyrex: {
     nav: [
-      { label: 'Learn', href: '/#learn' },
-      { label: 'Joints', href: '/#joints' },
-      { label: 'Balance', href: '/#balance' },
-      { label: 'Gait', href: '/#gait' },
-      { label: 'Build', href: '/#build' },
+      { label: 'Overview', href: '/' },
       { label: 'Source', href: 'https://github.com/WCKDai/tinyrex' },
       { label: 'WCKD', href: 'https://wckd.ai' },
     ],
-    footer: 'Tinyrex / a WCKD robotics experiment inspired by Microduck and Open Duck Mini. Simplified browser lessons, not validated robot controllers.',
+    footer: 'Tinyrex / a WCKD robotics project.',
     repo: 'https://github.com/WCKDai/tinyrex',
   },
 } as const;

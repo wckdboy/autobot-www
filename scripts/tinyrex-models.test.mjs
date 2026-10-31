@@ -5,17 +5,17 @@ import { JOINTS, finite, clamp, jointAngle, convexHull, supportMargin, balanceMo
 
 const near = (actual, expected, epsilon = 1e-8) => assert.ok(Math.abs(actual - expected) < epsilon, `${actual} ≈ ${expected}`);
 
-test('shared Tinyrex metadata and navigation describe the current learning lab', async () => {
+test('shared Tinyrex metadata and navigation describe the minimal site', async () => {
   const meta = (await readFile(new URL('../src/data/site.ts', import.meta.url), 'utf8')).split('  tinyrex: {')[1];
-  assert.match(meta, /18-joint/);
+  assert.match(meta, /A small, open-source bipedal robot/);
   assert.doesNotMatch(meta, /17 servos|designed from an empty file/i);
   const nav = (await readFile(new URL('../src/data/nav.ts', import.meta.url), 'utf8')).split('  tinyrex: {')[1];
-  for (const anchor of ['learn', 'joints', 'balance', 'gait', 'build']) assert.ok(nav.includes(`/#${anchor}`));
+  assert.doesNotMatch(nav, /\/#(?:learn|joints|balance|gait|build)/);
   assert.doesNotMatch(nav, /was designed by an AI agent/);
 });
 
-test('current design citations pin a public revision, not the historical default branch', async () => {
-  const page = await readFile(new URL('../src/views/TinyRexLab.astro', import.meta.url), 'utf8');
+test('archived learning documentation retains the public design revision', async () => {
+  const page = await readFile(new URL('../docs/tinyrex-learning.md', import.meta.url), 'utf8');
   assert.ok(page.includes('a40e994a88fd3abd71caf972dc9267e8a7fef1ad'));
   assert.doesNotMatch(page, /blob\/main\/(?:design|AGENTS|CREDITS)/);
 });

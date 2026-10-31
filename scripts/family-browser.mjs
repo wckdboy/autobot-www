@@ -56,7 +56,7 @@ try {
           assert(response.ok(), `${site.name}/${name}: failed homepage`);
           await page.evaluate(() => document.fonts.ready);
           assert.equal(await page.locator('h1').count(), 1, `${site.name}: one main heading`);
-          assert(await page.locator('a[href="https://creed.sh"],a[href="./creed.md"]').count(), `${site.name}: missing Creed`);
+          if (site.brandKey !== 'tinyrex') assert(await page.locator('a[href="https://creed.sh"],a[href="./creed.md"]').count(), `${site.name}: missing Creed`);
           const metrics = await page.evaluate(() => ({
             width: innerWidth, scroll: document.documentElement.scrollWidth,
             background: getComputedStyle(document.body).backgroundColor,
@@ -71,10 +71,9 @@ try {
           assert.equal(metrics.scroll, width, `${site.name}/${name}: horizontal overflow ${JSON.stringify(metrics.overflow)}`);
           assert(metrics.font.includes('JetBrains Mono'), `${site.name}: wrong family typography`);
           if (site.brandKey === 'tinyrex') {
-            await page.locator('[data-balance-challenge]').click();
-            assert.equal(await page.locator('[data-balance-status]').innerText(), 'Outside', 'Tinyrex teaching module initialized');
-            await page.locator('[data-balance-reset]').click();
-            assert.equal(await page.locator('#balance-stance').inputValue(), 'double');
+            assert.equal(await page.locator('h1').innerText(), 'tinyrex');
+            assert.equal(await page.locator('script, canvas, img, video, button, input, form, section').count(), 0, 'Tinyrex stays minimal');
+            assert.deepEqual(await page.locator('nav a').allTextContents(), ['source', 'wckd']);
           }
           if (site.name === 'creed') {
             await page.locator('.skill-card').first().click();

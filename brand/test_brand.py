@@ -10,11 +10,21 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class BrandTests(unittest.TestCase):
-    def test_every_product_has_a_distinct_signal(self):
+    def test_tinyrex_uses_polykrom_electric_lime(self):
+        brands = json.loads((ROOT / 'brand/kit.json').read_text())['brands']
+        self.assertEqual(brands['polykrom']['onInk'], '#CCFF00')
+        for mode in ('onPaper', 'onInk'):
+            self.assertEqual(brands['tinyrex'][mode], brands['polykrom']['onInk'])
+
+    def test_only_polykrom_and_its_flagship_demo_share_a_signal(self):
         brands = json.loads((ROOT / 'brand/kit.json').read_text())['brands']
         for mode in ('onPaper', 'onInk'):
-            colors = [brand[mode].upper() for brand in brands.values()]
-            self.assertEqual(len(set(colors)), len(colors), f'duplicate {mode} product signals')
+            signals = {}
+            for key, brand in brands.items():
+                signals.setdefault(brand[mode].upper(), set()).add(key)
+            shared = {color: keys for color, keys in signals.items() if len(keys) > 1}
+            expected = {'#CCFF00': {'polykrom', 'tinyrex'}} if mode == 'onInk' else {}
+            self.assertEqual(shared, expected, f'unexpected {mode} signal sharing')
 
     def test_marks_use_one_six_row_lowercase_alphabet(self):
         brands = json.loads((ROOT / 'brand/kit.json').read_text())['brands']

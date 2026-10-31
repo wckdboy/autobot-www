@@ -1,4 +1,9 @@
-# Tinyrex learning lab
+# Archived: Tinyrex learning lab
+
+The owner withdrew this design and requested a hyper-minimal site. The current homepage is only
+the Tinyrex mark/name, one short description, and source/WCKD links, with no JavaScript or learning
+instruments. The material below records the previous implementation, not the current website.
+`scripts/tinyrex-browser.mjs` now checks the minimal page rather than these archived interactions.
 
 ## Boundary and provenance
 

@@ -43,8 +43,9 @@ try {
 await sharp(Buffer.from(iconSvg)).resize(180, 180).png({ compressionLevel: 9 }).toFile(resolve(DIST, 'apple-touch-icon.png'));
 console.log('→ apple-touch-icon.png (180×180)');
 
-// TinyRex's media and 3D viewer (public/rex/) belong to tinyrex.sh alone.
-if (KEY !== 'tinyrex') await rm(resolve(DIST, 'rex'), { recursive: true, force: true });
+// The Tinyrex learning/media prototype is withdrawn. Keep its source, not its public payload.
+await rm(resolve(DIST, 'rex'), { recursive: true, force: true });
+if (KEY === 'tinyrex') await rm(resolve(DIST, 'tinyrex'), { recursive: true, force: true });
 
 // A tiny 32px PNG for clients that dislike SVG favicons.
 await sharp(Buffer.from(iconSvg)).resize(32, 32).png({ compressionLevel: 9 }).toFile(resolve(DIST, 'favicon-32.png'));
