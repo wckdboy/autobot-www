@@ -8,10 +8,11 @@ import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
-const sharedKeys = ['autobot', 'invincible', 'sovware', 'wckd', 'omnie', 'nightfall', 'tinyrex'];
+const sharedKeys = ['autobot', 'invincible', 'sovware', 'wckd', 'omnie', 'omnie-dk', 'nightfall', 'tinyrex'];
+const brandForSite = name => name === 'omnie-dk' ? 'omnie' : name;
 const sites = process.argv[2] ? JSON.parse(await readFile(process.argv[2], 'utf8'))
   : sharedKeys.map(name => ({
-    name, brandKey: name, directory: fileURLToPath(new URL(`../dist/${name}/`, import.meta.url)),
+    name, brandKey: brandForSite(name), directory: fileURLToPath(new URL(`../dist/${name}/`, import.meta.url)),
   }));
 const kit = JSON.parse(await readFile(new URL('../brand/kit.json', import.meta.url), 'utf8'));
 const executablePath = process.env.CHROME_BIN || [
@@ -25,7 +26,7 @@ if (shots) await mkdir(shots, { recursive: true });
 try {
   for (const entry of sites) {
     assert(entry.brandKey === undefined || (typeof entry.brandKey === 'string' && Object.hasOwn(kit.brands, entry.brandKey)), `Unknown brandKey: ${entry.brandKey}`);
-    const site = { ...entry, brandKey: entry.brandKey ?? (sharedKeys.includes(entry.name) ? entry.name : undefined) };
+    const site = { ...entry, brandKey: entry.brandKey ?? (sharedKeys.includes(entry.name) ? brandForSite(entry.name) : undefined) };
     if (!site.brandKey) console.log(`LAYOUT ONLY ${site.name}: independent site; shared brand-page/manifest checks do not apply`);
     const root = resolve(site.directory);
     const missing = new Set();

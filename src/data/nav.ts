@@ -51,12 +51,23 @@ export const NAV = {
   },
   omnie: {
     nav: [
-      { label: 'Brand', href: '/' },
-      { label: 'Source', href: 'https://github.com/wckdboy/omnie-dev' },
-      { label: 'WCKD', href: 'https://wckd.ai' },
+      { label: 'How it fits', href: '/#how-it-works' },
+      { label: 'Reports', href: '/#reports' },
+      { label: 'Questions', href: '/#questions' },
+      { label: 'Dansk ↗', href: 'https://omnie.dk' },
     ],
-    footer: 'Omnie is an IDE for development on iPad and iPhone. Made by WCKD.',
-    repo: 'https://github.com/wckdboy/omnie-dev',
+    footer: 'Omnie / connect apps and data. e-conomic reporting first. In development. Made by WCKD.',
+    repo: 'https://wckd.ai',
+  },
+  'omnie-dk': {
+    nav: [
+      { label: 'Sådan hænger det sammen', href: '/#how-it-works' },
+      { label: 'Rapporter', href: '/#reports' },
+      { label: 'Spørgsmål', href: '/#questions' },
+      { label: 'English ↗', href: 'https://omnie.sh' },
+    ],
+    footer: 'Omnie / forbind apps og data. Første fokus er e-conomic-rapporter. Under udvikling. Skabt af WCKD.',
+    repo: 'https://wckd.ai',
   },
   nightfall: {
     nav: [

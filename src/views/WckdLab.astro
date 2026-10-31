@@ -21,7 +21,7 @@ const lab = [
 ];
 const repoUrls = new Map(source.repositories.map((r) => [r.name.toLowerCase(), r.url]));
 const repoUrl = (name: string) => repoUrls.get(name.toLowerCase());
-const sourceUrl = (p: { repo: string; source?: string }) => p.source ?? repoUrl(p.repo);
+const sourceUrl = (p: { repo?: string; source?: string }) => p.source ?? (p.repo ? repoUrl(p.repo) : undefined);
 ---
 <Lab path="/" current="" description="Explore the WCKD projects: AI agents, CAD, creative apps, local tools and open research. Project sites, public source and development status in one place.">
   <p class="label">WCKD.AI / independent software</p>
@@ -63,8 +63,8 @@ const sourceUrl = (p: { repo: string; source?: string }) => p.source ?? repoUrl(
   </section>
 
   <section id="omnie" aria-labelledby="omnie-title">
-    <h2 id="omnie-title">The Omnie apps.</h2>
-    <p>A family, with a different workspace for each kind of work. Development status and setup live with each app.</p>
+    <h2 id="omnie-title">Earlier Omnie apps.</h2>
+    <p>Omnie’s current focus is e-conomic data and reporting through Omnie Connect. These earlier tools remain separate projects; their capabilities are not the new connector’s feature list.</p>
     <ul class="small-projects">{omnie.map(([name, repo, description]) => (
       <li><h3><a href={repoUrl(repo)}>{name} <span aria-hidden="true">↗</span></a></h3><p>{description}</p></li>
     ))}</ul>

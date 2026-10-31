@@ -1,0 +1,206 @@
+---
+import Lab from '../layouts/Lab.astro';
+import { meta } from '../data/site';
+import report from '../data/omnie-report.json';
+
+const da = meta.key === 'omnie-dk';
+const t = da ? {
+  status: 'under udvikling / e-conomic først',
+  headline: ['mindre kopiering.', 'mere overblik.'],
+  intro: 'Vi bygger Omnie til at forbinde apps og data, så de kan bruges til noget. Første fokus er projekt- og kontodata fra e-conomic — hentet gennem Omnie Connect-appen og brugt til rapporter i Omnie.',
+  primary: 'Se et rapporteksempel', secondary: 'Sådan hænger det sammen',
+  sketch: 'omnie / rapportskitse', projectOverview: 'Projektoverblik', period: 'januar–marts 2026 · DKK',
+  contribution: 'bidrag efter direkte omkostninger', fictional: 'Eksempel med fiktive data. Ikke en live forbindelse.',
+  project: 'Projekt', revenue: 'Omsætning', costs: 'Direkte omk.', result: 'Bidrag',
+  focusLabel: '01 / en klar arbejdsdeling', focusTitle: 'Forbindelsen først. Rapporten bagefter.',
+  focusIntro: 'Omnie Connect og Omnie har hver sin rolle. Vi starter med én datakilde og ét formål: at få mere ud af tallene i e-conomic.',
+  steps: [
+    ['e-conomic', 'Datakilden', 'Dine projekt- og kontodata er udgangspunktet. Du skal ikke indtaste de samme tal endnu en gang.'],
+    ['Omnie Connect', 'Forbindelsen', 'Connector-appen skal hente de relevante data ud af e-conomic. Første fokus er læseadgang — ikke at ændre dit regnskab.'],
+    ['Omnie', 'Overblikket', 'Data skal blive til rapporter, der besvarer dine spørgsmål. En tydelig sammenhæng mellem tallene og det, du vil vide.'],
+  ],
+  reportLabel: '02 / fra data til spørgsmål', reportTitle: 'Se tallene i deres sammenhæng.',
+  reportIntro: 'Her er to måder at se det samme fiktive datasæt på. De viser retningen for rapporteringen — ikke en liste over færdige produktfunktioner.',
+  projectView: 'Se projekterne', accountView: 'Se kontogrundlaget', accountsCaption: 'Forenklet kontogrundlag / fiktive data',
+  account: 'Kontogruppe', amount: 'Beløb', materials: 'Materialer og eksterne omkostninger', labour: 'Direkte lønomkostninger',
+  formula: 'Bidrag = omsætning − direkte omkostninger. Eksemplet er ikke et fuldt driftsregnskab og er uden moms.',
+  directions: [
+    ['Hvilke projekter bidrager?', 'Se omsætning og direkte omkostninger ved siden af hinanden, så forskellene mellem projekterne bliver synlige.'],
+    ['Hvad ligger bag tallet?', 'Forstå kontogrundlaget bag en rapport i stedet for at miste sammenhængen mellem eksport og præsentation.'],
+    ['Hvilket spørgsmål mangler svar?', 'Den første konkrete rapport vælges ud fra et reelt behov. Ikke ud fra, hvor mange dashboards vi kan love.'],
+  ],
+  scopeLabel: '03 / fokus lige nu', scopeTitle: 'e-conomic ind. Brugbare rapporter ud.',
+  scopeText: 'Omnie kan på sigt forbinde flere apps og datapunkter. Lige nu holder vi fokus på e-conomic, projekt- og kontodata samt rapporter gennem Omnie og Omnie Connect.',
+  now: 'Første fase', nowItems: ['e-conomic som første integration', 'Udtræk af projekt- og kontodata', 'Rapporter med et tydeligt datagrundlag'],
+  later: 'Ikke i første fase', laterItems: ['En lang liste af andre integrationer', 'Tilbageskrivning til e-conomic', 'Et nyt regnskabssystem'],
+  faqTitle: 'Et par ting, helt klart.',
+  faqs: [
+    ['Kan jeg forbinde min e-conomic-aftale her?', 'Nej. Dette er en produktside med et rapporteksempel. Den opretter ikke forbindelse til e-conomic, indsamler ikke dine loginoplysninger og behandler ikke regnskabsdata.'],
+    ['Er Omnie Connect og Omnie det samme?', 'De hører sammen, men har forskellige roller: Omnie Connect er connector-appen, der skal hente data. Omnie er stedet, hvor data skal bruges til at bygge rapporter.'],
+    ['Er løsningen klar til brug?', 'Arbejdet er under udvikling. Der er endnu ikke en offentlig connector-download, onboarding eller en bekræftet liste over rapporttyper på denne side.'],
+    ['Hvad med de tidligere Omnie-apps?', 'Omnies aktuelle retning er forbindelser og rapportering. De tidligere udvikler- og redigeringsværktøjer er separate projekter, ikke dokumentation for den nye connectors funktioner.'],
+  ],
+  closing: ['forbind data.', 'få overblik.'], closingText: 'Én konkret integration er et bedre sted at begynde end et løfte om at forbinde alt.',
+  back: 'Til rapporteksemplet', skip: 'Spring til indhold', navigation: 'Hovednavigation',
+} : {
+  status: 'in development / e-conomic first',
+  headline: ['less copying.', 'more clarity.'],
+  intro: 'We’re building Omnie to connect apps and data, and make them useful. First: project and account data from e-conomic, pulled through the Omnie Connect app and used to build reports in Omnie.',
+  primary: 'Explore a report example', secondary: 'See how it fits',
+  sketch: 'omnie / report sketch', projectOverview: 'Project overview', period: 'January–March 2026 · DKK',
+  contribution: 'contribution after direct costs', fictional: 'Example with fictional data. Not a live connection.',
+  project: 'Project', revenue: 'Revenue', costs: 'Direct costs', result: 'Contribution',
+  focusLabel: '01 / a clear division of work', focusTitle: 'First the connection. Then the report.',
+  focusIntro: 'Omnie Connect and Omnie do different jobs. We’re starting with one source and one purpose: getting more useful information out of e-conomic.',
+  steps: [
+    ['e-conomic', 'The source', 'Your project and account data is the starting point. You shouldn’t have to enter the same numbers all over again.'],
+    ['Omnie Connect', 'The connection', 'The connector app is being built to pull the relevant data out of e-conomic. Read-only access comes first, not changes to your books.'],
+    ['Omnie', 'The picture', 'The data should become reports that answer your questions, with a clear connection between the numbers and what you need to know.'],
+  ],
+  reportLabel: '02 / from data to questions', reportTitle: 'See the numbers in context.',
+  reportIntro: 'Two views of the same fictional dataset. They illustrate the reporting direction, not a list of finished product features.',
+  projectView: 'Explore the projects', accountView: 'Explore the account basis', accountsCaption: 'Simplified account basis / fictional data',
+  account: 'Account group', amount: 'Amount', materials: 'Materials and external costs', labour: 'Direct labour costs',
+  formula: 'Contribution = revenue − direct costs. This is not a complete profit-and-loss statement and excludes VAT.',
+  directions: [
+    ['Which projects contribute?', 'Put revenue and direct costs side by side, so differences between projects become visible.'],
+    ['What is behind the number?', 'Understand the account basis of a report, instead of losing the connection between an export and a presentation.'],
+    ['Which question needs an answer?', 'The first concrete report will be chosen around a real need, not the number of dashboards we can promise.'],
+  ],
+  scopeLabel: '03 / the current focus', scopeTitle: 'e-conomic in. Useful reports out.',
+  scopeText: 'Omnie can connect more apps and data points over time. Right now the focus is e-conomic, project and account data, and reporting through Omnie and Omnie Connect.',
+  now: 'First phase', nowItems: ['e-conomic as the first integration', 'Extract project and account data', 'Reports with a clear data basis'],
+  later: 'Outside the first phase', laterItems: ['A long list of other integrations', 'Writing changes back to e-conomic', 'Replacing your accounting system'],
+  faqTitle: 'A few things, made clear.',
+  faqs: [
+    ['Can I connect my e-conomic account here?', 'No. This is a product page with an illustrative report. It does not connect to e-conomic, collect login details or process accounting data.'],
+    ['Are Omnie Connect and Omnie the same thing?', 'They fit together, but have different roles: Omnie Connect is the connector app being built to pull data. Omnie is where that data will be used to build reports.'],
+    ['Is the product available?', 'It is in development. There is no public connector download, onboarding flow or confirmed set of report types on this page yet.'],
+    ['What about the earlier Omnie apps?', 'Omnie’s current direction is connections and reporting. Earlier development and editing tools remain separate projects, not evidence of the new connector’s capabilities.'],
+  ],
+  closing: ['connect the data.', 'see the picture.'], closingText: 'One useful connection is a better starting point than a promise to connect everything.',
+  back: 'Back to the report example', skip: 'Skip to content', navigation: 'Primary',
+};
+const money = (amount: number) => new Intl.NumberFormat(da ? 'da-DK' : 'en-GB', { maximumFractionDigits: 0 }).format(amount);
+const revenue = report.projects.reduce((sum, p) => sum + p.revenue, 0);
+const costs = report.projects.reduce((sum, p) => sum + p.costs, 0);
+const contribution = revenue - costs;
+const alternates = [
+  { lang: 'da', href: 'https://omnie.dk/' }, { lang: 'en', href: 'https://omnie.sh/' }, { lang: 'x-default', href: 'https://omnie.sh/' },
+];
+---
+<Lab lang={da ? 'da' : 'en'} skipLabel={t.skip} navLabel={t.navigation} alternates={alternates}>
+  <div class="omnie-hero">
+    <div class="hero-copy">
+      <p class="label status-line"><span class="status-square" aria-hidden="true"></span>{t.status}</p>
+      <h1>{t.headline[0]}<br />{t.headline[1]}</h1>
+      <p class="lede">{t.intro}</p>
+      <div class="actions"><a class="button button--primary" href="#reports">{t.primary}</a><a href="#how-it-works">{t.secondary} <span aria-hidden="true">↘</span></a></div>
+      <p class="hero-footnote">e-conomic → Omnie Connect → Omnie</p>
+    </div>
+    <aside class="report-sketch" aria-label={t.sketch} data-report-example>
+      <div class="sketch-top"><span>{t.sketch}</span><span>01</span></div>
+      <h2>{t.projectOverview}</h2><p class="period">{t.period}</p>
+      <p class="big-number">{money(contribution)}<span>DKK</span></p><p class="metric-label">{t.contribution}</p>
+      <div class="mini-projects">{report.projects.map(project => <div class="mini-project"><div><span>{t.project} {project.id}</span><strong>{money(project.revenue - project.costs)}</strong></div><span class="bar-track"><span style={`width:${((project.revenue - project.costs) / contribution) * 100}%`}></span></span></div>)}</div>
+      <p class="demo-note">{t.fictional}</p>
+    </aside>
+  </div>
+
+  <section id="how-it-works" aria-labelledby="flow-title">
+    <p class="label">{t.focusLabel}</p><h2 id="flow-title">{t.focusTitle}</h2><p class="section-intro">{t.focusIntro}</p>
+    <ol class="flow">{t.steps.map(([name, role, text], index) => <li><p class="flow-index">0{index + 1} / {role}</p><h3>{name}</h3><p>{text}</p></li>)}</ol>
+  </section>
+
+  <section id="reports" aria-labelledby="reports-title">
+    <p class="label">{t.reportLabel}</p><h2 id="reports-title">{t.reportTitle}</h2><p class="section-intro">{t.reportIntro}</p>
+    <div class="report-workspace">
+      <div class="report-workspace-head"><span>omnie / {da ? 'rapporteksempel' : 'report example'}</span><span>{t.period}</span></div>
+      <div class="report-metrics">{[[t.revenue, revenue], [t.costs, costs], [t.result, contribution]].map(([label, value]) => <div><span>{label}</span><strong>{money(Number(value))}<small> DKK</small></strong></div>)}</div>
+      <details class="report-view" open><summary>{t.projectView}</summary><div class="table-wrap" tabindex="0" role="region" aria-label={t.projectOverview}><table><caption>{t.projectOverview} / {t.period}</caption><thead><tr><th scope="col">{t.project}</th><th scope="col">{t.revenue}</th><th scope="col">{t.costs}</th><th scope="col">{t.result}</th></tr></thead><tbody>{report.projects.map(project => <tr><th scope="row">{t.project} {project.id}</th><td>{money(project.revenue)}</td><td>{money(project.costs)}</td><td>{money(project.revenue - project.costs)}</td></tr>)}</tbody><tfoot><tr><th scope="row">{da ? 'I alt' : 'Total'}</th><td>{money(revenue)}</td><td>{money(costs)}</td><td>{money(contribution)}</td></tr></tfoot></table></div></details>
+      <details class="report-view" data-account-view><summary>{t.accountView}</summary><div class="table-wrap" tabindex="0" role="region" aria-label={t.accountsCaption}><table><caption>{t.accountsCaption}</caption><thead><tr><th scope="col">{t.account}</th><th scope="col">{t.amount} / DKK</th></tr></thead><tbody>{[[t.revenue, report.accounts.revenue], [t.materials, report.accounts.materials], [t.labour, report.accounts.labour]].map(([label, value]) => <tr><th scope="row">{label}</th><td>{money(Number(value))}</td></tr>)}</tbody></table></div></details>
+      <p class="report-caption">{t.formula}<br /><strong>{t.fictional}</strong></p>
+    </div>
+    <div class="report-directions">{t.directions.map(([heading, text]) => <div><h3>{heading}</h3><p>{text}</p></div>)}</div>
+  </section>
+
+  <section id="scope" aria-labelledby="scope-title">
+    <p class="label">{t.scopeLabel}</p><h2 id="scope-title">{t.scopeTitle}</h2><p class="section-intro">{t.scopeText}</p>
+    <div class="scope-grid"><div><h3>{t.now}</h3><ul>{t.nowItems.map(item => <li>{item}</li>)}</ul></div><div><h3>{t.later}</h3><ul>{t.laterItems.map(item => <li>{item}</li>)}</ul></div></div>
+  </section>
+
+  <section id="questions" aria-labelledby="questions-title">
+    <h2 id="questions-title">{t.faqTitle}</h2><div class="questions">{t.faqs.map(([question, answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div>
+  </section>
+  <section class="closing"><div><p class="label">omnie / e-conomic first</p><h2>{t.closing[0]}<br />{t.closing[1]}</h2><p>{t.closingText}</p></div><a href="#reports">{t.back} <span aria-hidden="true">↑</span></a></section>
+</Lab>
+
+<style>
+  .omnie-hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; padding-bottom: 68px; align-items: start; }
+  .status-line { display: flex; align-items: center; gap: 10px; margin: 0 0 30px; }
+  .status-square { width: 6px; height: 6px; background: var(--mark); flex: none; }
+  h1 { font-size: clamp(36px, 4.7vw, 58px); margin: 0; letter-spacing: -.055em; }
+  .lede { font-size: 16px; line-height: 1.8; }
+  .hero-footnote { font-size: 11px; color: var(--muted); margin: 34px 0 0; }
+  .actions { align-items: center; font-size: 12px; }
+  .report-sketch { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 18px 0 14px; margin-top: 5px; min-width: 0; }
+  .sketch-top, .report-workspace-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 10px; color: var(--muted); }
+  .report-sketch h2 { font-size: 18px; margin: 28px 0 3px; }
+  .period { font-size: 10px; color: var(--muted); margin: 0; }
+  .big-number { font-size: clamp(32px, 4vw, 45px); letter-spacing: -.05em; line-height: 1.15; margin: 28px 0 6px; }
+  .big-number span { font-size: 12px; letter-spacing: 0; margin-left: 12px; }
+  .metric-label { font-size: 11px; color: var(--muted); margin: 0; }
+  .mini-projects { margin-top: 26px; }
+  .mini-project { margin: 17px 0; font-size: 11px; }
+  .mini-project > div { display: flex; justify-content: space-between; gap: 12px; }
+  .mini-project strong { font-weight: 500; }
+  .bar-track { display: block; height: 3px; background: var(--rule); margin-top: 8px; }
+  .bar-track > span { display: block; height: 100%; background: var(--ink); }
+  .demo-note { font-size: 10px; line-height: 1.6; color: var(--muted); margin: 23px 0 0; }
+  .section-intro { max-width: 68ch; color: var(--muted); font-size: 14px; line-height: 1.8; }
+  section > .label { margin: 0 0 18px; }
+  .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; padding: 0; margin: 34px 0 0; gap: 32px; }
+  .flow li { border-top: 1px solid var(--rule); padding-top: 20px; }
+  .flow-index { font-size: 10px; color: var(--muted); margin: 0 0 18px; }
+  .flow h3 { font-size: 19px; margin: 0 0 12px; }
+  .flow li > p:last-child, .report-directions p { font-size: 12px; color: var(--muted); line-height: 1.85; margin: 0; }
+  .report-workspace { margin-top: 32px; border-top: 2px solid var(--ink); }
+  .report-workspace-head { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+  .report-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 26px 0; }
+  .report-metrics > div > span { display: block; color: var(--muted); font-size: 11px; margin-bottom: 7px; }
+  .report-metrics strong { font-size: clamp(21px, 2.7vw, 30px); font-weight: 500; letter-spacing: -.04em; }
+  .report-metrics small { font-size: 10px; letter-spacing: 0; }
+  details { border-top: 1px solid var(--rule); }
+  summary { cursor: pointer; padding: 18px 0; font-size: 13px; font-weight: 600; min-height: 44px; }
+  summary::marker { color: var(--muted); }
+  .table-wrap { overflow-x: auto; width: 100%; margin: 0 0 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  caption { text-align: left; font-size: 10px; color: var(--muted); padding-bottom: 12px; }
+  td, th { padding: 13px 9px; border-bottom: 1px solid var(--rule); text-align: right; white-space: nowrap; }
+  th:first-child { text-align: left; padding-left: 0; }
+  th { font-weight: 500; }
+  tfoot { font-weight: 600; }
+  .report-caption { padding: 18px 0 0; border-top: 1px solid var(--rule); font-size: 11px; line-height: 1.9; color: var(--muted); }
+  .report-caption strong { font-weight: 400; }
+  .report-directions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 38px; }
+  .report-directions h3 { font-size: 13px; margin: 0 0 12px; }
+  .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 32px; }
+  .scope-grid > div { border-top: 1px solid var(--rule); padding-top: 20px; }
+  .scope-grid h3 { font-size: 13px; margin: 0; }
+  .scope-grid ul { padding-left: 18px; font-size: 12px; color: var(--muted); line-height: 2.2; }
+  .questions { margin-top: 26px; border-bottom: 1px solid var(--rule); }
+  .questions p { max-width: 76ch; margin: 0 0 22px; font-size: 13px; color: var(--muted); }
+  .closing { display: flex; justify-content: space-between; align-items: end; gap: 36px; }
+  .closing h2 { font-size: clamp(28px, 4vw, 44px); line-height: 1.2; }
+  .closing p:not(.label) { max-width: 48ch; color: var(--muted); font-size: 12px; }
+  .closing > a { font-size: 12px; white-space: nowrap; }
+  @media (max-width: 850px) { .omnie-hero { grid-template-columns: 1fr; gap: 42px; } .hero-copy { max-width: 68ch; } .report-sketch { max-width: 550px; width: 100%; } }
+  @media (max-width: 640px) {
+    .omnie-hero { padding-bottom: 42px; } h1 { font-size: clamp(30px, 8.8vw, 46px); }
+    .flow, .report-directions, .scope-grid { grid-template-columns: 1fr; gap: 26px; }
+    .report-metrics { grid-template-columns: 1fr; gap: 18px; } .report-metrics > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    .report-metrics strong { font-size: 25px; white-space: nowrap; } .report-metrics > div > span { font-size: 10px; }
+    .closing { align-items: start; flex-direction: column; gap: 15px; }
+    .actions { align-items: start; flex-direction: column; } .hero-footnote { font-size: 10px; }
+  }
+</style>

@@ -15,7 +15,7 @@ const run = (script, args = [], env = {}) => spawnSync(process.execPath, [resolv
 });
 
 test('browser startup failures exit promptly instead of retaining a server', () => {
-  for (const script of ['scripts/tinyrex-browser.mjs', 'scripts/family-browser.mjs']) {
+  for (const script of ['scripts/tinyrex-browser.mjs', 'scripts/family-browser.mjs', 'scripts/omnie-browser.mjs']) {
     const result = run(script, [], { CHROME_BIN: '/nonexistent-wckd-qa-browser' });
     assert.notEqual(result.status, 0);
     assert.equal(result.error, undefined, result.error?.message);
