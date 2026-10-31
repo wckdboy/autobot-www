@@ -1,7 +1,7 @@
 import releaseData from './releases.json';
 import installData from './install.json';
 
-export type SiteKey = 'autobot' | 'invincible' | 'sovware' | 'wckd' | 'omnie' | 'nightfall' | 'tinyrex';
+export type SiteKey = 'autobot' | 'invincible' | 'sovware' | 'wckd' | 'omnie' | 'omnie-dk' | 'nightfall' | 'tinyrex';
 
 export interface NavItem {
   label: string;
@@ -104,8 +104,13 @@ const configs: Record<SiteKey, SiteMeta> = {
   },
   omnie: {
     key: 'omnie', name: 'Omnie', wordmark: 'omnie', domain: 'omnie.sh', origin: 'https://omnie.sh',
-    title: 'Omnie — an IDE for iOS and iPadOS', description: 'An offline-first IDE for agent-assisted development on iPad and iPhone: a native editor, git, a local model, and a sandbox that runs the project\'s own tests.',
-    theme: 'paper', nav: [], other: 'autobot', repo: 'https://github.com/wckdboy/omnie-dev', license: 'Apache-2.0', tagline: 'The IDE on the iPad.', og: '/og/sovware.png',
+    title: 'Omnie — from e-conomic data to useful reports', description: 'Omnie connects apps and data for reporting. First: project and account data from e-conomic through the Omnie Connect app. Read-only reporting, in development.',
+    theme: 'paper', nav: [], other: 'wckd', repo: 'https://wckd.ai', license: 'Not published', tagline: 'Connect the data. See the picture.', og: '/og.png',
+  },
+  'omnie-dk': {
+    key: 'omnie-dk', name: 'Omnie', wordmark: 'omnie', domain: 'omnie.dk', origin: 'https://omnie.dk',
+    title: 'Omnie — fra e-conomic til overblik', description: 'Omnie forbinder apps og data til rapporter. Første fokus: projekt- og kontodata fra e-conomic gennem Omnie Connect-appen. Læsebaseret rapportering, under udvikling.',
+    theme: 'paper', nav: [], other: 'wckd', repo: 'https://wckd.ai', license: 'Ikke udgivet', tagline: 'Forbind data. Få overblik.', og: '/og.png',
   },
   nightfall: {
     key: 'nightfall', name: 'Nightfall', wordmark: 'nightfall', domain: 'nightfall.sh', origin: 'https://nightfall.sh',
@@ -121,6 +126,7 @@ const configs: Record<SiteKey, SiteMeta> = {
 
 export const SITE = KEY;
 export const meta = configs[KEY];
+export const brandKey = KEY === 'omnie-dk' ? 'omnie' : KEY;
 
 export const releases = releaseData as {
   generatedAt: string;

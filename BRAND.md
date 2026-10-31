@@ -38,7 +38,7 @@ version of the kit at `/brand/`; wckd.ai's home is the master kit.
 | Sovware | sovware.io | The production arm for the stack | `s` | slate `#637282` (light `#B7C5D4` on ink) |
 | Autobot | autobot.sh | Private AI on your phone and your machine | `a` | purple `#7C5CFF` |
 | Invincible | invincible.sh | AI gateway and decentralized compute | `i` | signal orange `#FF8A1E` |
-| Omnie | omnie.sh | An IDE for development on iOS and iPadOS | `o` | phthalo `#00B386` |
+| Omnie | omnie.sh / omnie.dk | App and data connections; e-conomic reporting first | `o` | phthalo `#00B386` |
 | Nightfall | nightfall.sh | Archived CAD research; reference for PolyCore | `n` | rose `#FF3E8A` |
 | Niobium | niobium.sh | A pixel-art home for your AI team | `n.` (the n and its companion pixel) | pastel purple `#A78BFA` |
 | Polykrom | polykrom.app | Parametric CAD | `p` | electric lime `#CCFF00` (olive `#6E8600` on paper) |

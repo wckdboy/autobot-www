@@ -1,5 +1,5 @@
 ---
-import { meta } from '../data/site';
+import { meta, brandKey } from '../data/site';
 import { kit, symbolSvg } from '../data/kit';
 import { NAV } from '../data/nav';
 
@@ -14,6 +14,10 @@ interface Props {
   current?: string;
   footerNote?: string;
   noindex?: boolean;
+  lang?: string;
+  skipLabel?: string;
+  navLabel?: string;
+  alternates?: { lang: string; href: string }[];
 }
 
 const {
@@ -21,7 +25,7 @@ const {
   description = meta.description,
   path = Astro.url.pathname,
   og = '/og.png',
-  brand = kit.brands[meta.key]?.name ?? 'Autobot',
+  brand = kit.brands[brandKey]?.name ?? 'Autobot',
   accent,
   nav = (NAV as Record<string, { nav: readonly { label: string; href: string }[] }>)[meta.key]?.nav.slice() ?? [
     { label: 'Overview', href: '/' },
@@ -35,9 +39,13 @@ const {
   current = '',
   footerNote = (NAV as Record<string, { footer: string }>)[meta.key]?.footer ?? 'Made by WCKD.',
   noindex = false,
+  lang = 'en',
+  skipLabel = 'Skip to content',
+  navLabel = 'Primary',
+  alternates = [],
 } = Astro.props;
 
-const b = kit.brands[meta.key] ?? kit.brands.autobot;
+const b = kit.brands[brandKey] ?? kit.brands.autobot;
 const accentPaper = accent ?? b.text;
 const accentInk = b.onInk;
 const canonical = new URL(path, Astro.site).href;
@@ -45,13 +53,14 @@ const pageTitle = title ? `${title} — ${brand}` : meta.title;
 const ogImage = new URL(og, Astro.site).href;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates.map(item => <link rel="alternate" hreflang={item.lang} href={item.href} />)}
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
@@ -71,11 +80,11 @@ const ogImage = new URL(og, Astro.site).href;
     <style is:inline set:html={`:root{--accent:${accentPaper};--accent-paper:${accentPaper};--accent-ink:${accentInk};--mark:${b.onPaper};--mark-paper:${b.onPaper};--mark-ink:${b.onInk}}@media (prefers-color-scheme: dark){:root{--accent:${accentInk};--mark:${b.onInk}}}`} />
   </head>
   <body>
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="skip" href="#main">{skipLabel}</a>
     <header class="masthead">
       <div class="wrap masthead__in">
         <a class="brand" href="/"><span class="brand__mark" set:html={symbolSvg(b, 14)} />{brand.toLowerCase()} <span class="brand__sub">/ {meta.domain}</span></a>
-        <nav class="nav" aria-label="Primary">
+        <nav class="nav" aria-label={navLabel}>
           {nav.map((item) => (
             <a
               href={item.href}

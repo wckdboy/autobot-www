@@ -22,7 +22,14 @@ for (const repo of snapshot.repositories) {
 }
 assert.deepEqual(new Set(projects.map((p) => p.id)), new Set(['autobot','invincible','niobium','omnie','polykrom','polycore','creed','nightfall','axit','openendo','sovware']));
 for (const project of projects) {
-  if (project.source) {
+  if (project.sourceStatus === 'not-published') {
+    // An unpublished connector must not masquerade as its earlier public IDE repository.
+    assert.equal(project.id, 'omnie');
+    assert.equal(project.repo, undefined);
+    assert.equal(project.source, undefined);
+    const card = html.split('id="project-omnie"')[1]?.split('</li>')[0];
+    assert(card && !card.includes('>Source</a>'), 'Unpublished Omnie source must not be advertised');
+  } else if (project.source) {
     assert.equal(new URL(project.source).protocol, 'https:');
     assert(html.includes(`href="${project.source}"`), `Source absent from directory: ${project.name}`);
   } else {

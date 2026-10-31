@@ -8,6 +8,7 @@ const ORIGIN = {
   sovware: 'https://sovware.io',
   wckd: 'https://wckd.ai',
   omnie: 'https://omnie.sh',
+  'omnie-dk': 'https://omnie.dk',
   nightfall: 'https://nightfall.sh',
   tinyrex: 'https://tinyrex.sh',
 };

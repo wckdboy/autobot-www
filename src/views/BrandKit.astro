@@ -1,11 +1,11 @@
 ---
 import Lab from '../layouts/Lab.astro';
-import { meta } from '../data/site';
+import { meta, brandKey } from '../data/site';
 import { kit, symbolSvg } from '../data/kit';
 import { NAV } from '../data/nav';
 
 // Each site's brand page leads with its own brand, then the family and the shared system.
-const key = meta.key in kit.brands ? meta.key : 'wckd';
+const key = brandKey in kit.brands ? brandKey : 'wckd';
 const own = kit.brands[key];
 const family = Object.entries(kit.brands);
 const n = (NAV as Record<string, { nav: readonly { label: string; href: string }[]; footer: string }>)[key];

@@ -18,22 +18,23 @@ explicit array of `{ "name": "wckd", "directory": "/absolute/path/to/dist/wckd" 
 desktop/mobile/narrow/dark layouts, and exercises the Creed skill dialog. Existing project-directory
 privacy, keyboard and first-party-resource checks remain in `scripts/projects-browser.mjs`.
 
-The seven shared-site names also select their canonical brand-page and install-manifest checks.
+The eight shared-site names also select their canonical brand-page and install-manifest checks.
 An explicit `brandKey` preserves that selection when a shared-site preview uses another name.
 Explicit empty, unknown or non-string keys are errors, never an opt-out from verification.
 Independent sibling sites without this guide/manifest contract are explicitly reported as layout-only.
 
 The public sites for the WCKD lab and its brands, built with Astro and a shared
 pixel brand kit. The repository builds `autobot`, `invincible`, `sovware`, `wckd`,
-`omnie`, `nightfall` and `tinyrex` into separate `dist/<site>` directories. Niobium, Axit and
+`omnie`, `omnie-dk`, `nightfall` and `tinyrex` into separate `dist/<site>` directories. Niobium, Axit and
 Polykrom maintain their product sites in their own repositories.
 
 ## WCKD project directory
 
 [wckd.ai](https://wckd.ai) is the project homepage; the shared design guide remains
 at [/brand/](https://wckd.ai/brand/). The directory covers Autobot, Invincible,
-Niobium, Omnie, Polykrom, Nightfall, Axit, OpenEndo and Sovware, plus the four Omnie
-apps and other lab tools. Descriptions come from public repositories and product
+Niobium, Omnie, Polykrom, Nightfall, Axit, OpenEndo and Sovware, plus the earlier Omnie
+apps and other lab tools. Omnie's current focus is e-conomic reporting; the older apps are
+separate projects, not connector capability claims. Descriptions come from public repositories and product
 sites. Beta, preview and development status are stated separately from releases.
 
 `src/data/projects.json` holds reviewed profiles. `src/data/public-repos.json` is
@@ -42,6 +43,8 @@ integrations and forks. Fork attribution is preserved. The refresh script accept
 only explicitly public records from the expected GitHub owner and atomically
 replaces the snapshot after every page succeeds. A fetch failure preserves the
 prior file. Tokens and private metadata never enter the catalog.
+Omnie's source is not published: its reviewed profile explicitly omits source links,
+rather than pointing to the earlier IDE. That marker cannot carry a repository or source URL.
 
 The six-hour refresh workflow includes the public catalog. Deployment follows the
 Wrangler workflow below; the date on the directory identifies its baked snapshot.
@@ -55,11 +58,13 @@ pnpm dev                    # Autobot development server
 pnpm projects:data          # public catalog refresh; token optional
 pnpm data                   # release metadata refresh
 pnpm sync:install           # mirror Invincible's installer and its SHA-256
-pnpm build:all              # build all six sites
-pnpm verify:links           # links and fragments in all six built outputs, and that
+pnpm build:all              # build all eight sites
+pnpm verify:links           # links and fragments in all eight built outputs, and that
                             # invincible.sh/verify runs install.sh's signature check
 pnpm projects:check         # catalog/privacy/failure tests and rendered directory
 pnpm projects:browser       # desktop, tablet, mobile, dark mode and keyboard checks
+pnpm omnie:check            # localized copy, metadata, report arithmetic and deployment mappings
+pnpm omnie:browser          # both locales: responsive, dark, keyboard and first-party-only requests
 ```
 
 Individual builds use `pnpm build:<site>` (for example, `pnpm build:wckd`).
@@ -73,7 +78,7 @@ atomic replacement and percent/hash fragment handling. Browser checks cover
 1440, 768, 390 and 320 px layouts plus dark mode, loaded fonts/images, overflow,
 keyboard operation of the source catalog and first-party assets.
 
-Both PR workflows run all seven builds, link checks, catalog tests and browser
+Both PR workflows run all eight builds, link checks, catalog tests and browser
 checks. PRs do not deploy. CI on `main` can deploy Autobot, Invincible, Sovware and
 WCKD when the repository's Cloudflare secrets are configured; without them it
 reports a warning. Omnie, Nightfall and TinyRex have separate Wrangler configs for explicit
@@ -96,8 +101,33 @@ node scripts/family-browser.mjs
 
 Both workflows also run these checks. Browser checks use an installed Chrome/Chromium (or
 `CHROME_BIN`); `TINYREX_SHOTS` sets the learning screenshots directory. The family check verifies
-all seven homepages, brand pages and manifest identities at desktop/mobile/320px/dark profiles.
+all eight homepages, brand pages and manifest identities at desktop/mobile/320px/dark profiles.
 See [`docs/tinyrex-learning.md`](docs/tinyrex-learning.md) for sources, math and limitations.
+
+## Omnie: e-conomic reporting first
+
+`omnie.sh` is English (`pnpm build:omnie`, `dist/omnie`); `omnie.dk` is Danish
+(`pnpm build:omnie-dk`, `dist/omnie-dk`). Each has its own canonical origin, sitemap and
+deployment config. Reciprocal `hreflang` links connect the homepages. Both use the same Omnie
+brand; the shared brand guide remains English.
+
+The current direction is e-conomic → Omnie Connect → reports in Omnie. The connector app
+is intended to pull project/account data; Omnie is where it will be used to build reports.
+Read-only extraction comes first. More integrations, write-back and replacing the accounting
+system are outside this phase. Earlier IDE/editing apps are separate projects.
+
+The sites state **in development**. The examples use only `src/data/omnie-report.json`, an
+explicitly fictional dataset. They do not connect to e-conomic, collect credentials, process
+customer data or offer a public download. The examples show direction, not promised report
+availability, certification, accounting advice or a completed app. No signup or contact endpoint
+is invented.
+
+Publication requires explicit approval. The existing `main` workflow can redeploy Autobot,
+Invincible, Sovware and WCKD; merging is therefore not a build-only operation.
+Omnie deployments remain separate: `deploy/omnie.wrangler.jsonc` and
+`deploy/omnie-dk.wrangler.jsonc`. A build or merged PR is not proof either domain is live;
+verify DNS, TLS and the actual pages after approved publication. Rollback is to redeploy the
+previous Worker version. Keep the Danish Worker separate from the existing `omnie-site` identity.
 
 ## Hosting
 

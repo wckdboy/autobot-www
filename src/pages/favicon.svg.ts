@@ -1,9 +1,9 @@
 import { kit } from '../data/kit';
+import { brandKey } from '../data/site';
 
 /** The site's favicon: its colored letter on a transparent ground (brand/kit.json). */
 export const GET = () => {
-  const key = process.env.SITE_KEY || 'autobot';
-  const b = kit.brands[key] ?? kit.brands.autobot;
+  const b = kit.brands[brandKey] ?? kit.brands.autobot;
   const w = b.glyph[0].length;
   const ox = (16 - w * 2) / 2;
   const rects = b.glyph

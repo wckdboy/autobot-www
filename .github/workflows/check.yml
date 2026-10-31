@@ -22,6 +22,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build:all
       - run: node scripts/check-links.mjs
+      - run: pnpm omnie:check
+      - run: pnpm omnie:browser
       - run: pnpm projects:check
       - run: pnpm projects:browser
       - run: python3 -m unittest discover -s brand -p 'test_*.py'

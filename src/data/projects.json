@@ -32,11 +32,11 @@
   {
     "id": "omnie",
     "name": "Omnie",
-    "kind": "Make things, anywhere",
-    "description": "A family of tools for coding, editing, learning and working with agents on iPhone and iPad. Each app has its own scope and development status.",
+    "kind": "Connect data. Build reports.",
+    "description": "Omnie is being built for app and data connections. First: pull project/account data from e-conomic through Omnie Connect and use it to build reports in Omnie.",
     "site": "https://omnie.sh",
-    "repo": "omnie-dev",
-    "status": "Apps in development",
+    "sourceStatus": "not-published",
+    "status": "e-conomic reporting · in development",
     "brand": "omnie"
   },
   {

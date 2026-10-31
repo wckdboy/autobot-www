@@ -1,0 +1,11 @@
+{
+  "name": "omnie-dk-site",
+  "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "../dist/omnie-dk",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "omnie.dk", "custom_domain": true }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "fictional": true,
+  "currency": "DKK",
+  "period": "2026-Q1",
+  "projects": [
+    { "id": "01", "revenue": 98000, "costs": 64200 },
+    { "id": "02", "revenue": 63000, "costs": 46800 },
+    { "id": "03", "revenue": 23800, "costs": 15600 }
+  ],
+  "accounts": { "revenue": 184800, "materials": 84000, "labour": 42600 }
+}
